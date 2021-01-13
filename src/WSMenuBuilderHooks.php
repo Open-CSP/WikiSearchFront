@@ -13,9 +13,11 @@ class WSMenuBuilderHooks {
 
       // The input parameters are wikitext with templates expanded.
       // The output should be wikitext too.
-      $output = "param1 is $param1 and param2 is $param2 and param3 is $param3";
+      $output = "<div id='app' ></div><div id='vuedata' data-menus='$param1'></div>";
 
-      return $output;
+
+
+       return [ $output, 'noparse' => true, 'isHTML' => true ];
    }
 
 public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {

@@ -27,7 +27,7 @@ module.exports = {
   methods:{
    selecticon(e){
          this.$store.commit('icon', this.result);
-        app.ifsearch = false;
+          this.$store.commit('ifsearch', false);
 
    }
   }

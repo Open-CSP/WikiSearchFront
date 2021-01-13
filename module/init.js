@@ -1,21 +1,25 @@
 var Vue = require( 'vue' ),
     Vuex = require( 'vuex' ),
     MenuBuilder = require( './menubuilder.vue' );
-    
+
     var store = new Vuex.Store({
       state:{
         selected: "",
         dragging: "",
         info: "",
-        clone: ""
+        clone: "",
+        ifsearch: false
         },
       mutations:{
         info(state, value){
           state.info = value;
         },
+        ifsearch(state, value){
+          state.ifsearch = value;
+        },
         select(state, item){
           state.selected = item;
-          app.search = state.selected.dragitem.printouts.Icon[0]
+        //  app.search = state.selected.dragitem.printouts.Icon[0]
         },
         clone(state, item){
          state.clone = item;
@@ -47,6 +51,9 @@ var Vue = require( 'vue' ),
 
       },
       getters:{
+        ifsearch(state){
+          return state.ifsearch;
+        },
         dragging(state){
           return state.dragging;
         },
