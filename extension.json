@@ -1,0 +1,50 @@
+{
+	"name": "WSMenuBuilder",
+	"author": "Me",
+	"version": "1.0.0",
+	"url": "https://www.mediawiki.org/wiki/Extension:ExampleExtension",
+	"descriptionmsg": "exampleextension-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "parserhook",
+	"MessagesDirs": {
+		"WSMenuBuilder": [
+			"i18n"
+		]
+	},
+  "ResourceModules": {
+       "ext.WSMenuBuilder.module": {
+           "packageFiles": [
+               "init.js",
+               "menubuilder.vue",
+               "tree.vue",
+               "itemgroup.vue",
+               "dragitem.vue",
+               "fav.vue"
+               ],
+           "dependencies": [
+               "vue",
+               "vuex"
+           ],
+           "styles": [
+						"app.css"
+					]
+       }
+   },
+   "ResourceFileModulePaths": {
+ "localBasePath": "module",
+ "remoteExtPath": "WSMenuBuilder/module"
+},
+	"AutoloadClasses": {
+		"WSMenuBuilderHooks": "src/WSMenuBuilderHooks.php"
+	},
+	"ExtensionMessagesFiles": {
+		"WSMenuBuilderMagic": "WSMenuBuilder.i18n.php"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "WSMenuBuilderHooks::onParserFirstCallInit",
+    "BeforePageDisplay": [
+  "WSMenuBuilderHooks::onBeforePageDisplay"
+]
+	},
+	"manifest_version": 1
+}
