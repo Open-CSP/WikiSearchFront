@@ -41,10 +41,7 @@
 		"WSMenuBuilderMagic": "WSMenuBuilder.i18n.php"
 	},
 	"Hooks": {
-		"ParserFirstCallInit": "WSMenuBuilderHooks::onParserFirstCallInit",
-    "BeforePageDisplay": [
-  "WSMenuBuilderHooks::onBeforePageDisplay"
-]
-	},
+		"ParserFirstCallInit": "WSMenuBuilderHooks::onParserFirstCallInit"
+},
 	"manifest_version": 1
 }
