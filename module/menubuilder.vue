@@ -180,6 +180,7 @@ module.exports = {
       }],
       selectedmenu:false,
       pages:{},
+      nwtree:[],
       search:"",
       space:[],
       menus:['hoi'],
@@ -196,28 +197,55 @@ module.exports = {
         return page.printouts.Title[0].fulltext;
       }
     },
-    tasksToDo(page){
+    treez(data){
 
-      // var params = {
-      //   action: 'ask',
-      //   query: `\[\[Subobject of::${page}\]\]|?Id|?Parent|?Text|?Icon|?Type|?Href|?order|sort=order|order=asc`,
-      //   format: 'json'
-      // },
-      // api = new mw.Api();//need to add fail function
-      //
-      // api.postWithToken( 'csrf', params ).done( function ( data ) {
-      //
-      //  console.log(data.query.results)
-      //
-      //   if(data.query.results.length == undefined){
-      //
-      //
-      //   nwtree = [];
-      // treez(data.query.results)
-      //
-      //  var obg = {name:page, dragitems:nwtree};
-      //  app.trees.push(obg )
-      //    }else{//if result is array create empty object
+     for (var [key, value] of Object.entries(data)){
+
+       if(!value.printouts.Parent[0]){
+         each = value;
+      each.dragchildren = this.traverse(data, each.printouts.Id[0]);
+     this.nwtree.push(each);
+       }
+
+     }
+
+},
+traverse(data, parentId) {
+   var children = [];
+     for (var [key, each] of Object.entries(data)){
+       if(each.printouts.Parent[0] == parentId){
+        children.push(each);
+     }
+
+     }
+
+  children.forEach(child => {
+  child.dragchildren = this.traverse(data, child.printouts.Id[0]);
+  });
+  return children;
+},
+    tasksToDo(page){
+      var dt = this;
+      var params = {
+        action: 'ask',
+        query: `[[Subobject of::${page}]]|?Id|?Parent|?Text|?Icon|?Type|?Href|?order|sort=order|order=asc`,
+        format: 'json'
+      },
+      api = new mw.Api();//need to add fail function
+
+      api.postWithToken( 'csrf', params ).done( function ( data ) {
+
+       console.log(data.query.results)
+
+        if(data.query.results.length == undefined){
+
+
+        dt.nwtree = [];
+      dt.treez(data.query.results)
+
+       var obg = {name:page, dragitems:dt.nwtree};
+       dt.trees.push(obg )
+         }else{//if result is array create empty object
       var tname = ~~(Date.now() / 1000);
       var obg = {name:page, dragitems:[
         {
@@ -230,9 +258,9 @@ module.exports = {
           },
           dragchildren: []
         }]}
-        this.trees.push(obg )
-        //    }
-        //} );
+        dt.trees.push(obg )
+           }
+        } );
       },
       showsearch(){
         this.ifsearch = true;
@@ -241,12 +269,67 @@ module.exports = {
         },100)
       },
       savemenu(){
-        wtz();
+      var wikitexttosave = "";
+       var flat = "";
+       var pagetosave ="";
+       if(this.trees[1]){
+         var ob =  this.trees[1];
+
+         if(ob.name){
+           console.log(ob);
+           var order = 0;
+           var level = 0;
+           loopthat(ob.dragitems);
+           function loopthat(x){
+             x.forEach(function(el){
+               var parnt ="";
+               if(el.printouts.Parent && el.printouts.Parent.length ){
+                 console.log(el.printouts.Parent)
+                 parnt = el.printouts.Parent[0];
+               }
+               level++;
+               flat += `{{Menu
+                        |text=${el.printouts.Text[0]}
+                        |type=${el.printouts.Type[0]}
+                        |id=${el.printouts.Id[0]}
+                        |icon=${el.printouts.Icon[0]}
+                        |href=${el.printouts.Href[0]}
+                        |parent=${parnt}
+                        |order=${order}
+                        |level=${level}
+                        }}`;
+               order++;
+               loopthat(el.dragchildren);
+               level--;
+             })
+           }
+           console.log(flat)
+
+           wikitexttosave = ob.name;
+           pagetosave = flat;
+         }
+       }
         this.$nextTick(function() {
           if(wikitexttosave){
-            saveToWiki(wikitexttosave, pagetosave);
+            this.saveToWiki(wikitexttosave, pagetosave);
           }
         });
+      },
+      saveToWiki(page, wikitext){
+
+          var params = {
+                action: 'edit',
+                title: page,
+                text: wikitext,
+                format: 'json'
+              },
+              api = new mw.Api();
+
+              api.postWithToken( 'csrf', params ).done( function ( data ) {
+                console.log( data );
+                     mw.notify($('<span>Saved</span>'))
+              } );
+
       },
       getmenu(e){
         this.tasksToDo(e.target.value);
