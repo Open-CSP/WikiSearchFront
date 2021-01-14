@@ -42,9 +42,13 @@ module.exports = {
       return text.replace(regex , '<b>'+this.selected+'</b>');
     },
     select(e){
-      console.log(this.namespace, e.target.dataset.value);
+    //  console.log(this.namespace, e.target.dataset.value);
       this.selected = e.target.dataset.value;
-      this.$store.commit('title', this.selected);
+      if(this.namespace){
+       this.$store.commit('title', e.target.innerText);
+     }else{
+       this.$store.commit('title', this.selected);
+     }
       this.$store.commit('href', this.selected);
       this.results = "";
     },
