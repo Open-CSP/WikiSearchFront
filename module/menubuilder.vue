@@ -216,6 +216,14 @@ module.exports = {
    traverse(data, parentId) {
      var children = [];
      for (var [key, each] of Object.entries(data)){
+
+if(this.space){
+       for (var [i, el] of Object.entries(this.pages)) {
+         if(el.printouts['Page ID'][0] == each.printouts.Href[0] && el.printouts['Title'][0]){
+          each.printouts.Text[0] = el.printouts['Title'][0].fulltext;
+         }
+       }
+     }
        if(each.printouts.Parent[0] == parentId){
         children.push(each);
       }
@@ -238,6 +246,9 @@ module.exports = {
          console.log(data.query.results)
           if(data.query.results.length == undefined){
             dt.nwtree = [];
+            if(this.space){
+                  this.getpages();
+            }
             dt.treez(data.query.results);
             var obg = {name:page, dragitems:dt.nwtree};
             dt.trees.push(obg )
@@ -332,21 +343,21 @@ module.exports = {
       getmenu(e){
         this.tasksToDo(e.target.value);
         this.selectedmenu = true;
-      //  this.getpages();
+
       },
       getpages(){
-          // if(this.space){
-          //   var params = {
-          //     action: 'ask',
-          //     query: `[[Class::Page]][[Namespace::${this.space}]]|?Title|?Page ID`,
-          //     format: 'json'
-          //   },
-          //   api = new mw.Api();//need to add fail function
-          //
-          //   api.postWithToken( 'csrf', params ).done( function ( data ) {
-          //     this.pages = data.query.results;
-          //   })
-          // }
+          if(this.space){
+            var params = {
+              action: 'ask',
+              query: `[[Class::Page]][[Namespace::${this.space}]]|?Title|?Page ID|limit=5000`,
+              format: 'json'
+            },
+            api = new mw.Api();//need to add fail function
+
+            api.postWithToken( 'csrf', params ).done( function ( data ) {
+              this.pages = data.query.results;
+            })
+          }
       },
       input(e){
         this.$store.commit('title', e.target.value);

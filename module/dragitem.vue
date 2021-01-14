@@ -54,11 +54,11 @@
       pagetitle(){
         if(this.dragitem.printouts.Type[0] == "page"){
           var nwt = [];
-          //  for (var [i, el] of Object.entries({this.$root.pages})) {
-          //    if(el.printouts['Page ID'][0] == this.dragitem.printouts.Href[0] && el.printouts['Title'][0]){
-          //    nwt.push(el.printouts['Title'][0].fulltext);
-          //    }
-          //  }
+           // for (var [i, el] of Object.entries({})) {
+           //   if(el.printouts['Page ID'][0] == this.dragitem.printouts.Href[0] && el.printouts['Title'][0]){
+           //   nwt.push(el.printouts['Title'][0].fulltext);
+           //   }
+           // }
           if(nwt && nwt[0]){
             return nwt[0];
           }else{
