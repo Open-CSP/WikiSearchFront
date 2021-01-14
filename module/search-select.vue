@@ -38,6 +38,9 @@ module.exports = {
   },
   methods:{
     highlight(text){
+      if(this.namespace){
+      text =  text.split(":")[1]
+      }
       var regex = new RegExp( this.selected , 'gmi' );
       return text.replace(regex , '<b>'+this.selected+'</b>');
     },
