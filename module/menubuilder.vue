@@ -247,8 +247,8 @@ if(this.space){
          console.log(data.query.results)
           if(data.query.results.length == undefined){
             dt.nwtree = [];
-            if(this.space){
-                  this.getpages(data.query.results);
+            if(dt.space){
+                  dt.getpages(data.query.results);
             }else{
               dt.treez(data.query.results);
             }
@@ -350,6 +350,7 @@ if(this.space){
       },
       getpages(pages){
           if(this.space){
+            var dt = this;
             var params = {
               action: 'ask',
               query: `[[Class::Page]][[Namespace::${this.space}]]|?Title|?Page ID|limit=5000`,
@@ -359,8 +360,8 @@ if(this.space){
 
             api.postWithToken( 'csrf', params ).done( function ( data ) {
 
-              this.pages = data.query.results;
-              this.treez(pages);
+              dt.pages = data.query.results;
+              dt.treez(pages);
             })
           }
       },
