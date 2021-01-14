@@ -218,6 +218,7 @@ module.exports = {
      for (var [key, each] of Object.entries(data)){
 
 if(this.space){
+  console.log(this.space, this.pages);
        for (var [i, el] of Object.entries(this.pages)) {
          if(el.printouts['Page ID'][0] == each.printouts.Href[0] && el.printouts['Title'][0]){
           each.printouts.Text[0] = el.printouts['Title'][0].fulltext;
