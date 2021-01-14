@@ -46,7 +46,7 @@
             <option disabled selected>Select a type</option>
             <option value="page">Page</option>
             <option value="external">External</option>
-            <option v-if="!space" value="Template">Template</option>
+            <option v-if="!space" value="template">Template</option>
           </select>
         </label>
         <label v-show="space ? !isPageType : true">
