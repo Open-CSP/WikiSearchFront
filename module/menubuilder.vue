@@ -59,7 +59,7 @@
         </label>
         <label v-if="isPageType" >
           Page
-          <search-select :namespace="space" :selected="Href"></search-select>
+          <search-select :namespace="space" :selected="space ? Title : Href"></search-select>
         </label>
         <label @click.prevent="showsearch" >
           Icon
