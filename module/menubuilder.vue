@@ -40,28 +40,26 @@
         </div>
       </div>
       <div class="menu-form" v-show="$store.getters.selected">
-        <label v-show="!isPageType">
-          Text
-          <input id="textmenu" @input="input" type="text" :value="Title"  class="form-control" >
-        </label>
-        <label>
+          <label>
           Type
           <select @change="inputtype" :value="Type" class="form-control" >
             <option disabled selected>Select a type</option>
             <option value="page">Page</option>
             <option value="external">External</option>
+            <option v-if="!space" value="Template">Template</option>
           </select>
         </label>
-        <label v-if="isPageType" >
-          Page
-          <select @change="inputpage" :value="Href" class="form-control" >
-            <option disabled selected>Select a page</option>
-            <option v-for="page in pages" :value="page.printouts['Page ID'][0]">{{drtitle(page)}}</option>
-          </select>
+        <label v-show="space ? !isPageType : true">
+          Text
+          <input id="textmenu" @input="input" type="text" :value="Title"  class="form-control" >
         </label>
         <label v-if="!isPageType" >
           {{Type}}
           <input @input="inputhref" type="text" :value="Href" class="form-control" >
+        </label>
+        <label v-if="isPageType" >
+          Page
+          <search-select :namespace="space" :selected="Href"></search-select>
         </label>
         <label @click.prevent="showsearch" >
           Icon
@@ -73,7 +71,7 @@
             <fav v-for="(result, index) in filterresult" :result="result" :key="index" :index="index"  ></fav>
           </div>
         </div>
-        <label class="d-none">
+        <label v-if="permission">
           Permission
           <select class="form-control" >
             <option disabled selected>Select a permission</option>
@@ -96,6 +94,7 @@
 module.exports = {
   components: {
     'tree': require( './tree.vue' ),
+    'search-select': require( './search-select.vue' ),
     'fav': require( './fav.vue' )
 
 },
@@ -125,7 +124,7 @@ module.exports = {
         return this.selectedmenu;
     },
     isPageType(){
-      if(this.$store.getters.selected && this.$store.getters.selected.dragitem.printouts.Type[0] == "page" && this.space){
+      if(this.$store.getters.selected && this.$store.getters.selected.dragitem.printouts.Type[0] == "page"){
         return true;
       }
     },
@@ -141,7 +140,7 @@ module.exports = {
       if(this.menus.length < 2){
         this.tasksToDo(this.menus[0]);
         this.selectedmenu = true;
-        this.getpages();
+      //  this.getpages();
       }
     },
     Title() {
@@ -190,7 +189,8 @@ module.exports = {
       pages:{},
       nwtree:[],
       search:"",
-      space:[],
+      space:document.querySelector('#vuedata').dataset.space,
+      permission:"",
       menus:document.querySelector('#vuedata').dataset.menus.split(","),
       info:false,
       pause:true,
@@ -332,21 +332,21 @@ module.exports = {
       getmenu(e){
         this.tasksToDo(e.target.value);
         this.selectedmenu = true;
-        this.getpages();
+      //  this.getpages();
       },
       getpages(){
-          if(this.space){
-            var params = {
-              action: 'ask',
-              query: `[[Class::Page]][[Namespace::${this.space}]]|?Title|?Page ID`,
-              format: 'json'
-            },
-            api = new mw.Api();//need to add fail function
-
-            api.postWithToken( 'csrf', params ).done( function ( data ) {
-              this.pages = data.query.results;
-            })
-          }
+          // if(this.space){
+          //   var params = {
+          //     action: 'ask',
+          //     query: `[[Class::Page]][[Namespace::${this.space}]]|?Title|?Page ID`,
+          //     format: 'json'
+          //   },
+          //   api = new mw.Api();//need to add fail function
+          //
+          //   api.postWithToken( 'csrf', params ).done( function ( data ) {
+          //     this.pages = data.query.results;
+          //   })
+          // }
       },
       input(e){
         this.$store.commit('title', e.target.value);

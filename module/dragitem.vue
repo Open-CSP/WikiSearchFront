@@ -37,6 +37,7 @@
     data: function() {
       return {
         isDragOver: false,
+        timeOut: ""
       }
     },
     computed: {
@@ -97,8 +98,11 @@
         e.target.classList.remove('dragmode');
         e.target.style.display = "";
         this.$store.commit('drag', "");
-        $('#clonetainer').append($('#clone'))
-        $('#clonetainer').append($('#clone-group'))
+    //    this.timeOut = setTimeout(function(){
+          $('#clonetainer').append($('#clone'))
+          $('#clonetainer').append($('#clone-group'))
+    //  }, 1000);
+
       },
       dropItem(e){
         if(this.name != "Menu items"){
@@ -161,10 +165,12 @@
         return output;
       },
       dragOver(e){
+        clearTimeout(this.timeOut);
+
         if(this.name != "Menu items"){
           var viewportOffset = e.target.getBoundingClientRect();
           if((e.clientX - viewportOffset.left) > 40 ){
-            if( this.isDragOver != "side"){
+           if( this.isDragOver != "side"){
               this.isDragOver = "side";
               if(e.target.closest('li').querySelector('ul')){
                 $('#clonetainer').append($('#clone-group'))
@@ -173,7 +179,7 @@
                 $('#clonetainer').append($('#clone'))
                 $(e.target.closest('li')).append($('#clone-group'))
               }
-            }
+             }
           }else{
             if(!this.isDragOver || this.isDragOver == "side"){
               $('#clonetainer').append($('#clone-group'))
@@ -187,8 +193,10 @@
 
         e.target.classList.remove('dragmode');
         e.target.style.display = "";
-        $('#clonetainer').append($('#clone'));
-        $('#clonetainer').append($('#clone-group'));
+    //    this.timeOut = setTimeout(function(){
+          $('#clonetainer').append($('#clone'))
+          $('#clonetainer').append($('#clone-group'))
+  //    }, 1000);
 
         this.isDragOver = false;
 

@@ -19,7 +19,8 @@
                "tree.vue",
                "itemgroup.vue",
                "dragitem.vue",
-               "fav.vue"
+               "fav.vue",
+               "search-select.vue"
                ],
            "dependencies": [
                "vue",

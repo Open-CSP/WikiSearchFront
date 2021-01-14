@@ -12,7 +12,7 @@ class WSMenuBuilderHooks {
 
       // The input parameters are wikitext with templates expanded.
       // The output should be wikitext too.
-      $output = "<div id='app' ></div><div id='vuedata' data-menus='$param1'></div>";
+      $output = "<div id='app' ></div><div id='vuedata' data-menus='$param1' data-space='$param2'></div>";
 
       $parser->getOutput()->addModules( 'ext.WSMenuBuilder.module' );
 

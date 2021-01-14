@@ -1,5 +1,5 @@
 <template>
-  <div>{{menuname}}
+  <div>
     <div
     @dragover.prevent.stop="dragover"
     @dragleave.stop="dragend"
