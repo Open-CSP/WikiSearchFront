@@ -248,9 +248,11 @@ if(this.space){
           if(data.query.results.length == undefined){
             dt.nwtree = [];
             if(this.space){
-                  this.getpages();
+                  this.getpages(data.query.results);
+            }else{
+              dt.treez(data.query.results);
             }
-            dt.treez(data.query.results);
+
             var obg = {name:page, dragitems:dt.nwtree};
             dt.trees.push(obg )
           }else{//if result is array create empty object
@@ -346,7 +348,7 @@ if(this.space){
         this.selectedmenu = true;
 
       },
-      getpages(){
+      getpages(pages){
           if(this.space){
             var params = {
               action: 'ask',
@@ -356,7 +358,9 @@ if(this.space){
             api = new mw.Api();//need to add fail function
 
             api.postWithToken( 'csrf', params ).done( function ( data ) {
+
               this.pages = data.query.results;
+              this.treez(pages);
             })
           }
       },
