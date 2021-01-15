@@ -4,6 +4,7 @@
       type="text"
       @input="search"
       v-model="selected"
+      class="form-control"
       />
       <ul v-show="results.length == undefined" class="icon-list">
         <li

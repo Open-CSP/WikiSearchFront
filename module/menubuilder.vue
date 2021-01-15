@@ -47,6 +47,7 @@
             <option value="page">Page</option>
             <option value="external">External</option>
             <option v-if="!space" value="template">Template</option>
+            <option v-if="!space" value="dropdown">Dropdown</option>
           </select>
         </label>
         <label v-show="space ? !isPageType : true">
