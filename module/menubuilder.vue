@@ -16,27 +16,18 @@
     </select>{{checkmenus}}
     <div v-if="selectedmenu || menus.length < 2" style="display: grid;grid-template-columns: 2fr 1fr;">
       <div style="display: grid;grid-template-columns: 1fr 1fr;">
-        <tree v-for="tree in trees" :dragitems="tree.dragitems" :name="tree.name" class="menu-tree">
+        <tree v-for="tree in trees" :dragitems="tree.dragitems" :namespace="space" :name="tree.name" class="menu-tree">
           <i class="ml-2 fa fa-info-circle btn"  v-if="tree.isfirst"></i>
           <div class="info-box" v-if="tree.isfirst" >
-            <div class="text-left">
-              To create a new link in your hub's menu tree, drag the new link button to the place you want it. You can also drag existing links up, down or sideways to create your tree.
+            <div class="text-left" v-html=" $i18n( 'wsmenubuilder-information-left' ) ">
             </div>
-            <br><br><br><br><br><br>
-            <div class="text-left">
-              Be sure to save any changes to the menu tree by clicking the <strong>Save menu</strong> button! If you don't want to save, just go to another page and your changes will not be saved.<br><br>
-              <button @click="savemenu" class="btn btn-primary" >Save menu</button>
-            </div>
+            <button @click="savemenu" class="btn btn-primary" >Save menu</button>
           </div>
         </tree><!--- menu-items -->
       </div>
       <div class="menu-form" v-show="!$store.getters.selected">
         <i class="ml-2 fa fa-info-circle btn"  ></i>
-        <div class="info-box">
-          Select a link in your hub's menu tree to show its properties.<br><br>
-          You can change its type (either an external link or a page on KnowledgeHub), what it links to, and the icon to use for the link.<br><br>
-          You can also delete links you don't want.<br><br><br>
-          Use the + and - icons on the tree to expand or collapse the tree.<br>
+        <div class="info-box" v-html=" $i18n( 'wsmenubuilder-information-right' ) ">
         </div>
       </div>
       <div class="menu-form" v-show="$store.getters.selected">

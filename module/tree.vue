@@ -5,7 +5,7 @@
     @dragleave.stop="dragend"
     @drop.stop.prevent="dropit"
     class="tree-top-item">
-    Hub Menu Tree
+    {{namespace ? "Hub Menu Tree" : name}}
   </div>
   <itemgroup
   :passed="comp"
@@ -24,7 +24,8 @@
     },
     props:{
       dragitems:Object,
-      name:String
+      name:String,
+      namespace:String
     },
     computed:{
       comp(){

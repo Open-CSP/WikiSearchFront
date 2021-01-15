@@ -26,6 +26,10 @@
                "vue",
                "vuex"
            ],
+           "messages": [
+              "wsmenubuilder-information-left",
+              "wsmenubuilder-information-right"
+           ],
            "styles": [
 						"app.css"
 					]
