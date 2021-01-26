@@ -1,34 +1,31 @@
 {
-	"name": "WSMenuBuilder",
+	"name": "WSSearchFront",
 	"author": "Me",
 	"version": "1.0.0",
 	"url": "https://www.mediawiki.org/wiki/Extension:ExampleExtension",
-	"descriptionmsg": "exampleextension-desc",
+	"descriptionmsg": "wssearchfront-desc",
 	"license-name": "GPL-2.0-or-later",
 	"type": "parserhook",
 	"MessagesDirs": {
-		"WSMenuBuilder": [
+		"WSSearchFront": [
 			"i18n"
 		]
 	},
   "ResourceModules": {
-       "ext.WSMenuBuilder.module": {
+       "ext.WSSearchFront.module": {
            "packageFiles": [
                "init.js",
-               "menubuilder.vue",
-               "tree.vue",
-               "itemgroup.vue",
-               "dragitem.vue",
-               "fav.vue",
-               "search-select.vue"
+							 "wssearchfront.vue",
+							 "agg.vue",
+							 "hit.vue"
                ],
            "dependencies": [
                "vue",
                "vuex"
            ],
            "messages": [
-              "wsmenubuilder-information-left",
-              "wsmenubuilder-information-right"
+              "wssearchfront-information-left",
+              "wssearchfront-information-right"
            ],
            "styles": [
 						"app.css"
@@ -37,16 +34,16 @@
    },
    "ResourceFileModulePaths": {
  "localBasePath": "module",
- "remoteExtPath": "WSMenuBuilder/module"
+ "remoteExtPath": "WSSearchFront/module"
 },
 	"AutoloadClasses": {
-		"WSMenuBuilderHooks": "src/WSMenuBuilderHooks.php"
+		"WSSearchFrontHooks": "src/WSSearchFrontHooks.php"
 	},
 	"ExtensionMessagesFiles": {
-		"WSMenuBuilderMagic": "WSMenuBuilder.i18n.php"
+		"WSSearchFrontMagic": "WSSearchFront.i18n.php"
 	},
 	"Hooks": {
-		"ParserFirstCallInit": "WSMenuBuilderHooks::onParserFirstCallInit"
+		"WSSearchOnLoadFrontend": "WSSearchFrontHooks::onWSSearchOnLoadFrontend"
 },
 	"manifest_version": 1
 }
