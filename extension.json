@@ -24,8 +24,25 @@
                "vuex"
            ],
            "messages": [
-              "wssearchfront-information-left",
-              "wssearchfront-information-right"
+						 "jan",
+						 "feb",
+						 "mar",
+						 "apr",
+						 "may",
+						 "jun",
+						 "jul",
+						 "aug",
+						 "sep",
+						 "oct",
+						 "nov",
+						 "dec",
+						 "search",
+						 "date-range-from",
+						 "date-range-to",
+						 "rcfilters-clear-all-filters",
+			       "wssearch-total",
+					   "wssearch-less",
+						 "wssearch-more"
            ],
            "styles": [
 						"app.css"
