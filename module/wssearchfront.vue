@@ -165,7 +165,7 @@ module.exports = {
     total: 0,
     hits: "",
     aggs: "",
-    size:10,
+    size:mw.config.values.WSSearchFront.facetSettings.size,
     from: 0,
     selected: [],
     open: [],
@@ -178,7 +178,7 @@ module.exports = {
     dates:[],
     realDates:{},
     hitIDs:"",//mw.config.values.WSSearchFront.resultIDs
-    facetconfig:mw.config.values.WSSearchFront.facetSettings.split(",")
+    facetconfig:mw.config.values.WSSearchFront.facetSettings.combobox,//mw.config.values.WSSearchFront.facetSettings.split(",")
     }
   },
   methods:{

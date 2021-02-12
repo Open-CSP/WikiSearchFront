@@ -12,7 +12,20 @@
 		]
 	},
   "ResourceModules": {
-       "ext.WSSearchFront.module": {
+		"ext.WSSearchFront.config": {
+				"packageFiles": [
+						"initconfig.js",
+					 "wssearchfrontconfig.vue"
+						],
+				"dependencies": [
+						"vue",
+						"vuex"
+				],
+				"styles": [
+				 "config.css"
+			 ]
+		   },
+			"ext.WSSearchFront.module": {
            "packageFiles": [
                "init.js",
 							 "wssearchfront.vue",
