@@ -222,7 +222,7 @@ module.exports = {
       var date2 = "";
 
 
-  mw.loader.using('mediawiki.widgets').then(function(data){
+  mw.loader.using('mediawiki.widgets.DateInputWidget').then(function(data){
 
 
       // Date input widget showcase
