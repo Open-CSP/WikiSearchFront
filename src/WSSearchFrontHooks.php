@@ -1,4 +1,4 @@
-<?php
+1<?php
 class WSSearchFrontHooks {
 
 
@@ -12,9 +12,24 @@ if(!$parameters[0]){
 
 }else{
 
+$settings = [];
+
+foreach ($parameters as $key => $value) {
+    $split = explode('=', $value);
+    $k = $split[0];
+    $v = $split[1];
+
+    if($k == 'size'){
+      $settings['size'] = $v;
+    }
+    if($k[0] == '?'){
+       $settings[$v][] = substr($k, 1);
+    }
+}
+
  $jsconfig = [
               "resultIDs" => $config->getResultPropertyIDs(),
-              "facetSettings" => json_decode('{'. $parameters[0] . '}')
+              "facetSettings" => $settings
             ];
 
   $parser->getOutput()->addJsConfigVars("WSSearchFront", $jsconfig );
