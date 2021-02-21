@@ -1,50 +1,16 @@
 <template>
 <div id="app">
   <div class="wssearch" >
-    <div
-      class="wssearch--search"
-      aria-disabled="false"
+    <search-input
+      @change="search"
+      :term="term"
     >
-      <input
-        type="search"
-        :placeholder="$i18n( 'search' )"
-        @change="search"
-        class="wssearch--search-input"
-        v-bind:value="term"
-        tabindex="0"
-        aria-disabled="false"
-      />
-      <span
-        class="wssearch--search-icon"
-      >
-      </span>
-      <span
-        class="wssearch--search-clear"
-        tabindex="-1"
-        aria-label="Clear"
-        role="button"
-      >
-      </span>
-    </div>
-    <div class="wssearch--selected">
-      <label
-        class="wssearch--selected-filter"
-        v-for="activefilter in selected"
-        v-bind:for="activefilter.key.toLowerCase().replace(' ', '_') + '--' + activefilter.value.toLowerCase().replace(' ', '_')"
-      >
-        <bdi>{{activefilter.value ?  activefilter.value : activefilter.name }}</bdi>
-      </label>
-      <span
-        class="wssearch--selected-clear"
-        v-if="selected.length"
-        @click="clearfilters"
-        tabindex="-1"
-        aria-label="Clear"
-        role="button"
-      >
-        {{ $i18n( 'rcfilters-clear-all-filters' ) }}
-      </span>
-    </div>
+    </search-input>
+    <selected-pils
+      :selected="selected"
+       @click="clearfilters"
+    >
+    </selected-pils>
     <div v-if="aggs" class="wssearch--filters">{{sort}}
       <div class="wssearch--daterange">
         {{ $i18n( 'date-range-from' ) }}
@@ -126,20 +92,13 @@
         >
         </hit>
       </div>
-      <div  class="wssearch--pager">
-        <span
-          v-for="pager in pagers"
+      <pager
           @click="next"
-          v-bind:class="activepage(pager)"
+          :size="size"
+          :from="from"
+          :total="total"
         >
-          <b v-if="activepage(pager)">
-            {{pager}}
-          </b>
-          <span v-else>
-            {{pager}}
-          </span>
-        </span>
-      </div>
+      </pager>
     </div>
     </div>
   </div>
@@ -151,8 +110,11 @@
 var Vue = require( 'vue' );
 module.exports = {
   components: {
+  'search-input': require( './searchinput.vue' ),
+  'selected-pils': require( './selectedpils.vue' ),
   'agg': require( './agg.vue' ),
-  'hit': require( './hit.vue' )
+  'hit': require( './hit.vue' ),
+  'pager': require( './pager.vue' )
 
 },
   mounted(){
@@ -478,11 +440,6 @@ $( '#dateinput2' ).append( dateInputEnd.$element );
     //  console.log(e.target.value, aggs)
 
     },
-    activepage:function(pager){
-      if(pager == (this.from / this.size) + 1){
-        return 'active';
-      }
-    },
     next:function(e){
       var root = this;
       root.loading = true;
@@ -511,25 +468,6 @@ $( '#dateinput2' ).append( dateInputEnd.$element );
           return el;
         }
       }).reverse();
-    },
-    pagers:function(e){
-      if(this.total >= this.size){
-        if(this.from == 0){
-          var pages = [];
-        }else{
-          var pages = ['<'];
-        }
-        var i;
-        var step = Math.ceil(this.total / this.size);
-        for (i = 0; i < step; i++) {
-          pages.push(i + 1)
-        }
-        if(this.from + this.size >=  this.total - this.size){
-        }else{
-          pages.push('>');
-        }
-        return pages;
-      }
     }
   }
 };
@@ -575,7 +513,7 @@ $( '#dateinput2' ).append( dateInputEnd.$element );
     width: 1.42857143em;
     min-height: 20px;
     height: 100%;
-    background-image: linear-gradient(transparent,transparent),url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Esearch%3C/title%3E%3Cpath d=%22M7.5 13c3.04 0 5.5-2.46 5.5-5.5S10.54 2 7.5 2 2 4.46 2 7.5 4.46 13 7.5 13zm4.55.46A7.432 7.432 0 017.5 15C3.36 15 0 11.64 0 7.5S3.36 0 7.5 0C11.64 0 15 3.36 15 7.5c0 1.71-.57 3.29-1.54 4.55l6.49 6.49-1.41 1.41-6.49-6.49z%22/%3E%3C/svg%3E);
+    background-image: linear-gradient(transparent,transparent),url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Esearch%3C/title%3E%3Cpath d=%22M7.5 13c3.04 0 5.5-2.46 5.5-5.5S10.54 2 7.5 2 2 4.46 2 7.5 4.46 13 7.5 13zm4.55.46A7.432 7.432 0 017.5 15C3.36 15 0 11.64 0 7.5S3.36 0 7.5 0C11.64 0 15 3.36 15 7.5c0 1.71-.57 3.29-1.54 4.55l6.49 6.49-1.41 1.41-6.49-6.49z%22/%3E%3C/svg%3E');
   }
     .wssearch--search-clear{
       cursor: pointer;

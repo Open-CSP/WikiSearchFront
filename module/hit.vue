@@ -18,8 +18,10 @@
     </span>
     <template
       v-for="(key, hitID) in $parent.hitIDs"
+      
     >
       <span
+        :key="key"
         class="wssearch--hit__link"
         v-if="Object.keys($parent.hitIDs)[0] == key"
       >
@@ -30,6 +32,7 @@
         </a>
       </span>
       <span
+        :key="key"
         v-bind:class="'wssearch--hit__property' + key"
         v-else
       >

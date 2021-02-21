@@ -29,8 +29,12 @@
            "packageFiles": [
                "init.js",
 							 "wssearchfront.vue",
+							 "searchinput.vue",
+							 "selectedpils.vue",
+							 "pil.vue",
 							 "agg.vue",
-							 "hit.vue"
+							 "hit.vue",
+							 "pager.vue"
                ],
            "dependencies": [
                "vue",
