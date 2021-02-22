@@ -12,72 +12,25 @@
     >
     </selected-pils>
     <div v-if="aggs" class="wssearch--filters">{{sort}}
-      <div class="wssearch--daterange">
-        {{ $i18n( 'date-range-from' ) }}
-         <div id="dateinput1">
-         </div>
-         {{ $i18n( 'date-range-to' ) }}
-         <div id="dateinput2">
-         </div>
-         <agg
-           v-show="rangeFrom && rangeTo"
+      <daterange
            v-bind:agg="{key:'customrange',from: rangeFrom , to: rangeTo ,doc_count:1 }"
-           v-bind:key="'0'"
-           v-bind:index="'0'"
-           v-bind:name="'Date'"
-
-         ></agg>
-     </div>
-        <div
+           @change="api(0, term)"
+           :aggcomponent="aggcomponent"
+         >
+     </daterange>
+        <component 
           v-for="(name, index) in Object.keys(aggs).sort()"
-
+          :is="facetconfig.includes(name) ? comboboxcomponent : filtercomponent"
           v-bind:key="index"
-          v-bind:class="'wssearch--filter wssearch--filter__' + name.toLowerCase()"
+          :selected="selected"
+          :open="open"
+          :buckets="aggs[name].buckets"
+          :name="name"
+          @change="api(0, term)"
+          @click="more(name)"
+          :aggcomponent="aggcomponent"
         >
-          <span class="wssearch--filter-header" v-if="aggs[name].buckets.length" >
-            <label>{{name.replace("_", " ")}}</label>
-          </span>
-          <div
-            v-if="facetconfig.includes(name)"
-            class="wssearch--selected-filters__combobox"
-          >
-            <label
-              v-if="activefilter.key == name && facetconfig.includes(name)"
-              class="wssearch--selected-filter"
-              v-for="activefilter in selected"
-              v-bind:for="activefilter.key.toLowerCase().replace(' ', '_') + '--' + activefilter.value.toLowerCase().replace(' ', '_')"
-            >
-              <bdi>{{activefilter.value ?  activefilter.value : activefilter.name }}</bdi>
-            </label>
-        </div>
-          <input
-            v-if="facetconfig.includes(name)"
-            type="search"
-            :placeholder="name.replace('_', ' ')"
-            class="wssearch--filter-options-search"
-            @input="searchaggs(event, name)"
-            />
-          <div
-           :class="facetconfig.includes(name) ? 'wssearch--filter-options wssearch--filter-options__combobox' : 'wssearch--filter-options'"
-          >
-            <agg
-              v-for="(agg, i) in aggs[name].buckets"
-              v-bind:agg="agg"
-              v-bind:key="i"
-              v-bind:index="i"
-              v-bind:name="name"
-            ></agg>
-            <label
-              class="wssearch--filter-showmore"
-              v-if="aggs[name].buckets.length > 5"
-              @click="more(name)"
-            >
-              <span class="wssearch--filter-less" v-if="open.includes(name)" >{{ $i18n( 'wssearch-less' ) }}</span>
-              <span class="wssearch--filter-more" v-else >{{ $i18n( 'wssearch-more' ) }}</span>
-            <label>
-          </div>
-
-      </div>
+      </component>
     </div>
     <div
       class="wssearch--total"
@@ -106,25 +59,27 @@
 </template>
 
 <script>
-
 var Vue = require( 'vue' );
+var aggcom = require( './agg.vue' );
 module.exports = {
   components: {
   'search-input': require( './searchinput.vue' ),
   'selected-pils': require( './selectedpils.vue' ),
-  'agg': require( './agg.vue' ),
+  'daterange': require( './daterange.vue' ),
+  'agg': aggcom,
   'hit': require( './hit.vue' ),
   'pager': require( './pager.vue' )
-
 },
   mounted(){
   this.createranges();
    this.urlparams();
-   this.dateinputs();
   },
   data:function(){
     return {
     total: 0,
+    aggcomponent: aggcom,
+    'comboboxcomponent': require( './combobox.vue' ),
+  'filtercomponent': require( './filter.vue' ),
     hits: "",
     aggs: "",
     size:mw.config.values.WSSearchFront.facetSettings.size,
@@ -178,105 +133,6 @@ module.exports = {
 
       })
     },
-    dateinputs:function(){
-      var root = this;
-      var date1 = "";
-      var date2 = "";
-
-
-  mw.loader.using('mediawiki.widgets.DateInputWidget').then(function(data){
-
-
-      // Date input widget showcase
-      var dateInputStart = new mw.widgets.DateInputWidget();
-
-
-      if(root.realDates["customrange"]){
-        dateInputStart.setValue(root.realDates["customrange"].from);
-      }
-
-
-      dateInputStart.on( 'change', function () {
-
-
-        console.log(root.selected)
-        // The value will always be a valid date or empty string, malformed input is ignored
-         date1 = dateInputStart.getValue();
-         console.log(dateInputEnd)
-         dateInputEnd.mustBeAfter = date1 ;
-
-        root.rangeFrom = root.createdates(date1) + 1;
-
-        if(root.rangeTo > 0){
-          var kw = Object.keys(root.selected);
-
-          Vue.set(root.realDates, "customrange", {"from": date1, "to":  date2})
-
-
-          kw.forEach(function(el, i){
-            if(root.selected[i].value == "customrange"){
-              root.selected[i].range["P:29.datField"].gte = Number(root.rangeFrom+'.0000000');
-
-
-            }
-              root.api(0, root.term);
-           // console.log(root.selected[i].value)
-          })
-      //    .click();
-
-
-    //    root.dates.push(  {"key":"Custom+range","from":root.rangeFrom,"to":root.rangeTo});
-    //     root.selected.push(  { "value" : "customrange" , "key": 'Date',  "range": { "P:29.datField": { "gte": Number(root.rangeFrom+'.0000000'), "lte": Number(root.rangeTo+'.0000000')}}});
-//  root.api(0, root.term);
-     }
-      } );
-      // Date input widget showcase
-      var dateInputEnd = new mw.widgets.DateInputWidget();
-      if(root.realDates["customrange"]){
-        dateInputEnd.setValue(root.realDates["customrange"].to);
-      }
-      dateInputEnd.on( 'change', function () {
-    //    console.log(root.selected)
-
-  //
-        // The value will always be a valid date or empty string, malformed input is ignored
-         date2 = dateInputEnd.getValue();
-         dateInputStart.mustBeBefore = date2 ;
-
-        root.rangeTo = root.createdates(date2) + 2;
-
-        if(root.rangeFrom > 0){
-          var kw = Object.keys(root.selected);
-          Vue.set(root.realDates, "customrange", {"from": date1, "to":  date2})
-
-          kw.forEach(function(el, i){
-            if(root.selected[i].value == "customrange"){
-
-
-              root.selected[i].range["P:29.datField"].lte = Number(root.rangeTo+'.0000000');
-
-
-
-
-            }
-              root.api(0, root.term);
-           // console.log(root.selected[i].value)
-          })
-      //   $("#date--customrange").click();
-
-      //    root.dates.push(  {"key":"Custom+range","from":root.rangeFrom,"to":root.rangeTo});
-
-          //  root.selected.push(  { "value" : "customrange" , "key": 'Date',  "range": { "P:29.datField": { "gte": Number(root.rangeFrom+'.0000000'), "lte": Number(root.rangeTo+'.0000000')}}});
-      //   root.api(0, root.term);
-
-     }
-      } );
-
-$( '#dateinput1' ).append( dateInputStart.$element );
-$( '#dateinput2' ).append( dateInputEnd.$element );
-
-});
-    },
     createranges:function(){
       var root = this;
       var today = new Date();
@@ -322,15 +178,11 @@ $( '#dateinput2' ).append( dateInputEnd.$element );
     },
     createdates:function(date){
 
-      // new Date("dateString") is browser-dependent and discouraged, so we'll write
-      // a simple parse function for U.S. date format (which does no error checking)
       function parseDate(str) {
           return new Date(str);
       }
 
       function datediff(first, second) {
-          // Take the difference between the dates and divide by milliseconds per day.
-          // Round to nearest whole number to deal with DST.
           return Math.round((second-first)/(1000*60*60*24));
       }
 
@@ -338,9 +190,6 @@ $( '#dateinput2' ).append( dateInputEnd.$element );
       var timestamp = 2451544;
 
       return datediff(parseDate('2000-01-01'), parseDate(date)) + timestamp;
-
-
-
     },
     urlparams:function(){
       var root = this;
@@ -397,18 +246,13 @@ $( '#dateinput2' ).append( dateInputEnd.$element );
        var filtersarray = [];
       this.selected.forEach(function(item, i){
         if(item.range){
-          console.log(root.realDates)
-        //  if(item.value == "customrange"){
-//filtersarray.push("range_"+item.value+"_"+item.key+"."+item.from+"_"+item.to);
-//}else{
           filtersarray.push("range_"+item.value+"_"+item.key+"."+root.realDates[item.value].from+"_"+root.realDates[item.value].to);
-//}
         }else{
           filtersarray.push(""+item.key+"."+item.value+"");
         }
       });
       url += filtersarray.join("~");
-    }
+      }
       return encodeURI(url);
     },
     clearfilters:function(e){
@@ -425,20 +269,6 @@ $( '#dateinput2' ).append( dateInputEnd.$element );
     },
     search:function(e){
       this.api(0, e.target.value);
-    },
-    searchaggs:function(e, name){
-      var re = new RegExp( e.target.value, 'ig' );
-      var bucks = this.aggs[name].buckets;
-      bucks.forEach(function(agg, key){
-        console.log(agg)
-        if(!agg.key.match(re)){
-          Vue.set(agg, 'show', 'no')
-        }else{
-          Vue.set(agg, 'show', 'yes')
-        }
-      })
-    //  console.log(e.target.value, aggs)
-
     },
     next:function(e){
       var root = this;

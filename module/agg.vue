@@ -8,15 +8,16 @@
         class="wssearch--checkbox-input"
         aria-disabled="false"
       >
+      
         <input
           class="wssearch--checkbox-input-checkbox"
           type="checkbox"
           v-bind:id="createid"
-          @change="filter"
-          v-model="$parent.selected"
+          v-model="$root.$children[0].selected"
           v-bind:value="val"
           aria-disabled="false"
           tabindex="0"
+          @change="filter"
         >
         <span
           class="wssearch--checkbox-input-icon"
@@ -35,7 +36,7 @@
       agg:Object,
       name:String,
       index:Number
-    },
+      },
     computed:{
       labelclass:function(){
               return "wssearch--checkbox wssearch--checkbox__" + this.name.toLowerCase() +"--"+ this.agg.key.toLowerCase().replace(" ", "_")
@@ -54,7 +55,7 @@
         if(this.agg.show == 'no'){
 
         }else{
-        if(this.index < 5 || this.$parent.open.includes(this.name) ){
+        if(this.index < 5 || this.$root.$children[0].open.includes(this.name) ){
           if(this.agg.doc_count > 0){
             return true;
           }
@@ -75,8 +76,10 @@
       }
     },
     methods:{
-      filter:function(e){
-        this.$parent.api(0, this.$parent.term);
+      filter(value){
+
+            this.$emit( 'change', this.value );
+
       }
     }
   };
@@ -129,7 +132,7 @@
 }
 
 .wssearch--checkbox-input-icon{
- background-image: linear-gradient(transparent,transparent),url(data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Echeck%3C/title%3E%3Cg fill=%22%23fff%22%3E%3Cpath d=%22M7 14.17L2.83 10l-1.41 1.41L7 17 19 5l-1.41-1.42z%22/%3E%3C/g%3E%3C/svg%3E);
+ background-image: linear-gradient(transparent,transparent),url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Echeck%3C/title%3E%3Cg fill=%22%23fff%22%3E%3Cpath d=%22M7 14.17L2.83 10l-1.41 1.41L7 17 19 5l-1.41-1.42z%22/%3E%3C/g%3E%3C/svg%3E');
 }
 
 
@@ -205,7 +208,7 @@ align-items: center;
 .wssearch--filter__version .wssearch--checkbox-input-checkbox:checked + .wssearch--checkbox-input-icon{
   background-size: var(--star-size) var(--star-size);
   background-color:white;
-  background-image: url(data:image/svg+xml;charset=utf8,%3Csvg width='300px' height='275px' viewBox='0 0 300 275' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3Cpolygon fill='%23fdff00' stroke='%23605a00' stroke-width='15' points='150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111' /%3E%3C/svg%3E);
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='300px' height='275px' viewBox='0 0 300 275' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3Cpolygon fill='%23fdff00' stroke='%23605a00' stroke-width='15' points='150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111' /%3E%3C/svg%3E");
 }
 #version--1, #version--1 + .wssearch--checkbox-input-icon {
   width: calc(var(--star-size) * 1);
