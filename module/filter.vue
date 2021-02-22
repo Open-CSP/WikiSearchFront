@@ -58,3 +58,11 @@
     }
   }
 </script>
+
+<style >
+  .wssearch--filter-showmore {
+      display: block;
+      width: 100%;
+      height: 1em;
+  }
+</style>

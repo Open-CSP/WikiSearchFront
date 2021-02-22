@@ -1,12 +1,12 @@
 <template>
     <div class="wssearch--selected">
-      <selected-pil
-         v-for="(activefilter, index) in selected"
+      <componenet
+        :is="pilcomponent"
+        v-for="(activefilter, index) in selected"
         :key="index"
-        :forkey="activefilter.key.toLowerCase().replace(' ', '_') + '--' + activefilter.value.toLowerCase().replace(' ', '_')"
-        :title="activefilter.value ?  activefilter.value : activefilter.name "
+        :activefilter="activefilter"
       >
-      </selected-pil>
+      </componenet>
       <span
         class="wssearch--selected-clear"
         v-if="selected.length"
@@ -22,11 +22,9 @@
 
 <script>
   module.exports = {
-    components: {
-        'selected-pil': require( './pil.vue' )
-    },
     props:{
-      selected:Array
+      selected:Array,
+      pilcomponent:Object
     },
     data(){
       return {
@@ -40,3 +38,25 @@
     }
   }
 </script>
+
+<style>
+   .wssearch--selected-clear{
+     cursor: pointer;
+     color: #36c;
+     border-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+    padding: 6px 6px;
+   }
+   .wssearch--selected-filter:hover {
+     background: #efefef;
+     color:#36c;
+   }
+
+   .wssearch--selected-filter:after {
+     content: "×";
+     position: absolute;
+     color: #767676;
+     right: 4px;
+   }
+</style>

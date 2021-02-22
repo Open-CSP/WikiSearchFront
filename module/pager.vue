@@ -61,3 +61,16 @@
     }
   }
 </script>
+
+<style>
+.wssearch--pager {
+  justify-self: end;
+}
+.wssearch--pager span {
+  cursor: pointer;
+  padding: 7px 4px;
+}
+.wssearch--pager span:hover {
+  background: lightgray;
+}
+</style>

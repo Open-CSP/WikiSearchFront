@@ -104,3 +104,9 @@
     }
   }
 </script>
+
+<style>
+.wssearch--hit__link, .wssearch--hit__body {
+    display: block;
+}
+</style>

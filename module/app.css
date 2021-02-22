@@ -26,7 +26,6 @@
 }
 .wssearch--main {
   grid-area: main;
-
   transition: filter .2s ease-in-out;
 }
 .wssearch--main__loading{
@@ -37,27 +36,6 @@
 
 
 
-  .wssearch--filter-showmore {
-      display: block;
-      width: 100%;
-      height: 1em;
-  }
 
 
 
-.wssearch--hit__link, .wssearch--hit__body {
-    display: block;
-}
-
-
-
-.wssearch--pager {
-  justify-self: end;
-}
-.wssearch--pager span {
-  cursor: pointer;
-  padding: 7px 4px;
-}
-.wssearch--pager span:hover {
-  background: lightgray;
-}

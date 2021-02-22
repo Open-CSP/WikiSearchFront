@@ -109,3 +109,19 @@ var Vue = require( 'vue' );
     }
   }
 </script>
+
+<style>
+.wssearch--daterange .wssearch--checkbox-count, .wssearch--daterange .wssearch--checkbox-title{
+  display:none;
+}
+.wssearch--daterange .wssearch--checkbox{
+  display: block;
+}
+.wssearch--daterange .wssearch--checkbox-input {
+    position: relative;
+    display: block;
+}
+.wssearch--daterange .wssearch--checkbox-input-icon {
+    width: 100%;
+}
+</style>
