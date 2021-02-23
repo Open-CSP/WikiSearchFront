@@ -5,8 +5,7 @@
         v-for="(activefilter, index) in selected"
         :key="index"
         :activefilter="activefilter"
-      >
-      </componenet>
+      ></componenet>
       <span
         class="wssearch--selected-clear"
         v-if="selected.length"
@@ -23,13 +22,8 @@
 <script>
   module.exports = {
     props:{
-      selected:Array,
-      pilcomponent:Object
-    },
-    data(){
-      return {
-        hoi:'hoi'
-      }
+        selected:Array,
+        pilcomponent:Object
     },
     methods:{
         clearfilters(event){
@@ -40,23 +34,13 @@
 </script>
 
 <style>
+   .wssearch--selected {
+        grid-area: selected;
+    }
    .wssearch--selected-clear{
-     cursor: pointer;
-     color: #36c;
-     border-color: transparent;
-    border-style: solid;
-    border-width: 1px;
-    padding: 6px 6px;
-   }
-   .wssearch--selected-filter:hover {
-     background: #efefef;
-     color:#36c;
-   }
-
-   .wssearch--selected-filter:after {
-     content: "×";
-     position: absolute;
-     color: #767676;
-     right: 4px;
+        cursor: pointer;
+        color: var(--base-color);
+        border:1px solid transparent;
+        padding: 6px 6px;
    }
 </style>

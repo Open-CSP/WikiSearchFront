@@ -109,4 +109,8 @@
 .wssearch--hit__link, .wssearch--hit__body {
     display: block;
 }
+.wssearch--hits {
+    display: grid;
+    grid-gap: 1.5em;
+}
 </style>

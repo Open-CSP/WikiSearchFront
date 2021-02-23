@@ -1,10 +1,11 @@
 <template>
     <div
+      v-if="buckets.length"
       :class="'wssearch--filter wssearch--filter__' + name.toLowerCase()"
     >
       <span 
         class="wssearch--filter-header" 
-        v-if="buckets.length" 
+         
       >
         <label>
           {{filtername}}
@@ -88,17 +89,20 @@ module.exports = {
 </script>
 
 <style >
+ .wssearch--filter-options-search{
+       padding: .4em .6em;
+ }
    .wssearch--selected-filters__combobox:not(:empty) {
-    border: 1px solid #a2a9b1;
+    border: var(--border-1);
     border-bottom: none;
     padding: .2em .2em 0;
-    background: #f0f0f0;
+    background: var(--tint-1);
     border-radius: .2em .2em 0 0;
     margin-bottom: -1px;
 }
 
 .wssearch--filter-options__combobox {
-    border: 1px solid #a2a9b0;
+    border: var(--border-1);
     border-top: none;
     position: absolute;
     width: calc(100% - 2px);
@@ -129,7 +133,7 @@ module.exports = {
 }
 
 .wssearch--filter-options__combobox .wssearch--checkbox:hover{
-    background-color: #eaecf0;
+    background-color: var(--tint-1);
 }
 .wssearch--filter-options__combobox .wssearch--checkbox-selected{
     background-color: #eaf3ff;

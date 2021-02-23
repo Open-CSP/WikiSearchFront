@@ -85,11 +85,9 @@
 </script>
 
 <style>
-:root{
-  --star-size:1.5em;
-}
+
  .wssearch--checkbox{
-   display:table;
+      display:table;
  }
   .wssearch--checkbox-count:after {
       content: ")";
@@ -100,8 +98,8 @@
   }
 
   .wssearch--checkbox-input-checkbox:checked + .wssearch--checkbox-input-icon{
-      background-color: #36c;
-      border-color: #36c;
+      background-color:var(--base-color);
+      border-color:var(--base-color);
       background-size: 1em 1em;
   }
   .wssearch--checkbox-input-icon{
@@ -131,7 +129,7 @@
 }
 
 .wssearch--checkbox-input-icon{
- background-image: linear-gradient(transparent,transparent),url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Echeck%3C/title%3E%3Cg fill=%22%23fff%22%3E%3Cpath d=%22M7 14.17L2.83 10l-1.41 1.41L7 17 19 5l-1.41-1.42z%22/%3E%3C/g%3E%3C/svg%3E');
+ background-image: linear-gradient(transparent,transparent),var(--check-icon);
 }
 
 
@@ -147,12 +145,12 @@
     background-position-x: left;
     background-repeat: repeat-x;
     background-size: var(--star-size) var(--star-size);
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' version='1.0'%3E%3Cpath d='M46.296 51.906l-14.38-9.431-14.413 9.38 4.526-16.591-13.375-10.81 17.177-.822 6.148-16.06 6.09 16.082 17.174.884L41.83 35.299l4.467 16.607z' transform='matrix(.98686 0 0 1.03704 .471 1.16)' fill='%23fff' stroke='%237f7f7f' stroke-width='2'/%3E%3C/svg%3E");
+    background-image: var(--star-icon-open);
 }
 .wssearch--filter__version .wssearch--checkbox-input-checkbox:checked + .wssearch--checkbox-input-icon{
   background-size: var(--star-size) var(--star-size);
   background-color:white;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='300px' height='275px' viewBox='0 0 300 275' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3Cpolygon fill='%23fdff00' stroke='%23605a00' stroke-width='15' points='150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111' /%3E%3C/svg%3E");
+  background-image: var(--star-icon-filled)
 }
 #version--1, #version--1 + .wssearch--checkbox-input-icon {
   width: calc(var(--star-size) * 1);

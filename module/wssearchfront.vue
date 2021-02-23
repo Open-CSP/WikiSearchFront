@@ -4,6 +4,7 @@
     <search-input
       @change="search"
       :term="term"
+      @click="api(0, '')"
     >
     </search-input>
     <selected-pils
@@ -41,7 +42,10 @@
       class="wssearch--total"
       v-html="$i18n('wssearch-total', total, from).parse()">
     </div>
-    <div v-bind:class="mainloading">
+    <div 
+      class="wssearch--main" 
+      :class="mainloading"
+    >
       <div class="wssearch--hits">
         <hit
           v-for="(hit, i) in hits"
@@ -64,252 +68,243 @@
 
 <script>
 var Vue = require( 'vue' );
+
 module.exports = {
   components: {
-  'search-input': require( './searchinput.vue' ),
-  'selected-pils': require( './selectedpils.vue' ),
-  'daterange': require( './daterange.vue' ),
-  'hit': require( './hit.vue' ),
-  'pager': require( './pager.vue' )
-},
-  mounted(){
-  this.createranges();
-   this.urlparams();
+    'search-input': require( './searchinput.vue' ),
+    'selected-pils': require( './selectedpils.vue' ),
+    'daterange': require( './daterange.vue' ),
+    'hit': require( './hit.vue' ),
+    'pager': require( './pager.vue' )
   },
-  data:function(){
+  mounted(){
+     this.createranges();
+     this.urlparams();
+  },
+  data(){
     return {
-    total: 0,
-    aggcomponent: require( './agg.vue' ),
-    pilcomponent: require( './pil.vue' ),
-    comboboxcomponent: require( './combobox.vue' ),
-    filtercomponent: require( './filter.vue' ),
-    hits: "",
-    aggs: "",
-    size:mw.config.values.WSSearchFront.facetSettings.size,
-    from: 0,
-    selected: [],
-    open: [],
-    monthnames: ["jan","feb","mar","apr","may","jun","jul","aug","sep", "oct","nov","dec"],
-    rangeFrom: 0,
-    rangeTo: 0,
-    dropdown: [],
-    term: "" ,
-    loading: false ,
-    dates:[],
-    realDates:{},
-    hitIDs:"",
-    facetconfig:mw.config.values.WSSearchFront.facetSettings.combobox
+      total: 0,
+      aggcomponent: require( './agg.vue' ),
+      pilcomponent: require( './pil.vue' ),
+      comboboxcomponent: require( './combobox.vue' ),
+      filtercomponent: require( './filter.vue' ),
+      hits: "",
+      aggs: "",
+      size:mw.config.values.WSSearchFront.facetSettings.size,
+      from: 0,
+      selected: [],
+      open: [],
+      monthnames: ["jan","feb","mar","apr","may","jun","jul","aug","sep", "oct","nov","dec"],
+      rangeFrom: 0,
+      rangeTo: 0,
+      dropdown: [],
+      term: "" ,
+      loading: false ,
+      dates:[],
+      realDates:{},
+      hitIDs:"",
+      facetconfig:mw.config.values.WSSearchFront.facetSettings.combobox
     }
   },
   methods:{
-    api:function(from, term){
-  console.log('hhh');
-      var root = this;
-      root.loading = true;
-      root.from = from;
-      root.term = term
+    api(from, term){
+          var root = this;
+          root.loading = true;
+          root.from = from;
+          root.term = term
+          history.pushState({page: 1}, "title 1", this.urlstring() );
+          var params = {
+            action: 'query',
+            meta: 'WSSearch',
+            format: 'json',
+            filter: JSON.stringify(root.selected),
+            term:root.term,
+            from:root.from,
+            limit:root.size,
+            pageid:mw.config.values.wgArticleId,
+            dates:JSON.stringify(root.dates)
+          },
+          api = new mw.Api();
 
-
-      history.pushState({page: 1}, "title 1", this.urlstring() );
-
-      var params = {
-        action: 'query',
-        meta: 'WSSearch',
-        format: 'json',
-        filter: JSON.stringify(root.selected),
-        term:root.term,
-        from:root.from,
-        limit:root.size,
-        pageid:mw.config.values.wgArticleId,
-        dates:JSON.stringify(root.dates)
-      },
-      api = new mw.Api();
-
-      api.post(  params ).done( function ( data ) {
-
-        console.log( data );
-        root.total = data.result.total;
-        root.hits = JSON.parse(data.result.hits);
-        console.log(root.hits);
-        root.aggs = data.result.aggs;
-        root.loading = false;
-
-      })
+          api.post(  params ).done( function ( data ) {
+            root.total = data.result.total;
+            root.hits = JSON.parse(data.result.hits);
+            console.log(root.hits);
+            root.aggs = data.result.aggs;
+            root.loading = false;
+          })
     },
-    createranges:function(){
-      var root = this;
-      var today = new Date();
-      var lastweek = new Date();
-      lastweek.setDate( lastweek.getDate() - 7 );
-      var lastmonth = new Date();
-      lastmonth.setMonth( lastmonth.getMonth() - 1 );
-      var lastquarter = new Date();
-      lastquarter.setMonth( lastquarter.getMonth() - 4 );
+    createranges(){
+          var root = this;
+          var today = new Date();
+          var lastweek = new Date();
+          lastweek.setDate( lastweek.getDate() - 7 );
+          var lastmonth = new Date();
+          lastmonth.setMonth( lastmonth.getMonth() - 1 );
+          var lastquarter = new Date();
+          lastquarter.setMonth( lastquarter.getMonth() - 4 );
 
-      function realdate(date){
-        return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-      }
+          function realdate(date){
+            return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+          }
 
-      var realtoday = realdate(today);
+          var realtoday = realdate(today);
 
-      var date_ranges = [];
-      var real_date_ranges = {};
+          var date_ranges = [];
+          var real_date_ranges = {};
 
-      real_date_ranges["Last Week"] = {"from": realdate(lastweek), "to":  realtoday};
-      real_date_ranges["Last Month"] = {"from": realdate(lastmonth), "to": realtoday };
-      real_date_ranges["Last Quarter"] = {"from": realdate(lastquarter), "to": realtoday };
+          real_date_ranges["Last Week"] = {"from": realdate(lastweek), "to":  realtoday};
+          real_date_ranges["Last Month"] = {"from": realdate(lastmonth), "to": realtoday };
+          real_date_ranges["Last Quarter"] = {"from": realdate(lastquarter), "to": realtoday };
 
-      for (var i=0; i < 5; i++) {
-        var key = today.getFullYear() - i;
-        real_date_ranges[key] = {"from": key + '-1-1' , "to": (key + 1) + '-1-1' };
-      };
+          for (var i=0; i < 5; i++) {
+            var key = today.getFullYear() - i;
+            real_date_ranges[key] = {"from": key + '-1-1' , "to": (key + 1) + '-1-1' };
+          };
 
-      Object.entries(real_date_ranges).forEach(function([key, value]){
-        console.log(value.from)
-        date_ranges.push({
-          "key":key.toString(),
-          "from":root.createdates(value.from),
-          "to" :root.createdates(value.to)
-        });
-      })
+          Object.entries(real_date_ranges).forEach(function([key, value]){
+            console.log(value.from)
+            date_ranges.push({
+              "key":key.toString(),
+              "from":root.createdates(value.from),
+              "to" :root.createdates(value.to)
+            });
+          })
 
-      this.realDates = real_date_ranges;
-
-      this.dates =  date_ranges;
-
+          this.realDates = real_date_ranges;
+          this.dates =  date_ranges;
 
     },
-    createdates:function(date){
+    createdates(date){
 
-      function parseDate(str) {
-          return new Date(str);
-      }
+          function parseDate(str) {
+              return new Date(str);
+          }
 
-      function datediff(first, second) {
-          return Math.round((second-first)/(1000*60*60*24));
-      }
+          function datediff(first, second) {
+              return Math.round((second-first)/(1000*60*60*24));
+          }
 
-      // 2451544 = 2000- 1- 1
-      var timestamp = 2451544;
-
-      return datediff(parseDate('2000-01-01'), parseDate(date)) + timestamp;
+          // 2451544 = 2000- 1- 1
+          var timestamp = 2451544;
+          return datediff(parseDate('2000-01-01'), parseDate(date)) + timestamp;
     },
-    urlparams:function(){
-      var root = this;
-      var queryString = window.location.search;
-      var urlParams = new URLSearchParams(queryString);
-      var term = urlParams.get('term');
-      var offset = urlParams.get('offset');
-      var filters = urlParams.get('filters');
-      if(term){
-         this.term = term;
-      }
-      if(offset){
-        this.from = offset;
-      }
-      if(filters){
-        var urlfiltersout = [];
-        var activefilters =  filters.split("~");
-        activefilters.forEach(function(value) {
-           var filteritem = value.split(".");
-            var rangeitem = filteritem[0].split("_");
-           if(rangeitem[0] == "range"){
-            var ranges = filteritem[1].split("_");
-           if(rangeitem[1] == "customrange"){
-             Vue.set(root.realDates, "customrange", {"from": ranges[0], "to":  ranges[1]})
+    urlparams(){
+          var root = this;
+          var queryString = window.location.search;
+          var urlParams = new URLSearchParams(queryString);
+          var term = urlParams.get('term');
+          var offset = urlParams.get('offset');
+          var filters = urlParams.get('filters');
+          if(term){
+            this.term = term;
+          }
+          if(offset){
+            this.from = offset;
+          }
+          if(filters){
+            var urlfiltersout = [];
+            var activefilters =  filters.split("~");
+            activefilters.forEach(function(value) {
+              var filteritem = value.split(".");
+                var rangeitem = filteritem[0].split("_");
+              if(rangeitem[0] == "range"){
+                var ranges = filteritem[1].split("_");
+              if(rangeitem[1] == "customrange"){
+                Vue.set(root.realDates, "customrange", {"from": ranges[0], "to":  ranges[1]})
 
-             root.rangeFrom = root.createdates(ranges[0]);
-             root.rangeTo = root.createdates(ranges[1]);
-           }
-             urlfiltersout.push({key:rangeitem[2], value:rangeitem[1], range: {"P:29.datField" : {gte: root.rangeFrom, lte:root.rangeTo } } });
-           }else{
-             urlfiltersout.push({value:filteritem[1], key: filteritem[0] });
-         }
-       });
-
-        this.selected = urlfiltersout;
-
-      }
-      this.api(this.from, this.term);
+                root.rangeFrom = root.createdates(ranges[0]);
+                root.rangeTo = root.createdates(ranges[1]);
+              }
+                urlfiltersout.push({key:rangeitem[2], value:rangeitem[1], range: {"P:29.datField" : {gte: root.rangeFrom, lte:root.rangeTo } } });
+              }else{
+                urlfiltersout.push({value:filteritem[1], key: filteritem[0] });
+            }
+          });
+            this.selected = urlfiltersout;
+          }
+          this.api(this.from, this.term);
     },
-    urlstring:function(){
+    urlstring(){
 
-      var url = "?";
-      var root = this;
-      if(this.from > 0){
-        url += "&offset="+ this.from;
-      }
+          var url = "?";
+          var root = this;
+          if(this.from > 0){
+            url += "&offset="+ this.from;
+          }
 
-      if(this.term){
-        url += "&term="+ this.term;
-      }
+          if(this.term){
+            url += "&term="+ this.term;
+          }
 
-     if(this.selected.length){
-       url += "&filters=";
-       var filtersarray = [];
-      this.selected.forEach(function(item, i){
-        if(item.range){
-          filtersarray.push("range_"+item.value+"_"+item.key+"."+root.realDates[item.value].from+"_"+root.realDates[item.value].to);
-        }else{
-          filtersarray.push(""+item.key+"."+item.value+"");
-        }
-      });
-      url += filtersarray.join("~");
-      }
-      return encodeURI(url);
+          if(this.selected.length){
+            url += "&filters=";
+            var filtersarray = [];
+            this.selected.forEach(function(item, i){
+              if(item.range){
+                filtersarray.push("range_"+item.value+"_"+item.key+"."+root.realDates[item.value].from+"_"+root.realDates[item.value].to);
+              }else{
+                filtersarray.push(""+item.key+"."+item.value+"");
+              }
+            });
+            url += filtersarray.join("~");
+          }
+          return encodeURI(url);
     },
-    clearfilters:function(e){
-      this.selected = [];
-      this.api(0, this.term);
+    clearfilters(){
+          this.selected = [];
+          this.api(0, this.term);
     },
-    more:function(prop){
-      var index = this.open.indexOf(prop);
-      if (index > -1) {
-        this.open.splice(index, 1);
-      }else{
-        this.open.push(prop);
-      }
+    more(prop){
+          var index = this.open.indexOf(prop);
+          if (index > -1) {
+            this.open.splice(index, 1);
+          }else{
+            this.open.push(prop);
+          }
     },
-    search:function(e){
-      this.api(0, e.target.value);
+    search(e){
+           this.api(0, e.target.value);
     },
-    next:function(e){
-      var root = this;
-      root.loading = true;
-      if(e.target.innerText.trim() == '<'){
-        this.from = this.from - this.size;
-      }else if(e.target.innerText.trim() == '>'){
-        this.from = this.from + this.size;
-      }else{
-        this.from = Math.ceil(this.size * (e.target.innerText - 1));
-      }
-      this.api(this.from, root.term);
+    next(e){
+            var root = this;
+            root.loading = true;
+            if(e.target.innerText.trim() == '<'){
+              this.from = this.from - this.size;
+            }else if(e.target.innerText.trim() == '>'){
+              this.from = this.from + this.size;
+            }else{
+              this.from = Math.ceil(this.size * (e.target.innerText - 1));
+            }
+            this.api(this.from, root.term);
     }
   },
   computed:{
     mainloading:function(){
-      if(this.loading){
-        return 'wssearch--main wssearch--main__loading';
-      }else{
-        return 'wssearch--main';
-      }
-
+          if(this.loading){
+            return 'wssearch--main__loading';
+          }
+          return false;
     },
     sort:function(){
-      this.aggs.Date.buckets = this.aggs.Date.buckets.filter(function(el){
-        if(el.doc_count > 0){
-          return el;
-        }
-      }).reverse();
+          this.aggs.Date.buckets = this.aggs.Date.buckets.filter(function(el){
+            if(el.doc_count > 0){
+              return el;
+            }
+          }).reverse();
     }
   }
 };
 </script>
 
 <style>
-   .wssearch--filter {
+.wssearch--filters {
+  grid-area: filters;
+}
+  .wssearch--filter {
     position: relative;
   }
-  
-
+  .wssearch--total {
+    grid-area: total;
+}
 </style>
