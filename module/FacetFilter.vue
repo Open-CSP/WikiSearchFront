@@ -15,7 +15,7 @@
               v-bind:index="i"
               v-bind:name="name"
               @change="filter"
-              :selected="$parent.selected"
+              :selected="selected"
             ></component>
             <label
               class="wssearch--filter-showmore"

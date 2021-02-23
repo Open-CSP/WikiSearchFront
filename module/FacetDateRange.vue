@@ -1,5 +1,8 @@
 <template>
       <div class="wssearch--daterange">
+        <div class="wssearch--filter-header"  >
+            <label>Date range</label>
+          </div>
         {{ $i18n( 'date-range-from' ) }}
          <div id="dateinputfrom">
          </div>
@@ -7,6 +10,7 @@
          <div id="dateinputto">
          </div>
          <component :is="aggcomponent"
+           v-if="rangeFrom && rangeTo"
            :agg="agg"
            :index="'0'"
            :name="'Date'"

@@ -59,7 +59,6 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
-    max-width: 50em;
   }
 .wssearch--search-input, .wssearch--filter-options-search{
     box-sizing: border-box;
@@ -79,6 +78,15 @@
     line-height: 1.42857143em;
     width: 100%;
   }
+  .wssearch--search-input:focus, .wssearch--filter-options-search:focus {
+    outline: 0;
+    border-color: var(--base-color);
+    box-shadow: inset 0 0 0 1px var(--base-color);
+  }
+.wssearch--filter-options-search:focus {
+      border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
   .wssearch--search-icon{
     left:.5em;
     cursor: text;

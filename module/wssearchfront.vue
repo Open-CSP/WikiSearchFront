@@ -1,67 +1,65 @@
 <template>
-<div id="app">
-  <div class="wssearch" >
-    <search-input
-      @change="search"
-      :term="term"
-      @click="api(0, '')"
-    >
-    </search-input>
-    <selected-pils
-      :selected="selected"
-       @click="clearfilters"
-       :pilcomponent="pilcomponent"
-    >
-    </selected-pils>
-    <div 
-      v-if="aggs" 
-      class="wssearch--filters"
-    >{{sort}}
-      <daterange
-           v-bind:agg="{key:'customrange',from: rangeFrom , to: rangeTo ,doc_count:1 }"
-           @change="api(0, term)"
-           :aggcomponent="aggcomponent"
-     >
-     </daterange>
-        <component 
-          v-for="(name, index) in Object.keys(aggs).sort()"
-          :is="facetconfig.includes(name) ? comboboxcomponent : filtercomponent"
-          v-bind:key="index"
-          :selected="selected"
-          :open="open"
-          :buckets="aggs[name].buckets"
-          :name="name"
-          @change="api(0, term)"
-          @click="more(name)"
-          :aggcomponent="aggcomponent"
-          :pilcomponent="pilcomponent"
-        >
-      </component>
-    </div>
-    <div
-      class="wssearch--total"
-      v-html="$i18n('wssearch-total', total, from).parse()">
-    </div>
-    <div 
-      class="wssearch--main" 
-      :class="mainloading"
-    >
-      <div class="wssearch--hits">
-        <hit
-          v-for="(hit, i) in hits"
-          v-bind:hit="hit"
-          v-bind:key="i"
-        >
-        </hit>
+  <div id="app">
+    <div class="wssearch" >
+      <search-input
+        @change="search"
+        :term="term"
+        @click="api(0, '')"
+      >
+      </search-input>
+      <selected-pils
+        :selected="selected"
+        @click="clearfilters"
+        :pilcomponent="pilcomponent"
+      >
+      </selected-pils>
+      <div 
+        v-if="aggs" 
+        class="wssearch--filters"
+      >{{sort}}
+        <date-range
+            v-bind:agg="{key:'customrange',from: rangeFrom , to: rangeTo ,doc_count:1 }"
+            @change="api(0, term)"
+            :aggcomponent="aggcomponent"
+      >
+      </date-range>
+          <component 
+            v-for="(name, index) in Object.keys(aggs).sort()"
+            :is="facetconfig.includes(name) ? comboboxcomponent : filtercomponent"
+            v-bind:key="index"
+            :selected="selected"
+            :open="open"
+            :buckets="aggs[name].buckets"
+            :name="name"
+            @change="api(0, term)"
+            @click="more(name)"
+            :aggcomponent="aggcomponent"
+            :pilcomponent="pilcomponent"
+          >
+        </component>
       </div>
-      <pager
-          @click="next"
-          :size="size"
-          :from="from"
-          :total="total"
-        >
-      </pager>
-    </div>
+      <div
+        class="wssearch--total"
+        v-html="$i18n('wssearch-total', total, from).parse()">
+      </div>
+      <div 
+        class="wssearch--main" 
+        :class="mainloading"
+      >
+          <div class="wssearch--hits">
+            <hit-item
+              v-for="(hit, i) in hits"
+              v-bind:hit="hit"
+              v-bind:key="i"
+            ></hit-item>
+          </div>
+          <hit-pagers
+            @click="next"
+            :size="size"
+            :from="from"
+            :total="total"
+          ></hit-pagers>
+      </div>
     </div>
   </div>
 </template>
@@ -71,11 +69,11 @@ var Vue = require( 'vue' );
 
 module.exports = {
   components: {
-    'search-input': require( './searchinput.vue' ),
-    'selected-pils': require( './selectedpils.vue' ),
-    'daterange': require( './daterange.vue' ),
-    'hit': require( './hit.vue' ),
-    'pager': require( './pager.vue' )
+    'search-input': require( './SearchInput.vue' ),
+    'selected-pils': require( './PillsSelected.vue' ),
+    'date-range': require( './FacetDateRange.vue' ),
+    'hit-item': require( './HitItem.vue' ),
+    'hit-pagers': require( './HitPagers.vue' )
   },
   mounted(){
      this.createranges();
@@ -84,10 +82,10 @@ module.exports = {
   data(){
     return {
       total: 0,
-      aggcomponent: require( './agg.vue' ),
-      pilcomponent: require( './pil.vue' ),
-      comboboxcomponent: require( './combobox.vue' ),
-      filtercomponent: require( './filter.vue' ),
+      aggcomponent: require( './FacetCheckbox.vue' ),
+      pilcomponent: require( './PillItem.vue' ),
+      comboboxcomponent: require( './FacetCombobox.vue' ),
+      filtercomponent: require( './FacetFilter.vue' ),
       hits: "",
       aggs: "",
       size:mw.config.values.WSSearchFront.facetSettings.size,
@@ -306,5 +304,6 @@ module.exports = {
   }
   .wssearch--total {
     grid-area: total;
+    font-weight: bold;
 }
 </style>

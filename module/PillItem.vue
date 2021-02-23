@@ -29,7 +29,7 @@
 
  .wssearch--selected-filter {
         background:white;
-        padding: 0 1em 0 .5em;
+        padding: 0 1.5em 0 .5em;
         display: inline-block;
         max-width: 100%;
         text-overflow: ellipsis;
@@ -52,14 +52,15 @@
    }
 
     .wssearch--selected-filter:hover {
-        background: #efefef;
-        color:var(--base-color);
+        background-color: #eaf3ff;
+        border-color: var(--base-color-lighter);
    }
 
-   .wssearch--selected-filter:after {
-        content: "×";
-        position: absolute;
-        color: #767676;
-        right: 4px;
-   }
+.wssearch--selected-filter:after {
+    content: "×";
+    position: absolute;
+    color: black;
+    right: 4px;
+    font-size: 1.4em;
+}
 </style>

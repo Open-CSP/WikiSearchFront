@@ -35,23 +35,27 @@
     props:{
       agg:Object,
       name:String,
-      index:Number
+      index:Number,
       },
     computed:{
-      labelclass:function(){
-              return "wssearch--checkbox wssearch--checkbox__" + this.name.toLowerCase() +"--"+ this.agg.key.toLowerCase().replace(" ", "_")
+      labelclass(){
+        var selectedclass = "";
+        if(this.selected){
+          selectedclass = " wssearch--checkbox-selected"
+        }
+        return "wssearch--checkbox wssearch--checkbox__" + this.name.toLowerCase() +"--"+ this.agg.key.toLowerCase().replace(" ", "_") + selectedclass;
       },
-      title:function(){
+      title(){
         if(this.agg.name){
           return this.agg.name;
         }else{
           return this.agg.key;
         }
       },
-      createid:function(){
+      createid(){
         return this.name.toLowerCase().replace(" ", "_") +"--"+ this.agg.key.toLowerCase().replace(" ", "_")
       },
-      show:function(){
+      show(){
         if(this.agg.show == 'no'){
 
         }else{
@@ -62,7 +66,7 @@
         }
       }
       },
-      val:function(){
+      val(){
         if(this.name == 'Date' ){
           return  { "value" : this.agg.key , "key": this.name,  "range": { "P:29.datField": { "gte": Number(this.agg.from+'.0000000'), "lte": Number(this.agg.to+'.0000000')}}};
         }else{
@@ -76,8 +80,13 @@
       }
     },
     methods:{
-      filter(value){
-            this.$emit( 'change', this.value );
+      filter(event){
+        if(event.target.checked){
+          this.selected = true;
+        }else{
+          this.selected = false;
+        }
+        this.$emit( 'change', this.value );
 
       }
     }
@@ -102,6 +111,24 @@
       border-color:var(--base-color);
       background-size: 1em 1em;
   }
+  .wssearch--checkbox-input-checkbox:hover + .wssearch--checkbox-input-icon {
+    border-color: var(--base-color-lighter);
+  }
+  .wssearch--checkbox-input-checkbox:focus + .wssearch--checkbox-input-icon {
+    border-color:var(--base-color);
+    box-shadow: inset 0 0 0 1px var(--base-color);
+    outline: 1px solid transparent;
+}
+  .wssearch--checkbox-input-checkbox:checked:hover + .wssearch--checkbox-input-icon{
+    background-color:  var(--base-color-lighter);
+    border-color:  var(--base-color-lighter);
+}
+  .wssearch--checkbox-input-checkbox:checked:focus + .wssearch--checkbox-input-icon{
+    background-color: var(--base-color);
+    border-color: var(--base-color);
+    box-shadow: inset 0 0 0 1px var(--base-color), inset 0 0 0 2px #fff;
+  }
+
   .wssearch--checkbox-input-icon{
     cursor: pointer;
     -webkit-transition: background-color 100ms, border-color 100ms, box-shadow 100ms;

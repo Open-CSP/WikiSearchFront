@@ -12,8 +12,7 @@ class WSSearchFrontHooks {
 
 if(!$parameters[0]){
 
-  $parser->getOutput()->addModules( 'ext.WSSearchFront.config' );
-
+ 
 
 }else{
 

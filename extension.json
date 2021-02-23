@@ -12,32 +12,20 @@
 		]
 	},
   "ResourceModules": {
-		"ext.WSSearchFront.config": {
-				"packageFiles": [
-						"initconfig.js",
-					 "wssearchfrontconfig.vue"
-						],
-				"dependencies": [
-						"vue",
-						"vuex"
-				],
-				"styles": [
-				 "config.css"
-			 ]
-		   },
-			"ext.WSSearchFront.module": {
+		"ext.WSSearchFront.module": {
            "packageFiles": [
                "init.js",
 							 "wssearchfront.vue",
-							 "searchinput.vue",
-							 "selectedpils.vue",
-							 "pil.vue",
-							 "agg.vue",
-							 "hit.vue",
-							 "pager.vue",
-							 "combobox.vue",
-							 "filter.vue",
-							  "daterange.vue"
+							 "SearchInput.vue",
+							 "PillsSelected.vue",
+							 "PillItem.vue",
+							 "FacetCombobox.vue",
+							 "FacetFilter.vue",
+							 "FacetDateRange.vue",
+							 "FacetCheckbox.vue",
+							 "HitItem.vue",
+							 "HitPagers.vue"
+
                ],
            "dependencies": [
                "vue",

@@ -21,10 +21,15 @@
   filter: blur(1px);
 }
 
+.wssearch--filter-header{
+  font-weight: bold;
+}
+
 /*vars*/
 :root{
   --base-color:hsl(220, 60%, 50%);
-  --tint-1:hsl(0, 0%, 94%);
+  --base-color-lighter:hsl(220, 90%, 61%);
+  --tint-1:hsl(210, 17%, 98%);
   --border-1:1px solid hsl(212, 9%, 66%);
   --star-size:1.5em;
 

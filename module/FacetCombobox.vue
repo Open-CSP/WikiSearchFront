@@ -33,10 +33,10 @@
         <component 
           :is="aggcomponent"
           v-for="(agg, i) in buckets"
-          v-bind:agg="agg"
-          v-bind:key="i+agg.key+name"
-          v-bind:index="i"
-          v-bind:name="name"
+          :agg="agg"
+          :key="i+agg.key+name"
+          :index="i"
+          :name="name"
           :selected="selected"  
           @change="filter"           
         ></component>
@@ -82,6 +82,7 @@ module.exports = {
           return el;
         }      
       })
+      console.log(pilss)
       return  pilss;
     }
   }
@@ -137,9 +138,10 @@ module.exports = {
 }
 .wssearch--filter-options__combobox .wssearch--checkbox-selected{
     background-color: #eaf3ff;
+    color: #36c;
 }
 .wssearch--filter-options__combobox .wssearch--checkbox.wssearch--checkbox-selected:hover{
-    background-color: rgba(41,98,204,0.1);
+    background-color: #f8f9fa;
 }
 
 .wssearch--filter-options__combobox .wssearch--checkbox:not(:last-child){

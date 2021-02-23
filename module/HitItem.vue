@@ -23,6 +23,7 @@
       <span
         :key="key"
         class="wssearch--hit__link"
+        v-if="Object.keys($parent.hitIDs)[0] == key"
       >
         <a
           v-bind:href="href"
@@ -58,7 +59,7 @@
       hitIds:Object
     },
     computed:{
-      img:function(){
+      img(){
         if(this.hit._source.file_path){
           if(this.hit._source.attachment && this.hit._source.attachment.content_type == "application/pdf"){
             return '/img_auth.php/thumb/'+ this.hit._source.subject.title +'/page1-600px-'+ this.hit._source.subject.title +'.jpg';
@@ -67,7 +68,7 @@
           }
         }
       },
-      date:function(){
+      date(){
         var unsplit = this.hit._source["P:29"].dat_raw[0];
         var rawz = unsplit.split("/");
         var ndate = this.$parent.monthnames[rawz[2] - 1] + ' ' + rawz[3] + ', ' + rawz[1];
@@ -77,7 +78,7 @@
           year:rawz[1]
         };
       },
-      exerpt:function(){
+      exerpt(){
         if(this.hit.highlight){
           if(this.hit.highlight['text_raw']){
             return this.hit.highlight['text_raw'][0];
@@ -86,21 +87,13 @@
           }
         }
       },
-      href:function(){
+      href(){
         if(this.hit._source.subject.namespacename){
           return "/" + this.hit._source.subject.namespacename + ":" + this.hit._source.subject.title;
         }else{
           return "/" + this.hit._source.subject.title;
         }
       }
-    },
-    data(){
-      return {
-        hoi:'hoi'
-      }
-    },
-    methods:{
-
     }
   }
 </script>
@@ -112,5 +105,8 @@
 .wssearch--hits {
     display: grid;
     grid-gap: 1.5em;
+}
+.wssearch--hit__link{
+   font-weight: bold;
 }
 </style>
