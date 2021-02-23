@@ -1,4 +1,9 @@
 1<?php
+
+use SMW\DIProperty;
+use SMW\ApplicationFactory;
+
+
 class WSSearchFrontHooks {
 
 
@@ -27,8 +32,31 @@ foreach ($parameters as $key => $value) {
     }
 }
 
+
+$store = ApplicationFactory::getInstance()->getStore();
+
+
+$result_properties = $config->getResultPropertyIDs();
+ $result_properties_array = [];
+foreach ( $result_properties as $key => $value ) {
+
+  $IDProperty = new DIProperty( $key );
+  $ID = $store->getObjectIds()->getSMWPropertyID($IDProperty);
+  $Type = $IDProperty->findPropertyValueType();
+
+  if($Type == "_txt"){
+    $ftype = "txtField";
+  }else{
+    $ftype = "wpgField";
+  }
+
+    $result_properties_array[$ID] = $ftype;
+}
+ $result_properties = json_encode( $result_properties_array );
+
+
  $jsconfig = [
-              "resultIDs" => $config->getResultPropertyIDs(),
+              "resultIDs" => $result_properties_array,
               "facetSettings" => $settings
             ];
 

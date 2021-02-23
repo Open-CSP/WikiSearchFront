@@ -17,13 +17,12 @@
       {{date.day}} {{$i18n( date.month )}}, {{date.year}}
     </span>
     <template
-      v-for="(key, hitID) in $parent.hitIDs"
+      v-for="(hitID, key) in $parent.hitIDs"
       
     >
       <span
         :key="key"
         class="wssearch--hit__link"
-        v-if="Object.keys($parent.hitIDs)[0] == key"
       >
         <a
           v-bind:href="href"
@@ -55,7 +54,8 @@
 <script>
   module.exports = {
     props:{
-      hit:Object
+      hit:Object,
+      hitIds:Object
     },
     computed:{
       img:function(){

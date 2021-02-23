@@ -102,7 +102,7 @@ module.exports = {
       loading: false ,
       dates:[],
       realDates:{},
-      hitIDs:"",
+      hitIDs:mw.config.values.WSSearchFront.resultIDs,
       facetconfig:mw.config.values.WSSearchFront.facetSettings.combobox
     }
   },
