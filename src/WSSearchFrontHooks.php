@@ -12,7 +12,7 @@ class WSSearchFrontHooks {
 
 if(!$parameters[0]){
 
- 
+
 
 }else{
 
@@ -24,7 +24,7 @@ foreach ($parameters as $key => $value) {
     $v = $split[1];
 
     if($k == 'size'){
-      $settings['size'] = $v;
+      $settings['size'] = intval($v);
     }
     if($k[0] == '?'){
        $settings[$v][] = substr($k, 1);

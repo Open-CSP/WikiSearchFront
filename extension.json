@@ -13,25 +13,17 @@
 	},
   "ResourceModules": {
 		"ext.WSSearchFront.module": {
-           "packageFiles": [
-               "init.js",
-							 "wssearchfront.vue",
-							 "SearchInput.vue",
-							 "PillsSelected.vue",
-							 "PillItem.vue",
-							 "FacetCombobox.vue",
-							 "FacetFilter.vue",
-							 "FacetDateRange.vue",
-							 "FacetCheckbox.vue",
-							 "HitItem.vue",
-							 "HitPagers.vue"
+			"dependencies": [
+				"ext.vue",
+				"ext.in",
+		"mediawiki.widgets.DateInputWidget"
+			],
+           "scripts": [
+						  "wssearch.umd.min.js",
+						 "init.js"
+
 
                ],
-           "dependencies": [
-               "vue",
-               "vuex",
-			   "mediawiki.widgets.DateInputWidget"
-           ],
            "messages": [
 						 "jan",
 						 "feb",
@@ -54,9 +46,19 @@
 						 "wssearch-more"
            ],
            "styles": [
-						"app.css"
+						"wssearch.css"
 					]
-       }
+       },
+			 "ext.vue": {
+				 "scripts": [
+							 "vue.js"
+						 ]
+			 },
+			 "ext.in": {
+				 "scripts": [
+							 "i18n.js"
+						 ]
+			 }
    },
    "ResourceFileModulePaths": {
  "localBasePath": "module",
