@@ -40,8 +40,8 @@
 						 "search",
 						 "date-range-from",
 						 "date-range-to",
-						 "rcfilters-clear-all-filters",
-			       "wssearch-total",
+						 "clear-all-filters",
+			       "search-total",
 					   "wssearch-less",
 						 "wssearch-more"
            ],

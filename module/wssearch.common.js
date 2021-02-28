@@ -8787,12 +8787,12 @@ var PillsSelected_component = normalizeComponent(
 )
 
 /* harmony default export */ var PillsSelected = (PillsSelected_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cbd9b106-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetDateRange.vue?vue&type=template&id=6f0cfcce&
-var FacetDateRangevue_type_template_id_6f0cfcce_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--daterange"},[_vm._m(0),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-from' ))+" "),_c('div',{attrs:{"id":"dateinputfrom"}}),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-to' ))+" "),_c('div',{attrs:{"id":"dateinputto"}}),(_vm.rangeFrom && _vm.rangeTo)?_c('facet-checbox',{attrs:{"agg":_vm.agg,"index":'0',"name":'Date'}}):_vm._e()],1)}
-var FacetDateRangevue_type_template_id_6f0cfcce_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v("Date range")])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cbd9b106-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetDateRange.vue?vue&type=template&id=14db8974&
+var FacetDateRangevue_type_template_id_14db8974_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--daterange"},[_vm._m(0),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-from' ))+" "),_c('div',{attrs:{"id":"dateinputfrom"}}),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-to' ))+" "),_c('div',{attrs:{"id":"dateinputto"}}),(_vm.rangeFrom && _vm.rangeTo)?_c('facet-checbox',{attrs:{"agg":_vm.agg,"index":'0',"name":'Date'}}):_vm._e()],1)}
+var FacetDateRangevue_type_template_id_14db8974_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v("Date range")])])}]
 
 
-// CONCATENATED MODULE: ./src/components/FacetDateRange.vue?vue&type=template&id=6f0cfcce&
+// CONCATENATED MODULE: ./src/components/FacetDateRange.vue?vue&type=template&id=14db8974&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
 var es_array_slice = __webpack_require__("fb6a");
@@ -9010,7 +9010,7 @@ var FacetCheckbox_component = normalizeComponent(
   },
   methods: {
     dateinputs: function dateinputs() {
-      var root = this.$root.$children[0];
+      var root = this.$store.state;
       var date = {};
       var dateInput = {};
       var dateinputs = ['from', 'to'];
@@ -9071,8 +9071,8 @@ var FacetDateRangevue_type_style_index_0_lang_css_ = __webpack_require__("b243")
 
 var FacetDateRange_component = normalizeComponent(
   components_FacetDateRangevue_type_script_lang_js_,
-  FacetDateRangevue_type_template_id_6f0cfcce_render,
-  FacetDateRangevue_type_template_id_6f0cfcce_staticRenderFns,
+  FacetDateRangevue_type_template_id_14db8974_render,
+  FacetDateRangevue_type_template_id_14db8974_staticRenderFns,
   false,
   null,
   null,
