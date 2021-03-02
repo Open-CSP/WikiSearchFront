@@ -8205,6 +8205,7 @@ try {
 
 
 external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vuex_esm["a" /* default */]);
+var routing = false;
 
 var store_updateStore = function updateStore(store) {
   store.subscribe(function (mutation, state) {
@@ -8263,6 +8264,12 @@ var store_updateStore = function updateStore(store) {
 
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
+        var page = urlParams.get('title');
+
+        if (page) {
+          routing = page;
+        }
+
         var term = urlParams.get('term');
         var offset = urlParams.get('offset');
         var filters = urlParams.get('filters');
@@ -8319,7 +8326,13 @@ var store_updateStore = function updateStore(store) {
       var root = state;
       root.loading = true;
       var urlsytr = urlstring();
-      window.history.replaceState('', '', window.location.pathname + urlsytr);
+      var routingString = "";
+
+      if (routing) {
+        routingString = '/' + routing;
+      }
+
+      window.history.replaceState('', '', window.location.pathname + routingString + urlsytr);
       var params = {
         action: 'query',
         meta: 'WSSearch',
