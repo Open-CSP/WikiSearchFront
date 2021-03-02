@@ -8330,6 +8330,7 @@ var store_updateStore = function updateStore(store) {
 
       if (routing) {
         routingString = '/' + routing;
+        routing = false;
       }
 
       window.history.replaceState('', '', window.location.pathname + routingString + urlsytr);
