@@ -8324,7 +8324,8 @@ var store_updateStore = function updateStore(store) {
         routing = false;
       }
 
-      window.history.replaceState('', '', window.location.pathname + routingString + urlsytr);
+      console.log(routingString);
+      window.history.replaceState('', '', urlsytr);
       var params = {
         action: 'query',
         meta: 'WSSearch',
@@ -8347,18 +8348,13 @@ var store_updateStore = function updateStore(store) {
 
     function urlstring() {
       //create url string
-      var url = [];
-
-      if (state.from > 0) {
-        url.push("offset=" + state.from);
-      }
-
-      if (state.term) {
-        url.push("term=" + state.term);
-      }
+      var loc = new URL(window.location.href);
+      var searchParams = loc.searchParams;
+      state.from > 0 ? searchParams.set('offset', state.from) : searchParams.delete('offset');
+      state.term ? searchParams.set('term', state.term) : searchParams.delete('term');
 
       if (state.selected.length) {
-        var filtersUrl = "filters=";
+        var filtersUrl = "";
         var filtersArray = [];
         state.selected.forEach(function (item) {
           if (item.range) {
@@ -8368,15 +8364,12 @@ var store_updateStore = function updateStore(store) {
           }
         });
         filtersUrl += filtersArray.join("~");
-        url.push(filtersUrl);
+        searchParams.set('filters', filtersUrl);
+      } else {
+        searchParams.delete('filters');
       }
 
-      if (url.length > 0) {
-        var joinedUrl = "?" + url.join("&");
-        return encodeURI(joinedUrl);
-      } else {
-        return "";
-      }
+      return loc;
     }
 
     function createDates(date) {
