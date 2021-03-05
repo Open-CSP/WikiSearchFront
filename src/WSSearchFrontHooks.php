@@ -13,6 +13,8 @@ class WSSearchFrontHooks {
 
     if($Type == "_txt"){
       $ftype = "txtField";
+    }else if($Type == "_num"){
+      $ftype = "numField";
     }else{
       $ftype = "wpgField";
     }
