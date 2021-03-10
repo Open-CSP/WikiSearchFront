@@ -7411,7 +7411,8 @@ var store_updateStore = function updateStore(store) {
             facetranges.push({
               "type": "range",
               "ranges": pessa,
-              "property": propertyname
+              "property": propertyname,
+              "name": propertyname
             });
           });
         }
