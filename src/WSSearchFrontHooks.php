@@ -87,6 +87,7 @@ $template = "";
 
     }
     $result =  "<div id='app'></div>";
+    return true;
   }
 
 
