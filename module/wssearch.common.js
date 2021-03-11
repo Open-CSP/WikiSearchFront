@@ -7392,14 +7392,8 @@ var store_updateStore = function updateStore(store) {
             var pessa = [];
 
             for (var i = 0; i < max; i += step) {
-              var rangefrom = 0;
-
-              if (i != 0) {
-                rangefrom = i + 0.01;
-              }
-
               pessa.push({
-                "from": rangefrom,
+                "from": i,
                 "to": i + step,
                 "key": i + step + ''
               });
