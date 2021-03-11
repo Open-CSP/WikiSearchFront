@@ -1,4 +1,4 @@
-1<?php
+<?php
 
 use SMW\DIProperty;
 use SMW\ApplicationFactory;
