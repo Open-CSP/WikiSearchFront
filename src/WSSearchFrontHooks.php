@@ -44,6 +44,9 @@ $template = "";
           if($k == 'clear'){
             $settings['clear'] = $v;
           }
+          if($k == 'layout'){
+            $settings['layout'] = $v;
+          }
           if($k == 'template'){
             $split = explode('#', $v);
             $n = $split[0];
