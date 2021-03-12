@@ -7364,8 +7364,7 @@ var store_updateStore = function updateStore(store) {
         var facetranges = [{
           "type": "range",
           "ranges": date_ranges,
-          "property": "Modification date",
-          "name": "Date"
+          "property": "Modification date"
         }];
         state.realDates = real_date_ranges; //add more ranges
         // eslint-disable-next-line no-undef
@@ -7392,9 +7391,10 @@ var store_updateStore = function updateStore(store) {
             var pessa = [];
 
             for (var i = 0; i < max; i += step) {
+              // pessa.push( { "from": i, "to": i + step, "key": (i + step) + '' } )
               pessa.push({
                 "from": i,
-                "to": i + step,
+                "to": max,
                 "key": i + step + ''
               });
             }
@@ -7402,8 +7402,7 @@ var store_updateStore = function updateStore(store) {
             facetranges.push({
               "type": "range",
               "ranges": pessa,
-              "property": propertyname,
-              "name": propertyname
+              "property": propertyname
             });
           });
         }
