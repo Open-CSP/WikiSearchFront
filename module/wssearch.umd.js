@@ -7399,7 +7399,7 @@ var store_updateStore = function updateStore(store) {
 
             var pessa = [];
 
-            for (var i = 1; i < max; i += step) {
+            for (var i = 1; i < max + 1; i += step) {
               // pessa.push( { "from": i, "to": i + step, "key": (i + step) + '' } )
               pessa.push({
                 "from": i,
