@@ -41,6 +41,9 @@ $template = "";
           if($k == 'size'){
             $settings['size'] = intval($v);
           }
+          if($k == 'clear'){
+            $settings['clear'] = $v;
+          }
           if($k == 'template'){
             $split = explode('#', $v);
             $n = $split[0];
