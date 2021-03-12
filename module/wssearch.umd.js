@@ -7399,12 +7399,12 @@ var store_updateStore = function updateStore(store) {
 
             var pessa = [];
 
-            for (var i = 0; i < max + 1; i += step) {
+            for (var i = 1; i < max; i += step) {
               // pessa.push( { "from": i, "to": i + step, "key": (i + step) + '' } )
               pessa.push({
                 "from": i,
                 "to": max + 1,
-                "key": i + step + ''
+                "key": i + step - 1 + ''
               });
             }
 
@@ -7463,8 +7463,8 @@ var store_updateStore = function updateStore(store) {
                   value: rangeItem[1],
                   range: {
                     "P:29.datField": {
-                      gt: state.rangeFrom,
-                      lt: state.rangeTo
+                      gte: state.rangeFrom,
+                      lte: state.rangeTo
                     }
                   }
                 });
@@ -7473,8 +7473,8 @@ var store_updateStore = function updateStore(store) {
                   key: rangeItem[2],
                   value: rangeItem[1],
                   range: {
-                    gt: ranges[0],
-                    lt: ranges[1]
+                    gte: ranges[0],
+                    lte: ranges[1]
                   }
                 });
               }
@@ -7538,7 +7538,7 @@ var store_updateStore = function updateStore(store) {
             if (state.realDates[item.value]) {
               filtersArray.push("range_" + item.value + "_" + item.key + "." + state.realDates[item.value].from + "_" + state.realDates[item.value].to);
             } else {
-              filtersArray.push("range_" + item.value + "_" + item.key + "." + item.range.gt + "_" + item.range.lt);
+              filtersArray.push("range_" + item.value + "_" + item.key + "." + item.range.gte + "_" + item.range.lte);
             }
           } else {
             filtersArray.push("" + item.key + "." + item.value + "");
@@ -7977,12 +7977,12 @@ var PillsSelected_component = normalizeComponent(
 )
 
 /* harmony default export */ var PillsSelected = (PillsSelected_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetDateRange.vue?vue&type=template&id=b9c85606&
-var FacetDateRangevue_type_template_id_b9c85606_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--daterange"},[_vm._m(0),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-from' ))+" "),_c('div',{attrs:{"id":"dateinputfrom"}}),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-to' ))+" "),_c('div',{attrs:{"id":"dateinputto"}}),(_vm.showcheckbox)?_c('facet-checbox',{attrs:{"agg":_vm.agg,"index":0,"name":'Modification date'}}):_vm._e()],1)}
-var FacetDateRangevue_type_template_id_b9c85606_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v("Date range")])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetDateRange.vue?vue&type=template&id=2621b88f&
+var FacetDateRangevue_type_template_id_2621b88f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--daterange"},[_vm._m(0),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-from' ))+" "),_c('div',{attrs:{"id":"dateinputfrom"}}),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-to' ))+" "),_c('div',{attrs:{"id":"dateinputto"}}),(_vm.showcheckbox)?_c('facet-checbox',{attrs:{"agg":_vm.agg,"index":0,"name":'Modification date'}}):_vm._e()],1)}
+var FacetDateRangevue_type_template_id_2621b88f_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v("Date range")])])}]
 
 
-// CONCATENATED MODULE: ./src/components/FacetDateRange.vue?vue&type=template&id=b9c85606&
+// CONCATENATED MODULE: ./src/components/FacetDateRange.vue?vue&type=template&id=2621b88f&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -7990,12 +7990,12 @@ var es_number_constructor = __webpack_require__("a9e3");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
 var es_array_slice = __webpack_require__("fb6a");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetCheckbox.vue?vue&type=template&id=58a79267&
-var FacetCheckboxvue_type_template_id_58a79267_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"wssearch--checkbox",class:_vm.labelclass,attrs:{"aria-disabled":"false"}},[_c('span',{staticClass:"wssearch--checkbox-input",attrs:{"aria-disabled":"false"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.modelSelected),expression:"modelSelected"}],staticClass:"wssearch--checkbox-input-checkbox",attrs:{"type":"checkbox","id":_vm.createid,"aria-disabled":"false","tabindex":"0"},domProps:{"value":_vm.val,"checked":Array.isArray(_vm.modelSelected)?_vm._i(_vm.modelSelected,_vm.val)>-1:(_vm.modelSelected)},on:{"change":function($event){var $$a=_vm.modelSelected,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.val,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.modelSelected=$$a.concat([$$v]))}else{$$i>-1&&(_vm.modelSelected=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.modelSelected=$$c}}}}),_c('span',{staticClass:"wssearch--checkbox-input-icon",attrs:{"aria-disabled":"false"}})]),_c('span',[_c('span',{staticClass:"wssearch--checkbox-title"},[_vm._v(_vm._s(_vm.title))]),_c('span',{staticClass:"wssearch--checkbox-count",attrs:{"title":"count"}},[_vm._v(_vm._s(_vm.agg.doc_count))])])])}
-var FacetCheckboxvue_type_template_id_58a79267_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetCheckbox.vue?vue&type=template&id=412ad63f&
+var FacetCheckboxvue_type_template_id_412ad63f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"wssearch--checkbox",class:_vm.labelclass,attrs:{"aria-disabled":"false"}},[_c('span',{staticClass:"wssearch--checkbox-input",attrs:{"aria-disabled":"false"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.modelSelected),expression:"modelSelected"}],staticClass:"wssearch--checkbox-input-checkbox",attrs:{"type":"checkbox","id":_vm.createid,"aria-disabled":"false","tabindex":"0"},domProps:{"value":_vm.val,"checked":Array.isArray(_vm.modelSelected)?_vm._i(_vm.modelSelected,_vm.val)>-1:(_vm.modelSelected)},on:{"change":function($event){var $$a=_vm.modelSelected,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.val,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.modelSelected=$$a.concat([$$v]))}else{$$i>-1&&(_vm.modelSelected=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.modelSelected=$$c}}}}),_c('span',{staticClass:"wssearch--checkbox-input-icon",attrs:{"aria-disabled":"false"}})]),_c('span',[_c('span',{staticClass:"wssearch--checkbox-title"},[_vm._v(_vm._s(_vm.title))]),_c('span',{staticClass:"wssearch--checkbox-count",attrs:{"title":"count"}},[_vm._v(_vm._s(_vm.agg.doc_count))])])])}
+var FacetCheckboxvue_type_template_id_412ad63f_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FacetCheckbox.vue?vue&type=template&id=58a79267&
+// CONCATENATED MODULE: ./src/components/FacetCheckbox.vue?vue&type=template&id=412ad63f&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetCheckbox.vue?vue&type=script&lang=js&
 
@@ -8095,8 +8095,8 @@ var FacetCheckboxvue_type_template_id_58a79267_staticRenderFns = []
           "value": this.agg.key,
           "key": this.name,
           "range": {
-            "gt": Number(this.agg.from + '.0000000'),
-            "lt": Number(this.agg.to + '.0000000')
+            "gte": Number(this.agg.from + '.0000000'),
+            "lte": Number(this.agg.to + '.0000000')
           }
         };
       } else {
@@ -8124,8 +8124,8 @@ var FacetCheckboxvue_type_style_index_0_lang_css_ = __webpack_require__("4f13");
 
 var FacetCheckbox_component = normalizeComponent(
   components_FacetCheckboxvue_type_script_lang_js_,
-  FacetCheckboxvue_type_template_id_58a79267_render,
-  FacetCheckboxvue_type_template_id_58a79267_staticRenderFns,
+  FacetCheckboxvue_type_template_id_412ad63f_render,
+  FacetCheckboxvue_type_template_id_412ad63f_staticRenderFns,
   false,
   null,
   null,
@@ -8219,9 +8219,9 @@ var FacetCheckbox_component = normalizeComponent(
                 var te = '';
 
                 if (element == 'from') {
-                  te = 'gt';
+                  te = 'gte';
                 } else {
-                  te = 'lt';
+                  te = 'lte';
                 }
 
                 var selected_updated = root.selected;
@@ -8267,8 +8267,8 @@ var FacetDateRangevue_type_style_index_0_lang_css_ = __webpack_require__("b243")
 
 var FacetDateRange_component = normalizeComponent(
   components_FacetDateRangevue_type_script_lang_js_,
-  FacetDateRangevue_type_template_id_b9c85606_render,
-  FacetDateRangevue_type_template_id_b9c85606_staticRenderFns,
+  FacetDateRangevue_type_template_id_2621b88f_render,
+  FacetDateRangevue_type_template_id_2621b88f_staticRenderFns,
   false,
   null,
   null,
