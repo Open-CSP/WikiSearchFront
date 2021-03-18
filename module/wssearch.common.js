@@ -7827,12 +7827,12 @@ var PillsSelectedvue_type_template_id_7c633f69_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=7c633f69&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillItem.vue?vue&type=template&id=3f91b5f6&
-var PillItemvue_type_template_id_3f91b5f6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"wssearch--selected-filter",class:_vm.propertclass,attrs:{"for":_vm.forkey}},[_c('bdi',[_vm._v(" "+_vm._s(_vm.title)+" ")])])}
-var PillItemvue_type_template_id_3f91b5f6_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillItem.vue?vue&type=template&id=3510992a&
+var PillItemvue_type_template_id_3510992a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"wssearch--selected-filter",class:_vm.propertclass,attrs:{"for":_vm.forkey}},[_c('bdi',[_vm._v(" "+_vm._s(_vm.title)+" ")])])}
+var PillItemvue_type_template_id_3510992a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PillItem.vue?vue&type=template&id=3f91b5f6&
+// CONCATENATED MODULE: ./src/components/PillItem.vue?vue&type=template&id=3510992a&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
 var es_string_replace = __webpack_require__("5319");
@@ -7867,7 +7867,7 @@ var es_function_name = __webpack_require__("b0c0");
       return stripped + ' ' + stripped + '--' + this.activefilter.value.toLowerCase().replace(/[^a-z0-9]/gmi, '_');
     },
     forkey: function forkey() {
-      return this.activefilter.key.toLowerCase().replace(/[^a-z0-9]/gmi, '_') + '--' + this.activefilter.value.toLowerCase().replace(/\s/g, '_');
+      return this.activefilter.key.toLowerCase().replace(/[^a-z0-9]/gmi, '_') + '--' + this.activefilter.value.toLowerCase().replace(/[^a-z0-9]/gmi, '_');
     },
     title: function title() {
       return this.activefilter.value ? this.activefilter.value : this.activefilter.name;
@@ -7890,8 +7890,8 @@ var PillItemvue_type_style_index_0_lang_css_ = __webpack_require__("8e3c");
 
 var PillItem_component = normalizeComponent(
   components_PillItemvue_type_script_lang_js_,
-  PillItemvue_type_template_id_3f91b5f6_render,
-  PillItemvue_type_template_id_3f91b5f6_staticRenderFns,
+  PillItemvue_type_template_id_3510992a_render,
+  PillItemvue_type_template_id_3510992a_staticRenderFns,
   false,
   null,
   null,
