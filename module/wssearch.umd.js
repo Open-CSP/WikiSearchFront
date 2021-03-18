@@ -7439,7 +7439,7 @@ var store_updateStore = function updateStore(store) {
           var urlFiltersOutput = [];
           var activeFilters = filters.split("~");
           activeFilters.forEach(function (value) {
-            var filterItem = value.split(".");
+            var filterItem = value.split(":");
             var rangeItem = filterItem[0].split("_");
 
             if (rangeItem[0] == "range") {
@@ -7531,12 +7531,12 @@ var store_updateStore = function updateStore(store) {
         state.selected.forEach(function (item) {
           if (item.range) {
             if (state.realDates[item.value]) {
-              filtersArray.push("range_" + item.value + "_" + item.key + "." + state.realDates[item.value].from + "_" + state.realDates[item.value].to);
+              filtersArray.push("range_" + item.value + "_" + item.key + ":" + state.realDates[item.value].from + "_" + state.realDates[item.value].to);
             } else {
-              filtersArray.push("range_" + item.value + "_" + item.key + "." + item.range.gte + "_" + item.range.lte);
+              filtersArray.push("range_" + item.value + "_" + item.key + ":" + item.range.gte + "_" + item.range.lte);
             }
           } else {
-            filtersArray.push("" + item.key + "." + item.value + "");
+            filtersArray.push("" + item.key + ":" + item.value + "");
           }
         });
         var filtersUrl = filtersArray.join("~");
