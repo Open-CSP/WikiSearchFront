@@ -7450,10 +7450,8 @@ var store_updateStore = function updateStore(store) {
                   key: rangeItem[2],
                   value: rangeItem[1],
                   range: {
-                    "P:29.datField": {
-                      gte: state.rangeFrom,
-                      lte: state.rangeTo
-                    }
+                    gte: state.rangeFrom,
+                    lte: state.rangeTo
                   }
                 });
               } else {
@@ -7461,8 +7459,8 @@ var store_updateStore = function updateStore(store) {
                   key: rangeItem[2],
                   value: rangeItem[1],
                   range: {
-                    gte: ranges[0],
-                    lte: ranges[1]
+                    gte: createDates(ranges[0]),
+                    lte: createDates(ranges[1])
                   }
                 });
               }

@@ -21,6 +21,7 @@ class WSSearchFrontHooks {
     return ['key'=> $ID, 'type' => $ftype];
   }
 
+
   public static function onWSSearchOnLoadFrontend( string &$result, \WSSearch\SearchEngineConfig $config, Parser $parser, array $parameters ) {
 
     if($parameters[0]){
