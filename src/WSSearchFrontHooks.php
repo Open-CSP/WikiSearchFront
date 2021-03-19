@@ -24,78 +24,107 @@ class WSSearchFrontHooks {
 
   public static function onWSSearchOnLoadFrontend( string &$result, \WSSearch\SearchEngineConfig $config, Parser $parser, array $parameters ) {
 
-    if($parameters[0]){
 
-      $settings = [];
-      // temp code to get property type
       $store = ApplicationFactory::getInstance()->getStore();
 
-$template = "";
 
 
+$searchconfig = [
+  "settings" => [],
+  "facetSettings" => [],
+  "hitSettings" => [],
+];
 
-      foreach ($parameters as $key => $value) {
-          $split = explode('=', $value);
-          $k = $split[0];
-          $v = $split[1];
+foreach ($parameters as $key => $value) {
 
-          if($k == 'size'){
-            $settings['size'] = intval($v);
-          }
-          if($k == 'clear'){
-            $settings['clear'] = $v;
-          }
-          if($k == 'layout'){
-            $settings['layout'] = $v;
-          }
-          if($k == 'template'){
-            $split = explode('#', $v);
-            $n = $split[0];
-            $t = $split[1];
-            $templateresults = WSSearchFrontHooks::getzType($n, $store);
-            $template = ['template' => $t, 'name' => $n, 'key' => $templateresults['key'], 'type' => $templateresults['type']];
-          }
-          if($k == 'title'){
-            $titleresults = WSSearchFrontHooks::getzType($v, $store);
-            $settings['title'] = ['name' => $v, 'key' => $titleresults['key'], 'type' => $titleresults['type']];
-          }
-          if($k[0] == '?'){
-            $settings[$v][] = substr($k, 1);
-          }
+    if($value){
+
+    if($value[0] != '@' && $value[0] != '?'){
+
+      $split = explode('=', $value);
+
+      $val = trim($split[1]);
+
+      if($split[0] == 'size'){
+        $val = intval($split[1]);
+      }
+
+      if($split[0] == 'title'){
+
+        $val = [];
+
+        $split3 = explode('#', $value);
+        foreach ($split3 as $i => $sp) {
+            if($i == 0){
+              $split3 = explode('=', $sp);
+              $prop = trim($split3[1]);
+              $val['name'] = $prop;
+              $propinfo = WSSearchFrontHooks::getzType(str_replace(' ', '_',$prop), $store);
+              $val['key'] = $propinfo['key'];
+              $val['type'] = $propinfo['type'];
+
+            }else{
+                $split2 = explode('=', $sp);
+                $val[$split2[0]] = trim($split2[1]);
+            }
       }
 
 
 
 
-      $result_properties = $config->getResultPropertyIDs();
-      $result_properties_array = [];
+    }
+      $searchconfig["settings"][$split[0]] = $val;
+  }
 
-      foreach ( $result_properties as $key => $value ) {
 
-        $results = WSSearchFrontHooks::getzType($key, $store);
+        if($value[0] == '@'){
+          $split = explode('#', $value);
+          $prop = "";
+          foreach ($split as $i => $sp) {
+              if($i == 0){
+                  $prop = trim(substr($sp, 1));
+                  $searchconfig["facetSettings"][$prop] = [];
+              }else{
+                  $split2 = explode('=', $sp);
+                  $searchconfig["facetSettings"][$prop][$split2[0]] = trim($split2[1]);
+              }
+          }
+        }
 
-        $result_properties_array[$results['key']] = ['type' => $results['type'], 'name' => $key];
+        if($value[0] == '?'){
+          $split = explode('#', $value);
+          $prop = "";
+          foreach ($split as $i => $sp) {
+              if($i == 0){
+                  $prop = trim(substr($sp, 1));
+                  $searchconfig["hitSettings"][$prop] = [];
+                  $propinfo = WSSearchFrontHooks::getzType(str_replace(' ', '_',$prop), $store);
+                  $searchconfig["hitSettings"][$prop]['key'] = $propinfo['key'];
+                  $searchconfig["hitSettings"][$prop]['type'] = $propinfo['type'];
+              }else{
+                  $split2 = explode('=', $sp);
+                  $searchconfig["hitSettings"][$prop][$split2[0]] = trim($split2[1]);
+
+
+
+              }
+          }
+        }
+
       }
 
-      $result_properties = json_encode( $result_properties_array );
-
-
-
-
+}
 
       $jsconfig = [
-          "resultIDs" => $result_properties_array,
-          "facetSettings" => $settings,
-          "template" => $template
+          "config" => $searchconfig
       ];
 
       $parser->getOutput()->addJsConfigVars("WSSearchFront", $jsconfig );
       $parser->getOutput()->addModules( 'ext.WSSearchFront.module' );
 
+      $result =  "<div id='app'></div>";
+      return true;
+
     }
-    $result =  "<div id='app'></div>";
-    return true;
+
   }
-
-
-}

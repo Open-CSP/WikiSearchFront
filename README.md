@@ -1,3 +1,4 @@
+
 # WSSearchFront
 
 a vue.js frontend for WSSearch
@@ -6,25 +7,59 @@ Build version! for 1.31 and 135
 
 example
 ```
-{{#WSSearchFrontend:size=10
-|template=Title#Wssearch_output_template
-|title=Title
-|?Modification date=date
-|?Average rating#max-5#step-1=range
+{{#WSSearchFrontend:
+|size=4
+|clear=term
+|title=Version
+    #label=Label for table
+|layout=table
+|@Version
+    #display=combobox
+|@Modification date
+	#display=datepicker
+|@Rating
+	#display=range
+	#max=5
+	#step=1
+|?Version
+|?Class
+    #label=Page type
+    #display=pill
+|?Users
+    #display=link
+|?Image
+    #display=image
+    #label=Page image
+|?Rating
+    #display=template
+    #template=Special rating
 }}
 ```
 
 
 
-settings for results:
+**settings :**
 
-size=<number>          //amount of results per page
-title=<property>   //property to use as link title
+size=`<number>`          //amount of results per page
+title=`<property>`   //property to use as link title , optional setting `#label=`
+
+layout=table   //show results in table layout
+clear=term  //remove search term when clearing filters
 
 template=<property>#<template>  // optional template, passes {{{Page|}}} and {{{Value|}}}
 
+**settings for result output:**
 
-optional settings for facets:
+    ?<property>
+    `#display=<option>`  // optional, options: image, link, pill or template
+     #label=<text>     //optional
 
-?<property>=<option>  // options: date, datepicker, combobox or range
-?<property>#max-<number>#step-<number>=range  // range with max and step options
+   for template add `#template=<template>`  template, passes {{{Page|}}} and {{{Value|}}} to the template
+
+
+**optional settings for facets:**
+
+    @<property>
+    `#display=<option>`  // options: datepicker, combobox or range
+
+   for range add `#max=<number>`  and `#step=<number>`
