@@ -49,6 +49,10 @@ foreach ($parameters as $key => $value) {
         $val = intval($split[1]);
       }
 
+      if($split[0] == 'sort options'){
+        $val = explode(",", $split[1]);
+      }
+
       if($split[0] == 'title'){
 
         $val = [];

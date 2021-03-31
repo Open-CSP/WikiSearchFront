@@ -43,7 +43,8 @@
 						 "clear-all-filters",
 			       "search-total",
 					   "wssearch-less",
-						 "wssearch-more"
+						 "wssearch-more",
+						 "search-order"
            ],
            "styles": [
 						"wssearch.css"
