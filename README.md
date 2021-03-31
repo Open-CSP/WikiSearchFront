@@ -10,10 +10,16 @@ example
 {{#WSSearchFrontend:
 |size=10
 |clear=term
+|sort options=Title, Version
 |title=Version
     #label=Label for table
     #highlight=true
 |layout=table
+|@Title
+    #display=ask combobox
+    #query=[[Class::+]]
+    #data=Title
+    #text=name
 |@Version
     #display=combobox
 |@Modification date
@@ -46,9 +52,9 @@ example
 size=`<number>`      //amount of results per page
 title=`<property>`   //property to use as link title , optional setting `#label=`, `#highlight=true`
 
-layout=table   //show results in table layout
-clear=term     //remove search term when clearing filters
-
+layout=table   //optional, show results in table layout
+clear=term     //optional, remove search term when clearing filters
+sort options=Title, Version   //optional, shows a dropdown with sort options
 
 **settings for result output:**
 
@@ -63,7 +69,12 @@ clear=term     //remove search term when clearing filters
 **optional settings for facets:**
 
     @<property>
-    `#display=<option>`  // optional, options: datepicker, combobox or range
+    `#display=<option>`  // optional, options: datepicker, combobox, ask combobox or range
     `#label=<text>`      //optional
 
    for display range add `#max=<number>`  and `#step=<number>`
+
+   for display ask combobox add
+       `#query=<ask>`  // the ask query example [[Class::Page]]
+       `#data=<property>`  // property for data
+       `#text=<property>`  // optional, property for display
