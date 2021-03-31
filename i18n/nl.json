@@ -1,0 +1,10 @@
+{
+    "clear-all-filters": "Wis alle filters",
+    "search-total": "{{PLURAL:$1|resultaat|resultaten|0=Geen resultaat}}",
+    "date-range-from": "Vanaf",
+    "date-range-to": "Tot",
+    "wssearch-more": "Toon meer",
+    "wssearch-less": "Toon minder",
+    "search-order": "Sorteer op"
+
+}
