@@ -4746,6 +4746,17 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
+/***/ "8330":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FacetSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("af3b");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FacetSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FacetSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "83ab":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6242,6 +6253,13 @@ module.exports = {
 
 /***/ }),
 
+/***/ "af3b":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "b00d":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7308,12 +7326,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=63085340&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=559b046a&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wssearch",class:_vm.selectedclasses},[_c('search-input'),_c('selected-pils'),(_vm.settings['sort options'])?_c('div',{staticClass:"wssearch--order"},[_c('span',{staticClass:"wssearch--order__label"},[_vm._v(" "+_vm._s(_vm.$i18n('search-order'))+" ")]),_c('div',{staticClass:"wssearch--order__wrapper"},[_c('span',{staticClass:"wssearch--order__select",attrs:{"tabindex":"0","aria-disabled":"false"}},[_vm._v(" "+_vm._s(_vm.sortordertype)+" ")]),_c('div',{staticClass:"wssearch--order__options"},[_c('span',{staticClass:"wssearch--order__option",on:{"click":function($event){return _vm.$store.commit('SET_ORDERTYPE', 'score')}}},[_vm._v(" score ")]),_vm._l((_vm.settings['sort options']),function(order){return _c('span',{key:order,staticClass:"wssearch--order__option",on:{"click":function($event){return _vm.$store.commit('SET_ORDERTYPE', order)}}},[_vm._v(" "+_vm._s(order)+" ")])})],2)]),_c('span',{staticClass:"wssearch--order__sortorder",on:{"click":_vm.setorder}},[_c('span',{class:'wssearch--order__icon wssearch--order__' + _vm.sortorder})])]):_vm._e(),(_vm.aggs)?_c('div',{staticClass:"wssearch--filters"},[(_vm.showdatepicker)?_c('date-range',{attrs:{"label":_vm.datepickerlabel}}):_vm._e(),_vm._l((_vm.aggstoshow),function(name,index){return _c(_vm.compswitch(name),{key:index,tag:"component",attrs:{"query":_vm.facetSettings[name].query,"qtext":_vm.facetSettings[name].text,"qdata":_vm.facetSettings[name].data,"buckets":_vm.aggs[name] ? _vm.aggs[name].buckets : [],"label":_vm.facetSettings[name].label,"name":name}})})],2):_vm._e(),_c('div',{staticClass:"wssearch--total"},[(_vm.total > 0)?_c('b',{staticClass:"wssearch--total__nr"},[_vm._v(" "+_vm._s(_vm.total)+" ")]):_vm._e(),_vm._v(_vm._s(_vm.$i18n('search-total', _vm.total))+" ")]),_c('div',{staticClass:"wssearch--main",class:_vm.mainloading},[_c('div',{staticClass:"wssearch--hits",style:('--table-columns:'+ _vm.tableheaders.length)},[(_vm.layout)?_c('div',{staticClass:"wssearch--table__header"},_vm._l((_vm.tableheaders),function(hitID,key){return _c('span',{key:key},[_vm._v(" "+_vm._s(hitID.name)+" ")])}),0):_vm._e(),_vm._l((_vm.hits),function(hit,i){return _c('hit-item',{key:i,attrs:{"hit":hit}})})],2),_c('hit-pagers',{attrs:{"size":_vm.size,"from":_vm.from,"total":_vm.total}})],1)],1)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=63085340&
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=559b046a&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
 var es_object_to_string = __webpack_require__("d3b7");
@@ -7575,10 +7593,18 @@ var store_updateStore = function updateStore(store) {
                 });
               }
             } else {
-              urlFiltersOutput.push({
-                value: filterItem[1],
-                key: filterItem[0]
-              });
+              if (rangeItem[0] == "query") {
+                urlFiltersOutput.push({
+                  value: filterItem[1],
+                  key: rangeItem[1],
+                  type: "query"
+                });
+              } else {
+                urlFiltersOutput.push({
+                  value: filterItem[1],
+                  key: filterItem[0]
+                });
+              }
             }
           });
           state.selected = urlFiltersOutput;
@@ -7674,7 +7700,11 @@ var store_updateStore = function updateStore(store) {
               filtersArray.push("range_" + item.value + "_" + item.key + "^^" + item.range.gte + "_" + item.range.lte);
             }
           } else {
-            filtersArray.push("" + item.key + "^^" + item.value + "");
+            if (item.type && item.type == 'query') {
+              filtersArray.push("query_" + item.key + "^^" + item.value + "");
+            } else {
+              filtersArray.push("" + item.key + "^^" + item.value + "");
+            }
           }
         });
         var filtersUrl = filtersArray.join("~~");
@@ -8133,12 +8163,12 @@ var es_number_constructor = __webpack_require__("a9e3");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
 var es_array_slice = __webpack_require__("fb6a");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetCheckbox.vue?vue&type=template&id=65a37581&
-var FacetCheckboxvue_type_template_id_65a37581_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"wssearch--checkbox",class:_vm.labelclass,attrs:{"aria-disabled":"false"}},[_c('span',{staticClass:"wssearch--checkbox-input",attrs:{"aria-disabled":"false"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.modelSelected),expression:"modelSelected"}],staticClass:"wssearch--checkbox-input-checkbox",attrs:{"type":"checkbox","id":_vm.createid,"aria-disabled":"false","tabindex":"0"},domProps:{"value":_vm.val,"checked":Array.isArray(_vm.modelSelected)?_vm._i(_vm.modelSelected,_vm.val)>-1:(_vm.modelSelected)},on:{"change":function($event){var $$a=_vm.modelSelected,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.val,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.modelSelected=$$a.concat([$$v]))}else{$$i>-1&&(_vm.modelSelected=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.modelSelected=$$c}}}}),_c('span',{staticClass:"wssearch--checkbox-input-icon",attrs:{"aria-disabled":"false"}})]),_c('span',[_c('span',{staticClass:"wssearch--checkbox-title"},[_vm._v(_vm._s(_vm.title))]),_c('span',{staticClass:"wssearch--checkbox-count",attrs:{"title":"count"}},[_vm._v(_vm._s(_vm.agg.doc_count))])])])}
-var FacetCheckboxvue_type_template_id_65a37581_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetCheckbox.vue?vue&type=template&id=97765f7a&
+var FacetCheckboxvue_type_template_id_97765f7a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"wssearch--checkbox",class:_vm.labelclass,attrs:{"aria-disabled":"false"}},[_c('span',{staticClass:"wssearch--checkbox-input",attrs:{"aria-disabled":"false"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.modelSelected),expression:"modelSelected"}],staticClass:"wssearch--checkbox-input-checkbox",attrs:{"type":"checkbox","id":_vm.createid,"aria-disabled":"false","tabindex":"0"},domProps:{"value":_vm.val,"checked":Array.isArray(_vm.modelSelected)?_vm._i(_vm.modelSelected,_vm.val)>-1:(_vm.modelSelected)},on:{"change":function($event){var $$a=_vm.modelSelected,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.val,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.modelSelected=$$a.concat([$$v]))}else{$$i>-1&&(_vm.modelSelected=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.modelSelected=$$c}}}}),_c('span',{staticClass:"wssearch--checkbox-input-icon",attrs:{"aria-disabled":"false"}})]),_c('span',[_c('span',{staticClass:"wssearch--checkbox-title"},[_vm._v(_vm._s(_vm.title))]),_c('span',{staticClass:"wssearch--checkbox-count",attrs:{"title":"count"}},[_vm._v(_vm._s(_vm.agg.doc_count))])])])}
+var FacetCheckboxvue_type_template_id_97765f7a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FacetCheckbox.vue?vue&type=template&id=65a37581&
+// CONCATENATED MODULE: ./src/components/FacetCheckbox.vue?vue&type=template&id=97765f7a&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__("4de4");
@@ -8203,7 +8233,7 @@ var es_array_filter = __webpack_require__("4de4");
       var root = this;
       var selected = this.$store.state.selected;
       var matches = selected.filter(function (el) {
-        if (el.value == root.agg.key) {
+        if (el.value == root.agg.key || root.agg.key_as_string && el.value == root.agg.key_as_string) {
           return el;
         }
       });
@@ -8238,6 +8268,8 @@ var es_array_filter = __webpack_require__("4de4");
       return false;
     },
     val: function val() {
+      var sk = this.agg.key_as_string ? this.agg.key_as_string : this.agg.key;
+
       if (this.agg.to) {
         return {
           "value": this.agg.key,
@@ -8249,7 +8281,7 @@ var es_array_filter = __webpack_require__("4de4");
         };
       } else {
         return {
-          value: String(this.agg.key),
+          value: sk,
           key: this.name
         };
       }
@@ -8272,8 +8304,8 @@ var FacetCheckboxvue_type_style_index_0_lang_css_ = __webpack_require__("4f13");
 
 var FacetCheckbox_component = normalizeComponent(
   components_FacetCheckboxvue_type_script_lang_js_,
-  FacetCheckboxvue_type_template_id_65a37581_render,
-  FacetCheckboxvue_type_template_id_65a37581_staticRenderFns,
+  FacetCheckboxvue_type_template_id_97765f7a_render,
+  FacetCheckboxvue_type_template_id_97765f7a_staticRenderFns,
   false,
   null,
   null,
@@ -9447,6 +9479,157 @@ var FacetFilter_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetFilter = (FacetFilter_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetSearch.vue?vue&type=template&id=26d3ff97&
+var FacetSearchvue_type_template_id_26d3ff97_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"aria-disabled":"false"}},[_c('div',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v(_vm._s(_vm.labelname))])]),_c('div',{staticClass:"wssearch--search-wrapper"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.termtyped),expression:"termtyped"}],staticClass:"wssearch--facetsearch-input",attrs:{"type":"text","placeholder":_vm.$i18n( 'search' ),"tabindex":"0","aria-disabled":"false"},domProps:{"value":(_vm.termtyped)},on:{"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.search($event)},"input":function($event){if($event.target.composing){ return; }_vm.termtyped=$event.target.value}}}),_c('span',{staticClass:"wssearch--search-icon"}),(_vm.termtyped)?_c('span',{staticClass:"wssearch--search-clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearTerm}}):_vm._e()]),(false)?undefined:_vm._e()])}
+var FacetSearchvue_type_template_id_26d3ff97_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/FacetSearch.vue?vue&type=template&id=26d3ff97&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetSearch.vue?vue&type=script&lang=js&
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var FacetSearchvue_type_script_lang_js_ = ({
+  computed: {
+    labelname: function labelname() {
+      return this.label ? this.label : this.name;
+    },
+    term: {
+      set: function set(value) {
+        this.termclear = value;
+        this.userhastyped = true;
+      },
+      get: function get() {
+        if (this.termclear || this.userhastyped) {
+          return this.termclear;
+        }
+
+        return this.$store.state.term;
+      }
+    }
+  },
+  props: {
+    name: String,
+    label: String
+  },
+  data: function data() {
+    return {
+      termclear: "",
+      userhastyped: false,
+      termtyped: ""
+    };
+  },
+  methods: {
+    search: function search() {
+      // this.$store.commit('SET_TERM', this.termclear);
+      var that = this;
+      console.log({
+        key: this.name,
+        value: this.termtyped,
+        type: "query"
+      });
+      var val = this.$store.state.selected;
+      var ns = val.filter(function (el) {
+        if (el.key != that.name) {
+          return el;
+        }
+      });
+
+      if (this.termtyped) {
+        ns.push({
+          key: this.name,
+          value: this.termtyped,
+          type: "query"
+        });
+      }
+
+      this.$store.commit('SET_SELECTED', ns);
+    },
+    clearTerm: function clearTerm() {
+      this.termtyped = "";
+      var that = this;
+      var val = this.$store.state.selected;
+      var ns = val.filter(function (el) {
+        if (el.key != that.name) {
+          return el;
+        }
+      });
+      this.$store.commit('SET_SELECTED', ns);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/FacetSearch.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FacetSearchvue_type_script_lang_js_ = (FacetSearchvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/FacetSearch.vue?vue&type=style&index=0&lang=css&
+var FacetSearchvue_type_style_index_0_lang_css_ = __webpack_require__("8330");
+
+// CONCATENATED MODULE: ./src/components/FacetSearch.vue
+
+
+
+
+
+
+/* normalize component */
+
+var FacetSearch_component = normalizeComponent(
+  components_FacetSearchvue_type_script_lang_js_,
+  FacetSearchvue_type_template_id_26d3ff97_render,
+  FacetSearchvue_type_template_id_26d3ff97_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FacetSearch = (FacetSearch_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=script&lang=js&
 
 
@@ -9592,6 +9775,7 @@ var FacetFilter_component = normalizeComponent(
 
 
 
+
 /* harmony default export */ var Appvue_type_script_lang_js_ = ({
   store: src_store,
   name: 'App',
@@ -9610,6 +9794,7 @@ var FacetFilter_component = normalizeComponent(
       FacetCombobox: FacetCombobox,
       FacetFilter: FacetFilter,
       FacetAskCombobox: FacetAskCombobox,
+      FacetSearch: FacetSearch,
       // eslint-disable-next-line no-undef
       facetSettings: mw.config.values.WSSearchFront.config.facetSettings,
       // eslint-disable-next-line no-undef
@@ -9618,7 +9803,8 @@ var FacetFilter_component = normalizeComponent(
       settings: mw.config.values.WSSearchFront.config.settings,
       showdatepicker: false,
       datepickerlabel: "",
-      askboxes: []
+      askboxes: [],
+      searchboxes: []
     };
   },
   methods: {
@@ -9632,6 +9818,10 @@ var FacetFilter_component = normalizeComponent(
 
       if (this.askboxes.includes(name)) {
         return this.FacetAskCombobox;
+      }
+
+      if (this.searchboxes.includes(name)) {
+        return this.FacetSearch;
       }
 
       return this.FacetFilter;
@@ -9713,6 +9903,10 @@ var FacetFilter_component = normalizeComponent(
 
         if (that.facetSettings[key].display == "ask combobox") {
           that.askboxes.push(key);
+        }
+
+        if (that.facetSettings[key].display == "search") {
+          that.searchboxes.push(key);
         }
 
         if (that.facetSettings[key].display == "datepicker") {
