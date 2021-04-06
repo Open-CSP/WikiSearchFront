@@ -7598,11 +7598,34 @@ var store_updateStore = function updateStore(store) {
 
       console.log(routingString);
       window.history.replaceState('', '', urlsytr);
+      var orobj = {};
+      var selected = [];
+      root.selected.forEach(function (element) {
+        // eslint-disable-next-line no-undef
+        if (mw.config.values.WSSearchFront.config.facetSettings[element.key] && mw.config.values.WSSearchFront.config.facetSettings[element.key].logic && mw.config.values.WSSearchFront.config.facetSettings[element.key].logic == 'or') {
+          console.log(element.key);
+
+          if (!orobj[element.key]) {
+            orobj[element.key] = [element.value];
+          } else {
+            orobj[element.key].push(element.value);
+          }
+        } else {
+          selected.push(element);
+        }
+      });
+      Object.keys(orobj).forEach(function (key) {
+        selected.push({
+          'key': key,
+          'value': orobj[key]
+        });
+      });
+      console.log(selected);
       var params = {
         action: 'query',
         meta: 'WSSearch',
         format: 'json',
-        filter: JSON.stringify(root.selected),
+        filter: JSON.stringify(selected),
         term: root.term,
         from: root.from,
         limit: root.size,

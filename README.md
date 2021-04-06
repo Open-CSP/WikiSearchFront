@@ -34,6 +34,7 @@ example
     #label=Page type
     #display=pill
     #highlight=true
+    #logic=or
 |?Users
     #display=link
 |?Image
@@ -71,6 +72,7 @@ sort options=Title, Version   //optional, shows a dropdown with sort options
     @<property>
     `#display=<option>`  // optional, options: datepicker, combobox, ask combobox or range
     `#label=<text>`      //optional
+    `#logic=or`      //optional
 
    for display range add `#max=<number>`  and `#step=<number>`
 
