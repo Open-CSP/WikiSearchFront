@@ -44,7 +44,8 @@
 			       "search-total",
 					   "wssearch-less",
 						 "wssearch-more",
-						 "search-order"
+						 "search-order",
+						 "search-score"
            ],
            "styles": [
 						"wssearch.css"

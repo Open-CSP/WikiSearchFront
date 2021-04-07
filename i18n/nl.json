@@ -5,6 +5,7 @@
     "date-range-to": "Tot",
     "wssearch-more": "Toon meer",
     "wssearch-less": "Toon minder",
-    "search-order": "Sorteer op"
+    "search-order": "Sorteer op",
+    "search-score" : "Relevantie"
 
 }

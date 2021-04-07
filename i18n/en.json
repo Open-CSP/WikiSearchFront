@@ -5,6 +5,7 @@
     "date-range-to": "Date to",
     "wssearch-more": "Show more",
     "wssearch-less": "Show less",
-    "search-order": "Order by"
+    "search-order": "Order by",
+    "search-score" : "Relevance"
 
 }
