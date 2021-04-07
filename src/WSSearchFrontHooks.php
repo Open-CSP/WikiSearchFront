@@ -1,32 +1,17 @@
 <?php
 
-use SMW\DIProperty;
-use SMW\ApplicationFactory;
-
 
 class WSSearchFrontHooks {
 
-  private static function getzType($key, $store){
-    $IDProperty = new DIProperty( $key );
-    $ID = $store->getObjectIds()->getSMWPropertyID($IDProperty);
-    $Type = $IDProperty->findPropertyValueType();
-
-    if($Type == "_txt"){
-      $ftype = "txtField";
-    }else if($Type == "_num"){
-      $ftype = "numField";
-    }else{
-      $ftype = "wpgField";
-    }
-    return ['key'=> $ID, 'type' => $ftype];
+  private static function getzType($property_name){
+    $property_field_mapper = new \WSSearch\SMW\PropertyFieldMapper( $property_name );
+    $property_id = $property_field_mapper->getPropertyID();
+    $property_type = $property_field_mapper->getPropertyType();
+    return ['key'=> $property_id, 'type' => $property_type];
   }
 
 
   public static function onWSSearchOnLoadFrontend( string &$result, \WSSearch\SearchEngineConfig $config, Parser $parser, array $parameters ) {
-
-
-      $store = ApplicationFactory::getInstance()->getStore();
-
 
 
 $searchconfig = [
