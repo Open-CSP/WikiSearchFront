@@ -33,6 +33,10 @@ example
   	#display=range
 	  #max=5
   	#step=1
+|@Year
+  #display=range
+  #max=20
+  #type=date
 |?Version
 |?Class
     #label=Page type
