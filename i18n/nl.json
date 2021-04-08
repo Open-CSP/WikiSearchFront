@@ -6,6 +6,8 @@
     "wssearch-more": "Toon meer",
     "wssearch-less": "Toon minder",
     "search-order": "Sorteer op",
-    "search-score" : "Relevantie"
+    "search-score" : "Relevantie",
+    "search-false" : "Waar",
+    "search-true" : "Niet waar"
 
 }

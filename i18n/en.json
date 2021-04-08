@@ -6,6 +6,9 @@
     "wssearch-more": "Show more",
     "wssearch-less": "Show less",
     "search-order": "Order by",
-    "search-score" : "Relevance"
+    "search-score" : "Relevance",
+    "search-false" : "False",
+    "search-true" : "True"
+
 
 }
