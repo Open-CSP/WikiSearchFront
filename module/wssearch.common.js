@@ -7496,13 +7496,28 @@ var store_updateStore = function updateStore(store) {
             var step = parseInt(prop.step);
             var pessa = [];
 
-            for (var i = 1; i < max + 1; i += step) {
-              // pessa.push( { "from": i, "to": i + step, "key": (i + step) + '' } )
-              pessa.push({
-                "from": i,
-                "to": max + 1,
-                "key": i + step - 1 + ''
-              });
+            if (prop.type == 'date') {
+              for (var x = 0; x < max; x++) {
+                var key = today.getFullYear() - x;
+                state.realDates[key] = {
+                  "from": key + '-1-1',
+                  "to": key + 1 + '-1-1'
+                };
+                pessa.push({
+                  "key": key.toString(),
+                  "from": createDates(key + '-1-1'),
+                  "to": createDates(key + 1 + '-1-1')
+                });
+              }
+            } else {
+              for (var i = 1; i < max + 1; i += step) {
+                // pessa.push( { "from": i, "to": i + step, "key": (i + step) + '' } )
+                pessa.push({
+                  "from": i,
+                  "to": max + 1,
+                  "key": i + step - 1 + ''
+                });
+              }
             }
 
             facetranges.push({
