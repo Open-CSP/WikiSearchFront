@@ -8485,12 +8485,12 @@ var HitItemvue_type_template_id_969d92b2_staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.constructor.js
 var es_regexp_constructor = __webpack_require__("4d63");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/HitProp.vue?vue&type=template&id=337740a8&
-var HitPropvue_type_template_id_337740a8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{class:_vm.propertclass,domProps:{"innerHTML":_vm._s(_vm.inerhtml)}})}
-var HitPropvue_type_template_id_337740a8_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/HitProp.vue?vue&type=template&id=5dcd3e48&
+var HitPropvue_type_template_id_5dcd3e48_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{class:_vm.propertclass,domProps:{"innerHTML":_vm._s(_vm.inerhtml)}})}
+var HitPropvue_type_template_id_5dcd3e48_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/HitProp.vue?vue&type=template&id=337740a8&
+// CONCATENATED MODULE: ./src/components/HitProp.vue?vue&type=template&id=5dcd3e48&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/HitProp.vue?vue&type=script&lang=js&
 
@@ -8523,7 +8523,8 @@ var HitPropvue_type_template_id_337740a8_staticRenderFns = []
     return {
       inerhtml: '<div class="wssearch-hit-prop-loading"><div class="wssearch-hit-prop-loading-bg"></div></div>',
       // eslint-disable-next-line no-undef
-      settings: mw.config.values.WSSearchFront.config.settings
+      settings: mw.config.values.WSSearchFront.config.settings,
+      monthnames: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
     };
   },
   mounted: function mounted() {
@@ -8629,9 +8630,18 @@ var HitPropvue_type_template_id_337740a8_staticRenderFns = []
             out = "";
           },
           'default': function _default() {
-            propval.forEach(function (element) {
-              out += '<span >' + that.highlightProp(element) + '</span>';
-            });
+            if (that.hit._source["P:" + that.keyid].dat_raw) {
+              var unsplit = that.hit._source["P:" + that.keyid].dat_raw;
+              unsplit.forEach(function (element) {
+                var rawz = element.split("/"); // eslint-disable-next-line no-undef
+
+                out += '<span >' + rawz[3] + ' ' + mw.message(that.monthnames[rawz[2] - 1]).text() + ', ' + rawz[1] + '</span>';
+              });
+            } else {
+              propval.forEach(function (element) {
+                out += '<span >' + that.highlightProp(element) + '</span>';
+              });
+            }
           }
         };
         (outputs[this.type.display] || outputs['default'])();
@@ -8664,8 +8674,8 @@ var HitPropvue_type_style_index_0_lang_css_ = __webpack_require__("b00d");
 
 var HitProp_component = normalizeComponent(
   components_HitPropvue_type_script_lang_js_,
-  HitPropvue_type_template_id_337740a8_render,
-  HitPropvue_type_template_id_337740a8_staticRenderFns,
+  HitPropvue_type_template_id_5dcd3e48_render,
+  HitPropvue_type_template_id_5dcd3e48_staticRenderFns,
   false,
   null,
   null,
