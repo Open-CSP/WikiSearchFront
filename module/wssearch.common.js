@@ -7750,6 +7750,9 @@ var store_store = new vuex_esm["a" /* default */].Store({
     SET_SELECTED: function SET_SELECTED(state, selected) {
       state.selected = selected;
     },
+    NORELOAD_SELECTED: function NORELOAD_SELECTED(state, selected) {
+      state.selected = selected;
+    },
     SET_TERM: function SET_TERM(state, term) {
       state.term = term;
     },
@@ -9350,12 +9353,12 @@ var FacetAskCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetAskCombobox = (FacetAskCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetFilter.vue?vue&type=template&id=fce626e0&
-var FacetFiltervue_type_template_id_fce626e0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:'wssearch--filter wssearch--filter__' + _vm.name.toLowerCase()},[(_vm.strippedbuckets.length)?_c('span',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v(" "+_vm._s(_vm.cleanname)+" ")])]):_vm._e(),_c('div',{staticClass:"wssearch--filter-options"},[_vm._l((_vm.bucketstoshow),function(agg,i){return _c('facet-checbox',{key:i+agg.key+_vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),(_vm.strippedbuckets.length > _vm.collapsed)?_c('label',{staticClass:"wssearch--filter-showmore",on:{"click":function($event){_vm.open = !_vm.open}}},[_c('span',[_vm._v(" "+_vm._s(_vm.$i18n( 'wssearch-' +_vm.lessormore ))+" ")]),_c('span',{staticClass:"wssearch--filter-showmore-icon",class:'wssearch--filter-icon__'+_vm.lessormore})]):_vm._e()],2)])}
-var FacetFiltervue_type_template_id_fce626e0_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetFilter.vue?vue&type=template&id=91edbac2&
+var FacetFiltervue_type_template_id_91edbac2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:'wssearch--filter wssearch--filter__' + _vm.name.toLowerCase()},[(_vm.strippedbuckets.length)?_c('span',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v(" "+_vm._s(_vm.cleanname)+" ")])]):_vm._e(),_c('div',{staticClass:"wssearch--filter-options"},[_vm._l((_vm.bucketstoshow),function(agg,i){return _c('facet-checbox',{key:i+agg.key+_vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),(_vm.strippedbuckets.length > _vm.collapsed)?_c('label',{staticClass:"wssearch--filter-showmore",on:{"click":function($event){_vm.open = !_vm.open}}},[_c('span',[_vm._v(" "+_vm._s(_vm.$i18n( 'wssearch-' +_vm.lessormore ))+" ")]),_c('span',{staticClass:"wssearch--filter-showmore-icon",class:'wssearch--filter-icon__'+_vm.lessormore})]):_vm._e()],2)])}
+var FacetFiltervue_type_template_id_91edbac2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FacetFilter.vue?vue&type=template&id=fce626e0&
+// CONCATENATED MODULE: ./src/components/FacetFilter.vue?vue&type=template&id=91edbac2&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetFilter.vue?vue&type=script&lang=js&
 
@@ -9407,6 +9410,7 @@ var FacetFiltervue_type_template_id_fce626e0_staticRenderFns = []
 //
 //
 
+
 /* harmony default export */ var FacetFiltervue_type_script_lang_js_ = ({
   components: {
     'facet-checbox': FacetCheckbox
@@ -9423,8 +9427,15 @@ var FacetFiltervue_type_template_id_fce626e0_staticRenderFns = []
       open: false,
       collapsed: 5,
       translations: "",
-      recompute: 1
+      strippedbuckets: "",
+      bucketstoshow: "",
+      fired: false
     };
+  },
+  watch: {
+    propchange: function propchange() {
+      this.organize();
+    }
   },
   mounted: function mounted() {
     if (this.translation) {
@@ -9440,22 +9451,20 @@ var FacetFiltervue_type_template_id_fce626e0_staticRenderFns = []
       api.post(params).done(function (data) {
         if (data.query) {
           that.translations = data.query.results;
-          that.recompute = Math.random();
+          that.organize();
         }
       });
+    } else {
+      this.organize();
     }
   },
-  computed: {
-    cleanname: function cleanname() {
-      if (this.label) {
-        return this.label;
-      }
+  methods: {
+    organize: function organize() {
+      var that = this;
+      var or = "";
 
-      return this.name.replace(/_/g, " ");
-    },
-    convertedbucket: function convertedbucket() {
       if (Array.isArray(this.buckets)) {
-        return this.buckets;
+        or = this.buckets;
       } else {
         var keys = [];
 
@@ -9465,33 +9474,63 @@ var FacetFiltervue_type_template_id_fce626e0_staticRenderFns = []
           keys.push(as);
         }
 
-        return keys;
+        or = keys;
       }
-    },
-    strippedbuckets: function strippedbuckets() {
-      var dummy = this.recompute;
-      var that = this;
+
       var trans = that.translations;
-      var clean = this.convertedbucket.filter(function (el) {
+      var clean = or.filter(function (el) {
         return el.doc_count > 0;
       });
 
       if (this.translation) {
         clean.forEach(function (element, i) {
           if (trans[element.key] && trans[element.key].printouts[that.translation]) {
-            clean[i].name = trans[element.key].printouts[that.translation][0];
+            if (trans[element.key].printouts[that.translation][0].fulltext) {
+              clean[i].name = trans[element.key].printouts[that.translation][0].fulltext;
+            } else {
+              clean[i].name = trans[element.key].printouts[that.translation][0];
+            }
           }
         });
+        var selected = this.$store.state.selected;
+
+        if (selected.length > 0 && !this.fired) {
+          selected.forEach(function (element, i) {
+            if (trans[element.value] && trans[element.value].printouts[that.translation]) {
+              if (trans[element.value].printouts[that.translation][0].fulltext) {
+                selected[i].name = trans[element.value].printouts[that.translation][0].fulltext;
+              } else {
+                selected[i].name = trans[element.value].printouts[that.translation][0];
+              }
+            }
+          });
+          this.$store.commit('SET_SELECTED', []);
+          external_commonjs_vue_commonjs2_vue_root_Vue_default.a.nextTick(function () {
+            that.$store.commit('SET_SELECTED', selected);
+          });
+          this.fired = true;
+        } else {
+          this.fired = true;
+        }
       }
 
-      console.log(dummy);
-      return clean;
+      this.strippedbuckets = clean;
+      this.bucketstoshow = this.open ? this.strippedbuckets : this.strippedbuckets.slice(0, this.collapsed);
+    }
+  },
+  computed: {
+    propchange: function propchange() {
+      return this.buckets;
+    },
+    cleanname: function cleanname() {
+      if (this.label) {
+        return this.label;
+      }
+
+      return this.name.replace(/_/g, " ");
     },
     lessormore: function lessormore() {
       return this.open ? 'less' : 'more';
-    },
-    bucketstoshow: function bucketstoshow() {
-      return this.open ? this.strippedbuckets : this.strippedbuckets.slice(0, this.collapsed);
     }
   }
 });
@@ -9511,8 +9550,8 @@ var FacetFiltervue_type_style_index_0_lang_css_ = __webpack_require__("f060");
 
 var FacetFilter_component = normalizeComponent(
   components_FacetFiltervue_type_script_lang_js_,
-  FacetFiltervue_type_template_id_fce626e0_render,
-  FacetFiltervue_type_template_id_fce626e0_staticRenderFns,
+  FacetFiltervue_type_template_id_91edbac2_render,
+  FacetFiltervue_type_template_id_91edbac2_staticRenderFns,
   false,
   null,
   null,

@@ -14,12 +14,16 @@ example
 |title=Version
     #label=Label for table
     #highlight=true
+    #urlstring=search
 |layout=table
 |@Title
     #display=ask combobox
     #query=[[Class::+]]
     #data=Title
     #text=name
+|@Service
+    #translation=Name
+    #query=[[Class::Service]]
 |@Version
     #display=combobox
 |@Modification date
@@ -51,7 +55,12 @@ example
 **settings :**
 
 size=`<number>`      // amount of results per page
-title=`<property>`   // property to use as link title , optional setting `#label=`, `#highlight=true`
+title=`<property>`   // property to use as link title
+
+optional title setting:
+ `#label=<text>`
+ `#highlight=true`          //adds highlights to result title
+ `#urlstring=<urlparam>`    //adds search terms to result href
 
 layout=table                  //optional, show results in table layout
 clear=term                    //optional, remove search term when clearing filters
@@ -67,10 +76,11 @@ sort options=Title, Version   //optional, shows a dropdown with sort options
    for display template add `#template=<template>`  template, passes {{{Page|}}} and {{{Value|}}} to the template
 
 
-**optional settings for facets:**
+**settings for facets:**
 
     @<property>
-    `#display=<option>`  // optional, options: datepicker, search, combobox, ask combobox or range
+    `#display=<option>`  // optional
+    options: datepicker, search, combobox, ask combobox or range
     `#label=<text>`      // optional
     `#logic=or`          // optional
 
@@ -80,3 +90,8 @@ sort options=Title, Version   //optional, shows a dropdown with sort options
        `#query=<ask>`      // the ask query example [[Class::Page]]
        `#data=<property>`  // property for data
        `#text=<property>`  // optional, property for display
+
+  facet translations
+
+     `#translation=<property>` // optional, translate property of type page
+     `#query=<ask>`      // required for translation, the ask query example [[Class::Page]]

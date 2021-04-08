@@ -48,7 +48,7 @@ foreach ($parameters as $key => $value) {
               $split3 = explode('=', $sp);
               $prop = trim($split3[1]);
               $val['name'] = $prop;
-              $propinfo = WSSearchFrontHooks::getzType(str_replace(' ', '_',$prop), $store);
+              $propinfo = WSSearchFrontHooks::getzType(str_replace(' ', '_',$prop));
               $val['key'] = $propinfo['key'];
               $val['type'] = $propinfo['type'];
 
@@ -87,7 +87,7 @@ foreach ($parameters as $key => $value) {
               if($i == 0){
                   $prop = trim(substr($sp, 1));
                   $searchconfig["hitSettings"][$prop] = [];
-                  $propinfo = WSSearchFrontHooks::getzType(str_replace(' ', '_',$prop), $store);
+                  $propinfo = WSSearchFrontHooks::getzType(str_replace(' ', '_',$prop));
                   $searchconfig["hitSettings"][$prop]['key'] = $propinfo['key'];
                   $searchconfig["hitSettings"][$prop]['type'] = $propinfo['type'];
               }else{
