@@ -35,7 +35,18 @@ foreach ($parameters as $key => $value) {
       }
 
       if($split[0] == 'sort options'){
-        $val = explode(",", $split[1]);
+        $sortops = explode(",", $split[1]);
+        $outv = [];
+        foreach ($sortops as $i => $sp) {
+           $sps = explode(":", $sp);
+           if(sizeof($sps) > 1){
+             $outv[trim($sps[0])] =  ["label" => trim($sps[1]) ];
+           }else{
+             $outv[trim($sp)] = [];
+           }
+
+        }
+        $val = $outv;
       }
 
       if($split[0] == 'title'){
