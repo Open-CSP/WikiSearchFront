@@ -34,6 +34,11 @@ foreach ($parameters as $key => $value) {
         $val = intval($split[1]);
       }
 
+      if($split[0] == 'size options'){
+           $sizeops = explode(",", $split[1]);
+           $val = $sizeops;
+      }
+
       if($split[0] == 'sort options'){
         $sortops = explode(",", $split[1]);
         $outv = [];

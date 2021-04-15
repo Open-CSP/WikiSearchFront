@@ -8,7 +8,9 @@
     "search-order": "Order by",
     "search-score" : "Relevance",
     "search-false" : "False",
-    "search-true" : "True"
+    "search-true" : "True",
+    "search-all" : "All",
+    "search-page" : " / page"
 
 
 }

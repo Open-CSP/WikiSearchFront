@@ -7317,12 +7317,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=9d5a3d72&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wssearch",class:_vm.selectedclasses},[_c('search-input'),_c('selected-pils'),(_vm.settings['sort options'])?_c('div',{staticClass:"wssearch--order"},[_c('span',{staticClass:"wssearch--order__label"},[_vm._v(" "+_vm._s(_vm.$i18n('search-order'))+" ")]),_c('div',{staticClass:"wssearch--order__wrapper"},[_c('span',{staticClass:"wssearch--order__select",attrs:{"tabindex":"0","aria-disabled":"false"}},[_vm._v(" "+_vm._s(_vm.sortordertype == 'score' ? _vm.$i18n('search-score') : _vm.sortordertype)+" ")]),_c('div',{staticClass:"wssearch--order__options"},[_c('span',{staticClass:"wssearch--order__option",on:{"click":function($event){return _vm.$store.commit('SET_ORDERTYPE', 'score')}}},[_vm._v(" "+_vm._s(_vm.$i18n('search-score'))+" ")]),_vm._l((_vm.settings['sort options']),function(order,key){return _c('span',{key:key,staticClass:"wssearch--order__option",on:{"click":function($event){return _vm.$store.commit('SET_ORDERTYPE', key)}}},[_vm._v(" "+_vm._s(order.label ? order.label : key)+" ")])})],2)]),_c('span',{staticClass:"wssearch--order__sortorder",on:{"click":_vm.setorder}},[_c('span',{class:'wssearch--order__icon wssearch--order__' + _vm.sortorder})])]):_vm._e(),(_vm.aggs)?_c('div',{staticClass:"wssearch--filters"},[(_vm.showdatepicker)?_c('date-range',{attrs:{"label":_vm.datepickerlabel}}):_vm._e(),_vm._l((_vm.aggstoshow),function(name,index){return _c(_vm.compswitch(name),{key:index,tag:"component",attrs:{"translation":_vm.facetSettings[name].translation,"query":_vm.facetSettings[name].query,"qtext":_vm.facetSettings[name].text,"type":_vm.facetSettings[name].type,"qdata":_vm.facetSettings[name].data,"buckets":_vm.aggs[name] ? _vm.aggs[name].buckets : [],"label":_vm.facetSettings[name].label,"name":name}})})],2):_vm._e(),_c('div',{staticClass:"wssearch--total"},[(_vm.total > 0)?_c('b',{staticClass:"wssearch--total__nr"},[_vm._v(" "+_vm._s(_vm.total)+" ")]):_vm._e(),_vm._v(_vm._s(_vm.$i18n('search-total', _vm.total))+" ")]),_c('div',{staticClass:"wssearch--main",class:_vm.mainloading},[_c('div',{staticClass:"wssearch--hits",style:('--table-columns:'+ _vm.tableheaders.length)},[(_vm.layout)?_c('div',{staticClass:"wssearch--table__header"},_vm._l((_vm.tableheaders),function(hitID,key){return _c('span',{key:key},[_vm._v(" "+_vm._s(hitID.name)+" ")])}),0):_vm._e(),_vm._l((_vm.hits),function(hit,i){return _c('hit-item',{key:i,attrs:{"hit":hit}})})],2),_c('hit-pagers',{attrs:{"size":_vm.size,"from":_vm.from,"total":_vm.total}})],1)],1)])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=81930626&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wssearch",class:_vm.selectedclasses},[_c('search-input'),_c('selected-pils'),(_vm.settings['sort options'])?_c('div',{staticClass:"wssearch--order"},[_c('span',{staticClass:"wssearch--order__label"},[_vm._v(" "+_vm._s(_vm.$i18n('search-order'))+" ")]),_c('div',{staticClass:"wssearch--order__wrapper"},[_c('span',{staticClass:"wssearch--order__select",attrs:{"tabindex":"0","aria-disabled":"false"}},[_vm._v(" "+_vm._s(_vm.sortordertype == 'score' ? _vm.$i18n('search-score') : _vm.sortordertype)+" ")]),_c('div',{staticClass:"wssearch--order__options"},[_c('span',{staticClass:"wssearch--order__option",on:{"click":function($event){return _vm.$store.commit('SET_ORDERTYPE', 'score')}}},[_vm._v(" "+_vm._s(_vm.$i18n('search-score'))+" ")]),_vm._l((_vm.settings['sort options']),function(order,key){return _c('span',{key:key,staticClass:"wssearch--order__option",on:{"click":function($event){return _vm.$store.commit('SET_ORDERTYPE', key)}}},[_vm._v(" "+_vm._s(order.label ? order.label : key)+" ")])})],2)]),_c('span',{staticClass:"wssearch--order__sortorder",on:{"click":_vm.setorder}},[_c('span',{class:'wssearch--order__icon wssearch--order__' + _vm.sortorder})])]):_vm._e(),(_vm.aggs)?_c('div',{staticClass:"wssearch--filters"},[(_vm.showdatepicker)?_c('date-range',{attrs:{"label":_vm.datepickerlabel}}):_vm._e(),_vm._l((_vm.aggstoshow),function(name,index){return _c(_vm.compswitch(name),{key:index,tag:"component",attrs:{"translation":_vm.facetSettings[name].translation,"query":_vm.facetSettings[name].query,"qtext":_vm.facetSettings[name].text,"type":_vm.facetSettings[name].type,"qdata":_vm.facetSettings[name].data,"buckets":_vm.aggs[name] ? _vm.aggs[name].buckets : [],"label":_vm.facetSettings[name].label,"name":name}})})],2):_vm._e(),_c('div',{staticClass:"wssearch--total"},[(_vm.total > 0)?_c('b',{staticClass:"wssearch--total__nr"},[_vm._v(" "+_vm._s(_vm.total)+" ")]):_vm._e(),_vm._v(_vm._s(_vm.$i18n('search-total', _vm.total))+" ")]),_c('div',{staticClass:"wssearch--main",class:_vm.mainloading},[_c('div',{staticClass:"wssearch--hits",style:('--table-columns:'+ _vm.tableheaders.length)},[(_vm.layout)?_c('div',{staticClass:"wssearch--table__header"},_vm._l((_vm.tableheaders),function(hitID,key){return _c('span',{key:key},[_vm._v(" "+_vm._s(hitID.name)+" ")])}),0):_vm._e(),_vm._l((_vm.hits),function(hit,i){return _c('hit-item',{key:i,attrs:{"hit":hit}})})],2),_c('hit-pagers',{attrs:{"size":_vm.size,"from":_vm.from,"total":_vm.total,"settings":_vm.settings}})],1)],1)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=9d5a3d72&
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=81930626&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
 var es_object_to_string = __webpack_require__("d3b7");
@@ -7423,7 +7423,7 @@ var routing = false;
 
 var store_updateStore = function updateStore(store) {
   store.subscribe(function (mutation, state) {
-    if (mutation.type === "START" || mutation.type === "SET_TERM" || mutation.type === "SET_FROM" || mutation.type === "SET_ORDERTYPE" || mutation.type === "SET_ORDER" || mutation.type === "SET_SELECTED") {
+    if (mutation.type === "START" || mutation.type === "SET_TERM" || mutation.type === "SET_FROM" || mutation.type === "SET_ORDERTYPE" || mutation.type === "SET_ORDER" || mutation.type === "SET_SIZE" || mutation.type === "SET_SELECTED") {
       if (mutation.type != "SET_FROM") {
         state.from = 0;
       } //mount function need to move this to somewhere else
@@ -7675,6 +7675,16 @@ var store_updateStore = function updateStore(store) {
       } // eslint-disable-next-line no-undef
 
 
+      if (mw.config.values.WSSearchFront.config.settings['sort']) {
+        params.sortings = JSON.stringify([{
+          "type": "property",
+          // eslint-disable-next-line no-undef
+          "property": mw.config.values.WSSearchFront.config.settings['sort'],
+          "order": "asc"
+        }]);
+      } // eslint-disable-next-line no-undef
+
+
       var api = new mw.Api();
       api.post(params).done(function (data) {
         root.total = data.result.total;
@@ -7770,6 +7780,9 @@ var store_store = new vuex_esm["a" /* default */].Store({
     },
     SET_ORDER: function SET_ORDER(state, order) {
       state.sortorder = order;
+    },
+    SET_SIZE: function SET_SIZE(state, size) {
+      state.size = size;
     },
     SET_ORDERTYPE: function SET_ORDERTYPE(state, type) {
       state.sortordertype = type;
@@ -8923,15 +8936,49 @@ var HitItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var HitItem = (HitItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/HitPagers.vue?vue&type=template&id=0f4e0bbc&
-var HitPagersvue_type_template_id_0f4e0bbc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.total > _vm.size)?_c('div',{staticClass:"wssearch--pagers"},[_c('span',{staticClass:"wssearch--pager wssearch--pager-back",class:_vm.showback,on:{"click":_vm.back}},[_c('span',{staticClass:"wssearch--pager-back-icon"})]),_c('span',{staticClass:"wssearch--pager",class:_vm.activepage(1),on:{"click":_vm.move}},[_c('span',[_vm._v(" 1 ")])]),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.from / _vm.size > 2),expression:"from / size > 2"}],staticClass:"wssearch--pager wssearch--dots",class:_vm.showback},[_vm._v(" ... ")]),_vm._l((_vm.pagers),function(pager,index){return _c('span',{key:index,staticClass:"wssearch--pager",class:_vm.activepage(pager),on:{"click":_vm.move}},[_c('span',[_vm._v(" "+_vm._s(pager)+" ")])])}),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.from / _vm.size < _vm.last - 3 ),expression:"from / size < last - 3 "}],staticClass:"wssearch--pager wssearch--dots"},[_vm._v(" ... ")]),_c('span',{staticClass:"wssearch--pager",class:_vm.activepage(_vm.last),on:{"click":_vm.move}},[_c('span',[_vm._v(" "+_vm._s(_vm.last)+" ")])]),_c('span',{staticClass:"wssearch--pager wssearch--pager-forward",class:_vm.showforward,on:{"click":_vm.next}},[_c('span',{staticClass:"wssearch--pager-forward-icon"})])],2):_vm._e()}
-var HitPagersvue_type_template_id_0f4e0bbc_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/HitPagers.vue?vue&type=template&id=823e37f8&
+var HitPagersvue_type_template_id_823e37f8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--pagers"},[(_vm.settings['size options'])?_c('div',{staticClass:"wssearch--size"},[_c('div',{staticClass:"wssearch--size__wrapper"},[_c('span',{staticClass:"wssearch--size__select",attrs:{"tabindex":"0","aria-disabled":"false"}},[_vm._v(" "+_vm._s(_vm.size == 999 ? _vm.$i18n('search-all') : _vm.size + _vm.$i18n('search-page'))+" ")]),_c('div',{staticClass:"wssearch--size__options"},[_vm._l((_vm.settings['size options']),function(option,key){return _c('span',{key:key,staticClass:"wssearch--size__option",on:{"click":function($event){return _vm.$store.commit('SET_SIZE', +option)}}},[_vm._v(" "+_vm._s(option + _vm.$i18n('search-page'))+" ")])}),_c('span',{staticClass:"wssearch--size__option",on:{"click":function($event){return _vm.$store.commit('SET_SIZE', 999)}}},[_vm._v(" "+_vm._s(_vm.$i18n('search-all'))+" ")])],2)])]):_vm._e(),(_vm.total > _vm.size)?_c('div',[_c('span',{staticClass:"wssearch--pager wssearch--pager-back",class:_vm.showback,on:{"click":_vm.back}},[_c('span',{staticClass:"wssearch--pager-back-icon"})]),_c('span',{staticClass:"wssearch--pager",class:_vm.activepage(1),on:{"click":_vm.move}},[_c('span',[_vm._v(" 1 ")])]),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.from / _vm.size > 2),expression:"from / size > 2"}],staticClass:"wssearch--pager wssearch--dots",class:_vm.showback},[_vm._v(" ... ")]),_vm._l((_vm.pagers),function(pager,index){return _c('span',{key:index,staticClass:"wssearch--pager",class:_vm.activepage(pager),on:{"click":_vm.move}},[_c('span',[_vm._v(" "+_vm._s(pager)+" ")])])}),_c('span',{directives:[{name:"show",rawName:"v-show",value:(_vm.from / _vm.size < _vm.last - 3 ),expression:"from / size < last - 3 "}],staticClass:"wssearch--pager wssearch--dots"},[_vm._v(" ... ")]),_c('span',{staticClass:"wssearch--pager",class:_vm.activepage(_vm.last),on:{"click":_vm.move}},[_c('span',[_vm._v(" "+_vm._s(_vm.last)+" ")])]),_c('span',{staticClass:"wssearch--pager wssearch--pager-forward",class:_vm.showforward,on:{"click":_vm.next}},[_c('span',{staticClass:"wssearch--pager-forward-icon"})])],2):_vm._e()])}
+var HitPagersvue_type_template_id_823e37f8_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/HitPagers.vue?vue&type=template&id=0f4e0bbc&
+// CONCATENATED MODULE: ./src/components/HitPagers.vue?vue&type=template&id=823e37f8&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/HitPagers.vue?vue&type=script&lang=js&
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9006,7 +9053,8 @@ var HitPagersvue_type_template_id_0f4e0bbc_staticRenderFns = []
   props: {
     total: Number,
     from: Number,
-    size: Number
+    size: Number,
+    settings: Object
   },
   methods: {
     activepage: function activepage(pager) {
@@ -9094,8 +9142,8 @@ var HitPagersvue_type_style_index_0_lang_css_ = __webpack_require__("0c06");
 
 var HitPagers_component = normalizeComponent(
   components_HitPagersvue_type_script_lang_js_,
-  HitPagersvue_type_template_id_0f4e0bbc_render,
-  HitPagersvue_type_template_id_0f4e0bbc_staticRenderFns,
+  HitPagersvue_type_template_id_823e37f8_render,
+  HitPagersvue_type_template_id_823e37f8_staticRenderFns,
   false,
   null,
   null,
@@ -9786,6 +9834,7 @@ var FacetSearch_component = normalizeComponent(
 
 
 
+//
 //
 //
 //

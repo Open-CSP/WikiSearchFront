@@ -7,7 +7,9 @@
     "wssearch-less": "Toon minder",
     "search-order": "Sorteer op",
     "search-score" : "Relevantie",
-    "search-false" : "Waar",
-    "search-true" : "Niet waar"
+    "search-false" : "Niet waar",
+    "search-true" : "Waar",
+    "search-all" : "Alles",
+    "search-page" : " / pagina"
 
 }

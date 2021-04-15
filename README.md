@@ -68,7 +68,9 @@ optional title setting:
 
 layout=table                  //optional, show results in table layout
 clear=term                    //optional, remove search term when clearing filters
+sort=`<property>`             //optional, property to sort results by
 sort options=Title, Version   //optional, shows a dropdown with sort options
+size options=<number>, <number> //optional , shows a dropdown with size options
 
 **settings for result output:**
 
