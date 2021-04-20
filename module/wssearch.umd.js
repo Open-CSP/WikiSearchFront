@@ -10020,12 +10020,12 @@ var FacetSearch_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetSearch = (FacetSearch_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetSorted.vue?vue&type=template&id=53a969ba&
-var FacetSortedvue_type_template_id_53a969ba_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',_vm._l((_vm.outbuks),function(typer,i){return _c('div',{key:i,class:'wssearch--filter'},[(typer.buckets.length)?_c('span',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v(" "+_vm._s(i)+" ")])]):_vm._e(),_c('div',{staticClass:"wssearch--filter-options"},[(typer.buckets.length > _vm.collapsed && !typer.buckets.open)?[_vm._l((typer.buckets.slice(0, _vm.collapsed)),function(agg,i){return _c('facet-checbox',{key:i+agg.key+_vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),_vm._l((typer.buckets.slice(_vm.collapsed, typer.buckets.length)),function(agg,i){return _c('facet-checbox',{key:i+agg.key+_vm.name,staticStyle:{"display":"none"},attrs:{"agg":agg,"index":i,"name":_vm.name}})})]:_vm._l((typer.buckets),function(agg,i){return _c('facet-checbox',{key:i+agg.key+_vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),(typer.buckets.length > _vm.collapsed)?_c('label',{staticClass:"wssearch--filter-showmore",on:{"click":function($event){typer.buckets.open = !typer.buckets.open}}},[_c('span',[_vm._v(" "+_vm._s(_vm.$i18n( 'wssearch-' +_vm.lessormore ))+" ")]),_c('span',{staticClass:"wssearch--filter-showmore-icon",class:'wssearch--filter-icon__'+_vm.lessormore})]):_vm._e()],2)])}),0)}
-var FacetSortedvue_type_template_id_53a969ba_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetSorted.vue?vue&type=template&id=3fda9107&
+var FacetSortedvue_type_template_id_3fda9107_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',_vm._l((_vm.outbuks),function(typer,i){return _c('div',{key:i,class:'wssearch--filter'},[(typer.buckets.length)?_c('span',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v(" "+_vm._s(i)+" ")])]):_vm._e(),_c('div',{staticClass:"wssearch--filter-options"},[(typer.buckets.length > _vm.collapsed && !typer.open)?[_vm._l((typer.buckets.slice(0, _vm.collapsed)),function(agg,i){return _c('facet-checbox',{key:i+agg.key+_vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),_vm._l((typer.buckets.slice(_vm.collapsed, typer.buckets.length)),function(agg,i){return _c('facet-checbox',{key:i+agg.key+_vm.name,staticStyle:{"display":"none"},attrs:{"agg":agg,"index":i,"name":_vm.name}})})]:_vm._l((typer.buckets),function(agg,i){return _c('facet-checbox',{key:i+agg.key+_vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),(typer.buckets.length > _vm.collapsed)?_c('label',{staticClass:"wssearch--filter-showmore",on:{"click":function($event){typer.open ? typer.open = true : typer.open = false}}},[_c('span',[_vm._v(" "+_vm._s(_vm.$i18n( 'wssearch-' +_vm.lessormore ))+" ")]),_c('span',{staticClass:"wssearch--filter-showmore-icon",class:'wssearch--filter-icon__'+_vm.lessormore})]):_vm._e()],2)])}),0)}
+var FacetSortedvue_type_template_id_3fda9107_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FacetSorted.vue?vue&type=template&id=53a969ba&
+// CONCATENATED MODULE: ./src/components/FacetSorted.vue?vue&type=template&id=3fda9107&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/defineProperty/_index.mjs
 function _defineProperty(obj, key, value) {
@@ -10312,8 +10312,8 @@ var FacetSortedvue_type_style_index_0_lang_css_ = __webpack_require__("6627");
 
 var FacetSorted_component = normalizeComponent(
   components_FacetSortedvue_type_script_lang_js_,
-  FacetSortedvue_type_template_id_53a969ba_render,
-  FacetSortedvue_type_template_id_53a969ba_staticRenderFns,
+  FacetSortedvue_type_template_id_3fda9107_render,
+  FacetSortedvue_type_template_id_3fda9107_staticRenderFns,
   false,
   null,
   null,
