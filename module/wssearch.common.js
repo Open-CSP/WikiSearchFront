@@ -8282,22 +8282,21 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var SearchInput = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=4341fdf4&
-var PillsSelectedvue_type_template_id_4341fdf4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('pill-item',{key:index,attrs:{"activefilter":activefilter}})}),(_vm.selected.length)?_c('span',{staticClass:"wssearch--selected-clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearfilters}},[_vm._v(" "+_vm._s(_vm.$i18n( 'clear-all-filters' ))+" ")]):_vm._e()],2)}
-var PillsSelectedvue_type_template_id_4341fdf4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=28550878&
+var PillsSelectedvue_type_template_id_28550878_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('pill-item',{key:index,attrs:{"activefilter":activefilter,"label":activefilter.name}})}),(_vm.selected.length)?_c('span',{staticClass:"wssearch--selected-clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearfilters}},[_vm._v(" "+_vm._s(_vm.$i18n( 'clear-all-filters' ))+" ")]):_vm._e()],2)}
+var PillsSelectedvue_type_template_id_28550878_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=4341fdf4&
+// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=28550878&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillItem.vue?vue&type=template&id=19865992&
-var PillItemvue_type_template_id_19865992_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"wssearch--selected-filter",class:_vm.propertclass,attrs:{"for":_vm.forkey}},[_c('bdi',[_vm._v(" "+_vm._s(_vm.title)+" ")])])}
-var PillItemvue_type_template_id_19865992_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillItem.vue?vue&type=template&id=72504c16&
+var PillItemvue_type_template_id_72504c16_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"wssearch--selected-filter",class:_vm.propertclass,attrs:{"for":_vm.forkey}},[_c('bdi',[_vm._v(" "+_vm._s(_vm.title)+" ")])])}
+var PillItemvue_type_template_id_72504c16_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PillItem.vue?vue&type=template&id=19865992&
+// CONCATENATED MODULE: ./src/components/PillItem.vue?vue&type=template&id=72504c16&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillItem.vue?vue&type=script&lang=js&
-
 
 
 //
@@ -8315,7 +8314,8 @@ var PillItemvue_type_template_id_19865992_staticRenderFns = []
 /* harmony default export */ var PillItemvue_type_script_lang_js_ = ({
   name: 'PillItem',
   props: {
-    activefilter: Object
+    activefilter: Object,
+    label: String
   },
   computed: {
     propertclass: function propertclass() {
@@ -8326,7 +8326,7 @@ var PillItemvue_type_template_id_19865992_staticRenderFns = []
       return this.activefilter.key.toLowerCase().replace(/[^a-z0-9]/gmi, '_') + '--' + this.activefilter.value.toLowerCase().replace(/[^a-z0-9]/gmi, '_');
     },
     title: function title() {
-      return this.activefilter.name ? this.activefilter.name : this.activefilter.value;
+      return this.label ? this.label : this.activefilter.value;
     }
   }
 });
@@ -8346,8 +8346,8 @@ var PillItemvue_type_style_index_0_lang_css_ = __webpack_require__("8e3c");
 
 var PillItem_component = normalizeComponent(
   components_PillItemvue_type_script_lang_js_,
-  PillItemvue_type_template_id_19865992_render,
-  PillItemvue_type_template_id_19865992_staticRenderFns,
+  PillItemvue_type_template_id_72504c16_render,
+  PillItemvue_type_template_id_72504c16_staticRenderFns,
   false,
   null,
   null,
@@ -8359,6 +8359,7 @@ var PillItem_component = normalizeComponent(
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=script&lang=js&
 
 
+//
 //
 //
 //
@@ -8417,8 +8418,8 @@ var PillsSelectedvue_type_style_index_0_lang_css_ = __webpack_require__("4176");
 
 var PillsSelected_component = normalizeComponent(
   components_PillsSelectedvue_type_script_lang_js_,
-  PillsSelectedvue_type_template_id_4341fdf4_render,
-  PillsSelectedvue_type_template_id_4341fdf4_staticRenderFns,
+  PillsSelectedvue_type_template_id_28550878_render,
+  PillsSelectedvue_type_template_id_28550878_staticRenderFns,
   false,
   null,
   null,
