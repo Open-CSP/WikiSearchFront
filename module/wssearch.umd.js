@@ -9447,12 +9447,12 @@ var HitPagers_component = normalizeComponent(
 )
 
 /* harmony default export */ var HitPagers = (HitPagers_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetCombobox.vue?vue&type=template&id=7fe73f77&
-var FacetComboboxvue_type_template_id_7fe73f77_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.buckets.length)?_c('div',{class:'wssearch--filter wssearch--filter__' + _vm.name.toLowerCase().replace(/[^a-z0-9]/gmi, '_')},[_c('span',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v(" "+_vm._s(_vm.filtername)+" ")])]),_c('div',{staticClass:"wssearch--selected-filters__combobox"},_vm._l((_vm.pils),function(activefilter,index){return _c('pill-item',{key:index,attrs:{"activefilter":activefilter}})}),1),_c('div',{staticClass:"wssearch--filter-options-search-wrapper"},[(_vm.term)?_c('span',{staticClass:"wssearch--search-clear wssearch--search-clear__combobox",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearInput}}):_vm._e(),_c('input',{staticClass:"wssearch--filter-options-search",attrs:{"type":"input","placeholder":_vm.filtername},domProps:{"value":_vm.term},on:{"input":_vm.searchaggs}}),_c('div',{staticClass:"wssearch--filter-options wssearch--filter-options__combobox"},_vm._l((_vm.buckets),function(agg,i){return _c('facet-checkbox',{key:i+agg.key+_vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),1)])]):_vm._e()}
-var FacetComboboxvue_type_template_id_7fe73f77_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetCombobox.vue?vue&type=template&id=4da1b3be&
+var FacetComboboxvue_type_template_id_4da1b3be_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.buckets.length)?_c('div',{class:'wssearch--filter wssearch--filter__' + _vm.name.toLowerCase().replace(/[^a-z0-9]/gmi, '_')},[_c('span',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v(" "+_vm._s(_vm.filtername)+" ")])]),_c('div',{staticClass:"wssearch--selected-filters__combobox"},_vm._l((_vm.pils),function(activefilter,index){return _c('pill-item',{key:index,attrs:{"activefilter":activefilter,"label":activefilter.name}})}),1),_c('div',{staticClass:"wssearch--filter-options-search-wrapper"},[(_vm.term)?_c('span',{staticClass:"wssearch--search-clear wssearch--search-clear__combobox",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearInput}}):_vm._e(),_c('input',{staticClass:"wssearch--filter-options-search",attrs:{"type":"input","placeholder":_vm.filtername},domProps:{"value":_vm.term},on:{"input":_vm.searchaggs}}),_c('div',{staticClass:"wssearch--filter-options wssearch--filter-options__combobox"},_vm._l((_vm.buckets),function(agg,i){return _c('facet-checkbox',{key:i+agg.key+_vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),1)])]):_vm._e()}
+var FacetComboboxvue_type_template_id_4da1b3be_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FacetCombobox.vue?vue&type=template&id=7fe73f77&
+// CONCATENATED MODULE: ./src/components/FacetCombobox.vue?vue&type=template&id=4da1b3be&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
 var es_string_match = __webpack_require__("466d");
@@ -9466,6 +9466,7 @@ var es_string_match = __webpack_require__("466d");
 
 
 
+//
 //
 //
 //
@@ -9595,8 +9596,8 @@ var FacetComboboxvue_type_style_index_0_lang_css_ = __webpack_require__("8aff");
 
 var FacetCombobox_component = normalizeComponent(
   components_FacetComboboxvue_type_script_lang_js_,
-  FacetComboboxvue_type_template_id_7fe73f77_render,
-  FacetComboboxvue_type_template_id_7fe73f77_staticRenderFns,
+  FacetComboboxvue_type_template_id_4da1b3be_render,
+  FacetComboboxvue_type_template_id_4da1b3be_staticRenderFns,
   false,
   null,
   null,
