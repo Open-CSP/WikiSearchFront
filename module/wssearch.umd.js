@@ -7860,7 +7860,7 @@ var store_updateStore = function updateStore(store) {
                 });
               }
 
-              if (rangeItem[1] == "customrange" || rangeItem[1] == "date" || rangeItem[1] == "Modification date") {
+              if (rangeItem[1] == "customrange" || rangeItem[1] == "date" || rangeItem[2] == "Modification date") {
                 state.rangeFrom = createDates(ranges[0]);
                 state.rangeTo = createDates(ranges[1]);
                 urlFiltersOutput.push({
