@@ -7863,7 +7863,7 @@ var store_updateStore = function updateStore(store) {
                   }
                 });
               } else {
-                if (facetSettings[rangeItem[1]].type != 'date') {
+                if (facetSettings[rangeItem[2]].type != 'date') {
                   urlFiltersOutput.push({
                     key: rangeItem[2],
                     value: rangeItem[1],
