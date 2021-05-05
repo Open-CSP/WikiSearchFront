@@ -7650,6 +7650,9 @@ var es_object_entries = __webpack_require__("4fad");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
 var es_regexp_to_string = __webpack_require__("25f0");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
+var es_array_iterator = __webpack_require__("e260");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
@@ -7676,6 +7679,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 var vuex_esm = __webpack_require__("2f62");
 
 // CONCATENATED MODULE: ./src/store.js
+
 
 
 
@@ -8019,7 +8023,11 @@ var store_updateStore = function updateStore(store) {
 
     function createDates(date) {
       function parseDate(str) {
-        return new Date(str);
+        var cl = [];
+        str.split('-').forEach(function (st) {
+          st.length == 1 ? cl.push('0' + st) : cl.push(st);
+        });
+        return new Date(cl.join('-'));
       }
 
       function dateDiff(first, second) {
@@ -8457,12 +8465,12 @@ var PillsSelected_component = normalizeComponent(
 )
 
 /* harmony default export */ var PillsSelected = (PillsSelected_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetDateRange.vue?vue&type=template&id=7dc9c288&
-var FacetDateRangevue_type_template_id_7dc9c288_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--daterange"},[_c('div',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v(_vm._s(_vm.labelname))])]),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-from' ))+" "),_c('div',{attrs:{"id":"dateinputfrom"}}),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-to' ))+" "),_c('div',{attrs:{"id":"dateinputto"}}),(_vm.showcheckbox)?_c('facet-checbox',{attrs:{"agg":_vm.agg,"index":0,"name":'Modification date'}}):_vm._e()],1)}
-var FacetDateRangevue_type_template_id_7dc9c288_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetDateRange.vue?vue&type=template&id=709bac10&
+var FacetDateRangevue_type_template_id_709bac10_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--daterange"},[_c('div',{staticClass:"wssearch--filter-header"},[_c('label',[_vm._v(_vm._s(_vm.labelname))])]),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-from' ))+" "),_c('div',{attrs:{"id":"dateinputfrom"}}),_vm._v(" "+_vm._s(_vm.$i18n( 'date-range-to' ))+" "),_c('div',{attrs:{"id":"dateinputto"}}),(_vm.showcheckbox)?_c('facet-checbox',{attrs:{"agg":_vm.agg,"index":0,"name":'Modification date'}}):_vm._e()],1)}
+var FacetDateRangevue_type_template_id_709bac10_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FacetDateRange.vue?vue&type=template&id=7dc9c288&
+// CONCATENATED MODULE: ./src/components/FacetDateRange.vue?vue&type=template&id=709bac10&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -8661,6 +8669,9 @@ var FacetCheckbox_component = normalizeComponent(
 
 
 
+
+
+
 //
 //
 //
@@ -8766,7 +8777,11 @@ var FacetCheckbox_component = normalizeComponent(
     },
     createdates: function createdates(date) {
       function parseDate(str) {
-        return new Date(str);
+        var cl = [];
+        str.split('-').forEach(function (st) {
+          st.length == 1 ? cl.push('0' + st) : cl.push(st);
+        });
+        return new Date(cl.join('-'));
       }
 
       function datediff(first, second) {
@@ -8795,8 +8810,8 @@ var FacetDateRangevue_type_style_index_0_lang_css_ = __webpack_require__("b243")
 
 var FacetDateRange_component = normalizeComponent(
   components_FacetDateRangevue_type_script_lang_js_,
-  FacetDateRangevue_type_template_id_7dc9c288_render,
-  FacetDateRangevue_type_template_id_7dc9c288_staticRenderFns,
+  FacetDateRangevue_type_template_id_709bac10_render,
+  FacetDateRangevue_type_template_id_709bac10_staticRenderFns,
   false,
   null,
   null,
@@ -8811,9 +8826,6 @@ var HitItemvue_type_template_id_6e1cbd9d_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/HitItem.vue?vue&type=template&id=6e1cbd9d&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
-var es_array_iterator = __webpack_require__("e260");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.constructor.js
 var es_regexp_constructor = __webpack_require__("4d63");
