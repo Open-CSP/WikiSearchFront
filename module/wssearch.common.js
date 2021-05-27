@@ -8319,12 +8319,12 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var SearchInput = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=0fb2f3cf&
-var PillsSelectedvue_type_template_id_0fb2f3cf_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('pill-item',{key:index,attrs:{"activefilter":activefilter,"label":activefilter.name}})}),(_vm.selected.length)?_c('span',{staticClass:"wssearch--selected-clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearfilters}},[_vm._v(" "+_vm._s(_vm.$i18n( 'clear-all-filters' ))+" "),_vm._l((_vm.hiddenboxes),function(box){return _c('div',{key:box.value},[_vm._v(" "+_vm._s(box.value)+" ")])})],2):_vm._e()],2)}
-var PillsSelectedvue_type_template_id_0fb2f3cf_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=35d140cd&
+var PillsSelectedvue_type_template_id_35d140cd_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wssearch--selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('pill-item',{key:index,attrs:{"activefilter":activefilter,"label":activefilter.name}})}),(_vm.selected.length)?_c('span',{staticClass:"wssearch--selected-clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearfilters}},[_vm._v(" "+_vm._s(_vm.$i18n( 'clear-all-filters' ))+" "),_vm._l((_vm.hiddenboxes),function(box){return _c('div',{key:box.value},[_vm._v(" "+_vm._s(box.value)+" ")])})],2):_vm._e()],2)}
+var PillsSelectedvue_type_template_id_35d140cd_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=0fb2f3cf&
+// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=35d140cd&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillItem.vue?vue&type=template&id=72504c16&
 var PillItemvue_type_template_id_72504c16_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"wssearch--selected-filter",class:_vm.propertclass,attrs:{"for":_vm.forkey}},[_c('bdi',[_vm._v(" "+_vm._s(_vm.title)+" ")])])}
@@ -8437,7 +8437,7 @@ var PillItem_component = normalizeComponent(
 
       var boxes = [];
       this.selected.forEach(function (sel) {
-        if (_this.$store.state.aggs[sel.key].doc_count > 1) {
+        if (_this.$store.state.aggs[sel.key].doc_count < 1) {
           boxes.push(sel);
         }
       });
@@ -8472,8 +8472,8 @@ var PillsSelectedvue_type_style_index_0_lang_css_ = __webpack_require__("4176");
 
 var PillsSelected_component = normalizeComponent(
   components_PillsSelectedvue_type_script_lang_js_,
-  PillsSelectedvue_type_template_id_0fb2f3cf_render,
-  PillsSelectedvue_type_template_id_0fb2f3cf_staticRenderFns,
+  PillsSelectedvue_type_template_id_35d140cd_render,
+  PillsSelectedvue_type_template_id_35d140cd_staticRenderFns,
   false,
   null,
   null,
