@@ -1,6 +1,6 @@
 {
 	"name": "WSSearchFront",
-	"author": "Me",
+	"author": "Robis Koopmans",
 	"version": "1.0.0",
 	"url": "https://www.mediawiki.org/wiki/Extension:ExampleExtension",
 	"descriptionmsg": "wssearchfront-desc",
@@ -11,65 +11,63 @@
 			"i18n"
 		]
 	},
-  "ResourceModules": {
+	"ResourceModules": {
 		"ext.WSSearchFront.module": {
 			"dependencies": [
 				"ext.vue",
 				"ext.in",
-		"mediawiki.widgets.DateInputWidget"
+				"mediawiki.widgets.DateInputWidget"
 			],
-           "scripts": [
-						  "wssearch.umd.min.js",
-						 "init.js"
-
-
-               ],
-           "messages": [
-						 "jan",
-						 "feb",
-						 "mar",
-						 "apr",
-						 "may",
-						 "jun",
-						 "jul",
-						 "aug",
-						 "sep",
-						 "oct",
-						 "nov",
-						 "dec",
-						 "search",
-						 "date-range-from",
-						 "date-range-to",
-						 "clear-all-filters",
-			       "search-total",
-					   "wssearch-less",
-						 "wssearch-more",
-						 "search-order",
-						 "search-score",
-						 "search-false",
-						 "search-true",
-						 "search-all",
-						 "search-page"
-           ],
-           "styles": [
-						"wssearch.css"
-					]
-       },
-			 "ext.vue": {
-				 "scripts": [
-							 "vue.js"
-						 ]
-			 },
-			 "ext.in": {
-				 "scripts": [
-							 "i18n.js"
-						 ]
-			 }
-   },
-   "ResourceFileModulePaths": {
- "localBasePath": "module",
- "remoteExtPath": "WSSearchFront/module"
-},
+			"scripts": [
+				"wssearch.umd.min.js",
+				"init.js"
+			],
+			"messages": [
+				"jan",
+				"feb",
+				"mar",
+				"apr",
+				"may",
+				"jun",
+				"jul",
+				"aug",
+				"sep",
+				"oct",
+				"nov",
+				"dec",
+				"search",
+				"date-range-from",
+				"date-range-to",
+				"clear-all-filters",
+				"search-total",
+				"wssearch-less",
+				"wssearch-more",
+				"search-order",
+				"search-score",
+				"search-false",
+				"search-true",
+				"search-all",
+				"search-page"
+			],
+			"styles": [
+				"wssearch.css"
+			]
+		},
+		"ext.vue": {
+			"scripts": [
+				"vue.js"
+			]
+		},
+		"ext.in": {
+			"scripts": [
+				"i18n.js"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "module",
+		"remoteExtPath": "WSSearchFront/module"
+	},
 	"AutoloadClasses": {
 		"WSSearchFrontHooks": "src/WSSearchFrontHooks.php"
 	},
@@ -78,6 +76,6 @@
 	},
 	"Hooks": {
 		"WSSearchOnLoadFrontend": "WSSearchFrontHooks::onWSSearchOnLoadFrontend"
-},
+	},
 	"manifest_version": 1
 }
