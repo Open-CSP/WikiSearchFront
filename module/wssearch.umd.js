@@ -9670,12 +9670,12 @@ var FacetCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetCombobox = (FacetCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetAskCombobox.vue?vue&type=template&id=9dd1beac&
-var FacetAskComboboxvue_type_template_id_9dd1beac_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"buckets":_vm.buckets,"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask}})}
-var FacetAskComboboxvue_type_template_id_9dd1beac_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetAskCombobox.vue?vue&type=template&id=530e7a17&
+var FacetAskComboboxvue_type_template_id_530e7a17_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"buckets":_vm.buckets,"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.search($event)}}})}
+var FacetAskComboboxvue_type_template_id_530e7a17_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FacetAskCombobox.vue?vue&type=template&id=9dd1beac&
+// CONCATENATED MODULE: ./src/components/FacetAskCombobox.vue?vue&type=template&id=530e7a17&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
 var es_array_map = __webpack_require__("d81d");
@@ -9688,6 +9688,7 @@ var es_array_map = __webpack_require__("d81d");
 
 
 
+//
 //
 //
 //
@@ -9730,6 +9731,21 @@ var es_array_map = __webpack_require__("d81d");
     });
   },
   methods: {
+    search: function search(e) {
+      var that = this;
+      var val = this.$store.state.selected;
+      var ns = val.filter(function (el) {
+        if (el.key != that.name) {
+          return el;
+        }
+      });
+      ns.push({
+        key: this.name,
+        value: e.target.value,
+        type: "query"
+      });
+      this.$store.commit('SET_SELECTED', ns);
+    },
     ask: function ask(term, inital) {
       var outdata = this.qdata;
       var outlabel = this.qtext;
@@ -9829,8 +9845,8 @@ var es_array_map = __webpack_require__("d81d");
 
 var FacetAskCombobox_component = normalizeComponent(
   components_FacetAskComboboxvue_type_script_lang_js_,
-  FacetAskComboboxvue_type_template_id_9dd1beac_render,
-  FacetAskComboboxvue_type_template_id_9dd1beac_staticRenderFns,
+  FacetAskComboboxvue_type_template_id_530e7a17_render,
+  FacetAskComboboxvue_type_template_id_530e7a17_staticRenderFns,
   false,
   null,
   null,
