@@ -26,6 +26,9 @@ example
     #query=[[Class::Service]]
 |@Version
     #display=combobox
+|@Dictum
+    #logic=or
+    #sort=alphabetically
 |@Modification date
   	#display=datepicker
     #label=Date
@@ -85,10 +88,11 @@ size options=<number>, <number> //optional , shows a dropdown with size options
 **settings for facets:**
 
     @<property>
-    `#display=<option>`  // optional
+    `#display=<option>`    // optional
     options: datepicker, search, combobox, ask combobox or range
-    `#label=<text>`      // optional
-    `#logic=or`          // optional
+    `#label=<text>`        // optional
+    `#logic=or`            // optional
+    `#sort=alphabetically` // optional    
 
    for display range add `#max=<number>`  and `#step=<number>`
 
