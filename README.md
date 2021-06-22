@@ -21,6 +21,7 @@ example
     #query=[[Class::+]]
     #data=Title
     #text=name
+    #search=true
 |@Service
     #translation=Name
     #query=[[Class::Service]]
@@ -100,6 +101,7 @@ size options=<number>, <number> //optional , shows a dropdown with size options
        `#query=<ask>`      // the ask query example [[Class::Page]]
        `#data=<property>`  // property for data
        `#text=<property>`  // optional, property for display
+       `#search=true`      // optional, search on enter key
 
   facet translations
 
