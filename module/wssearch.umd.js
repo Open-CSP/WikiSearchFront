@@ -9681,12 +9681,12 @@ var FacetCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetCombobox = (FacetCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetAskCombobox.vue?vue&type=template&id=76880782&
-var FacetAskComboboxvue_type_template_id_76880782_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"buckets":_vm.buckets,"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
-var FacetAskComboboxvue_type_template_id_76880782_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7a0563d8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FacetAskCombobox.vue?vue&type=template&id=24ac205b&
+var FacetAskComboboxvue_type_template_id_24ac205b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"buckets":_vm.buckets,"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
+var FacetAskComboboxvue_type_template_id_24ac205b_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FacetAskCombobox.vue?vue&type=template&id=76880782&
+// CONCATENATED MODULE: ./src/components/FacetAskCombobox.vue?vue&type=template&id=24ac205b&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
 var es_array_map = __webpack_require__("d81d");
@@ -9740,7 +9740,7 @@ var es_array_map = __webpack_require__("d81d");
     var that = this;
     var sel = that.$store.state.selected;
     sel.forEach(function (el) {
-      if (el.key && el.key == that.name) {
+      if (el.key && el.key == that.name && el.type != "query") {
         that.ask(el.value, 'inital');
       }
     });
@@ -9756,8 +9756,10 @@ var es_array_map = __webpack_require__("d81d");
             return el;
           }
         });
+        console.log(term, 'why not sometimes');
 
         if (term) {
+          console.log(term, 'weeel why');
           that.buckets.push({
             key: term,
             doc_count: 1,
@@ -9771,6 +9773,8 @@ var es_array_map = __webpack_require__("d81d");
           });
         }
 
+        console.log(that.buckets, "bucks");
+        console.log(ns, "selected");
         this.$store.commit('SET_SELECTED', ns);
       }
     },
@@ -9813,6 +9817,11 @@ var es_array_map = __webpack_require__("d81d");
               spout.name = el.name;
             }
 
+            if (el.type == "query") {
+              spout.type = "query";
+              spout.show = "no";
+            }
+
             return spout;
           }
         }).filter(function (x) {
@@ -9840,6 +9849,12 @@ var es_array_map = __webpack_require__("d81d");
               selected.forEach(function (el, i) {
                 if (el.key && el.key == that.name && el.value && el.value == outkey) {
                   selected[i].name = buck.name;
+
+                  if (el.type == "query") {
+                    console.log('we gat a q');
+                    selected[i].type = "query";
+                  }
+
                   external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(that.$store.state.selected, i, selected[i]);
                   outbuckts[i].name = buck.name;
                 }
@@ -9873,8 +9888,8 @@ var es_array_map = __webpack_require__("d81d");
 
 var FacetAskCombobox_component = normalizeComponent(
   components_FacetAskComboboxvue_type_script_lang_js_,
-  FacetAskComboboxvue_type_template_id_76880782_render,
-  FacetAskComboboxvue_type_template_id_76880782_staticRenderFns,
+  FacetAskComboboxvue_type_template_id_24ac205b_render,
+  FacetAskComboboxvue_type_template_id_24ac205b_staticRenderFns,
   false,
   null,
   null,
