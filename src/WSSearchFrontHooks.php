@@ -21,7 +21,7 @@ class WSSearchFrontHooks {
     ];
 
     foreach ($parameters as $key => $input_parameter) {
-      //if we have a parameter
+      
       if($input_parameter){
         //if the paramter does not start with @ or ?  create the settings config
         if($input_parameter[0] != '@' && $input_parameter[0] != '?'){

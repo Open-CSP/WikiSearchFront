@@ -1,11 +1,11 @@
 
 # WSSearchFront
 
-a vue.js frontend for WSSearch
+A vue.js front-end for WSSearch
 
-Build version! for 1.31 and 135
+Pre build version tested on MediaWiki 1.31 and 1.35
 
-example
+example config
 ```
 {{#WSSearchFrontend:
 |size=10
@@ -92,7 +92,7 @@ size options=<number>, <number> //optional , shows a dropdown with size options
     `#display=<option>`    // optional
     options: datepicker, search, combobox, ask combobox or range
     `#label=<text>`        // optional
-    `#logic=or`            // optional
+    `#logic=or`            // optional (needs 'post filter properties' setting in back-end WSSearchConfig)
     `#sort=alphabetically` // optional    
 
    for display range add `#max=<number>`  and `#step=<number>`

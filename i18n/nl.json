@@ -10,6 +10,6 @@
     "search-false" : "Niet waar",
     "search-true" : "Waar",
     "search-all" : "Alles",
-    "search-page" : " / pagina"
-
+    "search-page" : " / pagina",
+    "wssearchfront-desc": "Een front-end voor WSSearch"
 }

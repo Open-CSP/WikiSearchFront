@@ -6,11 +6,10 @@
     "wssearch-more": "Show more",
     "wssearch-less": "Show less",
     "search-order": "Order by",
-    "search-score" : "Relevance",
-    "search-false" : "False",
-    "search-true" : "True",
-    "search-all" : "All",
-    "search-page" : " / page"
-
-
+    "search-score": "Relevance",
+    "search-false": "False",
+    "search-true": "True",
+    "search-all": "All",
+    "search-page": " / page",
+    "wssearchfront-desc": "A front-end for WSSearch"
 }
