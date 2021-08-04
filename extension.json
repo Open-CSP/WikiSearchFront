@@ -2,7 +2,7 @@
 	"name": "WSSearchFront",
 	"author": "Robis Koopmans",
 	"version": "1.0.0",
-	"url": "https://www.mediawiki.org/wiki/Extension:ExampleExtension",
+	"url": "https://www.wikibase-solutions.com",
 	"descriptionmsg": "wssearchfront-desc",
 	"license-name": "GPL-2.0-or-later",
 	"type": "parserhook",
@@ -64,6 +64,9 @@
 			]
 		}
 	},
+	"AutoloadNamespaces": {
+		"WSSearchFront\\": "src/"
+	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "module",
 		"remoteExtPath": "WSSearchFront/module"
@@ -71,11 +74,9 @@
 	"AutoloadClasses": {
 		"WSSearchFrontHooks": "src/WSSearchFrontHooks.php"
 	},
-	"ExtensionMessagesFiles": {
-		"WSSearchFrontMagic": "WSSearchFront.i18n.php"
-	},
+
 	"Hooks": {
-		"WSSearchOnLoadFrontend": "WSSearchFrontHooks::onWSSearchOnLoadFrontend"
+		"WSSearchOnLoadFrontend": "WSSearchFront\\WSSearchFrontHooks::onWSSearchOnLoadFrontend"
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }
