@@ -1,4 +1,5 @@
 {
+    "wssearchfront-desc": "Frontend for WSSearch extension",
     "clear-all-filters": "Clear all filters",
     "search-total": "{{PLURAL:$1|result|results|0=No results}}",
     "date-range-from": "Date from",

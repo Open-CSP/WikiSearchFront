@@ -1,4 +1,5 @@
 {
+    "wssearchfront-desc": "Frontend for WSSearch extension",
     "clear-all-filters": "Wis alle filters",
     "search-total": "{{PLURAL:$1|resultaat|resultaten|0=Geen resultaat}}",
     "date-range-from": "Vanaf",
