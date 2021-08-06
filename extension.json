@@ -55,7 +55,7 @@
 		},
 		"ext.vue": {
 			"scripts": [
-				"vue.js"
+				"vue.min.js"
 			]
 		},
 		"ext.in": {
