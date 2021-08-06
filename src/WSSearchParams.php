@@ -72,7 +72,7 @@ class WSSearchParams {
 				$sort_option
 			);
 
-			if ( ! empty( $sort_option_label ) ) {
+			if ( is_array( $sort_option_label ) ) {
 				$key                       = trim( $sort_option_label[0] );
 				$val                       = trim( $sort_option_label[1] );
 				$sort_options_values[$key] = [
