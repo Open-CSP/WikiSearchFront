@@ -1,16 +1,15 @@
 {
     "wssearchfront-desc": "Frontend for WSSearch extension",
-    "clear-all-filters": "Clear all filters",
-    "search-total": "{{PLURAL:$1|result|results|0=No results}}",
-    "date-range-from": "Date from",
-    "date-range-to": "Date to",
-    "wssearch-more": "Show more",
-    "wssearch-less": "Show less",
-    "search-order": "Order by",
-    "search-score": "Relevance",
-    "search-false": "False",
-    "search-true": "True",
-    "search-all": "All",
-    "search-page": " / page",
-    "wssearchfront-desc": "A front-end for WSSearch"
+    "wssearchfront-clear-all-filters": "Clear all filters",
+    "wssearchfront-total": "{{PLURAL:$1|result|results|0=No results}}",
+    "wssearchfront-date-range-from": "Date from",
+    "wssearchfront-date-range-to": "Date to",
+    "wssearchfront-more": "Show more",
+    "wssearchfront-less": "Show less",
+    "wssearchfront-order": "Order by",
+    "wssearchfront-score": "Relevance",
+    "wssearchfront-false": "False",
+    "wssearchfront-true": "True",
+    "wssearchfront-all": "All",
+    "wssearchfront-page": " / page"
 }
