@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by  : Designburo.nl
- * Project     : csp
- * Filename    : WSSearchParams.php
- * Description :
- * Date        : 4-8-2021
- * Time        : 20:20
- */
 
 namespace WSSearchFront;
 
@@ -174,7 +166,7 @@ class WSSearchParams {
 			default:
 				$output_parameter = $value;
 		}
-		$searchConfig["settings"][$key] = $output_parameter;
+		$searchConfig["settings"]->$key = $output_parameter;
 	}
 
 	/**
@@ -201,13 +193,13 @@ class WSSearchParams {
 						'@'
 					)
 				);
-				$searchConfig["facetSettings"][$property_name] = [];
+				$searchConfig["facetSettings"]->$property_name = [];
 			} else {
 				$facet_value                                                    = explode(
 					'=',
 					$facet_option
 				);
-				$searchConfig["facetSettings"][$property_name][$facet_value[0]] = trim( $facet_value[1] );
+				$searchConfig["facetSettings"]->$property_name[$facet_value[0]] = trim( $facet_value[1] );
 			}
 		}
 	}
@@ -233,7 +225,7 @@ class WSSearchParams {
 						'?'
 					)
 				);
-				$searchConfig["hitSettings"][$property_name] = [];
+				$searchConfig["hitSettings"]->$property_name = [];
 
 				$property_type                                       = $this->getPropertyType(
 					str_replace(
@@ -242,8 +234,8 @@ class WSSearchParams {
 						$property_name
 					)
 				);
-				$searchConfig["hitSettings"][$property_name]['key']  = $property_type['key'];
-				$searchConfig["hitSettings"][$property_name]['type'] = $property_type['type'];
+				$searchConfig["hitSettings"]->$property_name['key']  = $property_type['key'];
+				$searchConfig["hitSettings"]->$property_name['type'] = $property_type['type'];
 			} else {
 				$result_value                                                  = explode(
 					'=',
@@ -251,7 +243,7 @@ class WSSearchParams {
 				);
 
 				if( !is_array( $result_value ) ) return;
-				$searchConfig["hitSettings"][$property_name][$result_value[0]] = trim( $result_value[1] );
+				$searchConfig["hitSettings"]->$property_name[$result_value[0]] = trim( $result_value[1] );
 			}
 		}
 	}

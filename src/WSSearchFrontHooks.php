@@ -24,9 +24,9 @@ class WSSearchFrontHooks {
 		array $parameters
 	) {
 		$searchConfig = [
-			"settings"      => [],
-			"facetSettings" => [],
-			"hitSettings"   => [],
+			"settings"      => (Object)[],
+			"facetSettings" => (Object)[],
+			"hitSettings"   => (Object)[],
 		];
 
 		$params = new WSSearchParams();
