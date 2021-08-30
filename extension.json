@@ -11,6 +11,12 @@
 			"i18n"
 		]
 	},
+	"requires": {
+		"MediaWiki": ">= 1.27.0",
+		"extensions": {
+			"WSSearch": "*"
+		}
+	},
 	"ResourceModules": {
 		"ext.WSSearchFront.module": {
 			"dependencies": [
