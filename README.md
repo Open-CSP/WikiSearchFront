@@ -1,109 +1,20 @@
-
 # WSSearchFront
+The **WSSearchFront** MediaWiki extension is a front-end for [WSSearch](https://www.mediawiki.org/wiki/Extension:WSSearch "Extension:WSSearch") written in Vue.js
 
-A vue.js front-end for WSSearch
+## Installation
+It is recommended to use this extension in combination with [WSSearch](https://www.mediawiki.org/wiki/Extension:WSSearch "Extension:WSSearch") and optionally [WSSemanticParsedText](https://www.mediawiki.org/w/index.php?title=Extension:WSSemanticParsedText&action=edit&redlink=1 "Extension:WSSemanticParsedText (page does not exist)").
 
-Pre build version tested on MediaWiki 1.31 and 1.35
+-   Download and place the file(s) in a directory called  `WSSearchFront`  in your  `extensions/`  folder.
+-   Add the following code at the bottom of your  [LocalSettings.php](https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:LocalSettings.php "Special:MyLanguage/Manual:LocalSettings.php"):
+    
+    wfLoadExtension( 'WSSearchFront' );
+    
+-   ![Yes](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/OOjs_UI_icon_check-constructive.svg/15px-OOjs_UI_icon_check-constructive.svg.png) **Done**  – Navigate to  [Special:Version](https://www.mediawiki.org/wiki/Special:Version "Special:Version")  on your wiki to verify that the extension is successfully installed.
 
-example config
-```
-{{#WSSearchFrontend:
-|size=10
-|clear=term
-|sort options=Title, Version
-|title=Version
-    #label=Label for table
-    #highlight=true
-    #urlstring=search
-|layout=table
-|@Title
-    #display=ask combobox
-    #query=[[Class::+]]
-    #data=Title
-    #text=name
-    #search=true
-|@Service
-    #translation=Name
-    #query=[[Class::Service]]
-|@Version
-    #display=combobox
-|@Dictum
-    #logic=or
-    #sort=alphabetically
-|@Modification date
-  	#display=datepicker
-    #label=Date
-|@Rating
-  	#display=range
-	  #max=5
-  	#step=1
-|@Year
-  #display=range
-  #max=20
-  #type=date
-|?Version
-|?Class
-    #label=Page type
-    #display=pill
-    #highlight=true
-    #logic=or
-|?Users
-    #display=link
-|?Image
-    #display=image
-    #label=Page image
-|?Rating
-    #display=template
-    #template=Special rating
-}}
-```
+## Usage
+See the help page for [using the WSSearchFront extension](https://www.mediawiki.org/wiki/Help:WSSearchFront "Help:WSSearchFront") for further information.
 
+## Development
 
-
-**settings :**
-
-size=`<number>`      // amount of results per page
-title=`<property>`   // property to use as link title
-
-optional title setting:
- `#label=<text>`
- `#highlight=true`          //adds highlights to result title
- `#urlstring=<urlparam>`    //adds search terms to result href
-
-layout=table                  //optional, show results in table layout
-clear=term                    //optional, remove search term when clearing filters
-sort=`<property>`             //optional, property to sort results by
-sort options=Title, Version   //optional, shows a dropdown with sort options
-size options=<number>, <number> //optional , shows a dropdown with size options
-
-**settings for result output:**
-
-    ?<property>
-    `#display=<option>`  // optional, options: image, link, pill or template
-    `#label=<text>`      // optional
-    `#highlight=true`    // optional
-
-   for display template add `#template=<template>`  template, passes {{{Page|}}} and {{{Value|}}} to the template
-
-
-**settings for facets:**
-
-    @<property>
-    `#display=<option>`    // optional
-    options: datepicker, search, combobox, ask combobox or range
-    `#label=<text>`        // optional
-    `#logic=or`            // optional (needs 'post filter properties' setting in back-end WSSearchConfig)
-    `#sort=alphabetically` // optional    
-
-   for display range add `#max=<number>`  and `#step=<number>`
-
-   for display ask combobox add
-       `#query=<ask>`      // the ask query example [[Class::Page]]
-       `#data=<property>`  // property for data
-       `#text=<property>`  // optional, property for display
-       `#search=true`      // optional, search on enter key
-
-  facet translations
-
-     `#translation=<property>` // optional, translate property of type page
-     `#query=<ask>`      // required for translation, the ask query example [[Class::Page]]
+See the [development repository](https://bitbucket.org/wikibasesolutions/wssearchfrontcli/src/master/
+"WSSearchFront Development")
