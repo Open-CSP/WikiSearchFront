@@ -1,88 +1,87 @@
 {
-	"name": "WSSearchFront",
-	"author": "Robis Koopmans",
-	"version": "1.0.0",
-	"url": "https://www.wikibase-solutions.com",
-	"descriptionmsg": "wssearchfront-desc",
-	"license-name": "GPL-2.0-or-later",
-	"type": "parserhook",
-	"MessagesDirs": {
-		"WSSearchFront": [
-			"i18n"
-		]
-	},
-	"requires": {
-		"MediaWiki": ">= 1.27.0",
-		"extensions": {
-			"WSSearch": "*"
-		}
-	},
-	"ResourceModules": {
-		"ext.WSSearchFront.module": {
-			"dependencies": [
-				"ext.vue",
-				"ext.in",
-				"mediawiki.widgets.DateInputWidget"
-			],
-			"scripts": [
-				"wssearch.umd.min.js",
-				"init.js"
-			],
-			"messages": [
-				"jan",
-				"feb",
-				"mar",
-				"apr",
-				"may",
-				"jun",
-				"jul",
-				"aug",
-				"sep",
-				"oct",
-				"nov",
-				"dec",
-				"search",
-				"wssearchfront-date-range-from",
-				"wssearchfront-date-range-to",
-				"wssearchfront-clear-all-filters",
-				"wssearchfront-total",
-				"wssearchfront-less",
-				"wssearchfront-more",
-				"wssearchfront-order",
-				"wssearchfront-score",
-				"wssearchfront-false",
-				"wssearchfront-true",
-				"wssearchfront-all",
-				"wssearchfront-page"
-			],
-			"styles": [
-				"wssearch.css"
-			]
-		},
-		"ext.vue": {
-			"scripts": [
-				"vue.min.js"
-			]
-		},
-		"ext.in": {
-			"scripts": [
-				"i18n.js"
-			]
-		}
-	},
-	"AutoloadNamespaces": {
-		"WSSearchFront\\": "src/"
-	},
-	"ResourceFileModulePaths": {
-		"localBasePath": "module",
-		"remoteExtPath": "WSSearchFront/module"
-	},
-	"AutoloadClasses": {
-		"WSSearchFrontHooks": "src/WSSearchFrontHooks.php"
-	},
-
-	"Hooks": {
-		"WSSearchOnLoadFrontend": "WSSearchFront\\WSSearchFrontHooks::onWSSearchOnLoadFrontend"
-	},
-	"manifest_version": 2
+  "name": "WSSearchFront",
+  "author": "Robis Koopmans",
+  "version": "1.0.3",
+  "url": "https://www.wikibase-solutions.com",
+  "descriptionmsg": "wssearchfront-desc",
+  "license-name": "GPL-2.0-or-later",
+  "type": "parserhook",
+  "MessagesDirs": {
+    "WSSearchFront": [
+      "i18n"
+    ]
+  },
+  "requires": {
+    "MediaWiki": ">= 1.27.0",
+    "extensions": {
+      "WSSearch": "*"
+    }
+  },
+  "ResourceModules": {
+    "ext.WSSearchFront.module": {
+      "dependencies": [
+        "ext.vue",
+        "ext.in",
+        "mediawiki.widgets.DateInputWidget"
+      ],
+      "scripts": [
+        "wssearchfront.umd.min.js",
+        "init.js"
+      ],
+      "messages": [
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "may",
+        "jun",
+        "jul",
+        "aug",
+        "sep",
+        "oct",
+        "nov",
+        "dec",
+        "search",
+        "wssearchfront-date-range-from",
+        "wssearchfront-date-range-to",
+        "wssearchfront-clear-all-filters",
+        "wssearchfront-total",
+        "wssearchfront-less",
+        "wssearchfront-more",
+        "wssearchfront-order",
+        "wssearchfront-score",
+        "wssearchfront-false",
+        "wssearchfront-true",
+        "wssearchfront-all",
+        "wssearchfront-page"
+      ],
+      "styles": [
+        "wssearchfront.css"
+      ]
+    },
+    "ext.vue": {
+      "scripts": [
+        "vue.min.js"
+      ]
+    },
+    "ext.in": {
+      "scripts": [
+        "i18n.js"
+      ]
+    }
+  },
+  "AutoloadNamespaces": {
+    "WSSearchFront\\": "src/"
+  },
+  "ResourceFileModulePaths": {
+    "localBasePath": "module",
+    "remoteExtPath": "WSSearchFront/module"
+  },
+  "AutoloadClasses": {
+    "WSSearchFrontHooks": "src/WSSearchFrontHooks.php"
+  },
+  "Hooks": {
+    "WSSearchOnLoadFrontend": "WSSearchFront\\WSSearchFrontHooks::onWSSearchOnLoadFrontend"
+  },
+  "manifest_version": 2
 }
