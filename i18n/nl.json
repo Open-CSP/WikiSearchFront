@@ -1,15 +1,15 @@
 {
-    "wssearchfront-desc": "Frontend for WSSearch extension",
-    "wssearchfront-clear-all-filters": "Wis alle filters",
-    "wssearchfront-total": "{{PLURAL:$1|resultaat|resultaten|0=Geen resultaat}}",
-    "wssearchfront-date-range-from": "Vanaf",
-    "wssearchfront-date-range-to": "Tot",
-    "wssearchfront-more": "Toon meer",
-    "wssearchfront-less": "Toon minder",
-    "wssearchfront-order": "Sorteer op",
-    "wssearchfront-score" : "Relevantie",
-    "wssearchfront-false" : "Niet waar",
-    "wssearchfront-true" : "Waar",
-    "wssearchfront-all" : "Alles",
-    "wssearchfront-page" : " / pagina"
+  "wssearchfront-desc": "Frontend for WSSearch extension",
+  "wssearchfront-clear-all-filters": "Wis alle filters",
+  "wssearchfront-total": "{{PLURAL:$1|resultaat|resultaten|0=Geen resultaat}}",
+  "wssearchfront-date-range-from": "Vanaf",
+  "wssearchfront-date-range-to": "Tot",
+  "wssearchfront-more": "Toon meer",
+  "wssearchfront-less": "Toon minder",
+  "wssearchfront-order": "Sorteer op",
+  "wssearchfront-score": "Relevantie",
+  "wssearchfront-false": "Niet waar",
+  "wssearchfront-true": "Waar",
+  "wssearchfront-all": "Alles",
+  "wssearchfront-page": " / pagina"
 }

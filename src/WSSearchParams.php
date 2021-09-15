@@ -12,7 +12,7 @@ class WSSearchParams {
 	 *
 	 * @return array
 	 */
-	private function getPropertyType( string $property_name ) : array {
+	private function getPropertyType( string $property_name ): array {
 		try {
 			$property_field_mapper = new \WSSearch\SMW\PropertyFieldMapper( $property_name );
 			$property_id           = $property_field_mapper->getPropertyID();
@@ -33,13 +33,15 @@ class WSSearchParams {
 	 * @return array|false
 	 */
 	private function getSizeOptions( string $value ) {
-		$temp =  explode(
+		$temp = explode(
 			",",
 			$value
 		);
-		if( !is_array( $temp ) ) {
+		if ( ! is_array( $temp ) ) {
 			return false;
-		} else return $temp;
+		} else {
+			return $temp;
+		}
 	}
 
 	/**
@@ -63,16 +65,16 @@ class WSSearchParams {
 				":",
 				$sort_option
 			);
-			
+
 			if ( isset( $sort_option_label[1] ) ) {
-				$key                       = trim( $sort_option_label[0] );
-				$val                       = trim( $sort_option_label[1] );
-				$sort_options_values[$key] = [
+				$key                         = trim( $sort_option_label[0] );
+				$val                         = trim( $sort_option_label[1] );
+				$sort_options_values[ $key ] = [
 					'label' => $val
 				];
 			} else {
-				$sort_option                       = trim( $sort_option );
-				$sort_options_values[$sort_option] = [];
+				$sort_option                         = trim( $sort_option );
+				$sort_options_values[ $sort_option ] = [];
 			}
 		}
 
@@ -119,7 +121,7 @@ class WSSearchParams {
 				$output_parameter['key']  = $property_type['key'];
 				$output_parameter['type'] = $property_type['type'];
 			} else {
-				$output_parameter[$key] = $val;
+				$output_parameter[ $key ] = $val;
 			}
 		}
 
@@ -136,7 +138,9 @@ class WSSearchParams {
 			$input_parameter
 		);
 
-		if( !is_array( $parameter_options ) ) return;
+		if ( ! is_array( $parameter_options ) ) {
+			return;
+		}
 
 		$key   = $parameter_options[0];
 		$value = $parameter_options[1];
@@ -166,7 +170,7 @@ class WSSearchParams {
 			default:
 				$output_parameter = $value;
 		}
-		$searchConfig["settings"]->$key = $output_parameter;
+		$searchConfig["settings"][ $key ] = $output_parameter;
 	}
 
 	/**
@@ -187,19 +191,19 @@ class WSSearchParams {
 
 		foreach ( $facet_options as $i => $facet_option ) {
 			if ( $i === 0 ) {
-				$property_name                                 = trim(
+				$property_name                                   = trim(
 					ltrim(
 						$facet_option,
 						'@'
 					)
 				);
-				$searchConfig["facetSettings"]->$property_name = [];
+				$searchConfig["facetSettings"][ $property_name ] = [];
 			} else {
-				$facet_value                                                    = explode(
+				$facet_value = explode(
 					'=',
 					$facet_option
 				);
-				$searchConfig["facetSettings"]->$property_name[$facet_value[0]] = trim( $facet_value[1] );
+				$searchConfig["facetSettings"][ $property_name ][ $facet_value[0] ] = trim( $facet_value[1] );
 			}
 		}
 	}
@@ -214,36 +218,40 @@ class WSSearchParams {
 			$input_parameter
 		);
 
-		if( !is_array( $result_options ) ) return;
-
-		$property_name  = "";
+		if ( ! is_array( $result_options ) ) {
+			return;
+		}
+		$property_name = "";
 		foreach ( $result_options as $i => $result_option ) {
 			if ( $i === 0 ) {
-				$property_name                               = trim(
+				$property_name                                 = trim(
 					ltrim(
 						$result_option,
 						'?'
 					)
 				);
-				$searchConfig["hitSettings"]->$property_name = [];
+				$searchConfig["hitSettings"][ $property_name ] = [];
 
-				$property_type                                       = $this->getPropertyType(
+				$property_type = $this->getPropertyType(
 					str_replace(
 						' ',
 						'_',
 						$property_name
 					)
 				);
-				$searchConfig["hitSettings"]->$property_name['key']  = $property_type['key'];
-				$searchConfig["hitSettings"]->$property_name['type'] = $property_type['type'];
+				$searchConfig["hitSettings"][ $property_name ]['key']  = $property_type['key'];
+				$searchConfig["hitSettings"][ $property_name ]['type'] = $property_type['type'];
+
 			} else {
-				$result_value                                                  = explode(
+				$result_value = explode(
 					'=',
 					$result_option
 				);
 
-				if( !is_array( $result_value ) ) return;
-				$searchConfig["hitSettings"]->$property_name[$result_value[0]] = trim( $result_value[1] );
+				if ( ! is_array( $result_value ) ) {
+					return;
+				}
+				$searchConfig["hitSettings"][ $property_name ][ $result_value[0] ] = trim( $result_value[1] );
 			}
 		}
 	}

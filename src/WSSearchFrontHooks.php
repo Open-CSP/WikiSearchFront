@@ -24,9 +24,9 @@ class WSSearchFrontHooks {
 		array $parameters
 	) {
 		$searchConfig = [
-			"settings"      => (Object)[],
-			"facetSettings" => (Object)[],
-			"hitSettings"   => (Object)[],
+			"settings"      => [],
+			"facetSettings" => [],
+			"hitSettings"   => [],
 		];
 
 		$params = new WSSearchParams();
@@ -64,9 +64,9 @@ class WSSearchFrontHooks {
 		}
 
 		$parser->getOutput()->addJsConfigVars( "WSSearchFront",
-											   array(
-												   "config" => $searchConfig
-											   ) );
+			array(
+				"config" => (object) $searchConfig
+			) );
 		$parser->getOutput()->addModules( 'ext.WSSearchFront.module' );
 
 		$result = "<div id='app'></div>";

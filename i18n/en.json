@@ -1,15 +1,15 @@
 {
-    "wssearchfront-desc": "Frontend for WSSearch extension",
-    "wssearchfront-clear-all-filters": "Clear all filters",
-    "wssearchfront-total": "{{PLURAL:$1|result|results|0=No results}}",
-    "wssearchfront-date-range-from": "Date from",
-    "wssearchfront-date-range-to": "Date to",
-    "wssearchfront-more": "Show more",
-    "wssearchfront-less": "Show less",
-    "wssearchfront-order": "Order by",
-    "wssearchfront-score": "Relevance",
-    "wssearchfront-false": "False",
-    "wssearchfront-true": "True",
-    "wssearchfront-all": "All",
-    "wssearchfront-page": " / page"
+  "wssearchfront-desc": "Frontend for WSSearch extension",
+  "wssearchfront-clear-all-filters": "Clear all filters",
+  "wssearchfront-total": "{{PLURAL:$1|result|results|0=No results}}",
+  "wssearchfront-date-range-from": "Date from",
+  "wssearchfront-date-range-to": "Date to",
+  "wssearchfront-more": "Show more",
+  "wssearchfront-less": "Show less",
+  "wssearchfront-order": "Order by",
+  "wssearchfront-score": "Relevance",
+  "wssearchfront-false": "False",
+  "wssearchfront-true": "True",
+  "wssearchfront-all": "All",
+  "wssearchfront-page": " / page"
 }
