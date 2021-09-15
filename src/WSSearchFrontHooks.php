@@ -63,9 +63,21 @@ class WSSearchFrontHooks {
 			}
 		}
 
+
+		// The JavaScript front-end variables are wanted as empty objects instead of empty arrays.
+		if( empty( $searchConfig['facetSettings'] ) ) {
+			$searchConfig['facetSettings'] = new \StdClass();
+		}
+		if( empty( $searchConfig['hitSettings'] ) ) {
+			$searchConfig['hitSettings'] = new \StdClass();
+		}
+		if( empty( $searchConfig['settings'] ) ) {
+			$searchConfig['settings'] = new \StdClass();
+		}
+
 		$parser->getOutput()->addJsConfigVars( "WSSearchFront",
-			array(
-				"config" => (object) $searchConfig
+			(object) array(
+				"config" => $searchConfig
 			) );
 		$parser->getOutput()->addModules( 'ext.WSSearchFront.module' );
 
