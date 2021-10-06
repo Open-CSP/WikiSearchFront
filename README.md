@@ -16,5 +16,8 @@ See the help page for [using the WSSearchFront extension](https://www.mediawiki.
 
 ## Development
 
-See the [development repository](https://bitbucket.org/wikibasesolutions/wssearchfrontcli/src/master/
-"WSSearchFront Development")
+See the [development repository](https://gitlab.wikibase.nl/community/wssearchfrontcli "WSSearchFront Development")
+
+## License (GPL-2.0+)
+
+See  [LICENSE](https://gitlab.wikibase.nl/community/wssearchfront/-/blob/master/LICENSE).
