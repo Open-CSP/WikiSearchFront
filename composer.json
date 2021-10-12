@@ -1,5 +1,5 @@
 {
-  "name": "wikibasesolutions/w-s-search-front",
+  "name": "wikibase/w-s-search-front",
   "type": "mediawiki-extension",
   "description": "Frontend for WSSearch extension",
   "keywords": [
