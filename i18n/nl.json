@@ -12,6 +12,6 @@
     "wssearchfront-true" : "Waar",
     "wssearchfront-all" : "Alles",
     "wssearchfront-page" : " / pagina",
-    "wssearchfront-info": "AND : combine two words <br>OR : one or the other <br>-word : exclude <br> 'word' : exact <br> w*rd : wildecard <br> 'word other'~5 : words appart"
+    "wssearchfront-info": "AND : combine two words <br>OR : one or the other <br> -word : exclude <br> 'word' : exact <br> w*rd : wildecard <br> 'word other'~5 : words appart"
 
 }
