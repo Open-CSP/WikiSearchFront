@@ -53,7 +53,8 @@
         "wssearchfront-false",
         "wssearchfront-true",
         "wssearchfront-all",
-        "wssearchfront-page"
+        "wssearchfront-page",
+        "wssearchfront-info"
       ],
       "styles": [
         "wssearchfront.css"
