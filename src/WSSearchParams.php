@@ -1,11 +1,11 @@
 <?php
 
-namespace WSSearchFront;
+namespace WikiSearchFront;
 
 /**
  * Helper class to identify parser options
  */
-class WSSearchParams {
+class WikiSearchParams {
 
 	/**
 	 * @param string $property_name
@@ -14,7 +14,7 @@ class WSSearchParams {
 	 */
 	private function getPropertyType( string $property_name ) : array {
 		try {
-			$property_field_mapper = new \WSSearch\SMW\PropertyFieldMapper( $property_name );
+			$property_field_mapper = new \WikiSearch\SMW\PropertyFieldMapper( $property_name );
 			$property_id           = $property_field_mapper->getPropertyID();
 			$property_type         = $property_field_mapper->getPropertyType();
 		} catch ( \BadMethodCallException $e ) {

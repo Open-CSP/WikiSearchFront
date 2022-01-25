@@ -1,25 +1,25 @@
 <?php
 
-namespace WSSearchFront;
+namespace WikiSearchFront;
 
-use WSSearchFront\WSSearchParams;
+use WikiSearchFront\WikiSearchParams;
 
 /**
- * Class for the Frontend of WSSearch
+ * Class for the Frontend of WikiSearch
  */
-class WSSearchFrontHooks {
+class WikiSearchFrontHooks {
 
 	/**
 	 * @param string $result
-	 * @param \WSSearch\SearchEngineConfig $config
+	 * @param \WikiSearch\SearchEngineConfig $config
 	 * @param Parser $parser
 	 * @param array $parameters
 	 *
 	 * @return bool
 	 */
-	public static function onWSSearchOnLoadFrontend(
+	public static function onWikiSearchOnLoadFrontend(
 		string &$result,
-		\WSSearch\SearchEngineConfig $config,
+		\WikiSearch\SearchEngineConfig $config,
 		\Parser $parser,
 		array $parameters
 	) {
@@ -29,7 +29,7 @@ class WSSearchFrontHooks {
 			"hitSettings"   => (Object)[],
 		];
 
-		$params = new WSSearchParams();
+		$params = new WikiSearchParams();
 
 		foreach ( $parameters as $input_parameter ) {
 			//if we have a parameter
@@ -63,11 +63,11 @@ class WSSearchFrontHooks {
 			}
 		}
 
-		$parser->getOutput()->addJsConfigVars( "WSSearchFront",
+		$parser->getOutput()->addJsConfigVars( "WikiSearchFront",
 											   array(
 												   "config" => $searchConfig
 											   ) );
-		$parser->getOutput()->addModules( 'ext.WSSearchFront.module' );
+		$parser->getOutput()->addModules( 'ext.WikiSearchFront.module' );
 
 		$result = "<div id='app'></div>";
 

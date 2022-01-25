@@ -1,7 +1,7 @@
 {
     "name": "wikibasesolutions/w-s-search-front",
     "type": "mediawiki-extension",
-    "description": "Frontend for WSSearch extension",
+    "description": "Frontend for WikiSearch extension",
     "keywords": ["mediawiki", "search", "extension", "vue"],
     "license": "GPL-2.0-or-later"
 }
