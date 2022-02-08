@@ -22,7 +22,7 @@
       "dependencies": [
         "ext.vue",
         "ext.in",
-        "mediawiki.widgets.DateInputWidget"
+        "moment"
       ],
       "scripts": [
         "wikisearchfront.umd.min.js",
