@@ -163,6 +163,12 @@ class WikiSearchParams {
 					$output_parameter = $value;
 				}
 				break;
+			case "calendar":
+				$output_parameter = self::getTitleOptions( $input_parameter );
+				if ( false === $output_parameter ) {
+					$output_parameter = $value;
+				}
+				break;
 			default:
 				$output_parameter = $value;
 		}
