@@ -119,8 +119,6 @@ class WikiSearchParams {
 				$output_parameter['key']  = $property_type['key'];
 				$output_parameter['type'] = $property_type['type'];
 			} else if ($key === 'color') {
-				$output_parameter['color'] = (object)[];
-				$output_parameter['color']['name'] = $val;
 				$property_type            = $this->getPropertyType(
 					str_replace(
 						' ',
@@ -128,6 +126,11 @@ class WikiSearchParams {
 						$val
 					)
 				);
+				$output_parameter['color'] = [
+					'name' => $val,
+					'key' => $property_type['key'],
+					'type' => $property_type['type']
+				];				
 				$output_parameter['color']['key']  = $property_type['key'];
 				$output_parameter['color']['type'] = $property_type['type'];
 			} else {
