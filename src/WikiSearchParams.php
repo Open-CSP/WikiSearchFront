@@ -131,8 +131,6 @@ class WikiSearchParams {
 					'key' => $property_type['key'],
 					'type' => $property_type['type']
 				];				
-				$output_parameter['color']['key']  = $property_type['key'];
-				$output_parameter['color']['type'] = $property_type['type'];
 			} else {
 				$output_parameter[$key] = $val;
 			}
