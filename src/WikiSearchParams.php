@@ -141,6 +141,44 @@ class WikiSearchParams {
 
 	/**
 	 * @param string $input_parameter
+	 *
+	 * @return false|array
+	 */
+	private function getActionOptions( string $input_parameter ) {
+		$output_parameter = [];
+		$property_options = explode(
+			'#',
+			$input_parameter
+		);
+
+		if ( ! is_array( $property_options ) ) {
+			return false;
+		}
+
+		foreach ( $property_options as $i => $property_option ) {
+			$property_option = explode(
+				'=',
+				$property_option
+			);
+
+			if ( ! is_array( $property_option ) ) {
+				return false;
+			}
+
+			$key = $property_option[0];
+			$val = trim( $property_option[1] );
+			if ( $i === 0 ) {
+				$output_parameter['name'] = $val;
+			} else {
+				$output_parameter[$key] = $val;
+			}
+		}
+
+		return $output_parameter;
+	}
+
+	/**
+	 * @param string $input_parameter
 	 * @param array $searchConfig
 	 */
 	public function getParameterOutput( string $input_parameter, array &$searchConfig ) {
@@ -178,6 +216,12 @@ class WikiSearchParams {
 				break;
 			case "calendar":
 				$output_parameter = self::getTitleOptions( $input_parameter );
+				if ( false === $output_parameter ) {
+					$output_parameter = $value;
+				}
+				break;
+			case "action":
+				$output_parameter = self::getActionOptions( $input_parameter );
 				if ( false === $output_parameter ) {
 					$output_parameter = $value;
 				}
