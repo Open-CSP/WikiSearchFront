@@ -181,55 +181,27 @@ class WikiSearchParams {
 	 * @param string $input_parameter
 	 * @param array $searchConfig
 	 */
-	public function getParameterOutput( string $input_parameter, array &$searchConfig ) {
-		$parameter_options = explode(
-			'=',
-			$input_parameter
-		);
+	public function getParameterOutput(string $input_parameter, array &$searchConfig) {
+		$parameter_options = explode('=', $input_parameter, 2);
 
-		if( !is_array( $parameter_options ) ) return;
-
-		$key   = $parameter_options[0];
-		$value = $parameter_options[1];
-
-		switch ( $key ) {
-			case "size":
-				$output_parameter = intval( $value );
-				break;
-			case "size options":
-				$output_parameter = self::getSizeOptions( $value );
-				if ( false === $output_parameter ) {
-					$output_parameter = $value;
-				}
-				break;
-			case "sort options":
-				$output_parameter = self::getSortOptions( $value );
-				if ( false === $output_parameter ) {
-					$output_parameter = $value;
-				}
-				break;
-			case "title":
-				$output_parameter = self::getTitleOptions( $input_parameter );
-				if ( false === $output_parameter ) {
-					$output_parameter = $value;
-				}
-				break;
-			case "calendar":
-				$output_parameter = self::getTitleOptions( $input_parameter );
-				if ( false === $output_parameter ) {
-					$output_parameter = $value;
-				}
-				break;
-			case "action":
-				$output_parameter = self::getActionOptions( $input_parameter );
-				if ( false === $output_parameter ) {
-					$output_parameter = $value;
-				}
-				break;
-			default:
-				$output_parameter = $value;
+		if (!is_array($parameter_options) || count($parameter_options) != 2) {
+			return;
 		}
-		$searchConfig["settings"]->$key = $output_parameter;
+
+		[$key, $value] = $parameter_options;
+
+		$options = [
+			'size'         => function ($value) {return intval ($value);},
+			'size options' => function ($value) {return self::getSizeOptions($value);},
+			'sort options' => function ($value) {return self::getSortOptions($value);},
+			'title'        => function ($value) {return self::getTitleOptions($value);},
+			'calendar'     => function ($value) {return self::getTitleOptions($value);},
+			'action'       => function ($value) {return self::getActionOptions($value);},
+			'default'      => function ($value) {return $value;},
+		];
+
+		$fn = $options[$key] ?? $options['default'];
+		$searchConfig["settings"]->$key = $fn($value) ?: $value;
 	}
 
 	/**
