@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import { strip } from '../utilities/stringUtils';
-import WikisearchResultProperty from './ResultProperty.vue';
+import { strip } from '../../utilities/stringUtils';
+import WikisearchResultProperty from '../ResultProperty.vue';
 
 export default {
   name: 'WikisearchResultsCalendarYear',

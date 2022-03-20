@@ -82,7 +82,7 @@ export default {
         ? data[source][key].dat_raw || data[source][key][configType]
         : false;
 
-      if (configType === 'datField') {
+      if (props && configType === 'datField') {
         props = this.formatDates(props);
       }
 

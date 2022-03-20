@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import WikisearchResultProperty from './ResultProperty.vue';
+import WikisearchResultProperty from '../ResultProperty.vue';
 
 export default {
   name: 'WikisearchResults',

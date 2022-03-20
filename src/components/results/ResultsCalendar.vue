@@ -62,10 +62,10 @@
 </template>
 
 <script>
-import { strip } from '../utilities/stringUtils';
-import WikisearchResultProperty from './ResultProperty.vue';
-import WikisearchButton from './Button.vue';
-import WikisearchCalendarDialog from './CalendarDialog.vue';
+import { strip } from '../../utilities/stringUtils';
+import WikisearchResultProperty from '../ResultProperty.vue';
+import WikisearchButton from '../Button.vue';
+import WikisearchCalendarDialog from '../CalendarDialog.vue';
 
 export default {
   name: 'WikisearchResultsCalendar',

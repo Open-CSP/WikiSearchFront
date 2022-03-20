@@ -20,27 +20,14 @@
   "ResourceModules": {
     "ext.WikiSearchFront.module": {
       "dependencies": [
-        "ext.vue",
-        "ext.in",
+        "ext.WikiSearchFront.dependecies",
         "moment"
       ],
       "scripts": [
-        "wikisearchfront.umd.min.js",
+        "../dist/wikisearchfront.umd.min.js",
         "init.js"
       ],
       "messages": [
-        "jan",
-        "feb",
-        "mar",
-        "apr",
-        "may",
-        "jun",
-        "jul",
-        "aug",
-        "sep",
-        "oct",
-        "nov",
-        "dec",
         "search",
         "wikisearchfront-date-range-from",
         "wikisearchfront-date-range-to",
@@ -57,29 +44,25 @@
         "wikisearchfront-info"
       ],
       "styles": [
-        "wikisearchfront.css"
+        "../dist/wikisearchfront.css"
       ]
     },
-    "ext.vue": {
+    "ext.WikiSearchFront.dependecies": {
       "scripts": [
-        "vue.min.js"
-      ]
-    },
-    "ext.in": {
-      "scripts": [
+        "vue.min.js",
         "i18n.js"
       ]
     }
   },
   "AutoloadNamespaces": {
-    "WikiSearchFront\\": "src/"
+    "WikiSearchFront\\": "includes/"
   },
   "ResourceFileModulePaths": {
     "localBasePath": "module",
     "remoteExtPath": "WikiSearchFront/module"
   },
   "AutoloadClasses": {
-    "WikiSearchFrontHooks": "src/WikiSearchFrontHooks.php"
+    "WikiSearchFrontHooks": "includes/WikiSearchFrontHooks.php"
   },
   "Hooks": {
     "WikiSearchOnLoadFrontend": "WikiSearchFront\\WikiSearchFrontHooks::onWikiSearchOnLoadFrontend"

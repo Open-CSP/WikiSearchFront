@@ -71,20 +71,7 @@
       <div
         class="wikisearch-results"
       >
-        <wikisearch-results-calendar
-          v-if="settings.layout === 'calendar'
-            && settings.calendar && settings.calendar.display !== 'year'"
-        />
-        <wikisearch-results-calendar-year
-          v-if="settings.layout === 'calendar'
-            && settings.calendar && settings.calendar.display === 'year'"
-        />
-        <wikisearch-results
-          v-if="settings.layout !== 'calendar' && settings.layout !== 'template'"
-        />
-        <wikisearch-results-template
-          v-if="settings.layout === 'template'"
-        />
+        <component :is="resultDisplay" />
         <wikisearch-pagers
           v-if="showElement"
           :size="state.size"
@@ -114,11 +101,12 @@ import SortOrder from './components/SortOrder.vue';
 import WikisearchButton from './components/Button.vue';
 import WikisearchCheckbox from './components/Checkbox.vue';
 import WikisearchPagers from './components/Pagers.vue';
-import WikisearchResults from './components/Results.vue';
-import WikisearchResultsCalendar from './components/ResultsCalendar.vue';
-import WikisearchResultsTemplate from './components/ResultsTemplate.vue';
 
-import WikisearchResultsCalendarYear from './components/ResultsCalendarYear.vue';
+import WikisearchResults from './components/results/Results.vue';
+import WikisearchResultsCalendar from './components/results/ResultsCalendar.vue';
+import WikisearchResultsTemplate from './components/results/ResultsTemplate.vue';
+import WikisearchResultsCalendarYear from './components/results/ResultsCalendarYear.vue';
+
 import WikisearchCalendarTools from './components/CalendarTools.vue';
 
 import FacetDateRange from './components/filters/FacetDateRange.vue';
@@ -175,6 +163,17 @@ export default {
     },
     showElement() {
       return this.settings.layout !== 'calendar';
+    },
+    resultDisplay() {
+      const component = {
+        calendar: this.settings.calendar && this.settings.calendar.display === 'year'
+          ? WikisearchResultsCalendarYear
+          : WikisearchResultsCalendar,
+        template: WikisearchResultsTemplate,
+        default: WikisearchResults,
+      };
+
+      return component[this.settings.layout] || component.default;
     },
     filters() {
       const components = {
