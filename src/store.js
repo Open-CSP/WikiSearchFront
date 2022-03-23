@@ -294,6 +294,15 @@ function getSelection(state) {
   return selected;
 }
 
+function setInitialSelection(state) {
+  if (mediaWikiValues.WikiSearchFront.config.settings.selected) {
+    state.selected = mediaWikiValues.WikiSearchFront.config.settings.selected.split(';').map(item => {
+      const [key, value] = item.split(':');
+      return { key, value };
+    });
+  }
+}
+
 /**
  * vuex plugin that runs on all store mutations
  *
@@ -314,6 +323,10 @@ const updateStore = (store) => {
       // reset page offset when mutation in not page change
       if (mutation.type !== 'SET_FROM') {
         store.commit('RESET_FROM');
+      }
+
+      if (mutation.type === 'START') {
+        setInitialSelection(state);
       }
 
       store.commit('SET_LOADING');

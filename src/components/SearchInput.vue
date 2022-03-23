@@ -16,6 +16,7 @@
         :clearable="true"
         :start-icon="'search'"
         :placeholder="$i18n('search')"
+        @input="onInput"
         @enter="search"
         @scroll="syncScroll"
         @clear="clearTerm"
@@ -102,6 +103,13 @@ export default {
         .replace(/\*/gm, `<span class="${baseClass} ${baseClass}--star">*</span>`)
         .replace(/OR/gm, `<span class="${baseClass} ${baseClass}--or">OR</span>`)
         .replace(/AND/gm, `<span class="${baseClass} ${baseClass}--and">AND</span>`);
+    },
+    onInput() {
+      if ( // eslint-disable-next-line no-undef
+        mw.config.values.WikiSearchFront.config.settings.searchOnInput
+      ) {
+        this.$store.commit('SET_TERM', this.typedTerm);
+      }
     },
     /**
      * @event click|key.enter search for user input

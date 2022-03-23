@@ -57,8 +57,10 @@ if (process.env.NODE_ENV === 'production') {
                 type: 'mlt_recField',
                 highlight: true,
               },
-              layout: 'template',
-              template: 'parse test'
+              selected: 'Favo:Admin;Tag:ICT',
+              searchOnInput: true,
+              // layout: 'template',
+              // template: 'parse test'
               // layout: 'calendar',
               // calendar: {
               //   name: 'Modification date',
