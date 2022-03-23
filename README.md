@@ -14,7 +14,7 @@ It is recommended to use this extension in combination with [WikiSearch](https:/
 ## Usage
 See the help page for [using the WikiSearchFront extension](https://www.mediawiki.org/wiki/Help:WikiSearchFront "Help:WikiSearchFront") for further information.
 
-## Development
 
-See the [development repository](https://bitbucket.org/wikibasesolutions/wikisearchfrontcli/src/master/
-"WikiSearchFront Development")
+## License (GPL-2.0+)
+
+See  [LICENSE](https://gitlab.wikibase.nl/community/wssearchfront/-/blob/master/LICENSE).

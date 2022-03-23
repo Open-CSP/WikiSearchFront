@@ -1,7 +1,25 @@
 {
-    "name": "wikibasesolutions/w-s-search-front",
-    "type": "mediawiki-extension",
-    "description": "Frontend for WikiSearch extension",
-    "keywords": ["mediawiki", "search", "extension", "vue"],
-    "license": "GPL-2.0-or-later"
+  "name": "wikibase-solutions/w-s-search-front",
+  "type": "mediawiki-extension",
+  "description": "Frontend for WSSearch extension",
+  "keywords": [
+    "mediawiki",
+    "search",
+    "extension",
+    "vue"
+  ],
+  "license": "GPL-2.0-or-later",
+  "require": {},
+  "require-dev": {},
+  "scripts": {
+    "test": [
+      "parallel-lint . --exclude vendor --exclude node_modules",
+      "phpcs -p -s",
+      "minus-x check ."
+    ],
+    "fix": [
+      "minus-x fix .",
+      "phpcbf"
+    ]
+  }
 }
