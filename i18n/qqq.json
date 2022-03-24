@@ -4,17 +4,18 @@
       "Robis Koopmans"
     ]
   },
-  "wssearchfront-desc": "Frontend for WSSearch extension",
-  "wssearchfront-clear-all-filters": "Clear all filters",
-  "wssearchfront-total": "{{PLURAL:$1|result|results|0=No results}}",
-  "wssearchfront-date-range-from": "Date from",
-  "wssearchfront-date-range-to": "Date to",
-  "wssearchfront-more": "Show more",
-  "wssearchfront-less": "Show less",
-  "wssearchfront-order": "Order by",
-  "wssearchfront-score": "Relevance",
-  "wssearchfront-false": "False",
-  "wssearchfront-true": "True",
-  "wssearchfront-all": "All",
-  "wssearchfront-page": " / page"
+  "wikisearchfront-desc": "Frontend for WikiSearch extension",
+  "wikisearchfront-clear-all-filters": "Clear all filters",
+  "wikisearchfront-total": "{{PLURAL:$1|result|results|0=No results}}",
+  "wikisearchfront-date-range-from": "Date from",
+  "wikisearchfront-date-range-to": "Date to",
+  "wikisearchfront-more": "Show more",
+  "wikisearchfront-less": "Show less",
+  "wikisearchfront-order": "Order by",
+  "wikisearchfront-score": "Relevance",
+  "wikisearchfront-false": "False",
+  "wikisearchfront-true": "True",
+  "wikisearchfront-all": "All",
+  "wikisearchfront-page": " / page",
+  "wikisearchfront-info": "AND : combine two words <br>OR : one or the other <br> -word : exclude <br> 'word' : exact <br> w*rd : wildecard <br> 'word other'~5 : words appart"
 }

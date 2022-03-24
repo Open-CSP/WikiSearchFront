@@ -27,5 +27,5 @@ Vue.directive("i18n-html", function (el, binding) {
 });
 
 new Vue({
-  render: (h) => h(wssearchfront),
+  render: (h) => h(wikisearchfront),
 }).$mount("#app");
