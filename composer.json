@@ -1,7 +1,7 @@
 {
-  "name": "wikibase-solutions/w-s-search-front",
+  "name": "wikibase-solutions/wiki-search-front",
   "type": "mediawiki-extension",
-  "description": "Frontend for WSSearch extension",
+  "description": "Frontend for WikiSearch extension",
   "keywords": [
     "mediawiki",
     "search",
