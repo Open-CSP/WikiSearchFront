@@ -102,7 +102,7 @@ export default {
         || (this.label === '$title' && this.configTitle.highlight);
     },
     isLazy() {
-      return this.config.display === 'image' ? 'lazy' : false;
+      return this.config.display === 'image' || this.config.display === 'pdf' ? 'lazy' : false;
     },
     getPropertiesFromData() {
       const source = '_source';
