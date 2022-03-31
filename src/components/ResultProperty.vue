@@ -226,7 +226,7 @@ export default {
         const snippet = this.$store.state.term
           ? `&snippet=${this.$store.state.term}`
           : '';
-        return `${this.scriptPath}/Pdf_viewer?pdf=${title}${snippet}`;
+        return `${this.scriptPath}/Pdf_viewer?pdf=${title.replaceAll(' ', '_')}${snippet}`;
       }
 
       if (this.config.display === 'link') {
