@@ -11792,12 +11792,12 @@ var Resultsvue_type_template_id_4bf606fa_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/results/Results.vue?vue&type=template&id=4bf606fa&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ResultProperty.vue?vue&type=template&id=e71f22a2&
-var ResultPropertyvue_type_template_id_e71f22a2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"wikisearch-result-property",attrs:{"data-header":_vm.computedLabel}},[_c('span',{staticClass:"wikisearch-result-property__wrapper"},_vm._l((_vm.properties),function(property,i){return _c(_vm.tagName,{key:_vm.data['_id'] + '_' + _vm.label + '-' + i,tag:"component",staticClass:"wikisearch-result-property__value",class:'wikisearch-result-property__value--' + _vm.label.replace('$', '-'),attrs:{"data":_vm.dataForComponent(property),"label":_vm.labelForComponent(property),"value":_vm.valueForComponent(property),"src":_vm.src(property),"loading":_vm.isLazy,"href":_vm.href(property),"checked":_vm.isChecked},on:{"click":_vm.onClick,"change":_vm.onChange}},[(_vm.isHighlichted)?_c('div',{domProps:{"innerHTML":_vm._s(_vm.highlightProperty(_vm.sanitize(property)))}}):[_vm._v(" "+_vm._s(property)+" ")]],2)}),1)])}
-var ResultPropertyvue_type_template_id_e71f22a2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ResultProperty.vue?vue&type=template&id=e19b6880&
+var ResultPropertyvue_type_template_id_e19b6880_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"wikisearch-result-property",attrs:{"data-header":_vm.computedLabel}},[_c('span',{staticClass:"wikisearch-result-property__wrapper"},_vm._l((_vm.properties),function(property,i){return _c(_vm.tagName,{key:_vm.data['_id'] + '_' + _vm.label + '-' + i,tag:"component",staticClass:"wikisearch-result-property__value",class:'wikisearch-result-property__value--' + _vm.label.replace('$', '-'),attrs:{"data":_vm.dataForComponent(property),"label":_vm.labelForComponent(property),"value":_vm.valueForComponent(property),"src":_vm.src(property),"loading":_vm.isLazy,"href":_vm.href(property),"checked":_vm.isChecked},on:{"click":_vm.onClick,"change":_vm.onChange}},[(_vm.isHighlichted)?_c('div',{domProps:{"innerHTML":_vm._s(_vm.highlightProperty(_vm.sanitize(property)))}}):[_vm._v(" "+_vm._s(property)+" ")]],2)}),1)])}
+var ResultPropertyvue_type_template_id_e19b6880_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ResultProperty.vue?vue&type=template&id=e71f22a2&
+// CONCATENATED MODULE: ./src/components/ResultProperty.vue?vue&type=template&id=e19b6880&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.constructor.js
 var es_regexp_constructor = __webpack_require__("4d63");
@@ -12013,6 +12013,7 @@ var WikiTemplate_component = normalizeComponent(
       var options = {
         pill: this.properties ? Pill : 'span',
         link: 'a',
+        pdflink: 'a',
         image: 'img',
         template: WikiTemplate,
         checkbox: Checkbox,
@@ -12025,7 +12026,7 @@ var WikiTemplate_component = normalizeComponent(
       return this.config.highlight || this.label === '$snippet' || this.label === '$title' && this.configTitle.highlight;
     },
     isLazy: function isLazy() {
-      return this.config.display === 'image' ? 'lazy' : false;
+      return this.config.display === 'image' || this.config.display === 'pdf' ? 'lazy' : false;
     },
     getPropertiesFromData: function getPropertiesFromData() {
       var source = '_source';
@@ -12110,16 +12111,22 @@ var WikiTemplate_component = normalizeComponent(
       return this.config.display === 'image' ? "".concat(this.scriptPath, "/").concat(prop).replace(' ', '_') : false;
     },
     href: function href(prop) {
-      if (this.label === '$title') {
-        var source = '_source';
-        var _this$data$source$sub = this.data[source].subject,
-            title = _this$data$source$sub.title,
-            namespacename = _this$data$source$sub.namespacename;
+      var source = '_source';
+      var _this$data$source$sub = this.data[source].subject,
+          title = _this$data$source$sub.title,
+          namespacename = _this$data$source$sub.namespacename;
+
+      if (this.label === '$title' && this.config.display !== 'pdflink') {
         var page = title.replace(/\?/gim, '%3F');
         var ns = namespacename ? "".concat(namespacename, ":") : '';
         var urlString = this.configTitle && this.configTitle.urlstring ? this.getUrlString : '';
         var hasIndex = /index\.php/.test(window.location.href) ? '/index.php' : '';
         return "".concat(this.scriptPath).concat(hasIndex, "/").concat(ns).concat(page).concat(urlString);
+      }
+
+      if (this.config.display === 'pdflink') {
+        var snippet = this.$store.state.term ? "&snippet=".concat(this.$store.state.term) : '';
+        return "".concat(this.scriptPath, "/Pdf_viewer?pdf=").concat(title).concat(snippet);
       }
 
       if (this.config.display === 'link') {
@@ -12235,8 +12242,8 @@ var ResultPropertyvue_type_style_index_0_lang_css_ = __webpack_require__("44cd")
 
 var ResultProperty_component = normalizeComponent(
   components_ResultPropertyvue_type_script_lang_js_,
-  ResultPropertyvue_type_template_id_e71f22a2_render,
-  ResultPropertyvue_type_template_id_e71f22a2_staticRenderFns,
+  ResultPropertyvue_type_template_id_e19b6880_render,
+  ResultPropertyvue_type_template_id_e19b6880_staticRenderFns,
   false,
   null,
   null,

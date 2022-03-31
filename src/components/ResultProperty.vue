@@ -88,6 +88,7 @@ export default {
       const options = {
         pill: this.properties ? WikisearchPill : 'span',
         link: 'a',
+        pdflink: 'a',
         image: 'img',
         template: WikisearchWikiTemplate,
         checkbox: WikisearchCheckbox,
@@ -202,9 +203,9 @@ export default {
         : false;
     },
     href(prop) {
-      if (this.label === '$title') {
-        const source = '_source';
-        const { title, namespacename } = this.data[source].subject;
+      const source = '_source';
+      const { title, namespacename } = this.data[source].subject;
+      if (this.label === '$title' && this.config.display !== 'pdflink') {
         const page = title.replace(/\?/gim, '%3F');
         const ns = namespacename
           ? `${namespacename}:`
@@ -219,6 +220,13 @@ export default {
           : '';
 
         return `${this.scriptPath}${hasIndex}/${ns}${page}${urlString}`;
+      }
+
+      if (this.config.display === 'pdflink') {
+        const snippet = this.$store.state.term
+          ? `&snippet=${this.$store.state.term}`
+          : '';
+        return `${this.scriptPath}/Pdf_viewer?pdf=${title}${snippet}`;
       }
 
       if (this.config.display === 'link') {
