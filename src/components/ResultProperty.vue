@@ -92,6 +92,7 @@ export default {
         template: WikisearchWikiTemplate,
         checkbox: WikisearchCheckbox,
         default: 'span',
+        pdf: 'img',
       };
       return options[this.config.display] || options.default;
     },
@@ -190,6 +191,12 @@ export default {
   },
   methods: {
     src(prop) {
+      if (this.config.display === 'pdf') {
+        const source = '_source';
+        const subjectTitle = this.data[source].subject.title.replace(/\s/g, '_');
+        return `/img_auth.php/thumb/${subjectTitle}/page1-300px-${subjectTitle}.jpg`;
+      }
+
       return this.config.display === 'image'
         ? `${this.scriptPath}/${prop}`.replace(' ', '_')
         : false;
