@@ -18,3 +18,4 @@ See the help page for [using the WikiSearchFront extension](https://www.mediawik
 ## License (GPL-2.0+)
 
 See  [LICENSE](https://gitlab.wikibase.nl/community/wssearchfront/-/blob/master/LICENSE).
+
