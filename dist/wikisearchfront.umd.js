@@ -4811,6 +4811,90 @@ module.exports = function (it) {
 
 /***/ }),
 
+/***/ "5b81":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var global = __webpack_require__("da84");
+var call = __webpack_require__("c65b");
+var uncurryThis = __webpack_require__("e330");
+var requireObjectCoercible = __webpack_require__("1d80");
+var isCallable = __webpack_require__("1626");
+var isRegExp = __webpack_require__("44e7");
+var toString = __webpack_require__("577e");
+var getMethod = __webpack_require__("dc4a");
+var regExpFlags = __webpack_require__("ad6d");
+var getSubstitution = __webpack_require__("0cb2");
+var wellKnownSymbol = __webpack_require__("b622");
+var IS_PURE = __webpack_require__("c430");
+
+var REPLACE = wellKnownSymbol('replace');
+var RegExpPrototype = RegExp.prototype;
+var TypeError = global.TypeError;
+var getFlags = uncurryThis(regExpFlags);
+var indexOf = uncurryThis(''.indexOf);
+var replace = uncurryThis(''.replace);
+var stringSlice = uncurryThis(''.slice);
+var max = Math.max;
+
+var stringIndexOf = function (string, searchValue, fromIndex) {
+  if (fromIndex > string.length) return -1;
+  if (searchValue === '') return fromIndex;
+  return indexOf(string, searchValue, fromIndex);
+};
+
+// `String.prototype.replaceAll` method
+// https://tc39.es/ecma262/#sec-string.prototype.replaceall
+$({ target: 'String', proto: true }, {
+  replaceAll: function replaceAll(searchValue, replaceValue) {
+    var O = requireObjectCoercible(this);
+    var IS_REG_EXP, flags, replacer, string, searchString, functionalReplace, searchLength, advanceBy, replacement;
+    var position = 0;
+    var endOfLastMatch = 0;
+    var result = '';
+    if (searchValue != null) {
+      IS_REG_EXP = isRegExp(searchValue);
+      if (IS_REG_EXP) {
+        flags = toString(requireObjectCoercible('flags' in RegExpPrototype
+          ? searchValue.flags
+          : getFlags(searchValue)
+        ));
+        if (!~indexOf(flags, 'g')) throw TypeError('`.replaceAll` does not allow non-global regexes');
+      }
+      replacer = getMethod(searchValue, REPLACE);
+      if (replacer) {
+        return call(replacer, searchValue, O, replaceValue);
+      } else if (IS_PURE && IS_REG_EXP) {
+        return replace(toString(O), searchValue, replaceValue);
+      }
+    }
+    string = toString(O);
+    searchString = toString(searchValue);
+    functionalReplace = isCallable(replaceValue);
+    if (!functionalReplace) replaceValue = toString(replaceValue);
+    searchLength = searchString.length;
+    advanceBy = max(1, searchLength);
+    position = stringIndexOf(string, searchString, 0);
+    while (position !== -1) {
+      replacement = functionalReplace
+        ? toString(replaceValue(searchString, position, string))
+        : getSubstitution(searchString, string, position, [], undefined, replaceValue);
+      result += stringSlice(string, endOfLastMatch, position) + replacement;
+      endOfLastMatch = position + searchLength;
+      position = stringIndexOf(string, searchString, position + advanceBy);
+    }
+    if (endOfLastMatch < string.length) {
+      result += stringSlice(string, endOfLastMatch);
+    }
+    return result;
+  }
+});
+
+
+/***/ }),
+
 /***/ "5c6c":
 /***/ (function(module, exports) {
 
@@ -9958,6 +10042,22 @@ function getSelection(state) {
   });
   return selected;
 }
+
+function setInitialSelection(state) {
+  if (mediaWikiValues.WikiSearchFront.config.settings.selected) {
+    state.selected = mediaWikiValues.WikiSearchFront.config.settings.selected.split(';').map(function (item) {
+      var _item$split = item.split(':'),
+          _item$split2 = _slicedToArray(_item$split, 2),
+          key = _item$split2[0],
+          value = _item$split2[1];
+
+      return {
+        key: key,
+        value: value
+      };
+    });
+  }
+}
 /**
  * vuex plugin that runs on all store mutations
  *
@@ -9971,6 +10071,10 @@ var updateStore = function updateStore(store) {
       // reset page offset when mutation in not page change
       if (mutation.type !== 'SET_FROM') {
         store.commit('RESET_FROM');
+      }
+
+      if (mutation.type === 'START') {
+        setInitialSelection(state);
       }
 
       store.commit('SET_LOADING'); // update url parameters
@@ -10174,12 +10278,12 @@ function stringUtils_sanitize(string) {
 }
 
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SearchInput.vue?vue&type=template&id=25f607b4&
-var SearchInputvue_type_template_id_25f607b4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-search wikisearch--has-button",attrs:{"aria-disabled":"false","role":"search"}},[_c('div',{staticClass:"wikisearch-search__wrapper"},[_c('div',{ref:'syntax',staticClass:"wikisearch-syntax",domProps:{"innerHTML":_vm._s(_vm.highlightedTerm)}}),_c('wikisearch-input',{attrs:{"pending":_vm.$store.state.loading,"clearable":true,"start-icon":'search',"placeholder":_vm.$i18n('search')},on:{"enter":_vm.search,"scroll":_vm.syncScroll,"clear":_vm.clearTerm},model:{value:(_vm.term),callback:function ($$v) {_vm.term=$$v},expression:"term"}})],1),_c('wikisearch-button',{attrs:{"label":_vm.$i18n('search'),"type":'progressive'},on:{"click":_vm.search}}),(_vm.hasInfo)?_c('wikisearch-tooltip',{scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('div',{domProps:{"innerHTML":_vm._s(_vm.highlightedInfo)}})]},proxy:true},{key:"button",fn:function(){return [_c('wikisearch-button',{attrs:{"icon":'info',"type":'icon'}})]},proxy:true}],null,false,2795427984)}):_vm._e()],1)}
-var SearchInputvue_type_template_id_25f607b4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SearchInput.vue?vue&type=template&id=6084e6f3&
+var SearchInputvue_type_template_id_6084e6f3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-search wikisearch--has-button",attrs:{"aria-disabled":"false","role":"search"}},[_c('div',{staticClass:"wikisearch-search__wrapper"},[_c('div',{ref:'syntax',staticClass:"wikisearch-syntax",domProps:{"innerHTML":_vm._s(_vm.highlightedTerm)}}),_c('wikisearch-input',{attrs:{"pending":_vm.$store.state.loading,"clearable":true,"start-icon":'search',"placeholder":_vm.$i18n('search')},on:{"input":_vm.onInput,"enter":_vm.search,"scroll":_vm.syncScroll,"clear":_vm.clearTerm},model:{value:(_vm.term),callback:function ($$v) {_vm.term=$$v},expression:"term"}})],1),_c('wikisearch-button',{attrs:{"label":_vm.$i18n('search'),"type":'progressive'},on:{"click":_vm.search}}),(_vm.hasInfo)?_c('wikisearch-tooltip',{scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('div',{domProps:{"innerHTML":_vm._s(_vm.highlightedInfo)}})]},proxy:true},{key:"button",fn:function(){return [_c('wikisearch-button',{attrs:{"icon":'info',"type":'icon'}})]},proxy:true}],null,false,2795427984)}):_vm._e()],1)}
+var SearchInputvue_type_template_id_6084e6f3_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/SearchInput.vue?vue&type=template&id=25f607b4&
+// CONCATENATED MODULE: ./src/components/SearchInput.vue?vue&type=template&id=6084e6f3&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Input.vue?vue&type=template&id=7ccec1c1&
 var Inputvue_type_template_id_7ccec1c1_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-input",class:_vm.classes},[_c('input',_vm._b({ref:'input',class:{
@@ -10727,6 +10831,7 @@ var Tooltip_component = normalizeComponent(
 //
 //
 //
+//
 
 
 
@@ -10778,6 +10883,12 @@ var Tooltip_component = normalizeComponent(
       var baseClass = 'wikisearch-syntax__item';
       return term.replace(/(["'])(?:(?=(\\?))\2.)*?\1|~\d/g, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--qoute\">$&</span>")).replace(/\s(-\w+)/g, " <span class=\"".concat(baseClass, " ").concat(baseClass, "--minus\">$1</span>")).replace(/\*/gm, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--star\">*</span>")).replace(/OR/gm, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--or\">OR</span>")).replace(/AND/gm, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--and\">AND</span>"));
     },
+    onInput: function onInput() {
+      if ( // eslint-disable-next-line no-undef
+      mw.config.values.WikiSearchFront.config.settings.searchOnInput) {
+        this.$store.commit('SET_TERM', this.typedTerm);
+      }
+    },
 
     /**
      * @event click|key.enter search for user input
@@ -10811,8 +10922,8 @@ var SearchInputvue_type_style_index_0_lang_css_ = __webpack_require__("635d");
 
 var SearchInput_component = normalizeComponent(
   components_SearchInputvue_type_script_lang_js_,
-  SearchInputvue_type_template_id_25f607b4_render,
-  SearchInputvue_type_template_id_25f607b4_staticRenderFns,
+  SearchInputvue_type_template_id_6084e6f3_render,
+  SearchInputvue_type_template_id_6084e6f3_staticRenderFns,
   false,
   null,
   null,
@@ -11765,12 +11876,15 @@ var Resultsvue_type_template_id_4bf606fa_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/results/Results.vue?vue&type=template&id=4bf606fa&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ResultProperty.vue?vue&type=template&id=b5797de4&
-var ResultPropertyvue_type_template_id_b5797de4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"wikisearch-result-property",attrs:{"data-header":_vm.computedLabel}},[_c('span',{staticClass:"wikisearch-result-property__wrapper"},_vm._l((_vm.properties),function(property,i){return _c(_vm.tagName,{key:_vm.data['_id'] + '_' + _vm.label + '-' + i,tag:"component",staticClass:"wikisearch-result-property__value",class:'wikisearch-result-property__value--' + _vm.label.replace('$', '-'),attrs:{"data":_vm.dataForComponent(property),"label":_vm.labelForComponent(property),"value":_vm.valueForComponent(property),"src":_vm.src(property),"loading":_vm.isLazy,"href":_vm.href(property),"checked":_vm.isChecked},on:{"click":_vm.onClick,"change":_vm.onChange}},[(_vm.isHighlichted)?_c('div',{domProps:{"innerHTML":_vm._s(_vm.highlightProperty(_vm.sanitize(property)))}}):[_vm._v(" "+_vm._s(property)+" ")]],2)}),1)])}
-var ResultPropertyvue_type_template_id_b5797de4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ResultProperty.vue?vue&type=template&id=0b901682&
+var ResultPropertyvue_type_template_id_0b901682_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"wikisearch-result-property",attrs:{"data-header":_vm.computedLabel}},[_c('span',{staticClass:"wikisearch-result-property__wrapper"},_vm._l((_vm.properties),function(property,i){return _c(_vm.tagName,{key:_vm.data['_id'] + '_' + _vm.label + '-' + i,tag:"component",staticClass:"wikisearch-result-property__value",class:'wikisearch-result-property__value--' + _vm.label.replace('$', '-'),attrs:{"data":_vm.dataForComponent(property),"label":_vm.labelForComponent(property),"value":_vm.valueForComponent(property),"src":_vm.src(property),"loading":_vm.isLazy,"href":_vm.href(property),"checked":_vm.isChecked},on:{"click":_vm.onClick,"change":_vm.onChange}},[(_vm.isHighlichted)?_c('div',{domProps:{"innerHTML":_vm._s(_vm.highlightProperty(_vm.sanitize(property)))}}):[_vm._v(" "+_vm._s(property)+" ")]],2)}),1)])}
+var ResultPropertyvue_type_template_id_0b901682_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ResultProperty.vue?vue&type=template&id=b5797de4&
+// CONCATENATED MODULE: ./src/components/ResultProperty.vue?vue&type=template&id=0b901682&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace-all.js
+var es_string_replace_all = __webpack_require__("5b81");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.constructor.js
 var es_regexp_constructor = __webpack_require__("4d63");
@@ -11900,6 +12014,7 @@ var WikiTemplate_component = normalizeComponent(
 
 
 
+
 //
 //
 //
@@ -11986,10 +12101,12 @@ var WikiTemplate_component = normalizeComponent(
       var options = {
         pill: this.properties ? Pill : 'span',
         link: 'a',
+        pdflink: 'a',
         image: 'img',
         template: WikiTemplate,
         checkbox: Checkbox,
-        default: 'span'
+        default: 'span',
+        pdf: 'img'
       };
       return options[this.config.display] || options.default;
     },
@@ -11997,7 +12114,7 @@ var WikiTemplate_component = normalizeComponent(
       return this.config.highlight || this.label === '$snippet' || this.label === '$title' && this.configTitle.highlight;
     },
     isLazy: function isLazy() {
-      return this.config.display === 'image' ? 'lazy' : false;
+      return this.config.display === 'image' || this.config.display === 'pdf' ? 'lazy' : false;
     },
     getPropertiesFromData: function getPropertiesFromData() {
       var source = '_source';
@@ -12073,19 +12190,31 @@ var WikiTemplate_component = normalizeComponent(
   },
   methods: {
     src: function src(prop) {
+      if (this.config.display === 'pdf') {
+        var source = '_source';
+        var subjectTitle = this.data[source].subject.title.replace(/\s/g, '_');
+        return "/img_auth.php/thumb/".concat(subjectTitle, "/page1-300px-").concat(subjectTitle, ".jpg");
+      }
+
       return this.config.display === 'image' ? "".concat(this.scriptPath, "/").concat(prop).replace(' ', '_') : false;
     },
     href: function href(prop) {
-      if (this.label === '$title') {
-        var source = '_source';
-        var _this$data$source$sub = this.data[source].subject,
-            title = _this$data$source$sub.title,
-            namespacename = _this$data$source$sub.namespacename;
+      var source = '_source';
+      var _this$data$source$sub = this.data[source].subject,
+          title = _this$data$source$sub.title,
+          namespacename = _this$data$source$sub.namespacename;
+
+      if (this.label === '$title' && this.config.display !== 'pdflink') {
         var page = title.replace(/\?/gim, '%3F');
         var ns = namespacename ? "".concat(namespacename, ":") : '';
         var urlString = this.configTitle && this.configTitle.urlstring ? this.getUrlString : '';
         var hasIndex = /index\.php/.test(window.location.href) ? '/index.php' : '';
         return "".concat(this.scriptPath).concat(hasIndex, "/").concat(ns).concat(page).concat(urlString);
+      }
+
+      if (this.config.display === 'pdflink') {
+        var snippet = this.$store.state.term ? "&snippet=".concat(this.$store.state.term) : '';
+        return "".concat(this.scriptPath, "/Pdf_viewer?pdf=").concat(title.replaceAll(' ', '_')).concat(snippet);
       }
 
       if (this.config.display === 'link') {
@@ -12201,8 +12330,8 @@ var ResultPropertyvue_type_style_index_0_lang_css_ = __webpack_require__("44cd")
 
 var ResultProperty_component = normalizeComponent(
   components_ResultPropertyvue_type_script_lang_js_,
-  ResultPropertyvue_type_template_id_b5797de4_render,
-  ResultPropertyvue_type_template_id_b5797de4_staticRenderFns,
+  ResultPropertyvue_type_template_id_0b901682_render,
+  ResultPropertyvue_type_template_id_0b901682_staticRenderFns,
   false,
   null,
   null,

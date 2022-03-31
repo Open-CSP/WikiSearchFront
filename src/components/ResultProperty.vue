@@ -88,10 +88,12 @@ export default {
       const options = {
         pill: this.properties ? WikisearchPill : 'span',
         link: 'a',
+        pdflink: 'a',
         image: 'img',
         template: WikisearchWikiTemplate,
         checkbox: WikisearchCheckbox,
         default: 'span',
+        pdf: 'img',
       };
       return options[this.config.display] || options.default;
     },
@@ -101,7 +103,7 @@ export default {
         || (this.label === '$title' && this.configTitle.highlight);
     },
     isLazy() {
-      return this.config.display === 'image' ? 'lazy' : false;
+      return this.config.display === 'image' || this.config.display === 'pdf' ? 'lazy' : false;
     },
     getPropertiesFromData() {
       const source = '_source';
@@ -190,14 +192,20 @@ export default {
   },
   methods: {
     src(prop) {
+      if (this.config.display === 'pdf') {
+        const source = '_source';
+        const subjectTitle = this.data[source].subject.title.replace(/\s/g, '_');
+        return `/img_auth.php/thumb/${subjectTitle}/page1-300px-${subjectTitle}.jpg`;
+      }
+
       return this.config.display === 'image'
         ? `${this.scriptPath}/${prop}`.replace(' ', '_')
         : false;
     },
     href(prop) {
-      if (this.label === '$title') {
-        const source = '_source';
-        const { title, namespacename } = this.data[source].subject;
+      const source = '_source';
+      const { title, namespacename } = this.data[source].subject;
+      if (this.label === '$title' && this.config.display !== 'pdflink') {
         const page = title.replace(/\?/gim, '%3F');
         const ns = namespacename
           ? `${namespacename}:`
@@ -212,6 +220,13 @@ export default {
           : '';
 
         return `${this.scriptPath}${hasIndex}/${ns}${page}${urlString}`;
+      }
+
+      if (this.config.display === 'pdflink') {
+        const snippet = this.$store.state.term
+          ? `&snippet=${this.$store.state.term}`
+          : '';
+        return `${this.scriptPath}/Pdf_viewer?pdf=${title.replaceAll(' ', '_')}${snippet}`;
       }
 
       if (this.config.display === 'link') {
