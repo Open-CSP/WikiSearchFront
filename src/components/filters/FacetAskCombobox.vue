@@ -166,7 +166,7 @@ export default {
       const outputData = this.queryData;
       const outputLabel = this.queryText;
       const output = outputLabel || inital ? `|?${outputData}|?${outputLabel}` : `|?${outputData}`;
-      const input = outputLabel || !inital ? outputLabel : outputData;
+      const input = outputLabel && !inital ? outputLabel : outputData;
       const askQuery = `${this.query}[[${input}::in:${term}]]${output}`;
       console.log(askQuery);
       const params = {
