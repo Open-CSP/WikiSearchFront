@@ -256,12 +256,24 @@ export default {
         const ns = namespacename
           ? `${namespacename}:`
           : '';
-        return {
+        const outData = {
           key: this.label,
           value: prop,
           template: this.config.template,
           page: `${ns}${title}`,
         };
+        // eslint-disable-next-line no-undef
+        const calendarSettings = mw.config.values.WikiSearchFront.config.settings.calendar;
+        const dateKey = calendarSettings && calendarSettings.key ? `P:${calendarSettings.key}` : 'P:29';
+        if (
+          this.data[source][dateKey]
+            || this.data[source][dateKey].dat_raw
+            || this.data[source][dateKey].dat_raw[0]
+        ) {
+          const [, year, month, day] = this.data[source][dateKey].dat_raw[0].split('/');
+          outData.date = `${year}-${month}-${day}`;
+        }
+        return outData;
       }
       return this.config.display === 'pill'
        || this.config.display === 'template'
