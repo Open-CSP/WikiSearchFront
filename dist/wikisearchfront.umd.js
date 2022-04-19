@@ -10239,9 +10239,9 @@ var store = new vuex_esm["a" /* default */].Store({
         var api = new mw.Api();
         var params = {
           action: 'parse',
-          text: store.state.apiCalls.map(function (call) {
+          text: "<div>".concat(store.state.apiCalls.map(function (call) {
             return "".concat(call.index, "^^%%%^^").concat(call.text);
-          }).join('%%^^^%%'),
+          }).join('%%^^^%%'), "</div>"),
           format: 'json',
           wrapoutputclass: '',
           disablelimitreport: true
@@ -10252,7 +10252,7 @@ var store = new vuex_esm["a" /* default */].Store({
           }
 
           var result = data.parse.text['*'];
-          var templates = Object.fromEntries(result.substring(3, result.length - 4).split('%%^^^%%').map(function (e) {
+          var templates = Object.fromEntries(result.substring(5, result.length - 6).split('%%^^^%%').map(function (e) {
             return e.split('^^%%%^^');
           }));
           commit('SET_TEMPLATES', templates);

@@ -496,7 +496,7 @@ const store = new Vuex.Store({
         const api = new mw.Api();
         const params = {
           action: 'parse',
-          text: store.state.apiCalls.map((call) => `${call.index}^^%%%^^${call.text}`).join('%%^^^%%'),
+          text: `<div>${store.state.apiCalls.map((call) => `${call.index}^^%%%^^${call.text}`).join('%%^^^%%')}</div>`,
           format: 'json',
           wrapoutputclass: '',
           disablelimitreport: true,
@@ -507,7 +507,7 @@ const store = new Vuex.Store({
           }
           const result = data.parse.text['*'];
           const templates = Object.fromEntries(
-            result.substring(3, result.length - 4)
+            result.substring(5, result.length - 6)
               .split('%%^^^%%')
               .map(e => e.split('^^%%%^^')),
           );
