@@ -10,6 +10,7 @@
         :is="tagName"
         v-for="(property, i) in properties"
         :key="data['_id'] + '_' + label + '-' + i"
+        :index="data['_id'] + '_' + label + '-' + i"
         class="wikisearch-result-property__value"
         :class="'wikisearch-result-property__value--' + label.replace('$', '-')"
         :data="dataForComponent(property)"

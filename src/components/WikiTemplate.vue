@@ -1,8 +1,8 @@
 <template>
   <span
     class="wikisearch-wiki-template"
-    :class="loading ? 'wikisearch-wiki-template--loading wikisearch-element--pending' : ''"
-    v-html="result"
+    :class="renderedTemplate ? 'wikisearch-wiki-template--loading wikisearch-element--pending' : ''"
+    v-html="renderedTemplate"
   />
 </template>
 
@@ -17,13 +17,20 @@ export default {
         return {};
       },
     },
+    index: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
-      result: '',
-      loading: false,
       value: this.data.value,
     };
+  },
+  computed: {
+    renderedTemplate() {
+      return this.$store.state.renderedTemplates[this.index] || '';
+    },
   },
   watch: {
     value() {
@@ -34,30 +41,16 @@ export default {
     this.parseTemplate();
   },
   methods: {
-    apiResult(data) {
-      if (data.parse) {
-        this.result = data.parse.text['*'];
-        this.loading = false;
-      }
-    },
     parseTemplate() {
-      this.loading = true;
-      const params = {
-        action: 'parse',
-        text: `{{${this.data.template}
+      this.$store.dispatch('bundleApiCalls', {
+        actions:
+            {
+              index: this.index,
+              text: `{{${this.data.template}
                  |Page=${this.data.page}
                  ${this.data.date ? `|$date=${this.data.date}` : ''}
                  |Value=${this.data.value}
                  }}`,
-        format: 'json',
-        wrapoutputclass: 'wikisearch-wiki-template__output',
-        disablelimitreport: true,
-      };
-      this.$store.dispatch('doApiCall', {
-        actions:
-            {
-              params,
-              component: this,
             },
       });
     },

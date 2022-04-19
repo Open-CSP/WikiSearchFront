@@ -401,8 +401,17 @@ const store = new Vuex.Store({
     loaded: false,
     dates: [],
     realDates: {},
+    apiCalls: [],
+    renderedTemplates: {},
   },
   mutations: {
+    SET_TEMPLATES(state, templates) {
+      state.apiCalls = [];
+      state.renderedTemplates = templates;
+    },
+    SET_API_CALLS(state, call) {
+      state.apiCalls.push(call);
+    },
     CLEAR_ALL(state) {
       state.selected = [];
       state.term = '';
@@ -477,6 +486,35 @@ const store = new Vuex.Store({
     },
   },
   actions: {
+    bundleApiCalls({ commit }, { actions }) {
+      commit('SET_API_CALLS', {
+        text: actions.text,
+        index: actions.index,
+      });
+      if (store.state.hits.length && store.state.hits.length === store.state.apiCalls.length) {
+        // eslint-disable-next-line no-undef
+        const api = new mw.Api();
+        const params = {
+          action: 'parse',
+          text: store.state.apiCalls.map((call) => `${call.index}^^%%%^^${call.text}`).join('%%^^^%%'),
+          format: 'json',
+          wrapoutputclass: '',
+          disablelimitreport: true,
+        };
+        api.post(params).done((data) => {
+          if (!data.parse) {
+            return;
+          }
+          const result = data.parse.text['*'];
+          const templates = Object.fromEntries(
+            result.substring(3, result.length - 4)
+              .split('%%^^^%%')
+              .map(e => e.split('^^%%%^^')),
+          );
+          commit('SET_TEMPLATES', templates);
+        });
+      }
+    },
     doApiCall({ commit }, { actions }) {
       // eslint-disable-next-line no-undef
       const api = new mw.Api();
