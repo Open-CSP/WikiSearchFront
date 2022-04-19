@@ -386,6 +386,7 @@ const store = new Vuex.Store({
     loading: false,
     selected: [],
     selectedResults: [],
+    ongoingRequest: undefined,
     selectAllResults: false,
     sortOrder: 'desc',
     sortOrderType: 'score',
@@ -491,7 +492,9 @@ const store = new Vuex.Store({
         text: actions.text,
         index: actions.index,
       });
-      if (store.state.hits.length && store.state.hits.length === store.state.apiCalls.length) {
+      // eslint-disable-next-line prefer-arrow-callback
+      clearTimeout(this.ongoingRequest);
+      this.ongoingRequest = setTimeout(() => {
         // eslint-disable-next-line no-undef
         const api = new mw.Api();
         const params = {
@@ -511,9 +514,9 @@ const store = new Vuex.Store({
               .split('%%^^^%%')
               .map(e => e.split('^^%%%^^')),
           );
-          commit('SET_TEMPLATES', templates);
+          commit('SET_TEMPLATES', { ...store.state.renderedTemplates, ...templates });
         });
-      }
+      }, 100);
     },
     doApiCall({ commit }, { actions }) {
       // eslint-disable-next-line no-undef
