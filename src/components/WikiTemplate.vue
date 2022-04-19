@@ -46,6 +46,7 @@ export default {
         action: 'parse',
         text: `{{${this.data.template}
                  |Page=${this.data.page}
+                 ${this.data.date ? `|$date=${this.data.date}` : ''}
                  |Value=${this.data.value}
                  }}`,
         format: 'json',
