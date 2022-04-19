@@ -1,7 +1,9 @@
 <template>
   <span
     class="wikisearch-wiki-template"
-    :class="renderedTemplate ? 'wikisearch-wiki-template--loading wikisearch-element--pending' : ''"
+    :class="!renderedTemplate
+      ? 'wikisearch-wiki-template--loading wikisearch-element--pending'
+      : ''"
     v-html="renderedTemplate"
   />
 </template>

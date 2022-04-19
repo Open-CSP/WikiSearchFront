@@ -11935,15 +11935,19 @@ var es_array_includes = __webpack_require__("caad");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
 var es_string_includes = __webpack_require__("2532");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WikiTemplate.vue?vue&type=template&id=3ebe39df&
-var WikiTemplatevue_type_template_id_3ebe39df_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"wikisearch-wiki-template",class:_vm.renderedTemplate ? 'wikisearch-wiki-template--loading wikisearch-element--pending' : '',domProps:{"innerHTML":_vm._s(_vm.renderedTemplate)}})}
-var WikiTemplatevue_type_template_id_3ebe39df_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WikiTemplate.vue?vue&type=template&id=4710ef84&
+var WikiTemplatevue_type_template_id_4710ef84_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"wikisearch-wiki-template",class:!_vm.renderedTemplate
+    ? 'wikisearch-wiki-template--loading wikisearch-element--pending'
+    : '',domProps:{"innerHTML":_vm._s(_vm.renderedTemplate)}})}
+var WikiTemplatevue_type_template_id_4710ef84_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/WikiTemplate.vue?vue&type=template&id=3ebe39df&
+// CONCATENATED MODULE: ./src/components/WikiTemplate.vue?vue&type=template&id=4710ef84&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/WikiTemplate.vue?vue&type=script&lang=js&
 
+//
+//
 //
 //
 //
@@ -12011,8 +12015,8 @@ var WikiTemplatevue_type_style_index_0_lang_css_ = __webpack_require__("26b1");
 
 var WikiTemplate_component = normalizeComponent(
   components_WikiTemplatevue_type_script_lang_js_,
-  WikiTemplatevue_type_template_id_3ebe39df_render,
-  WikiTemplatevue_type_template_id_3ebe39df_staticRenderFns,
+  WikiTemplatevue_type_template_id_4710ef84_render,
+  WikiTemplatevue_type_template_id_4710ef84_staticRenderFns,
   false,
   null,
   null,
