@@ -9720,6 +9720,7 @@ function readableDate(date) {
 
 
 
+
 external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(vuex_esm["a" /* default */]);
 var _window = window,
     moment = _window.moment; // eslint-disable-next-line no-undef
@@ -10124,6 +10125,7 @@ var store = new vuex_esm["a" /* default */].Store({
     loading: false,
     selected: [],
     selectedResults: [],
+    ongoingRequest: undefined,
     selectAllResults: false,
     sortOrder: 'desc',
     sortOrderType: 'score',
@@ -10232,9 +10234,10 @@ var store = new vuex_esm["a" /* default */].Store({
       commit('SET_API_CALLS', {
         text: actions.text,
         index: actions.index
-      });
+      }); // eslint-disable-next-line prefer-arrow-callback
 
-      if (store.state.hits.length && store.state.hits.length === store.state.apiCalls.length) {
+      clearTimeout(this.ongoingRequest);
+      this.ongoingRequest = setTimeout(function () {
         // eslint-disable-next-line no-undef
         var api = new mw.Api();
         var params = {
@@ -10255,9 +10258,9 @@ var store = new vuex_esm["a" /* default */].Store({
           var templates = Object.fromEntries(result.substring(5, result.length - 6).split('%%^^^%%').map(function (e) {
             return e.split('^^%%%^^');
           }));
-          commit('SET_TEMPLATES', templates);
+          commit('SET_TEMPLATES', _objectSpread2(_objectSpread2({}, store.state.renderedTemplates), templates));
         });
-      }
+      }, 100);
     },
     doApiCall: function doApiCall(_ref7, _ref8) {
       var commit = _ref7.commit;
