@@ -128,12 +128,12 @@ if (process.env.NODE_ENV === 'production') {
               //   display: 'pill',
               //   label: 'pills tags',
               // },
-              // Class: {
-              //   key: 631,
-              //   type: 'txtField',
-              //   display: 'template',
-              //   template: 'test',
-              // },
+              Class: {
+                key: 631,
+                type: 'txtField',
+                display: 'template',
+                template: 'test',
+              },
               Version: {
                 key: 635,
                 type: 'wpgField',

@@ -386,6 +386,7 @@ const store = new Vuex.Store({
     loading: false,
     selected: [],
     selectedResults: [],
+    ongoingRequest: undefined,
     selectAllResults: false,
     sortOrder: 'desc',
     sortOrderType: 'score',
@@ -401,8 +402,17 @@ const store = new Vuex.Store({
     loaded: false,
     dates: [],
     realDates: {},
+    apiCalls: [],
+    renderedTemplates: {},
   },
   mutations: {
+    SET_TEMPLATES(state, templates) {
+      state.apiCalls = [];
+      state.renderedTemplates = templates;
+    },
+    SET_API_CALLS(state, call) {
+      state.apiCalls.push(call);
+    },
     CLEAR_ALL(state) {
       state.selected = [];
       state.term = '';
@@ -477,6 +487,37 @@ const store = new Vuex.Store({
     },
   },
   actions: {
+    bundleApiCalls({ commit }, { actions }) {
+      commit('SET_API_CALLS', {
+        text: actions.text,
+        index: actions.index,
+      });
+      // eslint-disable-next-line prefer-arrow-callback
+      clearTimeout(this.ongoingRequest);
+      this.ongoingRequest = setTimeout(() => {
+        // eslint-disable-next-line no-undef
+        const api = new mw.Api();
+        const params = {
+          action: 'parse',
+          text: `<div>${store.state.apiCalls.map((call) => `${call.index}^^%%%^^${call.text}`).join('%%^^^%%')}</div>`,
+          format: 'json',
+          wrapoutputclass: '',
+          disablelimitreport: true,
+        };
+        api.post(params).done((data) => {
+          if (!data.parse) {
+            return;
+          }
+          const result = data.parse.text['*'];
+          const templates = Object.fromEntries(
+            result.substring(5, result.length - 6)
+              .split('%%^^^%%')
+              .map(e => e.split('^^%%%^^')),
+          );
+          commit('SET_TEMPLATES', { ...store.state.renderedTemplates, ...templates });
+        });
+      }, 100);
+    },
     doApiCall({ commit }, { actions }) {
       // eslint-disable-next-line no-undef
       const api = new mw.Api();
