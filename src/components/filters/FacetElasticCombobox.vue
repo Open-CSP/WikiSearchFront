@@ -57,7 +57,9 @@ export default {
      */
     apiResult(data) {
       this.pending = false;
-      this.buckets = data.result;
+      this.buckets = data.result.length
+        ? data.result
+        : [{ doc_count: 1, key: '', show: 'no' }];
       //   this.pending = false;
       //   const outputLabel = this.queryText;
       //   const alreadySelected = [];
