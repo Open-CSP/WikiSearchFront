@@ -9435,12 +9435,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=61d8b42a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=0d9021a6&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wikisearch",class:[_vm.selectedClass, _vm.themeClass]},[_c('search-input'),(_vm.showElement)?_c('pills-selected'):_vm._e(),(_vm.settings['sort options'] && _vm.showElement)?_c('sort-order',{attrs:{"settings":_vm.settings}}):_vm._e(),_c('div',{staticClass:"wikisearch-filters",class:{ 'wikisearch-filters__hiden' : _vm.openFilters }},[_c('wikisearch-button',{staticClass:"wssearch-button--hide-filters",attrs:{"icon":'close',"type":'icon'},on:{"click":function($event){_vm.openFilters = !_vm.openFilters}}}),(_vm.settings.layout === 'calendar')?_c('wikisearch-calendar-tools',{attrs:{"outertime":_vm.$store.state.calendarDate}}):_vm._e(),(_vm.state.aggs)?_c('div',{staticClass:"wikisearch-filters__wrapper"},_vm._l((_vm.filters),function(filterObject,name){return _c(filterObject.component,{key:name,tag:"component",attrs:{"translation":_vm.facetSettings[name].translation,"query":_vm.facetSettings[name].query,"query-text":_vm.facetSettings[name].text,"query-data":_vm.facetSettings[name].data,"type":_vm.facetSettings[name].type,"buckets":filterObject.buckets || [],"label":_vm.facetSettings[name].label,"name":name}})}),1):_vm._e()],1),_c('div',{staticClass:"wikisearch-total"},[(_vm.state.total > 0)?_c('b',{staticClass:"wikisearch-total__nr"},[_vm._v(" "+_vm._s(_vm.state.total)+" ")]):_vm._e(),_vm._v(" "+_vm._s(_vm.$i18n('wikisearchfront-total', _vm.state.total))+" ")]),_c('div',{staticClass:"wikisearch-action"},[(_vm.settings.action)?_c('wikisearch-checkbox',{staticClass:"wikisearch-action__checkbox",on:{"change":_vm.selectAll}}):_vm._e(),(_vm.settings.action)?_c('wikisearch-button',{staticClass:"wikisearch-action__button",attrs:{"label":_vm.settings.action.label,"type":_vm.state.selectedResults.length ? 'progressive' : ''},on:{"click":_vm.doAction}}):_vm._e()],1),_c('div',{staticClass:"wikisearch-results"},[_c(_vm.resultDisplay,{tag:"component"}),(_vm.showElement)?_c('wikisearch-pagers',{attrs:{"size":_vm.state.size,"from":_vm.state.from,"total":_vm.state.total,"settings":_vm.settings}}):_vm._e()],1),_c('wikisearch-button',{staticClass:"wssearch-button--show-filters",attrs:{"icon":'settings',"label":'Filters',"type":'progressive'},on:{"click":function($event){_vm.openFilters = !_vm.openFilters}}})],1)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=61d8b42a&
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=0d9021a6&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
 var es_object_keys = __webpack_require__("b64b");
@@ -15177,6 +15177,221 @@ var FacetAskCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetAskCombobox = (FacetAskCombobox_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=38c06894&
+var FacetElasticComboboxvue_type_template_id_38c06894_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"buckets":_vm.buckets,"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
+var FacetElasticComboboxvue_type_template_id_38c06894_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=38c06894&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// import Vue from 'vue';
+
+/* harmony default export */ var FacetElasticComboboxvue_type_script_lang_js_ = ({
+  name: 'FacetElasticCombobox',
+  components: {
+    'facet-combobox': FacetCombobox
+  },
+  props: {
+    name: {
+      type: String,
+      default: ''
+    },
+    label: {
+      type: String,
+      default: ''
+    }
+  },
+  data: function data() {
+    return {
+      pending: false,
+      buckets: [{
+        doc_count: 1,
+        key: '',
+        show: 'no'
+      }],
+      // eslint-disable-next-line no-undef
+      facetSettings: mw.config.values.WikiSearchFront.config.facetSettings
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var selected = this.$store.state.selected;
+    selected.forEach(function (el) {
+      if (el.key && el.key === _this.name && el.type !== 'query') {
+        _this.ask(el.value);
+      }
+    });
+  },
+  methods: {
+    /**
+     * process results from ask api query
+     *
+     * @param {Object} data result data from aks api query
+     * @sets vue-data buckets
+     */
+    apiResult: function apiResult(data) {
+      this.pending = false;
+      this.buckets = data.result; //   this.pending = false;
+      //   const outputLabel = this.queryText;
+      //   const alreadySelected = [];
+      //   const { selected } = this.$store.state;
+      //   const outputBuckets = selected
+      //     .map((el) => {
+      //       let outputSelected = false;
+      //       if (el.key && el.key === this.name) {
+      //         alreadySelected.push(el.value);
+      //         outputSelected = { key: el.value, doc_count: 1 };
+      //         if (el.name) {
+      //           outputSelected.name = el.name;
+      //         }
+      //         if (el.type === 'query') {
+      //           outputSelected.type = 'query';
+      //           outputSelected.show = 'no';
+      //         }
+      //       }
+      //       return outputSelected;
+      //     })
+      //     .filter((x) => x);
+      //   Object.entries(data.query.results).forEach(([key, value]) => {
+      //     let outkey = value.printouts[this.queryData];
+      //     if (outkey) {
+      //       outkey = outkey[0].fulltext || outkey[0];
+      //       const buck = {
+      //         doc_count: 1,
+      //         key: outkey,
+      //         page: key,
+      //       };
+      //       if (outputLabel && value.printouts[outputLabel]) {
+      //         const label = value.printouts[outputLabel];
+      //         buck.name = label[0].fulltext || label[0];
+      //         selected.forEach((el, i) => {
+      //           if (
+      //             el.key
+      //             && el.key === this.name
+      //             && el.value
+      //             && el.value === outkey
+      //           ) {
+      //             selected[i].name = buck.name;
+      //             if (el.type === 'query') {
+      //               selected[i].type = 'query';
+      //             }
+      //             Vue.set(this.$store.state.selected, i, selected[i]);
+      //             if (outputBuckets[i]) {
+      //               outputBuckets[i].name = buck.name;
+      //             }
+      //           }
+      //         });
+      //       }
+      //       if (!alreadySelected.includes(outkey)) {
+      //         outputBuckets.push(buck);
+      //       }
+      //     }
+      //   });
+      //   if (outputBuckets.length > 0) {
+      //     this.buckets = outputBuckets;
+      //   } else {
+      //     this.buckets = [{ doc_count: 1, key: '', show: 'no' }];
+      //   }
+    },
+
+    /**
+     * @event emited from facet-combobox
+     * @param {String} term user typed search term
+     */
+    search: function search(term) {
+      var _this2 = this;
+
+      if (this.facetSettings[this.name] && this.facetSettings[this.name].search) {
+        var selection = this.$store.state.selected;
+        var newSelection = selection.filter(function (selected) {
+          return selected.key !== _this2.name;
+        });
+
+        if (term) {
+          this.buckets.push({
+            key: term,
+            doc_count: 1,
+            type: 'query',
+            show: 'no'
+          });
+          newSelection.push({
+            key: this.name,
+            value: term,
+            type: 'query'
+          });
+        }
+
+        this.$store.commit('SET_SELECTED', newSelection);
+      }
+    },
+
+    /**
+     * @event emited from facet-combobox
+     * @param {String} term user typed search term
+     * @param {Boolan} initial initiated on load or on user input
+     */
+    ask: function ask(term) {
+      this.pending = true;
+      var params = {
+        action: 'query',
+        meta: 'WikiSearchCombobox',
+        property: this.name,
+        term: term,
+        format: 'json',
+        formatversion: 2
+      };
+      this.$store.dispatch('doApiCall', {
+        actions: {
+          params: params,
+          component: this
+        }
+      });
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=script&lang=js&
+ /* harmony default export */ var filters_FacetElasticComboboxvue_type_script_lang_js_ = (FacetElasticComboboxvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue
+
+
+
+
+
+/* normalize component */
+
+var FacetElasticCombobox_component = normalizeComponent(
+  filters_FacetElasticComboboxvue_type_script_lang_js_,
+  FacetElasticComboboxvue_type_template_id_38c06894_render,
+  FacetElasticComboboxvue_type_template_id_38c06894_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FacetElasticCombobox = (FacetElasticCombobox_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetFilter.vue?vue&type=template&id=8bd0dfa8&
 var FacetFiltervue_type_template_id_8bd0dfa8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:("wikisearch-filter wikisearch-filter--" + (_vm.strip(_vm.name))),attrs:{"role":"group","aria-labelledby":("filter__label--" + (_vm.strip(_vm.name)))}},[(_vm.strippedBuckets.length)?_c('span',{staticClass:"wikisearch-filter__label"},[_c('label',{attrs:{"id":("filter__label--" + (_vm.strip(_vm.name)))}},[_vm._v(" "+_vm._s(_vm.cleanName)+" ")])]):_vm._e(),_c('div',{staticClass:"wikisearch-filter__options"},[_vm._l((_vm.bucketsToShow),function(agg,i){return _c('facet-checkbox',{directives:[{name:"show",rawName:"v-show",value:(i < _vm.collapsed || _vm.open),expression:"i < collapsed || open"}],key:i + agg.key + _vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),(_vm.strippedBuckets.length > _vm.collapsed)?_c('wikisearch-button',{staticClass:"wikisearch-filter__button",attrs:{"icon":_vm.open ? 'up' : 'down',"label":_vm.$i18n(("wikisearchfront-" + _vm.lessOrMore))},on:{"click":function($event){_vm.open = !_vm.open}}}):_vm._e()],2)])}
 var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
@@ -16042,6 +16257,7 @@ var FacetSorted_component = normalizeComponent(
 
 
 
+
 /* harmony default export */ var Appvue_type_script_lang_js_ = ({
   store: src_store,
   name: 'App',
@@ -16062,6 +16278,7 @@ var FacetSorted_component = normalizeComponent(
     FacetCombobox: FacetCombobox,
     FacetFilter: FacetFilter,
     FacetAskCombobox: FacetAskCombobox,
+    FacetElasticCombobox: FacetElasticCombobox,
     FacetSearch: FacetSearch,
     FacetSorted: FacetSorted,
     FacetDateRange: FacetDateRange,
@@ -16117,6 +16334,7 @@ var FacetSorted_component = normalizeComponent(
         search: FacetSearch,
         datepicker: FacetDateRange,
         'ask combobox': FacetAskCombobox,
+        'elastic combobox': FacetElasticCombobox,
         slider: FacetRangeSlider,
         default: FacetFilter
       };
