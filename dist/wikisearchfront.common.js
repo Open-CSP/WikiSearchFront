@@ -15168,12 +15168,12 @@ var FacetAskCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetAskCombobox = (FacetAskCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=593b2198&
-var FacetElasticComboboxvue_type_template_id_593b2198_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"buckets":_vm.buckets,"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
-var FacetElasticComboboxvue_type_template_id_593b2198_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=35fc20b7&
+var FacetElasticComboboxvue_type_template_id_35fc20b7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"buckets":_vm.buckets,"no-count":_vm.facetSettings[_vm.name].count === 'false',"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
+var FacetElasticComboboxvue_type_template_id_35fc20b7_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=593b2198&
+// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=35fc20b7&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=script&lang=js&
 
@@ -15184,6 +15184,7 @@ var FacetElasticComboboxvue_type_template_id_593b2198_staticRenderFns = []
 
 
 
+//
 //
 //
 //
@@ -15247,67 +15248,7 @@ var FacetElasticComboboxvue_type_template_id_593b2198_staticRenderFns = []
         doc_count: 1,
         key: '',
         show: 'no'
-      }]; //   this.pending = false;
-      //   const outputLabel = this.queryText;
-      //   const alreadySelected = [];
-      //   const { selected } = this.$store.state;
-      //   const outputBuckets = selected
-      //     .map((el) => {
-      //       let outputSelected = false;
-      //       if (el.key && el.key === this.name) {
-      //         alreadySelected.push(el.value);
-      //         outputSelected = { key: el.value, doc_count: 1 };
-      //         if (el.name) {
-      //           outputSelected.name = el.name;
-      //         }
-      //         if (el.type === 'query') {
-      //           outputSelected.type = 'query';
-      //           outputSelected.show = 'no';
-      //         }
-      //       }
-      //       return outputSelected;
-      //     })
-      //     .filter((x) => x);
-      //   Object.entries(data.query.results).forEach(([key, value]) => {
-      //     let outkey = value.printouts[this.queryData];
-      //     if (outkey) {
-      //       outkey = outkey[0].fulltext || outkey[0];
-      //       const buck = {
-      //         doc_count: 1,
-      //         key: outkey,
-      //         page: key,
-      //       };
-      //       if (outputLabel && value.printouts[outputLabel]) {
-      //         const label = value.printouts[outputLabel];
-      //         buck.name = label[0].fulltext || label[0];
-      //         selected.forEach((el, i) => {
-      //           if (
-      //             el.key
-      //             && el.key === this.name
-      //             && el.value
-      //             && el.value === outkey
-      //           ) {
-      //             selected[i].name = buck.name;
-      //             if (el.type === 'query') {
-      //               selected[i].type = 'query';
-      //             }
-      //             Vue.set(this.$store.state.selected, i, selected[i]);
-      //             if (outputBuckets[i]) {
-      //               outputBuckets[i].name = buck.name;
-      //             }
-      //           }
-      //         });
-      //       }
-      //       if (!alreadySelected.includes(outkey)) {
-      //         outputBuckets.push(buck);
-      //       }
-      //     }
-      //   });
-      //   if (outputBuckets.length > 0) {
-      //     this.buckets = outputBuckets;
-      //   } else {
-      //     this.buckets = [{ doc_count: 1, key: '', show: 'no' }];
-      //   }
+      }];
     },
 
     /**
@@ -15377,8 +15318,8 @@ var FacetElasticComboboxvue_type_template_id_593b2198_staticRenderFns = []
 
 var FacetElasticCombobox_component = normalizeComponent(
   filters_FacetElasticComboboxvue_type_script_lang_js_,
-  FacetElasticComboboxvue_type_template_id_593b2198_render,
-  FacetElasticComboboxvue_type_template_id_593b2198_staticRenderFns,
+  FacetElasticComboboxvue_type_template_id_35fc20b7_render,
+  FacetElasticComboboxvue_type_template_id_35fc20b7_staticRenderFns,
   false,
   null,
   null,

@@ -2,6 +2,7 @@
   <facet-combobox
     :pending="pending"
     :buckets="buckets"
+    :no-count="facetSettings[name].count === 'false'"
     :name="name"
     :label="label"
     @input="ask"
@@ -60,68 +61,6 @@ export default {
       this.buckets = data.result.length
         ? data.result
         : [{ doc_count: 1, key: '', show: 'no' }];
-      //   this.pending = false;
-      //   const outputLabel = this.queryText;
-      //   const alreadySelected = [];
-      //   const { selected } = this.$store.state;
-      //   const outputBuckets = selected
-      //     .map((el) => {
-      //       let outputSelected = false;
-      //       if (el.key && el.key === this.name) {
-      //         alreadySelected.push(el.value);
-      //         outputSelected = { key: el.value, doc_count: 1 };
-      //         if (el.name) {
-      //           outputSelected.name = el.name;
-      //         }
-      //         if (el.type === 'query') {
-      //           outputSelected.type = 'query';
-      //           outputSelected.show = 'no';
-      //         }
-      //       }
-      //       return outputSelected;
-      //     })
-      //     .filter((x) => x);
-
-    //   Object.entries(data.query.results).forEach(([key, value]) => {
-    //     let outkey = value.printouts[this.queryData];
-    //     if (outkey) {
-    //       outkey = outkey[0].fulltext || outkey[0];
-    //       const buck = {
-    //         doc_count: 1,
-    //         key: outkey,
-    //         page: key,
-    //       };
-    //       if (outputLabel && value.printouts[outputLabel]) {
-    //         const label = value.printouts[outputLabel];
-    //         buck.name = label[0].fulltext || label[0];
-    //         selected.forEach((el, i) => {
-    //           if (
-    //             el.key
-    //             && el.key === this.name
-    //             && el.value
-    //             && el.value === outkey
-    //           ) {
-    //             selected[i].name = buck.name;
-    //             if (el.type === 'query') {
-    //               selected[i].type = 'query';
-    //             }
-    //             Vue.set(this.$store.state.selected, i, selected[i]);
-    //             if (outputBuckets[i]) {
-    //               outputBuckets[i].name = buck.name;
-    //             }
-    //           }
-    //         });
-    //       }
-    //       if (!alreadySelected.includes(outkey)) {
-    //         outputBuckets.push(buck);
-    //       }
-    //     }
-    //   });
-    //   if (outputBuckets.length > 0) {
-    //     this.buckets = outputBuckets;
-    //   } else {
-    //     this.buckets = [{ doc_count: 1, key: '', show: 'no' }];
-    //   }
     },
     /**
      * @event emited from facet-combobox

@@ -97,6 +97,7 @@ if (process.env.NODE_ENV === 'production') {
               },
               Version: {
                 display: 'elastic combobox',
+                count: 'false'
               },
               'Modification date': {
                 display: 'date',
