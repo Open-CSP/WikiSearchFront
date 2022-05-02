@@ -113,6 +113,7 @@ import FacetDateRange from './components/filters/FacetDateRange.vue';
 import FacetRangeSlider from './components/filters/FacetRangeSlider.vue';
 import FacetCombobox from './components/filters/FacetCombobox.vue';
 import FacetAskCombobox from './components/filters/FacetAskCombobox.vue';
+import FacetElasticCombobox from './components/filters/FacetElasticCombobox.vue';
 import FacetFilter from './components/filters/FacetFilter.vue';
 import FacetSearch from './components/filters/FacetSearch.vue';
 import FacetSorted from './components/filters/FacetSorted.vue';
@@ -137,6 +138,7 @@ export default {
     FacetCombobox,
     FacetFilter,
     FacetAskCombobox,
+    FacetElasticCombobox,
     FacetSearch,
     FacetSorted,
     FacetDateRange,
@@ -182,6 +184,7 @@ export default {
         search: FacetSearch,
         datepicker: FacetDateRange,
         'ask combobox': FacetAskCombobox,
+        'elastic combobox': FacetElasticCombobox,
         slider: FacetRangeSlider,
         default: FacetFilter,
       };
