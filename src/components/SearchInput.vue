@@ -47,6 +47,7 @@
 import WikisearchInput from './Input.vue';
 import WikisearchButton from './Button.vue';
 import WikisearchTooltip from './Tooltip.vue';
+import { sanitize } from '../utilities/stringUtils';
 
 export default {
   name: 'SearchInput',
@@ -72,7 +73,7 @@ export default {
       return this.highlight(mw.message('wikisearchfront-info').text());
     },
     highlightedTerm() {
-      return this.highlight(this.term);
+      return this.highlight(sanitize(this.term));
     },
     /**
      * v-model user typed term
