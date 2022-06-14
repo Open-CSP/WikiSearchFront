@@ -107,7 +107,13 @@ if (process.env.NODE_ENV === 'production') {
               'Modification date': {
                 display: 'datepicker',
               },
-              Tag: [],
+              // Tag: [],
+              Tag: {
+                display: 'switch',
+                true: 'ICT',
+                false: 'Test',
+                default: 'false',
+              },
             },
             hitSettings: {
               // '-Modification date': {},

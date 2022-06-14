@@ -291,7 +291,13 @@ function getSelection(state) {
   Object.keys(selection).forEach((key) => {
     selected.push({ key, value: selection[key] });
   });
-  return selected;
+
+  const switchValues = Object.entries(mediaWikiValues.WikiSearchFront.config.facetSettings)
+    .filter(([, filter]) => filter.display === 'switch')
+    .map(([key, filter]) => ({ key, value: state.switched[key] || filter[filter.default] }));
+
+  console.log('filters', [...selected, ...switchValues]);
+  return [...selected, ...switchValues];
 }
 
 function setInitialSelection(state) {
@@ -319,6 +325,7 @@ const updateStore = (store) => {
       || mutation.type === 'SET_ORDER'
       || mutation.type === 'SET_SIZE'
       || mutation.type === 'SET_SELECTED'
+      || mutation.type === 'SET_SWITCHED'
     ) {
       // reset page offset when mutation in not page change
       if (mutation.type !== 'SET_FROM') {
@@ -336,6 +343,7 @@ const updateStore = (store) => {
 
       const selected = getSelection(state);
 
+      console.log(selected);
       // create parameters object for api
       const params = {
         action: 'query',
@@ -385,6 +393,7 @@ const store = new Vuex.Store({
   state: {
     loading: false,
     selected: [],
+    switched: {},
     selectedResults: [],
     ongoingRequest: undefined,
     selectAllResults: false,
@@ -419,6 +428,9 @@ const store = new Vuex.Store({
     },
     SET_SELECTED(state, selected) {
       state.selected = selected;
+    },
+    SET_SWITCHED(state, switched) {
+      state.switched = switched;
     },
     SET_SELECTED_RESULTS(state, selected) {
       state.selectedResults = selected;
