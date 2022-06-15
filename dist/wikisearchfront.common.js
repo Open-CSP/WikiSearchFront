@@ -5187,6 +5187,13 @@ module.exports = !$assign || fails(function () {
 
 /***/ }),
 
+/***/ "6289":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "62c4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9322,6 +9329,17 @@ if ($stringify) {
 
 /***/ }),
 
+/***/ "ef19":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_cli_service_node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FacetSwitch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("6289");
+/* harmony import */ var _node_modules_vue_cli_service_node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FacetSwitch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_cli_service_node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FacetSwitch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "f36a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9426,12 +9444,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=0d9021a6&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wikisearch",class:[_vm.selectedClass, _vm.themeClass]},[_c('search-input'),(_vm.showElement)?_c('pills-selected'):_vm._e(),(_vm.settings['sort options'] && _vm.showElement)?_c('sort-order',{attrs:{"settings":_vm.settings}}):_vm._e(),_c('div',{staticClass:"wikisearch-filters",class:{ 'wikisearch-filters__hiden' : _vm.openFilters }},[_c('wikisearch-button',{staticClass:"wssearch-button--hide-filters",attrs:{"icon":'close',"type":'icon'},on:{"click":function($event){_vm.openFilters = !_vm.openFilters}}}),(_vm.settings.layout === 'calendar')?_c('wikisearch-calendar-tools',{attrs:{"outertime":_vm.$store.state.calendarDate}}):_vm._e(),(_vm.state.aggs)?_c('div',{staticClass:"wikisearch-filters__wrapper"},_vm._l((_vm.filters),function(filterObject,name){return _c(filterObject.component,{key:name,tag:"component",attrs:{"translation":_vm.facetSettings[name].translation,"query":_vm.facetSettings[name].query,"query-text":_vm.facetSettings[name].text,"query-data":_vm.facetSettings[name].data,"type":_vm.facetSettings[name].type,"buckets":filterObject.buckets || [],"label":_vm.facetSettings[name].label,"name":name}})}),1):_vm._e()],1),_c('div',{staticClass:"wikisearch-total"},[(_vm.state.total > 0)?_c('b',{staticClass:"wikisearch-total__nr"},[_vm._v(" "+_vm._s(_vm.state.total)+" ")]):_vm._e(),_vm._v(" "+_vm._s(_vm.$i18n('wikisearchfront-total', _vm.state.total))+" ")]),_c('div',{staticClass:"wikisearch-action"},[(_vm.settings.action)?_c('wikisearch-checkbox',{staticClass:"wikisearch-action__checkbox",on:{"change":_vm.selectAll}}):_vm._e(),(_vm.settings.action)?_c('wikisearch-button',{staticClass:"wikisearch-action__button",attrs:{"label":_vm.settings.action.label,"type":_vm.state.selectedResults.length ? 'progressive' : ''},on:{"click":_vm.doAction}}):_vm._e()],1),_c('div',{staticClass:"wikisearch-results"},[_c(_vm.resultDisplay,{tag:"component"}),(_vm.showElement)?_c('wikisearch-pagers',{attrs:{"size":_vm.state.size,"from":_vm.state.from,"total":_vm.state.total,"settings":_vm.settings}}):_vm._e()],1),_c('wikisearch-button',{staticClass:"wssearch-button--show-filters",attrs:{"icon":'settings',"label":'Filters',"type":'progressive'},on:{"click":function($event){_vm.openFilters = !_vm.openFilters}}})],1)])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=4b664daa&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wikisearch",class:[_vm.selectedClass, _vm.themeClass]},[_c('search-input'),(_vm.showElement)?_c('pills-selected'):_vm._e(),(_vm.settings['sort options'] && _vm.showElement)?_c('sort-order',{attrs:{"settings":_vm.settings}}):_vm._e(),_c('div',{staticClass:"wikisearch-filters",class:{ 'wikisearch-filters__hiden' : _vm.openFilters }},[_c('wikisearch-button',{staticClass:"wssearch-button--hide-filters",attrs:{"icon":'close',"type":'icon'},on:{"click":function($event){_vm.openFilters = !_vm.openFilters}}}),(_vm.settings.layout === 'calendar')?_c('wikisearch-calendar-tools',{attrs:{"outertime":_vm.$store.state.calendarDate}}):_vm._e(),(_vm.state.aggs)?_c('div',{staticClass:"wikisearch-filters__wrapper"},_vm._l((_vm.filters),function(filterObject,name){return _c(filterObject.component,{key:name,tag:"component",attrs:{"translation":_vm.facetSettings[name].translation,"query":_vm.facetSettings[name].query,"query-text":_vm.facetSettings[name].text,"query-data":_vm.facetSettings[name].data,"type":_vm.facetSettings[name].type,"settings":_vm.facetSettings[name],"buckets":filterObject.buckets || [],"label":_vm.facetSettings[name].label,"name":name}})}),1):_vm._e()],1),_c('div',{staticClass:"wikisearch-total"},[(_vm.state.total > 0)?_c('b',{staticClass:"wikisearch-total__nr"},[_vm._v(" "+_vm._s(_vm.state.total)+" ")]):_vm._e(),_vm._v(" "+_vm._s(_vm.$i18n('wikisearchfront-total', _vm.state.total))+" ")]),_c('div',{staticClass:"wikisearch-action"},[(_vm.settings.action)?_c('wikisearch-checkbox',{staticClass:"wikisearch-action__checkbox",on:{"change":_vm.selectAll}}):_vm._e(),(_vm.settings.action)?_c('wikisearch-button',{staticClass:"wikisearch-action__button",attrs:{"label":_vm.settings.action.label,"type":_vm.state.selectedResults.length ? 'progressive' : ''},on:{"click":_vm.doAction}}):_vm._e()],1),_c('div',{staticClass:"wikisearch-results"},[_c(_vm.resultDisplay,{tag:"component"}),(_vm.showElement)?_c('wikisearch-pagers',{attrs:{"size":_vm.state.size,"from":_vm.state.from,"total":_vm.state.total,"settings":_vm.settings}}):_vm._e()],1),_c('wikisearch-button',{staticClass:"wssearch-button--show-filters",attrs:{"icon":'settings',"label":'Filters',"type":'progressive'},on:{"click":function($event){_vm.openFilters = !_vm.openFilters}}})],1)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=0d9021a6&
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=4b664daa&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
 var es_object_keys = __webpack_require__("b64b");
@@ -9531,9 +9549,20 @@ var es_regexp_test = __webpack_require__("00b4");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
 }
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
 var es_symbol_description = __webpack_require__("e01a");
@@ -9544,6 +9573,61 @@ var es_symbol_iterator = __webpack_require__("d28b");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
 var es_string_iterator = __webpack_require__("3ca3");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
+var es_array_from = __webpack_require__("a630");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+
+
+
+
+
+
+
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
+var es_array_slice = __webpack_require__("fb6a");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+
+
+
+
+
+
+
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.error.cause.js
+var es_error_cause = __webpack_require__("d9e2");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
+
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
 
 
@@ -9581,42 +9665,6 @@ function _iterableToArrayLimit(arr, i) {
 
   return _arr;
 }
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
-var es_array_slice = __webpack_require__("fb6a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
-var es_array_from = __webpack_require__("a630");
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-
-
-
-
-
-
-
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.error.cause.js
-var es_error_cause = __webpack_require__("d9e2");
-
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
 
 function _nonIterableRest() {
@@ -9687,6 +9735,8 @@ function readableDate(date) {
 
 
 // CONCATENATED MODULE: ./src/store.js
+
+
 
 
 
@@ -10033,7 +10083,23 @@ function getSelection(state) {
       value: selection[key]
     });
   });
-  return selected;
+  var switchValues = Object.entries(mediaWikiValues.WikiSearchFront.config.facetSettings).filter(function (_ref3) {
+    var _ref4 = _slicedToArray(_ref3, 2),
+        filter = _ref4[1];
+
+    return filter.display === 'switch';
+  }).map(function (_ref5) {
+    var _ref6 = _slicedToArray(_ref5, 2),
+        key = _ref6[0],
+        filter = _ref6[1];
+
+    return {
+      key: key,
+      value: state.switched[key] || filter[filter.default]
+    };
+  });
+  console.log('filters', [].concat(selected, _toConsumableArray(switchValues)));
+  return [].concat(selected, _toConsumableArray(switchValues));
 }
 
 function setInitialSelection(state) {
@@ -10060,7 +10126,7 @@ function setInitialSelection(state) {
 
 var updateStore = function updateStore(store) {
   store.subscribe(function (mutation, state) {
-    if (mutation.type === 'START' || mutation.type === 'SET_TERM' || mutation.type === 'CLEAR_ALL' || mutation.type === 'SET_FROM' || mutation.type === 'SET_ORDERTYPE' || mutation.type === 'SET_ORDER' || mutation.type === 'SET_SIZE' || mutation.type === 'SET_SELECTED') {
+    if (mutation.type === 'START' || mutation.type === 'SET_TERM' || mutation.type === 'CLEAR_ALL' || mutation.type === 'SET_FROM' || mutation.type === 'SET_ORDERTYPE' || mutation.type === 'SET_ORDER' || mutation.type === 'SET_SIZE' || mutation.type === 'SET_SELECTED' || mutation.type === 'SET_SWITCHED') {
       // reset page offset when mutation in not page change
       if (mutation.type !== 'SET_FROM') {
         store.commit('RESET_FROM');
@@ -10073,7 +10139,8 @@ var updateStore = function updateStore(store) {
       store.commit('SET_LOADING'); // update url parameters
 
       window.history.replaceState('', '', createUrlString(state));
-      var selected = getSelection(state); // create parameters object for api
+      var selected = getSelection(state);
+      console.log(selected); // create parameters object for api
 
       var params = {
         action: 'query',
@@ -10115,6 +10182,7 @@ var store = new vuex_esm["a" /* default */].Store({
   state: {
     loading: false,
     selected: [],
+    switched: {},
     selectedResults: [],
     ongoingRequest: undefined,
     selectAllResults: false,
@@ -10149,6 +10217,9 @@ var store = new vuex_esm["a" /* default */].Store({
     },
     SET_SELECTED: function SET_SELECTED(state, selected) {
       state.selected = selected;
+    },
+    SET_SWITCHED: function SET_SWITCHED(state, switched) {
+      state.switched = switched;
     },
     SET_SELECTED_RESULTS: function SET_SELECTED_RESULTS(state, selected) {
       state.selectedResults = selected;
@@ -10194,10 +10265,10 @@ var store = new vuex_esm["a" /* default */].Store({
       state.realDates = realRanges;
       state.dates = facetRanges;
       var statesFromUrl = getStateFromUrl(state, facetSettings);
-      Object.entries(statesFromUrl).forEach(function (_ref3) {
-        var _ref4 = _slicedToArray(_ref3, 2),
-            key = _ref4[0],
-            value = _ref4[1];
+      Object.entries(statesFromUrl).forEach(function (_ref7) {
+        var _ref8 = _slicedToArray(_ref7, 2),
+            key = _ref8[0],
+            value = _ref8[1];
 
         state[key] = value;
       });
@@ -10219,9 +10290,9 @@ var store = new vuex_esm["a" /* default */].Store({
     }
   },
   actions: {
-    bundleApiCalls: function bundleApiCalls(_ref5, _ref6) {
-      var commit = _ref5.commit;
-      var actions = _ref6.actions;
+    bundleApiCalls: function bundleApiCalls(_ref9, _ref10) {
+      var commit = _ref9.commit;
+      var actions = _ref10.actions;
       commit('SET_API_CALLS', {
         text: actions.text,
         index: actions.index
@@ -10253,9 +10324,9 @@ var store = new vuex_esm["a" /* default */].Store({
         });
       }, 100);
     },
-    doApiCall: function doApiCall(_ref7, _ref8) {
-      var commit = _ref7.commit;
-      var actions = _ref8.actions;
+    doApiCall: function doApiCall(_ref11, _ref12) {
+      var commit = _ref11.commit;
+      var actions = _ref12.actions;
       // eslint-disable-next-line no-undef
       var api = new mw.Api(); // handle api call
 
@@ -13429,36 +13500,6 @@ var CalendarToolsvue_type_template_id_08ea06a1_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/CalendarTools.vue?vue&type=template&id=08ea06a1&
 
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
-
-
-
-
-
-
-
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
-
-
-
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CalendarTools.vue?vue&type=script&lang=js&
 
 
@@ -13660,12 +13701,12 @@ var FacetDateRangevue_type_template_id_3ba18b34_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/filters/FacetDateRange.vue?vue&type=template&id=3ba18b34&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=template&id=470c23ca&
-var FacetCheckboxvue_type_template_id_470c23ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('wikisearch-checkbox',{attrs:{"id":_vm.createID,"value":_vm.val,"checked":_vm.checked},on:{"change":_vm.updateSelection},scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('span',[_c('span',{staticClass:"wikisearch-checkbox__label"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.agg.doc_count > 0)?_c('span',{staticClass:"wikisearch-checkbox__count",attrs:{"title":"count"}},[_vm._v(" "+_vm._s(_vm.agg.doc_count)+" ")]):_vm._e()])]},proxy:true}])})}
-var FacetCheckboxvue_type_template_id_470c23ca_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=template&id=e2591422&
+var FacetCheckboxvue_type_template_id_e2591422_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('wikisearch-checkbox',{attrs:{"id":_vm.createID,"value":_vm.val,"checked":_vm.checked},on:{"change":_vm.updateSelection},scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('span',[_c('span',{staticClass:"wikisearch-checkbox__label"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.agg.doc_count > 0)?_c('span',{staticClass:"wikisearch-checkbox__count",attrs:{"title":"count"}},[_vm._v(" "+_vm._s(_vm.agg.doc_count)+" ")]):_vm._e()])]},proxy:true}])})}
+var FacetCheckboxvue_type_template_id_e2591422_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetCheckbox.vue?vue&type=template&id=470c23ca&
+// CONCATENATED MODULE: ./src/components/filters/FacetCheckbox.vue?vue&type=template&id=e2591422&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=script&lang=js&
 
@@ -13868,9 +13909,6 @@ var FacetCheckboxvue_type_template_id_470c23ca_staticRenderFns = []
     }
   },
   methods: {
-    updateSelection2: function updateSelection2(item) {
-      console.log(item);
-    },
     updateSelection: function updateSelection(item) {
       var selection = [];
       var found = false;
@@ -13907,8 +13945,8 @@ var FacetCheckboxvue_type_style_index_0_lang_css_ = __webpack_require__("9244");
 
 var FacetCheckbox_component = normalizeComponent(
   filters_FacetCheckboxvue_type_script_lang_js_,
-  FacetCheckboxvue_type_template_id_470c23ca_render,
-  FacetCheckboxvue_type_template_id_470c23ca_staticRenderFns,
+  FacetCheckboxvue_type_template_id_e2591422_render,
+  FacetCheckboxvue_type_template_id_e2591422_staticRenderFns,
   false,
   null,
   null,
@@ -15701,6 +15739,122 @@ var FacetFilter_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetFilter = (FacetFilter_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetSwitch.vue?vue&type=template&id=5940e75c&
+var FacetSwitchvue_type_template_id_5940e75c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:("wikisearch-filter wikisearch-filter--" + (_vm.strip(_vm.name))),attrs:{"role":"group","aria-labelledby":("filter__label--" + (_vm.strip(_vm.name)))}},[_c('span',{staticClass:"wikisearch-filter__label"},[_c('label',{attrs:{"id":("filter__label--" + (_vm.strip(_vm.name)))}},[_vm._v(" "+_vm._s(_vm.cleanName)+" ")])]),_c('div',{staticClass:"wikisearch-filter__options"},[_c('label',{staticClass:"wikisearchfront-switch"},[_c('input',{ref:"checkbox",staticClass:"wikisearchfront-switch__checkbox",attrs:{"type":"checkbox"},domProps:{"checked":_vm.isChecked},on:{"change":_vm.updateSwitched}}),_c('span',{staticClass:"wikisearchfront-switch__slider"})])])])}
+var FacetSwitchvue_type_template_id_5940e75c_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/filters/FacetSwitch.vue?vue&type=template&id=5940e75c&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetSwitch.vue?vue&type=script&lang=js&
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var FacetSwitchvue_type_script_lang_js_ = ({
+  name: 'FacetSwitch',
+  props: {
+    name: {
+      type: String,
+      default: ''
+    },
+    label: {
+      type: String,
+      default: ''
+    },
+    settings: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+  computed: {
+    /**
+     * @returns {String} title for checkbox label
+     */
+    cleanName: function cleanName() {
+      return this.label || this.name.replace(/_/g, ' ');
+    },
+    isChecked: function isChecked() {
+      if (this.$store.state.switched[this.name] === this.settings.true) {
+        return true;
+      }
+
+      if (this.$store.state.switched[this.name] === this.settings.false) {
+        return false;
+      }
+
+      return this.settings.default === 'true';
+    }
+  },
+  methods: {
+    strip: function strip(string) {
+      return stringUtils_strip(string);
+    },
+    updateSwitched: function updateSwitched() {
+      var switched = this.$store.state.switched;
+      switched[this.name] = this.$refs.checkbox.checked ? this.settings.true : this.settings.false;
+      this.$store.commit('SET_SWITCHED', switched);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/filters/FacetSwitch.vue?vue&type=script&lang=js&
+ /* harmony default export */ var filters_FacetSwitchvue_type_script_lang_js_ = (FacetSwitchvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/filters/FacetSwitch.vue?vue&type=style&index=0&lang=css&
+var FacetSwitchvue_type_style_index_0_lang_css_ = __webpack_require__("ef19");
+
+// CONCATENATED MODULE: ./src/components/filters/FacetSwitch.vue
+
+
+
+
+
+
+/* normalize component */
+
+var FacetSwitch_component = normalizeComponent(
+  filters_FacetSwitchvue_type_script_lang_js_,
+  FacetSwitchvue_type_template_id_5940e75c_render,
+  FacetSwitchvue_type_template_id_5940e75c_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FacetSwitch = (FacetSwitch_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetSearch.vue?vue&type=template&id=083e4bdd&
 var FacetSearchvue_type_template_id_083e4bdd_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-filter",class:("wikisearch-filter--" + (_vm.strip(_vm.name))),attrs:{"aria-disabled":"false"}},[_c('div',{staticClass:"wikisearch-filter__label"},[_c('label',[_vm._v(_vm._s(_vm.labelName))])]),_c('div',{staticClass:"wikisearch-filter__wrapper"},[_c('wikisearch-input',{attrs:{"id":_vm.setID,"clearable":true,"start-icon":'search',"placeholder":_vm.$i18n('search')},on:{"enter":_vm.search,"clear":_vm.clearTerm},model:{value:(_vm.termTyped),callback:function ($$v) {_vm.termTyped=$$v},expression:"termTyped"}})],1)])}
 var FacetSearchvue_type_template_id_083e4bdd_staticRenderFns = []
@@ -16218,6 +16372,8 @@ var FacetSorted_component = normalizeComponent(
 //
 //
 //
+//
+
 
 
 
@@ -16258,6 +16414,7 @@ var FacetSorted_component = normalizeComponent(
     // filters
     FacetCombobox: FacetCombobox,
     FacetFilter: FacetFilter,
+    FacetSwitch: FacetSwitch,
     FacetAskCombobox: FacetAskCombobox,
     FacetElasticCombobox: FacetElasticCombobox,
     FacetSearch: FacetSearch,
@@ -16313,6 +16470,7 @@ var FacetSorted_component = normalizeComponent(
         combobox: FacetCombobox,
         sorted: FacetSorted,
         search: FacetSearch,
+        switch: FacetSwitch,
         datepicker: FacetDateRange,
         'ask combobox': FacetAskCombobox,
         'elastic combobox': FacetElasticCombobox,
