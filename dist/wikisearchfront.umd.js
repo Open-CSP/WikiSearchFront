@@ -10075,6 +10075,11 @@ function getSelection(state) {
   var selected = [];
   state.selected.forEach(function (element) {
     var settings = mediaWikiValues.WikiSearchFront.config.facetSettings[element.key];
+    var out = element;
+
+    if (settings.not) {
+      out.negate = true;
+    }
 
     if (settings && settings.logic && settings.logic === 'or') {
       if (!selection[element.key]) {
@@ -10082,8 +10087,8 @@ function getSelection(state) {
       } else {
         selection[element.key].push(element.value);
       }
-    } else {
-      selected.push(element);
+    } else if (out.value !== 'unset') {
+      selected.push(out);
     }
   });
   Object.keys(selection).forEach(function (key) {
@@ -10094,18 +10099,25 @@ function getSelection(state) {
   });
   var switchValues = Object.entries(mediaWikiValues.WikiSearchFront.config.facetSettings).filter(function (_ref3) {
     var _ref4 = _slicedToArray(_ref3, 2),
+        key = _ref4[0],
         filter = _ref4[1];
 
-    return filter.display === 'switch';
+    return filter.display === 'switch' && (state.switched[key] !== 'unset' || filter[filter.default] !== 'unset');
   }).map(function (_ref5) {
     var _ref6 = _slicedToArray(_ref5, 2),
         key = _ref6[0],
         filter = _ref6[1];
 
-    return {
+    var out = {
       key: key,
       value: state.switched[key] || filter[filter.default]
     };
+
+    if (filter.not) {
+      out.negate = true;
+    }
+
+    return out;
   });
   console.log('filters', [].concat(selected, _toConsumableArray(switchValues)));
   return [].concat(selected, _toConsumableArray(switchValues));
@@ -10148,8 +10160,7 @@ var updateStore = function updateStore(store) {
       store.commit('SET_LOADING'); // update url parameters
 
       window.history.replaceState('', '', createUrlString(state));
-      var selected = getSelection(state);
-      console.log(selected); // create parameters object for api
+      var selected = getSelection(state); // create parameters object for api
 
       var params = {
         action: 'query',

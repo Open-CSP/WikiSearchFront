@@ -273,6 +273,11 @@ function getSelection(state) {
   const selected = [];
   state.selected.forEach((element) => {
     const settings = mediaWikiValues.WikiSearchFront.config.facetSettings[element.key];
+    const out = element;
+    if (settings.not) {
+      out.negate = true;
+    }
+
     if (
       settings
       && settings.logic
@@ -283,8 +288,8 @@ function getSelection(state) {
       } else {
         selection[element.key].push(element.value);
       }
-    } else {
-      selected.push(element);
+    } else if (out.value !== 'unset') {
+      selected.push(out);
     }
   });
 
@@ -293,8 +298,14 @@ function getSelection(state) {
   });
 
   const switchValues = Object.entries(mediaWikiValues.WikiSearchFront.config.facetSettings)
-    .filter(([, filter]) => filter.display === 'switch')
-    .map(([key, filter]) => ({ key, value: state.switched[key] || filter[filter.default] }));
+    .filter(([key, filter]) => filter.display === 'switch' && (state.switched[key] !== 'unset' || filter[filter.default] !== 'unset'))
+    .map(([key, filter]) => {
+      const out = { key, value: state.switched[key] || filter[filter.default] };
+      if (filter.not) {
+        out.negate = true;
+      }
+      return out;
+    });
 
   console.log('filters', [...selected, ...switchValues]);
   return [...selected, ...switchValues];
@@ -343,7 +354,6 @@ const updateStore = (store) => {
 
       const selected = getSelection(state);
 
-      console.log(selected);
       // create parameters object for api
       const params = {
         action: 'query',
