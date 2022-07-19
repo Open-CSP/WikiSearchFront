@@ -92,7 +92,7 @@
 </template>
 
 <script>
-import store from './store';
+import { store } from './store';
 import { strip } from './utilities/stringUtils';
 
 import SearchInput from './components/SearchInput.vue';

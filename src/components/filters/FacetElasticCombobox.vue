@@ -12,6 +12,7 @@
 
 <script>
 // import Vue from 'vue';
+import { getSelection } from '../../store';
 import FacetCombobox from './FacetCombobox.vue';
 
 export default {
@@ -95,6 +96,10 @@ export default {
       const params = {
         action: 'query',
         meta: 'WikiSearchCombobox',
+        // eslint-disable-next-line no-undef
+        pageid: mw.config.values.wgArticleId,
+        filter: getSelection(this.$store.state),
+        search_term: this.$store.state.term,
         property: this.name,
         term,
         format: 'json',
