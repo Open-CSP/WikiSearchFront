@@ -1,7 +1,6 @@
-const insertWildcards = (term) => {
-  const terms = term.split(/(?<=[a-zA-Z_\-0-9])(?=$|[^a-zA-Z_\-0-9])\s*)/gm);
-  terms.forEach((t,i) => );
-};
+const insertWildcards = (term) => term.split(/((?<=[a-zA-Z_\-0-9])(?=$|[^a-zA-Z_\-0-9])\s*)/gm)
+  .map((t, i) => (i % 2 === 0 && t ? `*{${t}}*` : ''))
+  .join('');
 
 const prepareQuery = (term) => {
   let searchTerm = term.trim();
@@ -10,18 +9,12 @@ const prepareQuery = (term) => {
   }
   searchTerm = searchTerm
     .replaceAll('/', '')
-    .replaceAll(':', '\\:')
-    .replaceAll('+', '\\+')
-    .replaceAll('=', '\\=');
+    .replace(/(:|\+|=)/g, '\\$1');
 
-  const advancedSearchChars = ['"', "'", 'AND', 'NOT', 'OR', '~', '(', ')', '?', '*', ' -'];
-  const isAdvancedQuery = advancedSearchChars
-    .reduce((a, b) => a || searchTerm.indexOf(b) !== -1, false);
-  if (!isAdvancedQuery) {
-    searchTerm = insertWildcards(searchTerm);
-  }
-
-  return searchTerm;
+  return ['"', "'", 'AND', 'NOT', 'OR', '~', '(', ')', '?', '*', ' -']
+    .reduce((a, b) => a || searchTerm.indexOf(b) !== -1, false)
+    ? searchTerm
+    : insertWildcards(searchTerm);
 };
 
 export default prepareQuery;
