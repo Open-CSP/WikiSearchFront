@@ -9749,7 +9749,7 @@ var es_string_replace_all = __webpack_require__("5b81");
 
 var insertWildcards = function insertWildcards(term) {
   return term.split(/((?<=[a-zA-Z_\-0-9])(?=$|[^a-zA-Z_\-0-9])\s*)/gm).map(function (t, i) {
-    return i % 2 === 0 && t ? "*{".concat(t, "}*") : '';
+    return i % 2 === 0 && t ? "*".concat(t, "*") : '';
   }).join('');
 };
 
@@ -10098,15 +10098,18 @@ function getSelection(state) {
   var selected = [];
   state.selected.forEach(function (element) {
     var settings = mediaWikiValues.WikiSearchFront.config.facetSettings[element.key];
+    var value = (element === null || element === void 0 ? void 0 : element.type) === 'query' ? elastic(element.value) : element.value;
 
     if (settings && settings.logic && settings.logic === 'or') {
       if (!selection[element.key]) {
-        selection[element.key] = [element.value];
+        selection[element.key] = [value];
       } else {
-        selection[element.key].push(element.value);
+        selection[element.key].push(value);
       }
     } else {
-      selected.push(element);
+      selected.push(_objectSpread2(_objectSpread2({}, element), {}, {
+        value: value
+      }));
     }
   });
   Object.keys(selection).forEach(function (key) {
@@ -15289,12 +15292,12 @@ var FacetAskCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetAskCombobox = (FacetAskCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=35fc20b7&
-var FacetElasticComboboxvue_type_template_id_35fc20b7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"buckets":_vm.buckets,"no-count":_vm.facetSettings[_vm.name].count === 'false',"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
-var FacetElasticComboboxvue_type_template_id_35fc20b7_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=f73ed054&
+var FacetElasticComboboxvue_type_template_id_f73ed054_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"buckets":_vm.buckets,"no-count":_vm.facetSettings[_vm.name].count === 'false',"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
+var FacetElasticComboboxvue_type_template_id_f73ed054_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=35fc20b7&
+// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=f73ed054&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=script&lang=js&
 
@@ -15318,6 +15321,7 @@ var FacetElasticComboboxvue_type_template_id_35fc20b7_staticRenderFns = []
 //
 //
 // import Vue from 'vue';
+
 
 /* harmony default export */ var FacetElasticComboboxvue_type_script_lang_js_ = ({
   name: 'FacetElasticCombobox',
@@ -15414,7 +15418,7 @@ var FacetElasticComboboxvue_type_template_id_35fc20b7_staticRenderFns = []
         action: 'query',
         meta: 'WikiSearchCombobox',
         property: this.name,
-        term: term,
+        term: elastic(term),
         format: 'json',
         formatversion: 2
       };
@@ -15439,8 +15443,8 @@ var FacetElasticComboboxvue_type_template_id_35fc20b7_staticRenderFns = []
 
 var FacetElasticCombobox_component = normalizeComponent(
   filters_FacetElasticComboboxvue_type_script_lang_js_,
-  FacetElasticComboboxvue_type_template_id_35fc20b7_render,
-  FacetElasticComboboxvue_type_template_id_35fc20b7_staticRenderFns,
+  FacetElasticComboboxvue_type_template_id_f73ed054_render,
+  FacetElasticComboboxvue_type_template_id_f73ed054_staticRenderFns,
   false,
   null,
   null,
