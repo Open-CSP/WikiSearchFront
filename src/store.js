@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { createDate } from './utilities/dateUtils';
+import prepareQuery from './utilities/elastic';
 
 Vue.use(Vuex);
 
@@ -342,7 +343,7 @@ const updateStore = (store) => {
         meta: 'WikiSearch',
         format: 'json',
         filter: JSON.stringify(selected),
-        term: state.term,
+        term: prepareQuery(state.term),
         from: state.from,
         limit: state.size,
         pageid: mediaWikiValues.wgArticleId,

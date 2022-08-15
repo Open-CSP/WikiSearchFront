@@ -3961,6 +3961,26 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 /***/ }),
 
+/***/ "498a":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $trim = __webpack_require__("58a8").trim;
+var forcedStringTrimMethod = __webpack_require__("c8d2");
+
+// `String.prototype.trim` method
+// https://tc39.es/ecma262/#sec-string.prototype.trim
+$({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
+  trim: function trim() {
+    return $trim(this);
+  }
+});
+
+
+/***/ }),
+
 /***/ "4d05":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8248,6 +8268,28 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "c8d2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var PROPER_FUNCTION_NAME = __webpack_require__("5e77").PROPER;
+var fails = __webpack_require__("d039");
+var whitespaces = __webpack_require__("5899");
+
+var non = '\u200B\u0085\u180E';
+
+// check that a method works with the correct list
+// of whitespaces and has a correct name
+module.exports = function (METHOD_NAME) {
+  return fails(function () {
+    return !!whitespaces[METHOD_NAME]()
+      || non[METHOD_NAME]() !== non
+      || (PROPER_FUNCTION_NAME && whitespaces[METHOD_NAME].name !== METHOD_NAME);
+  });
+};
+
+
+/***/ }),
+
 /***/ "ca84":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9686,7 +9728,47 @@ function readableDate(date) {
 }
 
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
+var es_string_trim = __webpack_require__("498a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+var es_string_replace = __webpack_require__("5319");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace-all.js
+var es_string_replace_all = __webpack_require__("5b81");
+
+// CONCATENATED MODULE: ./src/utilities/elastic.js
+
+
+
+
+
+
+
+
+
+var insertWildcards = function insertWildcards(term) {
+  return term.split(/((?<=[a-zA-Z_\-0-9])(?=$|[^a-zA-Z_\-0-9])\s*)/gm).map(function (t, i) {
+    return i % 2 === 0 && t ? "*{".concat(t, "}*") : '';
+  }).join('');
+};
+
+var prepareQuery = function prepareQuery(term) {
+  var searchTerm = term.trim();
+
+  if (searchTerm.length === 0) {
+    return '*';
+  }
+
+  searchTerm = searchTerm.replaceAll('/', '').replace(/(:|\+|=)/g, '\\$1');
+  return ['"', "'", 'AND', 'NOT', 'OR', '~', '(', ')', '?', '*', ' -'].reduce(function (a, b) {
+    return a || searchTerm.indexOf(b) !== -1;
+  }, false) ? searchTerm : insertWildcards(searchTerm);
+};
+
+/* harmony default export */ var elastic = (prepareQuery);
 // CONCATENATED MODULE: ./src/store.js
+
 
 
 
@@ -10058,7 +10140,7 @@ function setInitialSelection(state) {
  */
 
 
-var updateStore = function updateStore(store) {
+var store_updateStore = function updateStore(store) {
   store.subscribe(function (mutation, state) {
     if (mutation.type === 'START' || mutation.type === 'SET_TERM' || mutation.type === 'CLEAR_ALL' || mutation.type === 'SET_FROM' || mutation.type === 'SET_ORDERTYPE' || mutation.type === 'SET_ORDER' || mutation.type === 'SET_SIZE' || mutation.type === 'SET_SELECTED') {
       // reset page offset when mutation in not page change
@@ -10080,7 +10162,7 @@ var updateStore = function updateStore(store) {
         meta: 'WikiSearch',
         format: 'json',
         filter: JSON.stringify(selected),
-        term: state.term,
+        term: elastic(state.term),
         from: state.from,
         limit: state.size,
         pageid: mediaWikiValues.wgArticleId,
@@ -10111,7 +10193,7 @@ var updateStore = function updateStore(store) {
   });
 };
 
-var store = new vuex_esm["a" /* default */].Store({
+var store_store = new vuex_esm["a" /* default */].Store({
   state: {
     loading: false,
     selected: [],
@@ -10233,7 +10315,7 @@ var store = new vuex_esm["a" /* default */].Store({
         var api = new mw.Api();
         var params = {
           action: 'parse',
-          text: "<div>".concat(store.state.apiCalls.map(function (call) {
+          text: "<div>".concat(store_store.state.apiCalls.map(function (call) {
             return "".concat(call.index, "^^%%%^^").concat(call.text);
           }).join('%%^^^%%'), "</div>"),
           format: 'json',
@@ -10249,7 +10331,7 @@ var store = new vuex_esm["a" /* default */].Store({
           var templates = Object.fromEntries(result.substring(5, result.length - 6).split('%%^^^%%').map(function (e) {
             return e.split('^^%%%^^');
           }));
-          commit('SET_TEMPLATES', _objectSpread2(_objectSpread2({}, store.state.renderedTemplates), templates));
+          commit('SET_TEMPLATES', _objectSpread2(_objectSpread2({}, store_store.state.renderedTemplates), templates));
         });
       }, 100);
     },
@@ -10281,12 +10363,9 @@ var store = new vuex_esm["a" /* default */].Store({
       return state.rangeTo;
     }
   },
-  plugins: [updateStore]
+  plugins: [store_updateStore]
 });
-/* harmony default export */ var src_store = (store);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
-var es_string_replace = __webpack_require__("5319");
-
+/* harmony default export */ var src_store = (store_store);
 // CONCATENATED MODULE: ./src/utilities/stringUtils.js
 
 
@@ -11920,9 +11999,6 @@ var ResultPropertyvue_type_template_id_77040cb7_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ResultProperty.vue?vue&type=template&id=77040cb7&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace-all.js
-var es_string_replace_all = __webpack_require__("5b81");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.constructor.js
 var es_regexp_constructor = __webpack_require__("4d63");
