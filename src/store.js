@@ -366,7 +366,7 @@ const updateStore = (store) => {
           {
             type: 'property',
             property: mediaWikiValues.WikiSearchFront.config.settings.sort,
-            order: 'asc',
+            order: mediaWikiValues.WikiSearchFront.config.settings.order || 'asc',
           },
         ]);
       }
