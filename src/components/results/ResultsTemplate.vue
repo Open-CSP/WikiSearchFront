@@ -35,6 +35,7 @@ export default {
               ? `|${text}`
               : '';
           });
+          wikitext += `|$term=${this.$store.state.term}`;
           wikitext += '}}';
         });
       }
