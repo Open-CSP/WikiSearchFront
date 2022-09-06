@@ -548,4 +548,4 @@ const store = new Vuex.Store({
   plugins: [updateStore],
 });
 
-export default store;
+export { store, getSelection };
