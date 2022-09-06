@@ -8,8 +8,7 @@ const prepareQuery = (term) => {
     return '*';
   }
   searchTerm = searchTerm
-    .replaceAll('/', '')
-    .replace(/(:|\+|=)/g, '\\$1');
+    .replace(/(:|\+|=|\/)/g, '\\$1');
 
   return ['"', "'", 'AND', 'NOT', 'OR', '~', '(', ')', '?', '*', ' -']
     .reduce((a, b) => a || searchTerm.indexOf(b) !== -1, false)
