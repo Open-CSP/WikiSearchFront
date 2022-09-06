@@ -9734,11 +9734,7 @@ var es_string_trim = __webpack_require__("498a");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
 var es_string_replace = __webpack_require__("5319");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace-all.js
-var es_string_replace_all = __webpack_require__("5b81");
-
 // CONCATENATED MODULE: ./src/utilities/elastic.js
-
 
 
 
@@ -9760,7 +9756,7 @@ var prepareQuery = function prepareQuery(term) {
     return '*';
   }
 
-  searchTerm = searchTerm.replaceAll('/', '').replace(/(:|\+|=)/g, '\\$1');
+  searchTerm = searchTerm.replace(/(:|\+|=|\/)/g, '\\$1');
   return ['"', "'", 'AND', 'NOT', 'OR', '~', '(', ')', '?', '*', ' -'].reduce(function (a, b) {
     return a || searchTerm.indexOf(b) !== -1;
   }, false) ? searchTerm : insertWildcards(searchTerm);
@@ -11999,6 +11995,9 @@ var ResultPropertyvue_type_template_id_77040cb7_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/ResultProperty.vue?vue&type=template&id=77040cb7&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace-all.js
+var es_string_replace_all = __webpack_require__("5b81");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.constructor.js
 var es_regexp_constructor = __webpack_require__("4d63");
