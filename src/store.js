@@ -274,18 +274,23 @@ function getSelection(state) {
   const selected = [];
   state.selected.forEach((element) => {
     const settings = mediaWikiValues.WikiSearchFront.config.facetSettings[element.key];
+
+    const value = element?.type === 'query'
+      ? prepareQuery(element.value)
+      : element.value;
+
     if (
       settings
       && settings.logic
       && settings.logic === 'or'
     ) {
       if (!selection[element.key]) {
-        selection[element.key] = [element.value];
+        selection[element.key] = [value];
       } else {
-        selection[element.key].push(element.value);
+        selection[element.key].push(value);
       }
     } else {
-      selected.push(element);
+      selected.push({ ...element, value });
     }
   });
 

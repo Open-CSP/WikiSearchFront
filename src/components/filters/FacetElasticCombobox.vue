@@ -13,6 +13,7 @@
 <script>
 // import Vue from 'vue';
 import FacetCombobox from './FacetCombobox.vue';
+import prepareQuery from '../../utilities/elastic';
 
 export default {
   name: 'FacetElasticCombobox',
@@ -96,7 +97,7 @@ export default {
         action: 'query',
         meta: 'WikiSearchCombobox',
         property: this.name,
-        term,
+        term: prepareQuery(term),
         format: 'json',
         formatversion: 2,
       };
