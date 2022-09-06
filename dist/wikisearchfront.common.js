@@ -3961,6 +3961,26 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 /***/ }),
 
+/***/ "498a":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $trim = __webpack_require__("58a8").trim;
+var forcedStringTrimMethod = __webpack_require__("c8d2");
+
+// `String.prototype.trim` method
+// https://tc39.es/ecma262/#sec-string.prototype.trim
+$({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
+  trim: function trim() {
+    return $trim(this);
+  }
+});
+
+
+/***/ }),
+
 /***/ "4d05":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8248,6 +8268,28 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "c8d2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var PROPER_FUNCTION_NAME = __webpack_require__("5e77").PROPER;
+var fails = __webpack_require__("d039");
+var whitespaces = __webpack_require__("5899");
+
+var non = '\u200B\u0085\u180E';
+
+// check that a method works with the correct list
+// of whitespaces and has a correct name
+module.exports = function (METHOD_NAME) {
+  return fails(function () {
+    return !!whitespaces[METHOD_NAME]()
+      || non[METHOD_NAME]() !== non
+      || (PROPER_FUNCTION_NAME && whitespaces[METHOD_NAME].name !== METHOD_NAME);
+  });
+};
+
+
+/***/ }),
+
 /***/ "ca84":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9686,7 +9728,43 @@ function readableDate(date) {
 }
 
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
+var es_string_trim = __webpack_require__("498a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+var es_string_replace = __webpack_require__("5319");
+
+// CONCATENATED MODULE: ./src/utilities/elastic.js
+
+
+
+
+
+
+
+
+var insertWildcards = function insertWildcards(term) {
+  return term.split(/((?<=[a-zA-Z_\-0-9])(?=$|[^a-zA-Z_\-0-9])\s*)/gm).map(function (t, i) {
+    return i % 2 === 0 && t ? "*".concat(t, "*") : '';
+  }).join('');
+};
+
+var prepareQuery = function prepareQuery(term) {
+  var searchTerm = term.trim();
+
+  if (searchTerm.length === 0) {
+    return '*';
+  }
+
+  searchTerm = searchTerm.replace(/(:|\+|=|\/)/g, '\\$1');
+  return ['"', "'", 'AND', 'NOT', 'OR', '~', '(', ')', '?', '*', ' -'].reduce(function (a, b) {
+    return a || searchTerm.indexOf(b) !== -1;
+  }, false) ? searchTerm : insertWildcards(searchTerm);
+};
+
+/* harmony default export */ var elastic = (prepareQuery);
 // CONCATENATED MODULE: ./src/store.js
+
 
 
 
@@ -10016,15 +10094,18 @@ function getSelection(state) {
   var selected = [];
   state.selected.forEach(function (element) {
     var settings = mediaWikiValues.WikiSearchFront.config.facetSettings[element.key];
+    var value = (element === null || element === void 0 ? void 0 : element.type) === 'query' ? elastic(element.value) : element.value;
 
     if (settings && settings.logic && settings.logic === 'or') {
       if (!selection[element.key]) {
-        selection[element.key] = [element.value];
+        selection[element.key] = [value];
       } else {
-        selection[element.key].push(element.value);
+        selection[element.key].push(value);
       }
     } else {
-      selected.push(element);
+      selected.push(_objectSpread2(_objectSpread2({}, element), {}, {
+        value: value
+      }));
     }
   });
   Object.keys(selection).forEach(function (key) {
@@ -10058,7 +10139,7 @@ function setInitialSelection(state) {
  */
 
 
-var updateStore = function updateStore(store) {
+var store_updateStore = function updateStore(store) {
   store.subscribe(function (mutation, state) {
     if (mutation.type === 'START' || mutation.type === 'SET_TERM' || mutation.type === 'CLEAR_ALL' || mutation.type === 'SET_FROM' || mutation.type === 'SET_ORDERTYPE' || mutation.type === 'SET_ORDER' || mutation.type === 'SET_SIZE' || mutation.type === 'SET_SELECTED') {
       // reset page offset when mutation in not page change
@@ -10080,7 +10161,7 @@ var updateStore = function updateStore(store) {
         meta: 'WikiSearch',
         format: 'json',
         filter: JSON.stringify(selected),
-        term: state.term,
+        term: elastic(state.term),
         from: state.from,
         limit: state.size,
         pageid: mediaWikiValues.wgArticleId,
@@ -10111,7 +10192,7 @@ var updateStore = function updateStore(store) {
   });
 };
 
-var store = new vuex_esm["a" /* default */].Store({
+var store_store = new vuex_esm["a" /* default */].Store({
   state: {
     loading: false,
     selected: [],
@@ -10233,7 +10314,7 @@ var store = new vuex_esm["a" /* default */].Store({
         var api = new mw.Api();
         var params = {
           action: 'parse',
-          text: "<div>".concat(store.state.apiCalls.map(function (call) {
+          text: "<div>".concat(store_store.state.apiCalls.map(function (call) {
             return "".concat(call.index, "^^%%%^^").concat(call.text);
           }).join('%%^^^%%'), "</div>"),
           format: 'json',
@@ -10249,7 +10330,7 @@ var store = new vuex_esm["a" /* default */].Store({
           var templates = Object.fromEntries(result.substring(5, result.length - 6).split('%%^^^%%').map(function (e) {
             return e.split('^^%%%^^');
           }));
-          commit('SET_TEMPLATES', _objectSpread2(_objectSpread2({}, store.state.renderedTemplates), templates));
+          commit('SET_TEMPLATES', _objectSpread2(_objectSpread2({}, store_store.state.renderedTemplates), templates));
         });
       }, 100);
     },
@@ -10281,11 +10362,8 @@ var store = new vuex_esm["a" /* default */].Store({
       return state.rangeTo;
     }
   },
-  plugins: [updateStore]
+  plugins: [store_updateStore]
 });
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
-var es_string_replace = __webpack_require__("5319");
 
 // CONCATENATED MODULE: ./src/utilities/stringUtils.js
 
@@ -15214,12 +15292,12 @@ var FacetAskCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetAskCombobox = (FacetAskCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=74cd04e0&
-var FacetElasticComboboxvue_type_template_id_74cd04e0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"buckets":_vm.buckets,"no-count":_vm.facetSettings[_vm.name].count === 'false',"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
-var FacetElasticComboboxvue_type_template_id_74cd04e0_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=65b9ae29&
+var FacetElasticComboboxvue_type_template_id_65b9ae29_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"buckets":_vm.buckets,"no-count":_vm.facetSettings[_vm.name].count === 'false',"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
+var FacetElasticComboboxvue_type_template_id_65b9ae29_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=74cd04e0&
+// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=65b9ae29&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=script&lang=js&
 
@@ -15243,6 +15321,7 @@ var FacetElasticComboboxvue_type_template_id_74cd04e0_staticRenderFns = []
 //
 //
 // import Vue from 'vue';
+
 
 
 /* harmony default export */ var FacetElasticComboboxvue_type_script_lang_js_ = ({
@@ -15344,7 +15423,7 @@ var FacetElasticComboboxvue_type_template_id_74cd04e0_staticRenderFns = []
         filter: getSelection(this.$store.state),
         search_term: this.$store.state.term,
         property: this.name,
-        term: term,
+        term: elastic(term),
         format: 'json',
         formatversion: 2
       };
@@ -15369,8 +15448,8 @@ var FacetElasticComboboxvue_type_template_id_74cd04e0_staticRenderFns = []
 
 var FacetElasticCombobox_component = normalizeComponent(
   filters_FacetElasticComboboxvue_type_script_lang_js_,
-  FacetElasticComboboxvue_type_template_id_74cd04e0_render,
-  FacetElasticComboboxvue_type_template_id_74cd04e0_staticRenderFns,
+  FacetElasticComboboxvue_type_template_id_65b9ae29_render,
+  FacetElasticComboboxvue_type_template_id_65b9ae29_staticRenderFns,
   false,
   null,
   null,
@@ -16246,7 +16325,7 @@ var FacetSorted_component = normalizeComponent(
 
 
 /* harmony default export */ var Appvue_type_script_lang_js_ = ({
-  store: store,
+  store: store_store,
   name: 'App',
   components: {
     // ui

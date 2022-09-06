@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { createDate } from './utilities/dateUtils';
+import prepareQuery from './utilities/elastic';
 
 Vue.use(Vuex);
 
@@ -273,18 +274,23 @@ function getSelection(state) {
   const selected = [];
   state.selected.forEach((element) => {
     const settings = mediaWikiValues.WikiSearchFront.config.facetSettings[element.key];
+
+    const value = element?.type === 'query'
+      ? prepareQuery(element.value)
+      : element.value;
+
     if (
       settings
       && settings.logic
       && settings.logic === 'or'
     ) {
       if (!selection[element.key]) {
-        selection[element.key] = [element.value];
+        selection[element.key] = [value];
       } else {
-        selection[element.key].push(element.value);
+        selection[element.key].push(value);
       }
     } else {
-      selected.push(element);
+      selected.push({ ...element, value });
     }
   });
 
@@ -342,7 +348,7 @@ const updateStore = (store) => {
         meta: 'WikiSearch',
         format: 'json',
         filter: JSON.stringify(selected),
-        term: state.term,
+        term: prepareQuery(state.term),
         from: state.from,
         limit: state.size,
         pageid: mediaWikiValues.wgArticleId,
