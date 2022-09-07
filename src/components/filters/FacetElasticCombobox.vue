@@ -99,7 +99,7 @@ export default {
         meta: 'WikiSearchCombobox',
         // eslint-disable-next-line no-undef
         pageid: mw.config.values.wgArticleId,
-        filter: getSelection(this.$store.state),
+        filter: JSON.stringify(getSelection(this.$store.state)),
         search_term: this.$store.state.term,
         property: this.name,
         term: prepareQuery(term),
