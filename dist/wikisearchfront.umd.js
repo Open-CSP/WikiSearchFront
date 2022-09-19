@@ -15301,12 +15301,12 @@ var FacetAskCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetAskCombobox = (FacetAskCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=9bebc01a&
-var FacetElasticComboboxvue_type_template_id_9bebc01a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"buckets":_vm.buckets,"no-count":_vm.facetSettings[_vm.name].count === 'false',"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
-var FacetElasticComboboxvue_type_template_id_9bebc01a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=50f7ab21&
+var FacetElasticComboboxvue_type_template_id_50f7ab21_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"buckets":_vm.buckets,"no-count":_vm.facetSettings[_vm.name].count === 'false',"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
+var FacetElasticComboboxvue_type_template_id_50f7ab21_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=9bebc01a&
+// CONCATENATED MODULE: ./src/components/filters/FacetElasticCombobox.vue?vue&type=template&id=50f7ab21&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetElasticCombobox.vue?vue&type=script&lang=js&
 
@@ -15431,7 +15431,7 @@ var FacetElasticComboboxvue_type_template_id_9bebc01a_staticRenderFns = []
         // eslint-disable-next-line no-undef
         pageid: mw.config.values.wgArticleId,
         filter: JSON.stringify(getSelection(this.$store.state)),
-        search_term: this.$store.state.term,
+        search_term: elastic(this.$store.state.term),
         property: this.name,
         term: elastic(term),
         format: 'json',
@@ -15458,8 +15458,8 @@ var FacetElasticComboboxvue_type_template_id_9bebc01a_staticRenderFns = []
 
 var FacetElasticCombobox_component = normalizeComponent(
   filters_FacetElasticComboboxvue_type_script_lang_js_,
-  FacetElasticComboboxvue_type_template_id_9bebc01a_render,
-  FacetElasticComboboxvue_type_template_id_9bebc01a_staticRenderFns,
+  FacetElasticComboboxvue_type_template_id_50f7ab21_render,
+  FacetElasticComboboxvue_type_template_id_50f7ab21_staticRenderFns,
   false,
   null,
   null,

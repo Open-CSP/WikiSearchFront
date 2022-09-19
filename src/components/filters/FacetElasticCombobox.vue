@@ -100,7 +100,7 @@ export default {
         // eslint-disable-next-line no-undef
         pageid: mw.config.values.wgArticleId,
         filter: JSON.stringify(getSelection(this.$store.state)),
-        search_term: this.$store.state.term,
+        search_term: prepareQuery(this.$store.state.term),
         property: this.name,
         term: prepareQuery(term),
         format: 'json',
