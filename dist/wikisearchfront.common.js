@@ -9728,11 +9728,11 @@ function readableDate(date) {
 }
 
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
-var es_string_trim = __webpack_require__("498a");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
 var es_string_replace = __webpack_require__("5319");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
+var es_string_trim = __webpack_require__("498a");
 
 // CONCATENATED MODULE: ./src/utilities/elastic.js
 
@@ -9743,10 +9743,14 @@ var es_string_replace = __webpack_require__("5319");
 
 
 
+
+
 var insertWildcards = function insertWildcards(term) {
-  return term.split(/((?<=[a-zA-Z_\-0-9])(?=$|[^a-zA-Z_\-0-9])\s*)/gm).map(function (t, i) {
-    return i % 2 === 0 && t ? "*".concat(t, "*") : '';
-  }).join('');
+  return term ? "*".concat(term.split(' ').filter(function (e) {
+    return e;
+  }).reduce(function (a, b) {
+    return /[^a-z_\-0-9]/i.test(a.slice(-1)) ? "".concat(a, " ").concat(b) : "".concat(a, "*").concat(b);
+  }).replace(/\*+/g, '*'), "*") : '*';
 };
 
 var prepareQuery = function prepareQuery(term) {
