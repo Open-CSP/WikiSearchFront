@@ -1,6 +1,7 @@
-const insertWildcards = (term) => term.split(/((?<=[a-zA-Z_\-0-9])(?=$|[^a-zA-Z_\-0-9])\s*)/gm)
-  .map((t, i) => (i % 2 === 0 && t ? `*${t}*` : ''))
-  .join('');
+const insertWildcards = (term) => `*${term.split(' ')
+  .filter(e => e)
+  .reduce((a, b) => (/[^a-z_\-0-9]/i.test(a.slice(-1)) ? `${a} ${b}` : `${a}*${b}`))
+  .replace(/\*+/g, '*')}*`;
 
 const prepareQuery = (term) => {
   let searchTerm = term.trim();
