@@ -9758,7 +9758,7 @@ var insertWildcards = function insertWildcards(term) {
   return term ? "*".concat(term.split(' ').filter(function (e) {
     return e;
   }).reduce(function (a, b) {
-    return /[^a-z_\-0-9]/i.test(a.slice(-1)) ? "".concat(a, " ").concat(b) : "".concat(a, "*").concat(b);
+    return /[^a-z_\-0-9]/i.test(a.slice(-1)) ? "".concat(a, " ").concat(b) : "".concat(a, "* *").concat(b);
   }).replace(/\*+/g, '*'), "*") : '*';
 };
 
