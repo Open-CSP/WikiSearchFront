@@ -143,9 +143,9 @@ export default {
         ? data.map(e => `<nowiki>${this.sanitize(e)}</nowiki>`)
         : `<nowiki>${this.sanitize(data)}</nowiki>`;
     },
-    getSnippets() {
-      return this.data.highlight
-        ? Object.values(this.data.highlight).flat()
+    getSnippets(data) {
+      return data.highlight
+        ? Object.values(data.highlight).flat()
         : [];
     },
     formatDates(dates) {
