@@ -17,7 +17,8 @@
         {{ hitConfig.label || label.replace(/^\$/, '') }}
       </span>
     </div>
-    <div
+    <component
+      :is="config.settings.title.wrap ? 'a': 'div'"
       v-for="(hit, index) in $store.state.hits"
       :key="'result-item--' + index"
       class="wikisearch-result__item"
@@ -29,7 +30,7 @@
         :config="hitConfig"
         :data="hit"
       />
-    </div>
+    </component>
   </div>
 </template>
 
