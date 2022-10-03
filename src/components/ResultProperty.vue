@@ -153,23 +153,9 @@ export default {
         : this.data[source].subject.title;
     },
     getSnippets() {
-      if (this.data.highlight) {
-        if (this.data.highlight.text_raw) {
-          return this.data.highlight.text_raw;
-        }
-        if (
-          this.data.highlight.attachment
-          && this.data.highlight.attachment.content
-        ) {
-          return this.data.highlight.attachment.content;
-        }
-        return Object.entries(this.data.highlight).map(([, value]) => (
-          Array.isArray(value)
-            ? value[0]
-            : value
-        ));
-      }
-      return '';
+      return this.data.highlight
+        ? Object.values(this.data.highlight).flat()
+        : [];
     },
     isChecked() {
       return this.$store.state.selectAllResults;

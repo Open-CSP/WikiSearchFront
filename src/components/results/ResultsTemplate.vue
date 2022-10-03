@@ -143,24 +143,10 @@ export default {
         ? data.map(e => `<nowiki>${this.sanitize(e)}</nowiki>`)
         : `<nowiki>${this.sanitize(data)}</nowiki>`;
     },
-    getSnippets(data) {
-      if (data.highlight) {
-        if (data.highlight.text_raw) {
-          return data.highlight.text_raw;
-        }
-        if (
-          data.highlight.attachment
-          && data.highlight.attachment.content
-        ) {
-          return data.highlight.attachment.content;
-        }
-        return Object.entries(data.highlight).map(([, value]) => (
-          Array.isArray(value)
-            ? value[0]
-            : value
-        ));
-      }
-      return '';
+    getSnippets() {
+      return this.data.highlight
+        ? Object.values(this.data.highlight).flat()
+        : [];
     },
     formatDates(dates) {
       return dates.map((date) => {
