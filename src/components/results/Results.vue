@@ -22,6 +22,7 @@
       v-for="(hit, index) in $store.state.hits"
       :key="'result-item--' + index"
       class="wikisearch-result__item"
+      :href="config.settings.title.wrap ? getHref(hit) : false"
     >
       <wikisearch-result-property
         v-for="(hitConfig, label) in computedHitSettings"
@@ -72,6 +73,13 @@ export default {
         return { ...start, ...this.config.hitSettings, ...end };
       }
       return this.config.hitSettings;
+    },
+    getHref(hit) {
+      const titleSettings = this.config.settings.title;
+      const source = '_source';
+
+      return hit[source][`P:${titleSettings.key}`][titleSettings.type][0]
+        || hit[source].subject.title;
     },
   },
 };
