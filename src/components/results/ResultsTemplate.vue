@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import prepareQuery from '../../utilities/elastic';
 
 export default {
   name: 'WikisearchResultsTemplate',
@@ -35,7 +36,7 @@ export default {
               ? `|${text}`
               : '';
           });
-          wikitext += `|$term=${this.$store.state.term}`;
+          wikitext += `|$term=${prepareQuery(this.$store.state.term)}`;
           wikitext += '}}';
         });
       }
