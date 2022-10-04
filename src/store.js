@@ -327,7 +327,7 @@ const updateStore = (store) => {
       || mutation.type === 'SET_SELECTED'
     ) {
       // reset page offset when mutation in not page change
-      if (mutation.type !== 'SET_FROM') {
+      if (mutation.type !== 'SET_FROM' && mutation.type !== 'START') {
         store.commit('RESET_FROM');
       }
 
