@@ -10249,7 +10249,7 @@ var store_updateStore = function updateStore(store) {
   store.subscribe(function (mutation, state) {
     if (mutation.type === 'START' || mutation.type === 'SET_TERM' || mutation.type === 'CLEAR_ALL' || mutation.type === 'SET_FROM' || mutation.type === 'SET_ORDERTYPE' || mutation.type === 'SET_ORDER' || mutation.type === 'SET_SIZE' || mutation.type === 'SET_SELECTED') {
       // reset page offset when mutation in not page change
-      if (mutation.type !== 'SET_FROM') {
+      if (mutation.type !== 'SET_FROM' && mutation.type !== 'START') {
         store.commit('RESET_FROM');
       }
 
