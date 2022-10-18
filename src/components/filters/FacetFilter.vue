@@ -23,6 +23,14 @@
         :index="i"
         :name="name"
       />
+      <div
+        v-if="type === 'date'"
+        class="wikisearch-filter__custom-date"
+      >
+        <wikisearch-checkbox />
+        <wikisearch-date-input />
+        <wikisearch-date-input />
+      </div>
       <wikisearch-button
         v-if="strippedBuckets.length > collapsed"
         class="wikisearch-filter__button"
@@ -38,6 +46,9 @@
 import Vue from 'vue';
 import FacetCheckbox from './FacetCheckbox.vue';
 import WikisearchButton from '../Button.vue';
+import WikisearchCheckbox from '../Checkbox.vue';
+import WikisearchDateInput from '../DateInput.vue';
+
 import { strip } from '../../utilities/stringUtils';
 
 export default {
@@ -45,6 +56,8 @@ export default {
   components: {
     FacetCheckbox,
     WikisearchButton,
+    WikisearchCheckbox,
+    WikisearchDateInput,
   },
   props: {
     name: {
@@ -291,5 +304,9 @@ export default {
 
 .wikisearch-button.wikisearch-filter__button .wikisearch-button__label {
   padding: 0 1em 0 0 ;
+}
+
+.wikisearch-filter__custom-date {
+    display: flex;
 }
 </style>

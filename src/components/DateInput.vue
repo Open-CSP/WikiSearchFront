@@ -219,8 +219,8 @@ export default {
 .wikisearch-date-input__list-box{
     position: absolute;
     min-width: 100%;
-    max-width: min(200%, 95vw);
-    width: max-content;
+  /*  max-width: min(200%, 95vw); */
+    width: auto;
     background-color: var(--ws-white);
     border-radius: 2px;
     border: 1px solid var(--ws-border-color);

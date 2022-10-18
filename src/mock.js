@@ -104,9 +104,6 @@ if (process.env.NODE_ENV === 'production') {
                 label: 'Updated',
                 type: 'date',
               },
-              'Modification date': {
-                display: 'datepicker',
-              },
               Tag: [],
             },
             hitSettings: {
