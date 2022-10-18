@@ -17,7 +17,7 @@
       v-if="showCheckbox"
       :agg="agg"
       :index="0"
-      :name="'Modification date'"
+      :name="name"
     />
   </div>
 </template>
@@ -38,6 +38,10 @@ export default {
       type: String,
       default: '',
     },
+    name: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -50,7 +54,7 @@ export default {
      * @returns {String} label for filter header
      */
     labelName() {
-      return this.label ? this.label : 'Date range';
+      return this.label || this.name.replace('_', ' ');
     },
     /**
      * @returns {Boolean}

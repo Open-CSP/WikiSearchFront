@@ -175,7 +175,7 @@ function getStateFromUrl(state, facetSettings) {
  * @param {Date} today
  * @returns {Object} ranges
  */
-function createDateRanges(today) {
+function createDateRanges(today, facetSettings) {
   // today
   const to = moment().format('YYYY-MM-DD');
   // human readable dates
@@ -196,14 +196,18 @@ function createDateRanges(today) {
     to: createDate(value.to),
   }));
 
-  // modification date facet
-  const facetRanges = [
-    {
-      type: 'range',
-      ranges: dateRanges,
-      property: 'Modification date',
-    },
-  ];
+  const facetRanges = [];
+  Object.keys(facetSettings).forEach((key) => {
+    if (facetSettings[key].display === 'date') {
+      facetRanges.push(
+        {
+          type: 'range',
+          ranges: dateRanges,
+          property: key,
+        },
+      );
+    }
+  });
 
   return { facet: facetRanges, real: realDateRanges };
 }
@@ -463,7 +467,7 @@ const store = new Vuex.Store({
 
       const today = new Date();
 
-      const ranges = createDateRanges(today);
+      const ranges = createDateRanges(today, facetSettings);
 
       const [facetRanges, realRanges] = createMoreRanges(facetSettings, ranges, today);
 
