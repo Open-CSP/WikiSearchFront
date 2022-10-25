@@ -10102,9 +10102,15 @@ function createDateRanges(today, facetSettings) {
       from: moment().subtract(1, 'quarter').format('YYYY-MM-DD'),
       to: to
     }
-  }; // 5 years
+  };
+  var max = 5;
+  Object.keys(facetSettings).forEach(function (key) {
+    if (facetSettings[key].display === 'date') {
+      max = facetSettings[key].max;
+    }
+  }); // 5 years or max setting
 
-  for (var i = 0; i < 5; i += 1) {
+  for (var i = 0; i < max; i += 1) {
     var key = today.getFullYear() - i;
     realDateRanges[key] = {
       from: "".concat(key, "-01-01"),
