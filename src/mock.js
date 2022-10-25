@@ -103,6 +103,7 @@ if (process.env.NODE_ENV === 'production') {
                 display: 'date',
                 label: 'Updated',
                 type: 'date',
+                max: '20'
               },
               Tag: [],
             },

@@ -184,8 +184,15 @@ function createDateRanges(today, facetSettings) {
     'Last Month': { from: moment().subtract(1, 'months').format('YYYY-MM-DD'), to },
     'Last Quarter': { from: moment().subtract(1, 'quarter').format('YYYY-MM-DD'), to },
   };
-  // 5 years
-  for (let i = 0; i < 5; i += 1) {
+
+  let max = 5;
+  Object.keys(facetSettings).forEach((key) => {
+    if (facetSettings[key].display === 'date') {
+      max = facetSettings[key].max;
+    }
+  });
+  // 5 years or max setting
+  for (let i = 0; i < max; i += 1) {
     const key = today.getFullYear() - i;
     realDateRanges[key] = { from: `${key}-01-01`, to: `${key + 1}-01-01` };
   }
@@ -235,7 +242,6 @@ function createMoreRanges(facetSettings, ranges, today) {
     rangeProp.forEach((prop) => {
       const max = parseInt(prop.max, 10);
       const step = parseInt(prop.step, 10);
-
       const moreRanges = [];
 
       if (prop.type === 'date') {
