@@ -9823,7 +9823,7 @@ var vuex_esm = __webpack_require__("2f62");
  * @param {String} date formatted date YYYY-MM-DD
  * @returns {Number}    julian date timestamp
  */
-function createDate(date) {
+function dateUtils_createDate(date) {
   return parseInt(window.moment(date) / 86400000 + 2440587.5, 10);
 }
 /**
@@ -9834,7 +9834,7 @@ function createDate(date) {
  */
 
 
-function readableDate(date) {
+function dateUtils_readableDate(date) {
   return "".concat(date.getFullYear(), "-").concat(date.getMonth() + 1, "-").concat(date.getDate());
 }
 
@@ -10029,8 +10029,8 @@ function getStateFromUrl(state, facetSettings) {
         var calPropName = mediaWikiValues.WikiSearchFront.config.settings.calendar ? mediaWikiValues.WikiSearchFront.config.settings.calendar.name : 'Modification date';
 
         if (secondKey === 'customrange' || secondKey === 'date' || lastKey === 'Modification date' || lastKey === calPropName || facetSettings[lastKey].type === 'date') {
-          output.rangeFrom = createDate(from);
-          output.rangeTo = createDate(to);
+          output.rangeFrom = dateUtils_createDate(from);
+          output.rangeTo = dateUtils_createDate(to);
           gte = output.rangeFrom;
           lte = output.rangeTo;
         }
@@ -10085,7 +10085,7 @@ function getStateFromUrl(state, facetSettings) {
  */
 
 
-function createDateRanges(today) {
+function createDateRanges(today, facetSettings) {
   // today
   var to = moment().format('YYYY-MM-DD'); // human readable dates
 
@@ -10120,16 +10120,20 @@ function createDateRanges(today) {
 
     return {
       key: key.toString(),
-      from: createDate(value.from),
-      to: createDate(value.to)
+      from: dateUtils_createDate(value.from),
+      to: dateUtils_createDate(value.to)
     };
-  }); // modification date facet
-
-  var facetRanges = [{
-    type: 'range',
-    ranges: dateRanges,
-    property: 'Modification date'
-  }];
+  });
+  var facetRanges = [];
+  Object.keys(facetSettings).forEach(function (key) {
+    if (facetSettings[key].display === 'date') {
+      facetRanges.push({
+        type: 'range',
+        ranges: dateRanges,
+        property: key
+      });
+    }
+  });
   return {
     facet: facetRanges,
     real: realDateRanges
@@ -10172,8 +10176,8 @@ function createMoreRanges(facetSettings, ranges, today) {
           };
           moreRanges.push({
             key: key.toString(),
-            from: createDate("".concat(key, "-01-01")),
-            to: createDate("".concat(key + 1, "-01-01"))
+            from: dateUtils_createDate("".concat(key, "-01-01")),
+            to: dateUtils_createDate("".concat(key + 1, "-01-01"))
           });
         }
       } else {
@@ -10380,7 +10384,7 @@ var store_store = new vuex_esm["a" /* default */].Store({
       var facetSettings = mediaWikiValues.WikiSearchFront.config.facetSettings;
       state.loaded = start;
       var today = new Date();
-      var ranges = createDateRanges(today);
+      var ranges = createDateRanges(today, facetSettings);
 
       var _createMoreRanges = createMoreRanges(facetSettings, ranges, today),
           _createMoreRanges2 = _slicedToArray(_createMoreRanges, 2),
@@ -13828,19 +13832,19 @@ var CalendarTools_component = normalizeComponent(
 )
 
 /* harmony default export */ var CalendarTools = (CalendarTools_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetDateRange.vue?vue&type=template&id=3ba18b34&
-var FacetDateRangevue_type_template_id_3ba18b34_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-daterange"},[_c('div',{staticClass:"wikisearch-filter__label"},[_c('label',[_vm._v(_vm._s(_vm.labelName))])]),_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-date-range-from"))+" "),_c('wikisearch-date-input',{attrs:{"name":'from'},on:{"change":_vm.updateRange}}),_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-date-range-to"))+" "),_c('wikisearch-date-input',{attrs:{"name":'to'},on:{"change":_vm.updateRange}}),(_vm.showCheckbox)?_c('facet-checbox',{attrs:{"agg":_vm.agg,"index":0,"name":'Modification date'}}):_vm._e()],1)}
-var FacetDateRangevue_type_template_id_3ba18b34_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetDateRange.vue?vue&type=template&id=3edc6efa&
+var FacetDateRangevue_type_template_id_3edc6efa_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-daterange"},[_c('div',{staticClass:"wikisearch-filter__label"},[_c('label',[_vm._v(_vm._s(_vm.labelName))])]),_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-date-range-from"))+" "),_c('wikisearch-date-input',{attrs:{"name":'from'},on:{"change":_vm.updateRange}}),_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-date-range-to"))+" "),_c('wikisearch-date-input',{attrs:{"name":'to'},on:{"change":_vm.updateRange}}),(_vm.showCheckbox)?_c('facet-checbox',{attrs:{"agg":_vm.agg,"index":0,"name":_vm.name}}):_vm._e()],1)}
+var FacetDateRangevue_type_template_id_3edc6efa_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetDateRange.vue?vue&type=template&id=3ba18b34&
+// CONCATENATED MODULE: ./src/components/filters/FacetDateRange.vue?vue&type=template&id=3edc6efa&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=template&id=470c23ca&
-var FacetCheckboxvue_type_template_id_470c23ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('wikisearch-checkbox',{attrs:{"id":_vm.createID,"value":_vm.val,"checked":_vm.checked},on:{"change":_vm.updateSelection},scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('span',[_c('span',{staticClass:"wikisearch-checkbox__label"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.agg.doc_count > 0)?_c('span',{staticClass:"wikisearch-checkbox__count",attrs:{"title":"count"}},[_vm._v(" "+_vm._s(_vm.agg.doc_count)+" ")]):_vm._e()])]},proxy:true}])})}
-var FacetCheckboxvue_type_template_id_470c23ca_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=template&id=e2591422&
+var FacetCheckboxvue_type_template_id_e2591422_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('wikisearch-checkbox',{attrs:{"id":_vm.createID,"value":_vm.val,"checked":_vm.checked},on:{"change":_vm.updateSelection},scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('span',[_c('span',{staticClass:"wikisearch-checkbox__label"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.agg.doc_count > 0)?_c('span',{staticClass:"wikisearch-checkbox__count",attrs:{"title":"count"}},[_vm._v(" "+_vm._s(_vm.agg.doc_count)+" ")]):_vm._e()])]},proxy:true}])})}
+var FacetCheckboxvue_type_template_id_e2591422_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetCheckbox.vue?vue&type=template&id=470c23ca&
+// CONCATENATED MODULE: ./src/components/filters/FacetCheckbox.vue?vue&type=template&id=e2591422&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=script&lang=js&
 
@@ -14043,9 +14047,6 @@ var FacetCheckboxvue_type_template_id_470c23ca_staticRenderFns = []
     }
   },
   methods: {
-    updateSelection2: function updateSelection2(item) {
-      console.log(item);
-    },
     updateSelection: function updateSelection(item) {
       var selection = [];
       var found = false;
@@ -14082,8 +14083,8 @@ var FacetCheckboxvue_type_style_index_0_lang_css_ = __webpack_require__("9244");
 
 var FacetCheckbox_component = normalizeComponent(
   filters_FacetCheckboxvue_type_script_lang_js_,
-  FacetCheckboxvue_type_template_id_470c23ca_render,
-  FacetCheckboxvue_type_template_id_470c23ca_staticRenderFns,
+  FacetCheckboxvue_type_template_id_e2591422_render,
+  FacetCheckboxvue_type_template_id_e2591422_staticRenderFns,
   false,
   null,
   null,
@@ -14092,16 +14093,18 @@ var FacetCheckbox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetCheckbox = (FacetCheckbox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/DateInput.vue?vue&type=template&id=751aadd0&
-var DateInputvue_type_template_id_751aadd0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-date-input"},[_c('wikisearch-input',{attrs:{"value":_vm.time.format('dd, D MMM YYYY')},on:{"focus":function($event){_vm.focused = true},"blur":function($event){_vm.focused = false},"click":function($event){_vm.focused = true;_vm.justSelected = false}}}),(_vm.focused && !_vm.justSelected)?_c('div',{staticClass:"wikisearch-date-input__list-box",attrs:{"role":"listbox"},on:{"mousedown":function($event){$event.preventDefault();return _vm.onItemMousedown.apply(null, arguments)},"click":function($event){_vm.focused = true}}},[_c('div',{staticClass:"wikisearch-date-input__tools"},[_c('wikisearch-button',{attrs:{"icon":'back',"type":'icon'},on:{"click":function($event){return _vm.setMonth(-1)}}}),_c('wikisearch-button',{attrs:{"icon":'up',"label":_vm.time.format('MMMM') + ' ' + _vm.time.format('YYYY')},on:{"click":_vm.changeDisplay}}),_c('wikisearch-button',{attrs:{"icon":'next',"type":'icon'},on:{"click":function($event){return _vm.setMonth(1)}}})],1),(_vm.display === 'years')?_c('div',{staticClass:"wikisearch-date-input__years"},_vm._l((_vm.years),function(year,index){return _c('div',{key:'year-' + index,staticClass:"wikisearch-date-input__year",class:{ 'wikisearch-date-input__year--active' : year === _vm.yearValue },on:{"click":function($event){_vm.time.set('year', year);_vm.change += 1; _vm.activeDisplay = 1}}},[_vm._v(" "+_vm._s(year)+" ")])}),0):_vm._e(),(_vm.display === 'months')?_c('div',{staticClass:"wikisearch-date-input__months"},_vm._l((_vm.months),function(month,index){return _c('div',{key:'month-' + index,staticClass:"wikisearch-date-input__month",class:{ 'wikisearch-date-input__month--active' : month === _vm.monthValue },on:{"click":function($event){_vm.time.set('month', index);_vm.change += 1; _vm.activeDisplay = 0}}},[_vm._v(" "+_vm._s(month)+" ")])}),0):_vm._e(),(_vm.display === 'days')?_c('div',{staticClass:"wikisearch-date-input__days"},[_c('div',{staticClass:"wikisearch-date-input__days-header"},_vm._l((_vm.calendar[0].days),function(day,index){return _c('div',{key:'header-' + index,staticClass:"wikisearch-date-input__days-header-item"},[_vm._v(" "+_vm._s(day.format('dd'))+" ")])}),0),_vm._l((_vm.calendar),function(week,index){return _c('div',{key:'week-' + index,staticClass:"wikisearch-date-input__week"},_vm._l((week.days),function(day,i){return _c('div',{key:'day-' + index + i,staticClass:"wikisearch-date-input__day",class:{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/DateInput.vue?vue&type=template&id=ca2ca6ec&
+var DateInputvue_type_template_id_ca2ca6ec_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-date-input"},[_c('wikisearch-input',{attrs:{"value":_vm.time.format('dd, D MMM YYYY')},on:{"focus":function($event){_vm.focused = true},"blur":function($event){_vm.focused = false},"click":function($event){_vm.focused = true;_vm.justSelected = false}}}),(_vm.focused && !_vm.justSelected)?_c('div',{staticClass:"wikisearch-date-input__list-box",attrs:{"role":"listbox"},on:{"mousedown":function($event){$event.preventDefault();return _vm.onItemMousedown.apply(null, arguments)},"click":function($event){_vm.focused = true}}},[_c('div',{staticClass:"wikisearch-date-input__tools"},[_c('wikisearch-button',{attrs:{"icon":'back',"type":'icon'},on:{"click":function($event){return _vm.setMonth(-1)}}}),_c('wikisearch-button',{attrs:{"icon":'up',"label":_vm.time.format('MMMM') + ' ' + _vm.time.format('YYYY')},on:{"click":_vm.changeDisplay}}),_c('wikisearch-button',{attrs:{"icon":'next',"type":'icon'},on:{"click":function($event){return _vm.setMonth(1)}}})],1),(_vm.display === 'years')?_c('div',{staticClass:"wikisearch-date-input__years"},_vm._l((_vm.years),function(year,index){return _c('div',{key:'year-' + index,staticClass:"wikisearch-date-input__year",class:{ 'wikisearch-date-input__year--active' : year === _vm.yearValue },on:{"click":function($event){_vm.time.set('year', year);_vm.change += 1; _vm.activeDisplay = 1}}},[_vm._v(" "+_vm._s(year)+" ")])}),0):_vm._e(),(_vm.display === 'months')?_c('div',{staticClass:"wikisearch-date-input__months"},_vm._l((_vm.months),function(month,index){return _c('div',{key:'month-' + index,staticClass:"wikisearch-date-input__month",class:{ 'wikisearch-date-input__month--active' : month === _vm.monthValue },on:{"click":function($event){_vm.time.set('month', index);_vm.change += 1; _vm.activeDisplay = 0}}},[_vm._v(" "+_vm._s(month)+" ")])}),0):_vm._e(),(_vm.display === 'days')?_c('div',{staticClass:"wikisearch-date-input__days"},[_c('div',{staticClass:"wikisearch-date-input__days-header"},_vm._l((_vm.calendar[0].days),function(day,index){return _c('div',{key:'header-' + index,staticClass:"wikisearch-date-input__days-header-item"},[_vm._v(" "+_vm._s(day.format('dd'))+" ")])}),0),_vm._l((_vm.calendar),function(week,index){return _c('div',{key:'week-' + index,staticClass:"wikisearch-date-input__week"},_vm._l((week.days),function(day,i){return _c('div',{key:'day-' + index + i,staticClass:"wikisearch-date-input__day",class:{
             'wikisearch-date-input__day--active' :
               day.format('YYYY-MM-DD') === _vm.time.format('YYYY-MM-DD'),
             'wikisearch-date-input__day--other-month' : day.format('M') !== _vm.time.format('M'),
+            'wikisearch-date-input__day--disabled' : _vm.disabledDirection
+              ? _vm.operators[_vm.disabledDirection](day, _vm.moment(_vm.disabledDate)) : false,
           },on:{"click":function($event){_vm.date = day;_vm.justSelected = true}}},[_vm._v(" "+_vm._s(day.format('D'))+" ")])}),0)})],2):_vm._e()]):_vm._e()],1)}
-var DateInputvue_type_template_id_751aadd0_staticRenderFns = []
+var DateInputvue_type_template_id_ca2ca6ec_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/DateInput.vue?vue&type=template&id=751aadd0&
+// CONCATENATED MODULE: ./src/components/DateInput.vue?vue&type=template&id=ca2ca6ec&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/DateInput.vue?vue&type=script&lang=js&
 
@@ -14110,6 +14113,8 @@ var DateInputvue_type_template_id_751aadd0_staticRenderFns = []
 
 
 
+//
+//
 //
 //
 //
@@ -14230,6 +14235,18 @@ var DateInputvue_type_template_id_751aadd0_staticRenderFns = []
         return [];
       }
     },
+    value: {
+      type: String,
+      default: ''
+    },
+    disabledDirection: {
+      type: String,
+      default: ''
+    },
+    disabledDate: {
+      type: String,
+      default: ''
+    },
     selected: {
       type: Array,
       default: function _default() {
@@ -14245,6 +14262,14 @@ var DateInputvue_type_template_id_751aadd0_staticRenderFns = []
       change: 0,
       activeDisplay: 0,
       displays: ['days', 'months', 'years'],
+      operators: {
+        before: function before(a, b) {
+          return a.format('YYYYMMDD') > b.format('YYYYMMDD');
+        },
+        after: function after(a, b) {
+          return a.format('YYYYMMDD') < b.format('YYYYMMDD');
+        }
+      },
       displayYear: '',
       focused: false,
       justSelected: false
@@ -14296,6 +14321,14 @@ var DateInputvue_type_template_id_751aadd0_staticRenderFns = []
   watch: {
     time: function time(value) {
       this.$emit('change', value, this.name);
+    },
+    value: function value(_value) {
+      this.date = window.moment(_value);
+    }
+  },
+  mounted: function mounted() {
+    if (this.value) {
+      this.date = window.moment(this.value);
     }
   },
   methods: {
@@ -14342,8 +14375,8 @@ var DateInputvue_type_style_index_0_lang_css_ = __webpack_require__("acc3");
 
 var DateInput_component = normalizeComponent(
   components_DateInputvue_type_script_lang_js_,
-  DateInputvue_type_template_id_751aadd0_render,
-  DateInputvue_type_template_id_751aadd0_staticRenderFns,
+  DateInputvue_type_template_id_ca2ca6ec_render,
+  DateInputvue_type_template_id_ca2ca6ec_staticRenderFns,
   false,
   null,
   null,
@@ -14353,6 +14386,9 @@ var DateInput_component = normalizeComponent(
 
 /* harmony default export */ var DateInput = (DateInput_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetDateRange.vue?vue&type=script&lang=js&
+
+
+
 
 
 
@@ -14396,6 +14432,10 @@ var DateInput_component = normalizeComponent(
     label: {
       type: String,
       default: ''
+    },
+    name: {
+      type: String,
+      default: ''
     }
   },
   data: function data() {
@@ -14409,7 +14449,7 @@ var DateInput_component = normalizeComponent(
      * @returns {String} label for filter header
      */
     labelName: function labelName() {
-      return this.label ? this.label : 'Date range';
+      return this.label || this.name.replace('_', ' ');
     },
 
     /**
@@ -14447,7 +14487,7 @@ var DateInput_component = normalizeComponent(
         return;
       }
 
-      this.$store.commit("SET_RANGE_".concat(element), createDate(this[element]) + 1);
+      this.$store.commit("SET_RANGE_".concat(element), dateUtils_createDate(this[element]) + 1);
       var realdatesUpdated = this.$store.state.realDates;
 
       if (this.$store.state.rangeTo > 0) {
@@ -14498,7 +14538,7 @@ var DateInput_component = normalizeComponent(
           date[element] = dateInput[element].getValue();
           dateInput.to.mustBeAfter = date.from;
           dateInput.from.mustBeBefore = date.to;
-          that.$store.commit("SET_RANGE_".concat(element), createDate(date[element]) + 1);
+          that.$store.commit("SET_RANGE_".concat(element), dateUtils_createDate(date[element]) + 1);
           var realdatesUpdated = state.realDates;
 
           if (state.rangeTo > 0) {
@@ -14547,8 +14587,8 @@ var FacetDateRangevue_type_style_index_0_lang_css_ = __webpack_require__("7083")
 
 var FacetDateRange_component = normalizeComponent(
   filters_FacetDateRangevue_type_script_lang_js_,
-  FacetDateRangevue_type_template_id_3ba18b34_render,
-  FacetDateRangevue_type_template_id_3ba18b34_staticRenderFns,
+  FacetDateRangevue_type_template_id_3edc6efa_render,
+  FacetDateRangevue_type_template_id_3edc6efa_staticRenderFns,
   false,
   null,
   null,
@@ -15555,12 +15595,17 @@ var FacetElasticCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetElasticCombobox = (FacetElasticCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetFilter.vue?vue&type=template&id=8bd0dfa8&
-var FacetFiltervue_type_template_id_8bd0dfa8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:("wikisearch-filter wikisearch-filter--" + (_vm.strip(_vm.name))),attrs:{"role":"group","aria-labelledby":("filter__label--" + (_vm.strip(_vm.name)))}},[(_vm.strippedBuckets.length)?_c('span',{staticClass:"wikisearch-filter__label"},[_c('label',{attrs:{"id":("filter__label--" + (_vm.strip(_vm.name)))}},[_vm._v(" "+_vm._s(_vm.cleanName)+" ")])]):_vm._e(),_c('div',{staticClass:"wikisearch-filter__options"},[_vm._l((_vm.bucketsToShow),function(agg,i){return _c('facet-checkbox',{directives:[{name:"show",rawName:"v-show",value:(i < _vm.collapsed || _vm.open),expression:"i < collapsed || open"}],key:i + agg.key + _vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),(_vm.strippedBuckets.length > _vm.collapsed)?_c('wikisearch-button',{staticClass:"wikisearch-filter__button",attrs:{"icon":_vm.open ? 'up' : 'down',"label":_vm.$i18n(("wikisearchfront-" + _vm.lessOrMore))},on:{"click":function($event){_vm.open = !_vm.open}}}):_vm._e()],2)])}
-var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetFilter.vue?vue&type=template&id=c16f9f30&
+var FacetFiltervue_type_template_id_c16f9f30_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:("wikisearch-filter wikisearch-filter--" + (_vm.strip(_vm.name))),attrs:{"role":"group","aria-labelledby":("filter__label--" + (_vm.strip(_vm.name)))}},[(_vm.strippedBuckets.length)?_c('span',{staticClass:"wikisearch-filter__label"},[_c('label',{attrs:{"id":("filter__label--" + (_vm.strip(_vm.name)))}},[_vm._v(" "+_vm._s(_vm.cleanName)+" ")])]):_vm._e(),_c('div',{staticClass:"wikisearch-filter__options"},[_vm._l((_vm.bucketsToShow),function(agg,i){return _c('facet-checkbox',{directives:[{name:"show",rawName:"v-show",value:(i < _vm.collapsed || _vm.open),expression:"i < collapsed || open"}],key:i + agg.key + _vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),(_vm.type === 'date')?_c('div',{staticClass:"wikisearch-filter__custom-date"},[_c('facet-checkbox',{attrs:{"agg":{
+          'from': _vm.createDate(_vm.customDates.from),
+          'to': _vm.createDate(_vm.customDates.to),
+          'doc_count': 4,
+          'key': 'customrange'
+        },"index":999,"name":_vm.name}}),_c('wikisearch-date-input',{attrs:{"disabled-direction":"before","disabled-date":_vm.customDates.to,"value":_vm.customDates.from},on:{"change":function($event){return _vm.setCustomDate($event, 'from')}}}),_c('wikisearch-date-input',{attrs:{"disabled-direction":"after","disabled-date":_vm.customDates.from,"value":_vm.customDates.to},on:{"change":function($event){return _vm.setCustomDate($event, 'to')}}})],1):_vm._e(),(_vm.strippedBuckets.length > _vm.collapsed)?_c('wikisearch-button',{staticClass:"wikisearch-filter__button",attrs:{"icon":_vm.open ? 'up' : 'down',"label":_vm.$i18n(("wikisearchfront-" + _vm.lessOrMore))},on:{"click":function($event){_vm.open = !_vm.open}}}):_vm._e()],2)])}
+var FacetFiltervue_type_template_id_c16f9f30_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetFilter.vue?vue&type=template&id=8bd0dfa8&
+// CONCATENATED MODULE: ./src/components/filters/FacetFilter.vue?vue&type=template&id=c16f9f30&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetFilter.vue?vue&type=script&lang=js&
 
@@ -15577,6 +15622,7 @@ var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
 
 
 
+
 //
 //
 //
@@ -15613,6 +15659,35 @@ var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
@@ -15621,7 +15696,8 @@ var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
   name: 'FacetFilter',
   components: {
     FacetCheckbox: FacetCheckbox,
-    WikisearchButton: Button
+    WikisearchButton: Button,
+    WikisearchDateInput: DateInput
   },
   props: {
     name: {
@@ -15659,7 +15735,11 @@ var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
       translations: '',
       strippedBuckets: '',
       bucketsToShow: '',
-      fired: false
+      fired: false,
+      customDates: {
+        from: '',
+        to: ''
+      }
     };
   },
   computed: {
@@ -15701,9 +15781,33 @@ var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
+    var _this$$store$state = this.$store.state,
+        selected = _this$$store$state.selected,
+        realDates = _this$$store$state.realDates;
+    var isSelected = selected.filter(function (item) {
+      return item.key === _this.name && item.value === 'customrange';
+    });
+
+    if (isSelected.length) {
+      this.customDates = {
+        to: realDates.customrange.to,
+        from: realDates.customrange.from
+      };
+    }
+
+    if (!isSelected.length) {
+      this.customDates = {
+        from: window.moment().subtract(1, 'days').format('YYYY-MM-DD'),
+        to: window.moment().format('YYYY-MM-DD')
+      };
+    }
     /**
      * do translations
      */
+
+
     if (this.translation) {
       var params = {
         action: 'ask',
@@ -15722,6 +15826,44 @@ var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
     }
   },
   methods: {
+    readableDate: function readableDate(value) {
+      return dateUtils_readableDate(value);
+    },
+    createDate: function createDate(value) {
+      return dateUtils_createDate(value);
+    },
+    setCustomDate: function setCustomDate(value, type) {
+      var _this2 = this;
+
+      var _this$$store$state2 = this.$store.state,
+          selected = _this$$store$state2.selected,
+          realDates = _this$$store$state2.realDates;
+      this.customDates[type] = value.format('YYYY-MM-DD');
+
+      var realdatesUpdated = _objectSpread2(_objectSpread2({}, realDates), {}, {
+        customrange: this.customDates
+      });
+
+      this.$store.commit('SET_REAL_DATES', realdatesUpdated);
+      var isSelected = selected.filter(function (item) {
+        return item.key === _this2.name;
+      });
+
+      if (isSelected.length) {
+        var selectedUpdated = selected.map(function (item) {
+          return item.key === _this2.name ? {
+            key: _this2.name,
+            range: {
+              gte: _this2.createDate(_this2.customDates.from),
+              lte: _this2.createDate(_this2.customDates.to)
+            },
+            value: 'customrange'
+          } : item;
+        });
+        this.$store.commit('SET_SELECTED', selectedUpdated);
+      }
+    },
+
     /**
      * @param {Object} data query result from ask api
      */
@@ -15736,7 +15878,7 @@ var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
      * organize buckets
      */
     organize: function organize() {
-      var _this = this;
+      var _this3 = this;
 
       var organizedBuckets = [];
       var selected = this.$store.state.selected; // check if buckets are an array, if not create array from the object
@@ -15757,13 +15899,13 @@ var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
       if (selected.length > 0 && !this.fired) {
         if (this.translation) {
           organizedBuckets.forEach(function (element, i) {
-            var transKey = _this.translations[element.key];
+            var transKey = _this3.translations[element.key];
 
-            if (transKey && transKey.printouts[_this.translation]) {
-              if (transKey.printouts[_this.translation][0].fulltext) {
-                organizedBuckets[i].name = transKey.printouts[_this.translation][0].fulltext;
+            if (transKey && transKey.printouts[_this3.translation]) {
+              if (transKey.printouts[_this3.translation][0].fulltext) {
+                organizedBuckets[i].name = transKey.printouts[_this3.translation][0].fulltext;
               } else {
-                var _transKey$printouts$_ = _slicedToArray(transKey.printouts[_this.translation], 1);
+                var _transKey$printouts$_ = _slicedToArray(transKey.printouts[_this3.translation], 1);
 
                 organizedBuckets[i].name = _transKey$printouts$_[0];
               }
@@ -15772,30 +15914,30 @@ var FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns = []
         }
 
         selected.forEach(function (element, i) {
-          if (_this.translation) {
-            var transValue = _this.translations[element.value];
+          if (_this3.translation) {
+            var transValue = _this3.translations[element.value];
 
-            if (transValue && transValue.printouts[_this.translation]) {
-              if (transValue.printouts[_this.translation][0].fulltext) {
-                selected[i].name = transValue.printouts[_this.translation][0].fulltext;
+            if (transValue && transValue.printouts[_this3.translation]) {
+              if (transValue.printouts[_this3.translation][0].fulltext) {
+                selected[i].name = transValue.printouts[_this3.translation][0].fulltext;
               } else {
-                var _transValue$printouts = _slicedToArray(transValue.printouts[_this.translation], 1);
+                var _transValue$printouts = _slicedToArray(transValue.printouts[_this3.translation], 1);
 
                 selected[i].name = _transValue$printouts[0];
               }
 
-              external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(_this.$store.state.selected, i, selected[i]);
+              external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(_this3.$store.state.selected, i, selected[i]);
             }
           }
 
-          var value = _this.config.facetSettings[selected[i].key] ? _this.config.facetSettings[selected[i].key] : false;
+          var value = _this3.config.facetSettings[selected[i].key] ? _this3.config.facetSettings[selected[i].key] : false;
 
           if (value) {
-            var valueLabel = _this.config.facetSettings[selected[i].key].valueLabel;
+            var valueLabel = _this3.config.facetSettings[selected[i].key].valueLabel;
             selected[i].name = valueLabel;
           }
 
-          external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(_this.$store.state.selected, i, selected[i]);
+          external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(_this3.$store.state.selected, i, selected[i]);
         });
         this.fired = true;
       } else {
@@ -15873,8 +16015,8 @@ var FacetFiltervue_type_style_index_0_lang_css_ = __webpack_require__("9a23");
 
 var FacetFilter_component = normalizeComponent(
   filters_FacetFiltervue_type_script_lang_js_,
-  FacetFiltervue_type_template_id_8bd0dfa8_render,
-  FacetFiltervue_type_template_id_8bd0dfa8_staticRenderFns,
+  FacetFiltervue_type_template_id_c16f9f30_render,
+  FacetFiltervue_type_template_id_c16f9f30_staticRenderFns,
   false,
   null,
   null,
