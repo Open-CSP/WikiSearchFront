@@ -174,9 +174,6 @@ export default {
     }
   },
   methods: {
-    updateSelection2(item) {
-      console.log(item);
-    },
     updateSelection(item) {
       const selection = [];
       let found = false;
