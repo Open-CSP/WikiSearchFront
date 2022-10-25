@@ -32,7 +32,8 @@
             'from': createDate(customDates.from),
             'to': createDate(customDates.to),
             'doc_count': 4,
-            'key': 'customrange'
+            'key': 'customrange',
+            'name': customDateRangeLabel
           }"
           :index="999"
           :name="name"
@@ -120,6 +121,10 @@ export default {
     };
   },
   computed: {
+    customDateRangeLabel() {
+      const format = 'D MMM YYYY';
+      return `${window.moment(this.customDates.from).format(format)} - ${window.moment(this.customDates.to).format(format)}`;
+    },
     /**
      * @returns {Number} number of uncollapsed items
      */
@@ -227,6 +232,7 @@ export default {
                 lte: this.createDate(this.customDates.to),
               },
               value: 'customrange',
+              name: this.customDateRangeLabel,
 
             } : item));
 
