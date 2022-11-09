@@ -22,6 +22,9 @@ export default {
     };
   },
   computed: {
+    hits() {
+      return this.$store.state.hits;
+    },
     parse() {
       let wikitext = '';
       if (Array.isArray(this.$store.state.hits)) {
@@ -65,7 +68,8 @@ export default {
     },
   },
   watch: {
-    parse() {
+    hits() {
+      console.log('hits changed, render template');
       this.parseTemplate();
     },
   },

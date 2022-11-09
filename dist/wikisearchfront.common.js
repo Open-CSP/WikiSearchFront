@@ -13180,12 +13180,12 @@ var ResultsCalendar_component = normalizeComponent(
 )
 
 /* harmony default export */ var ResultsCalendar = (ResultsCalendar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/results/ResultsTemplate.vue?vue&type=template&id=3a15c604&
-var ResultsTemplatevue_type_template_id_3a15c604_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-wiki-template",class:_vm.loading ? 'wikisearch-wiki-template--loading wikisearch-element--pending' : '',domProps:{"innerHTML":_vm._s(_vm.result)}})}
-var ResultsTemplatevue_type_template_id_3a15c604_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/results/ResultsTemplate.vue?vue&type=template&id=ecd92c34&
+var ResultsTemplatevue_type_template_id_ecd92c34_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-wiki-template",class:_vm.loading ? 'wikisearch-wiki-template--loading wikisearch-element--pending' : '',domProps:{"innerHTML":_vm._s(_vm.result)}})}
+var ResultsTemplatevue_type_template_id_ecd92c34_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/results/ResultsTemplate.vue?vue&type=template&id=3a15c604&
+// CONCATENATED MODULE: ./src/components/results/ResultsTemplate.vue?vue&type=template&id=ecd92c34&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/results/ResultsTemplate.vue?vue&type=script&lang=js&
 
@@ -13228,6 +13228,9 @@ var ResultsTemplatevue_type_template_id_3a15c604_staticRenderFns = []
     };
   },
   computed: {
+    hits: function hits() {
+      return this.$store.state.hits;
+    },
     parse: function parse() {
       var _this = this;
 
@@ -13278,7 +13281,8 @@ var ResultsTemplatevue_type_template_id_3a15c604_staticRenderFns = []
     }
   },
   watch: {
-    parse: function parse() {
+    hits: function hits() {
+      console.log('hits changed, render template');
       this.parseTemplate();
     }
   },
@@ -13391,8 +13395,8 @@ var ResultsTemplatevue_type_style_index_0_lang_css_ = __webpack_require__("cd7c"
 
 var ResultsTemplate_component = normalizeComponent(
   results_ResultsTemplatevue_type_script_lang_js_,
-  ResultsTemplatevue_type_template_id_3a15c604_render,
-  ResultsTemplatevue_type_template_id_3a15c604_staticRenderFns,
+  ResultsTemplatevue_type_template_id_ecd92c34_render,
+  ResultsTemplatevue_type_template_id_ecd92c34_staticRenderFns,
   false,
   null,
   null,
