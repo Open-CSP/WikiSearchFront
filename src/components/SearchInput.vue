@@ -116,7 +116,7 @@ export default {
      * @event click|key.enter search for user input
      */
     search() {
-      this.$store.commit('SET_TERM', this.typedTerm);
+      this.$store.commit('SET_TERM', this.typedTerm || this.term);
     },
     /**
      * @event click clear user typed input
