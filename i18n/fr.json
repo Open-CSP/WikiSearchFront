@@ -1,0 +1,16 @@
+{
+    "wikisearchfront-desc": "Interface pour l'extension WikiSearch",
+    "wikisearchfront-clear-all-filters": "Effacer tous les filtres",
+    "wikisearchfront-total": "{{PLURAL:$1|résultat|résultats|0=Aucun résultat}}",
+    "wikisearchfront-date-range-from": "Date de",
+    "wikisearchfront-date-range-to": "Au",
+    "wikisearchfront-more": "Afficher plus",
+    "wikisearchfront-less": "Afficher moins",
+    "wikisearchfront-order": "Trier par",
+    "wikisearchfront-score": "Pertinence",
+    "wikisearchfront-false": "Faux",
+    "wikisearchfront-true": "Vrai",
+    "wikisearchfront-all": "Tous",
+    "wikisearchfront-page": "/page",
+    "wikisearchfront-info": "AND : combiner deux mots <br>OR : l'un ou l'autre <br> -mot : exclure <br> 'mot' : exact <br> w*rd : joker <br> 'mot autre '~5 : mots à part"
+}
