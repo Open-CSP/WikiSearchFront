@@ -12,5 +12,5 @@
     "wikisearchfront-true": "Vrai",
     "wikisearchfront-all": "Tous",
     "wikisearchfront-page": "/page",
-    "wikisearchfront-info": "AND : combiner deux mots <br>OR : l'un ou l'autre <br> -mot : exclure <br> 'mot' : exact <br> w*rd : joker <br> 'mot autre '~5 : mots à part"
+    "wikisearchfront-info": "AND : combiner deux mots <br>OR : l’un ou l’autre <br> -mot : exclure <br> 'mot' : exact <br> w*rd : joker <br> 'mot autre'~5 : mots à part"
 }
