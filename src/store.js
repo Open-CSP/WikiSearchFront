@@ -349,6 +349,13 @@ const updateStore = (store) => {
         aggregations: JSON.stringify(state.dates),
       };
 
+      if (
+        mediaWikiValues.WikiSearchFront.config.settings['search on empty queries'] === 'true'
+        && params.term.length === 0
+      ) {
+        delete params.term;
+      }
+
       // when sort options are configured add them to the parameters
       if (
         mediaWikiValues.WikiSearchFront.config.settings['sort options']

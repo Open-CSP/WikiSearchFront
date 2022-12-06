@@ -59,6 +59,7 @@ if (process.env.NODE_ENV === 'production') {
               },
               // selected: 'Favo:Admin;Tag:ICT',
               searchOnInput: true,
+              'search on empty queries': false,
               layout: 'table',
               // template: 'parse test'
               // layout: 'calendar',
@@ -69,7 +70,7 @@ if (process.env.NODE_ENV === 'production') {
               //   weekend: 'false',
               //   display: 'year',
               //   template: 'test',
-              //   slot: 'prop-slot',               
+              //   slot: 'prop-slot',
               //   prefix: 'event:',
               //   color: {
               //     name: 'Title',
@@ -175,7 +176,7 @@ if (process.env.NODE_ENV === 'production') {
                 "example": null,
                 "deprecated": false,
                 "aliases": [
-                  
+
                 ],
                 "autovalue": null,
                 "default": null
@@ -189,7 +190,7 @@ if (process.env.NODE_ENV === 'production') {
                 "example": null,
                 "deprecated": false,
                 "aliases": [
-                  
+
                 ],
                 "autovalue": null,
                 "default": null
@@ -203,7 +204,7 @@ if (process.env.NODE_ENV === 'production') {
                 "example": null,
                 "deprecated": false,
                 "aliases": [
-                  
+
                 ],
                 "autovalue": null,
                 "default": null
@@ -219,7 +220,7 @@ if (process.env.NODE_ENV === 'production') {
                 "example": null,
                 "deprecated": false,
                 "aliases": [
-                  
+
                 ],
                 "autovalue": null,
                 "default": null
@@ -233,7 +234,7 @@ if (process.env.NODE_ENV === 'production') {
                 "example": null,
                 "deprecated": false,
                 "aliases": [
-                  
+
                 ],
                 "autovalue": null,
                 "default": null
@@ -249,7 +250,7 @@ if (process.env.NODE_ENV === 'production') {
                 "example": null,
                 "deprecated": false,
                 "aliases": [
-                  
+
                 ],
                 "autovalue": null,
                 "default": null
@@ -260,10 +261,10 @@ if (process.env.NODE_ENV === 'production') {
             },
             "format": null,
             "sets": [
-              
+
             ],
             "maps": {
-              
+
             }
           }
         },
@@ -524,7 +525,7 @@ if (process.env.NODE_ENV === 'production') {
               "key": "Redactiegroep pagina",
               "doc_count": 1
           }
-      ],      
+      ],
       result: {
           hits:
               '[{"_index":"smw-data-wiki-v1","_type":"data","_id":"1092","_score":10,"_source":{"subject":{"title":"Are You Embarrassed By Your ICT Skills? Here\'s What To Do","subobject":"","namespace":0,"interwiki":"","sortkey":"Are You Embarrassed By Your ICT Skills? Here\'s What To Do","serialization":"Are_You_Embarrassed_By_Your_ICT_Skills?_Here\'s_What_To_Do#0##","sha1":"37352bfc343302b09af6960e14a67d6e6ac733e0","rev_id":1106,"namespacename":""},"P:631":{"txtField":["Page"]},"P:748":{"wpgField":["ICT"],"wpgID":[1041]},"P:635":{"wpgField":["1"],"wpgID":[640]},"P:702":{"wpgField":["Are You Embarrassed By Your ICT Skills? Here\'s What To Do# ERRb78a3223503896721cca1303f776159b"],"wpgID":[1407]},"P:29":{"datField":[2459320.9450926],"dat_raw":["1\\/2021\\/4\\/16\\/10\\/40\\/56\\/0"]},"P:749":{"numField":[49]}}},{"_index":"smw-data-wiki-v1","_type":"data","_id":"1152","_score":10,"_source":{"subject":{"title":"5 Problems Everyone Has With ICT \\u2013 How To Solved Them","subobject":"","namespace":0,"interwiki":"","sortkey":"5 Problems Everyone Has With ICT \\u2013 How To Solved Them","serialization":"5_Problems_Everyone_Has_With_ICT_\\u2013_How_To_Solved_Them#0##","sha1":"d5c7240c04f90135baf5359a49fdb138e758901c","rev_id":1167,"namespacename":""},"P:631":{"txtField":["Page"]},"P:734":{"wpgField":["ICT"],"wpgID":[1041]},"P:635":{"wpgField":["1", "2"],"wpgID":[640]},"P:702":{"wpgField":["5 Problems Everyone Has With ICT \\u2013 How To Solved Them# ERRb78a3223503896721cca1303f776159b"],"wpgID":[1404]},"P:29":{"datField":[2459320.945162],"dat_raw":["1\\/2021\\/4\\/16\\/10\\/41\\/2\\/0"]},"P:749":{"numField":[109]}}},{"_index":"smw-data-wiki-v1","_type":"data","_id":"710","_score":10,"_source":{"subject":{"title":"Homedata","subobject":"","namespace":0,"interwiki":"","sortkey":"Homedata","serialization":"Homedata#0##","sha1":"5c4c0528776db35953c942aa714385831b0652e7","rev_id":747,"namespacename":""},"P:631":{"txtField":["homedata"]},"P:711":{"wpgField":["Robis"],"wpgID":[712]},"P:702":{"wpgField":["Homedata# ERRb78a3223503896721cca1303f776159b"],"wpgID":[1408]},"P:29":{"datField":[2459320.0308912],"dat_raw":["1\\/2021\\/4\\/15\\/12\\/44\\/29\\/0"]},"P:718":{"datField":[2456010.5],"dat_raw":["1\\/2012\\/3\\/24"]}}},{"_index":"smw-data-wiki-v1","_type":"data","_id":"1352","_score":10,"_source":{"subject":{"title":"Food","subobject":"","namespace":0,"interwiki":"","sortkey":"Food","serialization":"Food#0##","sha1":"47cb6da1d7ef7c27f0e3a8df63e95200ecfc3bb1","rev_id":1431,"namespacename":""},"P:631":{"txtField":["Service"]},"P:1343":{"wpgField":["Http:\\/\\/localhost\\/wiki1.35\\/images\\/3\\/39\\/File 1.jpg"],"wpgID":[1344]},"P:633":{"wpgField":["Food#Eten en drinken;nl","Food#Food & drinks;en","Food#Esta e cola;es"],"wpgID":[1391,1392,1393]},"P:29":{"datField":[2459393.9369097],"dat_raw":["1\\/2021\\/6\\/28\\/10\\/29\\/9\\/0"]}}},{"_index":"smw-data-wiki-v1","_type":"data","_id":"862","_score":10,"_source":{"subject":{"title":"Essential TEST Smartphone Apps","subobject":"","namespace":0,"interwiki":"","sortkey":"Essential TEST Smartphone Apps","serialization":"Essential_TEST_Smartphone_Apps#0##","sha1":"5a9710e615fb736cc0d073e629ecb3fd9358ac78","rev_id":879,"namespacename":""},"P:631":{"txtField":["Page"]},"P:748":{"wpgField":["Test"],"wpgID":[559]},"P:635":{"wpgField":["1"],"wpgID":[640]},"P:702":{"wpgField":["Essential TEST Smartphone Apps# ERRb78a3223503896721cca1303f776159b"],"wpgID":[1434]},"P:29":{"datField":[2459320.9428125],"dat_raw":["1\\/2021\\/4\\/16\\/10\\/37\\/39\\/0"]},"P:749":{"numField":[119]}}},{"_index":"smw-data-wiki-v1","_type":"data","_id":"871","_score":10,"_source":{"subject":{"title":"TEST Is Essential For Your Success. Read This To Find Out Why","subobject":"","namespace":0,"interwiki":"","sortkey":"TEST Is Essential For Your Success. Read This To Find Out Why","serialization":"TEST_Is_Essential_For_Your_Success._Read_This_To_Find_Out_Why#0##","sha1":"a642515d75971dad83cea7a46864f4c78d317d1e","rev_id":888,"namespacename":""},"P:631":{"txtField":["Page"]},"P:748":{"wpgField":["Test"],"wpgID":[559]},"P:635":{"wpgField":["1"],"wpgID":[640]},"P:702":{"wpgField":["TEST Is Essential For Your Success. Read This To Find Out Why# ERRb78a3223503896721cca1303f776159b"],"wpgID":[1609]},"P:29":{"datField":[2459320.9428125],"dat_raw":["1\\/2021\\/4\\/16\\/10\\/37\\/39\\/0"]},"P:749":{"numField":[128]}}},{"_index":"smw-data-wiki-v1","_type":"data","_id":"1061","_score":10,"_source":{"subject":{"title":"I Don\'t Want To Spend This Much Time On ICT. How About You?","subobject":"","namespace":0,"interwiki":"","sortkey":"I Don\'t Want To Spend This Much Time On ICT. How About You?","serialization":"I_Don\'t_Want_To_Spend_This_Much_Time_On_ICT._How_About_You?#0##","sha1":"a6682e9dd3d5f512f0ec4c2a5b36e7193615ea80","rev_id":1076,"namespacename":""},"P:631":{"txtField":["Page"]},"P:748":{"wpgField":["ICT"],"wpgID":[1041]},"P:635":{"wpgField":["1"],"wpgID":[640]},"P:702":{"wpgField":["I Don\'t Want To Spend This Much Time On ICT. How About You?# ERRb78a3223503896721cca1303f776159b"],"wpgID":[1616]},"P:29":{"datField":[2459320.9450579],"dat_raw":["1\\/2021\\/4\\/16\\/10\\/40\\/53\\/0"]},"P:749":{"numField":[18]}}},{"_index":"smw-data-wiki-v1","_type":"data","_id":"1111","_score":10,"_source":{"subject":{"title":"Short Story: The Truth About ICT","subobject":"","namespace":0,"interwiki":"","sortkey":"Short Story: The Truth About ICT","serialization":"Short_Story:_The_Truth_About_ICT#0##","sha1":"619a5e41b5902afb90fbaacafecadbebf14e8fba","rev_id":1126,"namespacename":""},"P:631":{"txtField":["Page"]},"P:748":{"wpgField":["ICT"],"wpgID":[1041]},"P:635":{"wpgField":["1"],"wpgID":[640]},"P:702":{"wpgField":["Short Story: The Truth About ICT# ERRb78a3223503896721cca1303f776159b"],"wpgID":[1618]},"P:29":{"datField":[2459320.9451157],"dat_raw":["1\\/2021\\/4\\/16\\/10\\/40\\/58\\/0"]},"P:749":{"numField":[68]}}},{"_index":"smw-data-wiki-v1","_type":"data","_id":"932","_score":10,"_source":{"subject":{"title":"Need More Time? Read These Tips To Eliminate TEST","subobject":"","namespace":0,"interwiki":"","sortkey":"Need More Time? Read These Tips To Eliminate TEST","serialization":"Need_More_Time?_Read_These_Tips_To_Eliminate_TEST#0##","sha1":"6a4a1106d9b779c99b15dc8c4c0d36e7fad0edd8","rev_id":950,"namespacename":""},"P:631":{"txtField":["Page"]},"P:748":{"wpgField":["Test"],"wpgID":[559]},"P:635":{"wpgField":["1"],"wpgID":[640]},"P:702":{"wpgField":["Need More Time? Read These Tips To Eliminate TEST# ERRb78a3223503896721cca1303f776159b"],"wpgID":[1622]},"P:29":{"datField":[2459320.9428588],"dat_raw":["1\\/2021\\/4\\/16\\/10\\/37\\/43\\/0"]},"P:749":{"numField":[190]}}},{"_index":"smw-data-wiki-v1","_type":"data","_id":"859","_score":10,"_source":{"subject":{"title":"Turn Your TEST Into A High Performing Machine","subobject":"","namespace":0,"interwiki":"","sortkey":"Turn Your TEST Into A High Performing Machine","serialization":"Turn_Your_TEST_Into_A_High_Performing_Machine#0##","sha1":"1566e4d1ac8719357f18046bf89a0b1600026c0c","rev_id":876,"namespacename":""},"P:631":{"txtField":["Page"]},"P:748":{"wpgField":["Test"],"wpgID":[559]},"P:635":{"wpgField":["1"],"wpgID":[640]},"P:702":{"wpgField":["Turn Your TEST Into A High Performing Machine# ERRb78a3223503896721cca1303f776159b"],"wpgID":[1624]},"P:29":{"datField":[2459320.9428125],"dat_raw":["1\\/2021\\/4\\/16\\/10\\/37\\/39\\/0"]},"P:749":{"numField":[116]}}}]',
