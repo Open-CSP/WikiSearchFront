@@ -80,7 +80,7 @@ export default {
      */
     term: {
       set(value) {
-        this.typedTerm = value.replace(/[“”„']/gim, '"');
+        this.typedTerm = value;
         this.userHasTyped = true;
       },
       get() {
