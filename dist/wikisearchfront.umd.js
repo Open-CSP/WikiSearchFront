@@ -10381,7 +10381,7 @@ var store_updateStore = function updateStore(store) {
         params.sortings = JSON.stringify([{
           type: 'property',
           property: mediaWikiValues.WikiSearchFront.config.settings.sort,
-          order: 'asc'
+          order: mediaWikiValues.WikiSearchFront.config.settings.order || 'asc'
         }]);
       } // do WikiSearch api call
 
