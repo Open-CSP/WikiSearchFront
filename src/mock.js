@@ -105,7 +105,13 @@ if (process.env.NODE_ENV === 'production') {
                 type: 'date',
                 max: '20'
               },
-              Tag: [],
+              // Tag: [],
+              Tag: {
+                display: 'switch',
+                true: 'ICT',
+                false: 'Test',
+                default: 'false',
+              },
             },
             hitSettings: {
               // '-Modification date': {},

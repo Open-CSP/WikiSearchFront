@@ -285,9 +285,14 @@ function getSelection(state) {
   state.selected.forEach((element) => {
     const settings = mediaWikiValues.WikiSearchFront.config.facetSettings[element.key];
 
+    const out = element;
+    if (settings.not) {
+      out.negate = true;
+    }
+
     const value = element?.type === 'query'
-      ? prepareQuery(element.value)
-      : element.value;
+      ? prepareQuery(out.value)
+      : out.value;
 
     if (
       settings
@@ -299,15 +304,26 @@ function getSelection(state) {
       } else {
         selection[element.key].push(value);
       }
-    } else {
-      selected.push({ ...element, value });
+    } else if (out.value !== 'unset') {
+      selected.push({ ...out, value });
     }
   });
 
   Object.keys(selection).forEach((key) => {
     selected.push({ key, value: selection[key] });
   });
-  return selected;
+
+  const switchValues = Object.entries(mediaWikiValues.WikiSearchFront.config.facetSettings)
+    .filter(([key, filter]) => filter.display === 'switch' && (state.switched[key] !== 'unset' || filter[filter.default] !== 'unset'))
+    .map(([key, filter]) => {
+      const out = { key, value: state.switched[key] || filter[filter.default] };
+      if (filter.not) {
+        out.negate = true;
+      }
+      return out;
+    });
+
+  return [...selected, ...switchValues];
 }
 
 function setInitialSelection(state) {
@@ -335,6 +351,7 @@ const updateStore = (store) => {
       || mutation.type === 'SET_ORDER'
       || mutation.type === 'SET_SIZE'
       || mutation.type === 'SET_SELECTED'
+      || mutation.type === 'SET_SWITCHED'
     ) {
       // reset page offset when mutation in not page change
       if (mutation.type !== 'SET_FROM' && mutation.type !== 'START') {
@@ -401,6 +418,7 @@ const store = new Vuex.Store({
   state: {
     loading: false,
     selected: [],
+    switched: {},
     selectedResults: [],
     ongoingRequest: undefined,
     selectAllResults: false,
@@ -435,6 +453,9 @@ const store = new Vuex.Store({
     },
     SET_SELECTED(state, selected) {
       state.selected = selected;
+    },
+    SET_SWITCHED(state, switched) {
+      state.switched = switched;
     },
     SET_SELECTED_RESULTS(state, selected) {
       state.selectedResults = selected;
