@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       // eslint-disable-next-line no-undef
-      scriptPath: mw.config.values.wgScriptPath,
+      articlePath: mw.config.values.wgArticlePath.replace('/$1', ''),
       // eslint-disable-next-line no-undef
       configTitle: mw.config.values.WikiSearchFront.config.settings.title,
     };
@@ -153,23 +153,9 @@ export default {
         : this.data[source].subject.title;
     },
     getSnippets() {
-      if (this.data.highlight) {
-        if (this.data.highlight.text_raw) {
-          return this.data.highlight.text_raw;
-        }
-        if (
-          this.data.highlight.attachment
-          && this.data.highlight.attachment.content
-        ) {
-          return this.data.highlight.attachment.content;
-        }
-        return Object.entries(this.data.highlight).map(([, value]) => (
-          Array.isArray(value)
-            ? value[0]
-            : value
-        ));
-      }
-      return '';
+      return this.data.highlight
+        ? Object.values(this.data.highlight).flat()
+        : [];
     },
     isChecked() {
       return this.$store.state.selectAllResults;
@@ -200,7 +186,7 @@ export default {
       }
 
       return this.config.display === 'image'
-        ? `${this.scriptPath}/${prop}`.replace(' ', '_')
+        ? `${this.articlePath}/${prop}`.replace(' ', '_')
         : false;
     },
     href(prop) {
@@ -220,21 +206,21 @@ export default {
           ? '/index.php'
           : '';
 
-        return `${this.scriptPath}${hasIndex}/${ns}${page}${urlString}`;
+        return `${this.articlePath}${hasIndex}/${ns}${page}${urlString}`;
       }
 
       if (this.config.display === 'pdflink') {
         const snippet = this.$store.state.term
           ? `&snippet=${this.$store.state.term}`
           : '';
-        return `${this.scriptPath}/Pdf_viewer?pdf=${title.replaceAll(' ', '_')}${snippet}`;
+        return `${this.articlePath}/Pdf_viewer?pdf=${title.replaceAll(' ', '_')}${snippet}`;
       }
 
       if (this.config.display === 'link') {
         const regex = new RegExp('http');
         return regex.test(prop)
           ? prop.replace(/\s/gim, '_')
-          : `${this.scriptPath}/${prop.replace(/\s/gim, '_')}`;
+          : `${this.articlePath}/${prop.replace(/\s/gim, '_')}`;
       }
 
       return false;

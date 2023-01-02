@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import prepareQuery from '../../utilities/elastic';
 
 export default {
   name: 'WikisearchResultsTemplate',
@@ -21,6 +22,9 @@ export default {
     };
   },
   computed: {
+    hits() {
+      return this.$store.state.hits;
+    },
     parse() {
       let wikitext = '';
       if (Array.isArray(this.$store.state.hits)) {
@@ -35,6 +39,7 @@ export default {
               ? `|${text}`
               : '';
           });
+          wikitext += `|$term=${prepareQuery(this.$store.state.term)}`;
           wikitext += '}}';
         });
       }
@@ -63,7 +68,8 @@ export default {
     },
   },
   watch: {
-    parse() {
+    hits() {
+      console.log('hits changed, render template');
       this.parseTemplate();
     },
   },
@@ -142,23 +148,9 @@ export default {
         : `<nowiki>${this.sanitize(data)}</nowiki>`;
     },
     getSnippets(data) {
-      if (data.highlight) {
-        if (data.highlight.text_raw) {
-          return data.highlight.text_raw;
-        }
-        if (
-          data.highlight.attachment
-          && data.highlight.attachment.content
-        ) {
-          return data.highlight.attachment.content;
-        }
-        return Object.entries(data.highlight).map(([, value]) => (
-          Array.isArray(value)
-            ? value[0]
-            : value
-        ));
-      }
-      return '';
+      return data.highlight
+        ? Object.values(data.highlight).flat()
+        : [];
     },
     formatDates(dates) {
       return dates.map((date) => {

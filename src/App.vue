@@ -39,6 +39,7 @@
             :query-text="facetSettings[name].text"
             :query-data="facetSettings[name].data"
             :type="facetSettings[name].type"
+            :settings="facetSettings[name]"
             :buckets="filterObject.buckets || []"
             :label="facetSettings[name].label"
             :name="name"
@@ -92,7 +93,7 @@
 </template>
 
 <script>
-import store from './store';
+import { store } from './store';
 import { strip } from './utilities/stringUtils';
 
 import SearchInput from './components/SearchInput.vue';
@@ -115,6 +116,7 @@ import FacetCombobox from './components/filters/FacetCombobox.vue';
 import FacetAskCombobox from './components/filters/FacetAskCombobox.vue';
 import FacetElasticCombobox from './components/filters/FacetElasticCombobox.vue';
 import FacetFilter from './components/filters/FacetFilter.vue';
+import FacetSwitch from './components/filters/FacetSwitch.vue';
 import FacetSearch from './components/filters/FacetSearch.vue';
 import FacetSorted from './components/filters/FacetSorted.vue';
 
@@ -137,6 +139,7 @@ export default {
     // filters
     FacetCombobox,
     FacetFilter,
+    FacetSwitch,
     FacetAskCombobox,
     FacetElasticCombobox,
     FacetSearch,
@@ -182,6 +185,7 @@ export default {
         combobox: FacetCombobox,
         sorted: FacetSorted,
         search: FacetSearch,
+        switch: FacetSwitch,
         datepicker: FacetDateRange,
         'ask combobox': FacetAskCombobox,
         'elastic combobox': FacetElasticCombobox,

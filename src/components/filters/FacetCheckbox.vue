@@ -135,6 +135,7 @@ export default {
       let out = '';
       const keyValue = this.agg.key_as_string ? this.agg.key_as_string : this.agg.key;
       if (this.agg.to) {
+        console.log('hhh', this.agg);
         out = {
           value: this.agg.key,
           key: this.name,
@@ -143,6 +144,9 @@ export default {
             lte: Number(`${this.agg.to}.0000000`),
           },
         };
+        if (this.agg.name) {
+          out.name = this.agg.name;
+        }
       } else {
         out = { value: keyValue, key: this.name };
         if (this.agg.name) {
@@ -174,9 +178,6 @@ export default {
     }
   },
   methods: {
-    updateSelection2(item) {
-      console.log(item);
-    },
     updateSelection(item) {
       const selection = [];
       let found = false;

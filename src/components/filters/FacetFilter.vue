@@ -23,6 +23,34 @@
         :index="i"
         :name="name"
       />
+      <div
+        v-if="type === 'date'"
+        class="wikisearch-filter__custom-date"
+      >
+        <facet-checkbox
+          :agg="{
+            'from': createDate(customDates.from),
+            'to': createDate(customDates.to),
+            'doc_count': 4,
+            'key': 'customrange',
+            'name': customDateRangeLabel
+          }"
+          :index="999"
+          :name="name"
+        />
+        <wikisearch-date-input
+          disabled-direction="before"
+          :disabled-date="customDates.to"
+          :value="customDates.from"
+          @change="setCustomDate($event, 'from')"
+        />
+        <wikisearch-date-input
+          disabled-direction="after"
+          :disabled-date="customDates.from"
+          :value="customDates.to"
+          @change="setCustomDate($event, 'to')"
+        />
+      </div>
       <wikisearch-button
         v-if="strippedBuckets.length > collapsed"
         class="wikisearch-filter__button"
@@ -38,6 +66,8 @@
 import Vue from 'vue';
 import FacetCheckbox from './FacetCheckbox.vue';
 import WikisearchButton from '../Button.vue';
+import WikisearchDateInput from '../DateInput.vue';
+import { createDate, readableDate } from '../../utilities/dateUtils';
 import { strip } from '../../utilities/stringUtils';
 
 export default {
@@ -45,6 +75,7 @@ export default {
   components: {
     FacetCheckbox,
     WikisearchButton,
+    WikisearchDateInput,
   },
   props: {
     name: {
@@ -83,9 +114,17 @@ export default {
       strippedBuckets: '',
       bucketsToShow: '',
       fired: false,
+      customDates: {
+        from: '',
+        to: '',
+      },
     };
   },
   computed: {
+    customDateRangeLabel() {
+      const format = 'D MMM YYYY';
+      return `${window.moment(this.customDates.from).format(format)} - ${window.moment(this.customDates.to).format(format)}`;
+    },
     /**
      * @returns {Number} number of uncollapsed items
      */
@@ -122,6 +161,26 @@ export default {
     },
   },
   mounted() {
+    const { selected, realDates } = this.$store.state;
+
+    const isSelected = selected.filter((item) => (
+      item.key === this.name
+        && item.value === 'customrange'
+    ));
+
+    if (isSelected.length) {
+      this.customDates = {
+        to: realDates.customrange.to,
+        from: realDates.customrange.from,
+      };
+    }
+
+    if (!isSelected.length) {
+      this.customDates = {
+        from: window.moment().subtract(1, 'days').format('YYYY-MM-DD'),
+        to: window.moment().format('YYYY-MM-DD'),
+      };
+    }
     /**
      * do translations
      */
@@ -144,6 +203,42 @@ export default {
     }
   },
   methods: {
+    readableDate(value) {
+      return readableDate(value);
+    },
+    createDate(value) {
+      return createDate(value);
+    },
+    setCustomDate(value, type) {
+      const { selected, realDates } = this.$store.state;
+      this.customDates[type] = value.format('YYYY-MM-DD');
+
+      const realdatesUpdated = {
+        ...realDates,
+        customrange: this.customDates,
+      };
+
+      this.$store.commit('SET_REAL_DATES', realdatesUpdated);
+
+      const isSelected = selected.filter((item) => item.key === this.name);
+
+      if (isSelected.length) {
+        const selectedUpdated = selected.map((item) => (
+          item.key === this.name
+            ? {
+              key: this.name,
+              range: {
+                gte: this.createDate(this.customDates.from),
+                lte: this.createDate(this.customDates.to),
+              },
+              value: 'customrange',
+              name: this.customDateRangeLabel,
+
+            } : item));
+
+        this.$store.commit('SET_SELECTED', selectedUpdated);
+      }
+    },
     /**
      * @param {Object} data query result from ask api
      */
@@ -291,5 +386,13 @@ export default {
 
 .wikisearch-button.wikisearch-filter__button .wikisearch-button__label {
   padding: 0 1em 0 0 ;
+}
+
+.wikisearch-filter__custom-date {
+  display: flex;
+}
+
+.wikisearch-filter__custom-date .wikisearch-checkbox__label {
+  display: none;
 }
 </style>

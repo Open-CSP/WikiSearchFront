@@ -88,6 +88,8 @@
               'wikisearch-date-input__day--active' :
                 day.format('YYYY-MM-DD') === time.format('YYYY-MM-DD'),
               'wikisearch-date-input__day--other-month' : day.format('M') !== time.format('M'),
+              'wikisearch-date-input__day--disabled' : disabledDirection
+                ? operators[disabledDirection](day, moment(disabledDate)) : false,
             }"
             @click="date = day;justSelected = true"
           >
@@ -120,6 +122,18 @@ export default {
         return [];
       },
     },
+    value: {
+      type: String,
+      default: '',
+    },
+    disabledDirection: {
+      type: String,
+      default: '',
+    },
+    disabledDate: {
+      type: String,
+      default: '',
+    },
     selected: {
       type: Array,
       default() {
@@ -135,6 +149,10 @@ export default {
       change: 0,
       activeDisplay: 0,
       displays: ['days', 'months', 'years'],
+      operators: {
+        before: (a, b) => a.format('YYYYMMDD') > b.format('YYYYMMDD'),
+        after: (a, b) => a.format('YYYYMMDD') < b.format('YYYYMMDD'),
+      },
       displayYear: '',
       focused: false,
       justSelected: false,
@@ -183,6 +201,14 @@ export default {
     time(value) {
       this.$emit('change', value, this.name);
     },
+    value(value) {
+      this.date = window.moment(value);
+    },
+  },
+  mounted() {
+    if (this.value) {
+      this.date = window.moment(this.value);
+    }
   },
   methods: {
     itemClasses(item) {
@@ -219,8 +245,8 @@ export default {
 .wikisearch-date-input__list-box{
     position: absolute;
     min-width: 100%;
-    max-width: min(200%, 95vw);
-    width: max-content;
+  /*  max-width: min(200%, 95vw); */
+    width: auto;
     background-color: var(--ws-white);
     border-radius: 2px;
     border: 1px solid var(--ws-border-color);
@@ -299,5 +325,9 @@ export default {
 .wikisearch-date-input__days-header-item {
   font-weight: bold;
   color: var(--ws-text-color-muted);
+}
+
+.wikisearch-date-input__day--disabled {
+  color: red;
 }
 </style>

@@ -103,11 +103,15 @@ if (process.env.NODE_ENV === 'production') {
                 display: 'date',
                 label: 'Updated',
                 type: 'date',
+                max: '20'
               },
-              'Modification date': {
-                display: 'datepicker',
+              // Tag: [],
+              Tag: {
+                display: 'switch',
+                true: 'ICT',
+                false: 'Test',
+                default: 'false',
               },
-              Tag: [],
             },
             hitSettings: {
               // '-Modification date': {},

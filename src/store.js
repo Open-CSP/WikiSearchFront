@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { createDate } from './utilities/dateUtils';
+import prepareQuery from './utilities/elastic';
 
 Vue.use(Vuex);
 
@@ -174,7 +175,7 @@ function getStateFromUrl(state, facetSettings) {
  * @param {Date} today
  * @returns {Object} ranges
  */
-function createDateRanges(today) {
+function createDateRanges(today, facetSettings) {
   // today
   const to = moment().format('YYYY-MM-DD');
   // human readable dates
@@ -183,8 +184,15 @@ function createDateRanges(today) {
     'Last Month': { from: moment().subtract(1, 'months').format('YYYY-MM-DD'), to },
     'Last Quarter': { from: moment().subtract(1, 'quarter').format('YYYY-MM-DD'), to },
   };
-  // 5 years
-  for (let i = 0; i < 5; i += 1) {
+
+  let max = 5;
+  Object.keys(facetSettings).forEach((key) => {
+    if (facetSettings[key].display === 'date') {
+      max = facetSettings[key].max;
+    }
+  });
+  // 5 years or max setting
+  for (let i = 0; i < max; i += 1) {
     const key = today.getFullYear() - i;
     realDateRanges[key] = { from: `${key}-01-01`, to: `${key + 1}-01-01` };
   }
@@ -195,14 +203,18 @@ function createDateRanges(today) {
     to: createDate(value.to),
   }));
 
-  // modification date facet
-  const facetRanges = [
-    {
-      type: 'range',
-      ranges: dateRanges,
-      property: 'Modification date',
-    },
-  ];
+  const facetRanges = [];
+  Object.keys(facetSettings).forEach((key) => {
+    if (facetSettings[key].display === 'date') {
+      facetRanges.push(
+        {
+          type: 'range',
+          ranges: dateRanges,
+          property: key,
+        },
+      );
+    }
+  });
 
   return { facet: facetRanges, real: realDateRanges };
 }
@@ -230,7 +242,6 @@ function createMoreRanges(facetSettings, ranges, today) {
     rangeProp.forEach((prop) => {
       const max = parseInt(prop.max, 10);
       const step = parseInt(prop.step, 10);
-
       const moreRanges = [];
 
       if (prop.type === 'date') {
@@ -273,25 +284,46 @@ function getSelection(state) {
   const selected = [];
   state.selected.forEach((element) => {
     const settings = mediaWikiValues.WikiSearchFront.config.facetSettings[element.key];
+
+    const out = element;
+    if (settings.not) {
+      out.negate = true;
+    }
+
+    const value = element?.type === 'query'
+      ? prepareQuery(out.value)
+      : out.value;
+
     if (
       settings
       && settings.logic
       && settings.logic === 'or'
     ) {
       if (!selection[element.key]) {
-        selection[element.key] = [element.value];
+        selection[element.key] = [value];
       } else {
-        selection[element.key].push(element.value);
+        selection[element.key].push(value);
       }
-    } else {
-      selected.push(element);
+    } else if (out.value !== 'unset') {
+      selected.push({ ...out, value });
     }
   });
 
   Object.keys(selection).forEach((key) => {
     selected.push({ key, value: selection[key] });
   });
-  return selected;
+
+  const switchValues = Object.entries(mediaWikiValues.WikiSearchFront.config.facetSettings)
+    .filter(([key, filter]) => filter.display === 'switch' && (state.switched[key] !== 'unset' || filter[filter.default] !== 'unset'))
+    .map(([key, filter]) => {
+      const out = { key, value: state.switched[key] || filter[filter.default] };
+      if (filter.not) {
+        out.negate = true;
+      }
+      return out;
+    });
+
+  return [...selected, ...switchValues];
 }
 
 function setInitialSelection(state) {
@@ -319,9 +351,10 @@ const updateStore = (store) => {
       || mutation.type === 'SET_ORDER'
       || mutation.type === 'SET_SIZE'
       || mutation.type === 'SET_SELECTED'
+      || mutation.type === 'SET_SWITCHED'
     ) {
       // reset page offset when mutation in not page change
-      if (mutation.type !== 'SET_FROM') {
+      if (mutation.type !== 'SET_FROM' && mutation.type !== 'START') {
         store.commit('RESET_FROM');
       }
 
@@ -342,7 +375,7 @@ const updateStore = (store) => {
         meta: 'WikiSearch',
         format: 'json',
         filter: JSON.stringify(selected),
-        term: state.term,
+        term: prepareQuery(state.term),
         from: state.from,
         limit: state.size,
         pageid: mediaWikiValues.wgArticleId,
@@ -366,7 +399,7 @@ const updateStore = (store) => {
           {
             type: 'property',
             property: mediaWikiValues.WikiSearchFront.config.settings.sort,
-            order: 'asc',
+            order: mediaWikiValues.WikiSearchFront.config.settings.order || 'asc',
           },
         ]);
       }
@@ -385,6 +418,7 @@ const store = new Vuex.Store({
   state: {
     loading: false,
     selected: [],
+    switched: {},
     selectedResults: [],
     ongoingRequest: undefined,
     selectAllResults: false,
@@ -419,6 +453,9 @@ const store = new Vuex.Store({
     },
     SET_SELECTED(state, selected) {
       state.selected = selected;
+    },
+    SET_SWITCHED(state, switched) {
+      state.switched = switched;
     },
     SET_SELECTED_RESULTS(state, selected) {
       state.selectedResults = selected;
@@ -457,7 +494,7 @@ const store = new Vuex.Store({
 
       const today = new Date();
 
-      const ranges = createDateRanges(today);
+      const ranges = createDateRanges(today, facetSettings);
 
       const [facetRanges, realRanges] = createMoreRanges(facetSettings, ranges, today);
 
@@ -548,4 +585,4 @@ const store = new Vuex.Store({
   plugins: [updateStore],
 });
 
-export default store;
+export { store, getSelection };

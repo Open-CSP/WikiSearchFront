@@ -12,7 +12,9 @@
 
 <script>
 // import Vue from 'vue';
+import { getSelection } from '../../store';
 import FacetCombobox from './FacetCombobox.vue';
+import prepareQuery from '../../utilities/elastic';
 
 export default {
   name: 'FacetElasticCombobox',
@@ -95,8 +97,12 @@ export default {
       const params = {
         action: 'query',
         meta: 'WikiSearchCombobox',
+        // eslint-disable-next-line no-undef
+        pageid: mw.config.values.wgArticleId,
+        filter: JSON.stringify(getSelection(this.$store.state)),
+        search_term: prepareQuery(this.$store.state.term),
         property: this.name,
-        term,
+        term: prepareQuery(term),
         format: 'json',
         formatversion: 2,
       };
