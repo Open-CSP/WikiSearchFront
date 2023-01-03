@@ -286,7 +286,7 @@ function getSelection(state) {
     const settings = mediaWikiValues.WikiSearchFront.config.facetSettings[element.key];
 
     const out = element;
-    if (settings.not) {
+    if (settings?.not) {
       out.negate = true;
     }
 
