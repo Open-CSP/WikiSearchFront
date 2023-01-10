@@ -181,12 +181,12 @@ export default {
     src(prop) {
       if (this.config.display === 'pdf') {
         const source = '_source';
-        const subjectTitle = this.data[source].subject.title.replace(/\s/g, '_');
+        const subjectTitle = this.data[source].subject.title.replaceAll(/\s/g, '_');
         return `/img_auth.php/thumb/${subjectTitle}/page1-300px-${subjectTitle}.jpg`;
       }
 
       return this.config.display === 'image'
-        ? `${this.articlePath}/${prop}`.replace(' ', '_')
+        ? `${this.articlePath}/${prop}`.replaceAll(' ', '_')
         : false;
     },
     href(prop) {
