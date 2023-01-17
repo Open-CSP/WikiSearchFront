@@ -89,7 +89,7 @@ export default {
         const snippet = this.$store.state.term
           ? `&snippet=${encodeURIComponent(this.$store.state.term)}`
           : '';
-        
+
         return `${this.articlePath}/Pdf_viewer?pdf=${encodeURIComponent(hit[source].subject.title.replaceAll(' ', '_'))}${snippet}`;
       }
 
