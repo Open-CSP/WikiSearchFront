@@ -46,6 +46,8 @@ export default {
   data() {
     return {
       // eslint-disable-next-line no-undef
+      articlePath: mw.config.values.wgArticlePath.replace('/$1', ''),
+      // eslint-disable-next-line no-undef
       config: mw.config.values.WikiSearchFront.config,
     };
   },
@@ -74,12 +76,29 @@ export default {
       }
       return this.config.hitSettings;
     },
+  },
+  methods: {
     getHref(hit) {
       const titleSettings = this.config.settings.title;
       const source = '_source';
 
-      return hit[source][`P:${titleSettings.key}`][titleSettings.type][0]
-        || hit[source].subject.title;
+      if (
+        this.config.settings.title.display === 'pdflink'
+          || (this.config.hitSettings.$title && this.config.hitSettings.$title.display === 'pdflink')
+      ) {
+        const snippet = this.$store.state.term
+          ? `&snippet=${encodeURIComponent(this.$store.state.term)}`
+          : '';
+        
+        return `${this.articlePath}/Pdf_viewer?pdf=${encodeURIComponent(hit[source].subject.title.replaceAll(' ', '_'))}${snippet}`;
+      }
+
+      return hit[source]
+        && hit[source][`P:${titleSettings.key}`]
+        && hit[source][`P:${titleSettings.key}`][titleSettings.type]
+        && hit[source][`P:${titleSettings.key}`][titleSettings.type][0]
+        ? hit[source][`P:${titleSettings.key}`][titleSettings.type][0]
+        : hit[source].subject.title;
     },
   },
 };
