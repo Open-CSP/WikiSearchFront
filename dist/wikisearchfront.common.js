@@ -10591,12 +10591,12 @@ function stringUtils_sanitize(string) {
 }
 
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SearchInput.vue?vue&type=template&id=2c0304ac&
-var SearchInputvue_type_template_id_2c0304ac_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-search wikisearch--has-button",attrs:{"aria-disabled":"false","role":"search"}},[_c('div',{staticClass:"wikisearch-search__wrapper"},[_c('div',{ref:'syntax',staticClass:"wikisearch-syntax",domProps:{"innerHTML":_vm._s(_vm.highlightedTerm)}}),_c('wikisearch-input',{attrs:{"pending":_vm.$store.state.loading,"clearable":true,"start-icon":'search',"placeholder":_vm.$i18n('search')},on:{"input":_vm.onInput,"enter":_vm.search,"scroll":_vm.syncScroll,"clear":_vm.clearTerm},model:{value:(_vm.term),callback:function ($$v) {_vm.term=$$v},expression:"term"}})],1),_c('wikisearch-button',{attrs:{"label":_vm.$i18n('search'),"type":'progressive'},on:{"click":_vm.search}}),(_vm.hasInfo)?_c('wikisearch-tooltip',{scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('div',{domProps:{"innerHTML":_vm._s(_vm.highlightedInfo)}})]},proxy:true},{key:"button",fn:function(){return [_c('wikisearch-button',{attrs:{"icon":'info',"type":'icon'}})]},proxy:true}],null,false,2795427984)}):_vm._e()],1)}
-var SearchInputvue_type_template_id_2c0304ac_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SearchInput.vue?vue&type=template&id=aa467488&
+var SearchInputvue_type_template_id_aa467488_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-search wikisearch--has-button",attrs:{"aria-disabled":"false","role":"search"}},[_c('div',{staticClass:"wikisearch-search__wrapper"},[_c('div',{ref:'syntax',staticClass:"wikisearch-syntax",domProps:{"innerHTML":_vm._s(_vm.highlightedTerm)}}),_c('wikisearch-input',{attrs:{"pending":_vm.$store.state.loading,"clearable":true,"start-icon":'search',"placeholder":_vm.$i18n('search')},on:{"input":_vm.onInput,"enter":_vm.search,"scroll":_vm.syncScroll,"clear":_vm.clearTerm},model:{value:(_vm.term),callback:function ($$v) {_vm.term=$$v},expression:"term"}})],1),_c('wikisearch-button',{attrs:{"label":_vm.$i18n('search'),"type":'progressive'},on:{"click":_vm.search}}),(_vm.hasInfo)?_c('wikisearch-tooltip',{scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('div',{domProps:{"innerHTML":_vm._s(_vm.highlightedInfo)}})]},proxy:true},{key:"button",fn:function(){return [_c('wikisearch-button',{attrs:{"icon":'info',"type":'icon'}})]},proxy:true}],null,false,2795427984)}):_vm._e()],1)}
+var SearchInputvue_type_template_id_aa467488_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/SearchInput.vue?vue&type=template&id=2c0304ac&
+// CONCATENATED MODULE: ./src/components/SearchInput.vue?vue&type=template&id=aa467488&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39788808-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Input.vue?vue&type=template&id=7ccec1c1&
 var Inputvue_type_template_id_7ccec1c1_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-input",class:_vm.classes},[_c('input',_vm._b({ref:'input',class:{
@@ -11195,7 +11195,7 @@ var Tooltip_component = normalizeComponent(
     },
     highlight: function highlight(term) {
       var baseClass = 'wikisearch-syntax__item';
-      return term.replace(/(["'])(?:(?=(\\?))\2.)*?\1|~\d/g, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--qoute\">$&</span>")).replace(/\s(-\w+)/g, " <span class=\"".concat(baseClass, " ").concat(baseClass, "--minus\">$1</span>")).replace(/\*/gm, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--star\">*</span>")).replace(/OR/gm, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--or\">OR</span>")).replace(/AND/gm, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--and\">AND</span>"));
+      return term.replace(/(["'])(?:(?=(\\?))\2.)*?\1|~\d/g, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--qoute\">$&</span>")).replace(/\s(-\w+)/g, " <span class=\"".concat(baseClass, " ").concat(baseClass, "--minus\">$1</span>")).replace(/\*/gm, "<span class=\"".concat(baseClass, " ").concat(baseClass, "--star\">*</span>")).replace(/\sOR\s/gm, " <span class=\"".concat(baseClass, " ").concat(baseClass, "--or\">OR</span> ")).replace(/\sAND\s/gm, " <span class=\"".concat(baseClass, " ").concat(baseClass, "--and\">AND</span> "));
     },
     onInput: function onInput() {
       if ( // eslint-disable-next-line no-undef
@@ -11236,8 +11236,8 @@ var SearchInputvue_type_style_index_0_lang_css_ = __webpack_require__("635d");
 
 var SearchInput_component = normalizeComponent(
   components_SearchInputvue_type_script_lang_js_,
-  SearchInputvue_type_template_id_2c0304ac_render,
-  SearchInputvue_type_template_id_2c0304ac_staticRenderFns,
+  SearchInputvue_type_template_id_aa467488_render,
+  SearchInputvue_type_template_id_aa467488_staticRenderFns,
   false,
   null,
   null,
