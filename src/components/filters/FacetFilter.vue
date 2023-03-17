@@ -324,8 +324,8 @@ export default {
         === 'alphabetically'
       ) {
         this.strippedBuckets = organizedBuckets.sort((a, b) => {
-          const textA = a.key.toUpperCase();
-          const textB = b.key.toUpperCase();
+          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
+          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
           // eslint-disable-next-line no-nested-ternary
           return textA < textB ? -1 : textA > textB ? 1 : 0;
         });
@@ -337,8 +337,8 @@ export default {
         const reA = /[^a-zA-Z]/g;
         const reN = /[^0-9]/g;
         this.strippedBuckets = organizedBuckets.sort((a, b) => {
-          const textA = a.key.toUpperCase();
-          const textB = b.key.toUpperCase();
+          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
+          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
           const aA = textA.split(' ')[0].replace(reA, '');
           const bA = textB.split(' ')[0].replace(reA, '');
           if (aA === bA) {
