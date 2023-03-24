@@ -366,6 +366,11 @@ export default {
         }
         this.strippedBuckets = [bucket];
       }
+
+      if (this.config.facetSettings[this.name].order === 'reverse') {
+        this.strippedBuckets.reverse();
+      }
+
       this.bucketsToShow = this.strippedBuckets;
     },
     strip(string) {
