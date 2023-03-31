@@ -5,7 +5,7 @@
     :aria-labelledby="`filter__label--${strip(name)}`"
   >
     <span
-      v-if="strippedBuckets.length"
+      v-if="strippedBuckets.length || type === 'date'"
       class="wikisearch-filter__label"
     >
       <label
