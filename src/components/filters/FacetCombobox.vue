@@ -180,6 +180,10 @@ export default {
         });
       }
 
+      if (this.facetSettings[this.name].order === 'reverse') {
+        sorted.reverse();
+      }
+
       return sorted;
     },
     /**
