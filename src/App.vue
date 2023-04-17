@@ -218,10 +218,7 @@ export default {
       if (this.state.selectedResults.length) {
         if (this.settings.action.type === 'page') {
           const params = `?props=${this.state.selectedResults.join(',')}`;
-          const hasIndex = /index\.php/.test(window.location.href)
-            ? '/index.php'
-            : '';
-          window.location = `${window.location.origin}${hasIndex}/${this.settings.action.name}${params}`;
+          window.location = `${window.location.origin}/${this.settings.action.name}${params}`;
         } else {
           window[this.settings.action.name](this.state.selectedResults);
         }

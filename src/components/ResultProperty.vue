@@ -202,11 +202,7 @@ export default {
           ? this.getUrlString
           : '';
 
-        const hasIndex = /index\.php/.test(window.location.href)
-          ? '/index.php'
-          : '';
-
-        return `${this.articlePath}${hasIndex}/${ns}${page}${urlString}`;
+        return `${this.articlePath}/${ns}${page}${urlString}`;
       }
 
       if (this.config.display === 'pdflink') {
