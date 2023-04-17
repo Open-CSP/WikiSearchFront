@@ -148,7 +148,7 @@ export default {
       let unsorted = this.buckets;
 
       if (this.term) {
-        const regex = new RegExp(this.term, 'ig');
+        const regex = new RegExp(this.term.replace('*', '.*'), 'ig');
         unsorted = this.buckets.filter(agg => (
           agg.name
             ? agg.name.match(regex)
