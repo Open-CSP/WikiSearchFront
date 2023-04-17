@@ -229,7 +229,7 @@ export default {
               key: this.name,
               range: {
                 gte: this.createDate(this.customDates.from),
-                lte: this.createDate(this.customDates.to),
+                lte: this.createDate(window.moment(this.customDates.to).add(1, 'days').format('YYYY-MM-DD')),
               },
               value: 'customrange',
               name: this.customDateRangeLabel,
