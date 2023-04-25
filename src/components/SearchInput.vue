@@ -102,8 +102,8 @@ export default {
         .replace(/\s(-\w+)/g,
           ` <span class="${baseClass} ${baseClass}--minus">$1</span>`)
         .replace(/\*/gm, `<span class="${baseClass} ${baseClass}--star">*</span>`)
-        .replace(/OR/gm, `<span class="${baseClass} ${baseClass}--or">OR</span>`)
-        .replace(/AND/gm, `<span class="${baseClass} ${baseClass}--and">AND</span>`);
+        .replace(/\sOR\s/gm, ` <span class="${baseClass} ${baseClass}--or">OR</span> `)
+        .replace(/\sAND\s/gm, ` <span class="${baseClass} ${baseClass}--and">AND</span> `);
     },
     onInput() {
       if ( // eslint-disable-next-line no-undef
