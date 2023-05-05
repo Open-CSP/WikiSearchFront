@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       // eslint-disable-next-line no-undef
-      articlePath: mw.config.values.wgArticlePath.replace('/$1', ''),
+      articlePath: mw.config.values.wgArticlePath.replace('/$1', '').replace('?title=$1', ''),
       // eslint-disable-next-line no-undef
       configTitle: mw.config.values.WikiSearchFront.config.settings.title,
     };
