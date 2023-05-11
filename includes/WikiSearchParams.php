@@ -30,16 +30,13 @@ class WikiSearchParams {
 	/**
 	 * @param string $value
 	 *
-	 * @return array|false
+	 * @return array
 	 */
-	private function getSizeOptions( string $value ) {
-		$temp =  explode(
+	private function getSizeOptions( string $value ): array {
+		return explode(
 			",",
 			$value
 		);
-		if( !is_array( $temp ) ) {
-			return false;
-		} else return $temp;
 	}
 
 	/**
@@ -48,15 +45,11 @@ class WikiSearchParams {
 	 * @return false|array
 	 */
 	private function getSortOptions( string $value ) {
-		$sort_options        = explode(
+		$sort_options = explode(
 			",",
 			$value
 		);
 		$sort_options_values = [];
-
-		if ( ! is_array( $sort_options ) ) {
-			return false;
-		}
 
 		foreach ( $sort_options as $sort_option ) {
 			$sort_option_label = explode(
@@ -91,48 +84,40 @@ class WikiSearchParams {
 			$input_parameter
 		);
 
-		if ( ! is_array( $property_options ) ) {
-			return false;
-		}
-
 		foreach ( $property_options as $i => $property_option ) {
 			$property_option = explode(
 				'=',
 				$property_option
 			);
 
-			if ( ! is_array( $property_option ) ) {
-				return false;
-			}
-
 			$key = $property_option[0];
 			$val = trim( $property_option[1] );
 			if ( $i === 0 ) {
-				$output_parameter['name'] = $val;
-				$property_type            = $this->getPropertyType(
+				$output_parameter[ 'name' ] = $val;
+				$property_type = $this->getPropertyType(
 					str_replace(
 						' ',
 						'_',
 						$val
 					)
 				);
-				$output_parameter['key']  = $property_type['key'];
-				$output_parameter['type'] = $property_type['type'];
-			} else if ($key === 'color') {
-				$property_type            = $this->getPropertyType(
+				$output_parameter[ 'key' ] = $property_type[ 'key' ];
+				$output_parameter[ 'type' ] = $property_type[ 'type' ];
+			} else if ( $key === 'color' ) {
+				$property_type = $this->getPropertyType(
 					str_replace(
 						' ',
 						'_',
 						$val
 					)
 				);
-				$output_parameter['color'] = [
+				$output_parameter[ 'color' ] = [
 					'name' => $val,
-					'key' => $property_type['key'],
-					'type' => $property_type['type']
+					'key'  => $property_type[ 'key' ],
+					'type' => $property_type[ 'type' ]
 				];				
 			} else {
-				$output_parameter[$key] = $val;
+				$output_parameter[ $key ] = $val;
 			}
 		}
 
@@ -142,7 +127,7 @@ class WikiSearchParams {
 	/**
 	 * @param string $input_parameter
 	 *
-	 * @return false|array
+	 * @return array
 	 */
 	private function getActionOptions( string $input_parameter ) {
 		$output_parameter = [];
@@ -151,26 +136,18 @@ class WikiSearchParams {
 			$input_parameter
 		);
 
-		if ( ! is_array( $property_options ) ) {
-			return false;
-		}
-
 		foreach ( $property_options as $i => $property_option ) {
 			$property_option = explode(
 				'=',
 				$property_option
 			);
 
-			if ( ! is_array( $property_option ) ) {
-				return false;
-			}
-
-			$key = $property_option[0];
-			$val = trim( $property_option[1] );
+			$key = $property_option[0] ?? '';
+			$val = trim( $property_option[1] ?? '' );
 			if ( $i === 0 ) {
-				$output_parameter['name'] = $val;
+				$output_parameter[ 'name' ] = $val;
 			} else {
-				$output_parameter[$key] = $val;
+				$output_parameter[ $key ] = $val;
 			}
 		}
 
@@ -187,10 +164,8 @@ class WikiSearchParams {
 			$input_parameter
 		);
 
-		if( !is_array( $parameter_options ) ) return;
-
-		$key   = $parameter_options[0];
-		$value = $parameter_options[1];
+		$key   = $parameter_options[0] ?? '';
+		$value = $parameter_options[1] ?? '';
 
 		switch ( $key ) {
 			case "size":
@@ -229,7 +204,7 @@ class WikiSearchParams {
 			default:
 				$output_parameter = $value;
 		}
-		$searchConfig["settings"]->$key = $output_parameter;
+		$searchConfig[ "settings" ]->$key = $output_parameter;
 	}
 
 	/**
@@ -242,27 +217,27 @@ class WikiSearchParams {
 			$input_parameter
 		);
 
-		if ( ! is_array( $facet_options ) ) {
-			return;
-		}
-
 		$property_name = "";
 
 		foreach ( $facet_options as $i => $facet_option ) {
 			if ( $i === 0 ) {
-				$property_name                                 = trim(
+				$property_name = trim(
 					ltrim(
 						$facet_option,
 						'@'
 					)
 				);
-				$searchConfig["facetSettings"]->$property_name = [];
+				$searchConfig[ "facetSettings" ]->$property_name = [];
 			} else {
-				$facet_value                                                    = explode(
+				$facet_value = explode(
 					'=',
 					$facet_option
 				);
-				$searchConfig["facetSettings"]->$property_name[$facet_value[0]] = trim( $facet_value[1] );
+				$searchConfig[
+					"facetSettings"
+				]->$property_name[
+					$facet_value[0] ?? ''
+				] = trim( $facet_value[1] ?? '' );
 			}
 		}
 	}
@@ -277,36 +252,37 @@ class WikiSearchParams {
 			$input_parameter
 		);
 
-		if( !is_array( $result_options ) ) return;
-
 		$property_name  = "";
 		foreach ( $result_options as $i => $result_option ) {
 			if ( $i === 0 ) {
-				$property_name                               = trim(
+				$property_name = trim(
 					ltrim(
 						$result_option,
 						'?'
 					)
 				);
-				$searchConfig["hitSettings"]->$property_name = [];
+				$searchConfig[ "hitSettings" ]->$property_name = [];
 
-				$property_type                                       = $this->getPropertyType(
+				$property_type = $this->getPropertyType(
 					str_replace(
 						' ',
 						'_',
 						$property_name
 					)
 				);
-				$searchConfig["hitSettings"]->$property_name['key']  = $property_type['key'];
-				$searchConfig["hitSettings"]->$property_name['type'] = $property_type['type'];
+				$searchConfig[ "hitSettings" ]->$property_name[ 'key' ] = $property_type[ 'key' ];
+				$searchConfig[ "hitSettings" ]->$property_name[ 'type' ] = $property_type[ 'type' ];
 			} else {
-				$result_value                                                  = explode(
+				$result_value = explode(
 					'=',
 					$result_option
 				);
 
-				if( !is_array( $result_value ) ) return;
-				$searchConfig["hitSettings"]->$property_name[$result_value[0]] = trim( $result_value[1] );
+				$searchConfig[
+					"hitSettings"
+				]->$property_name[
+					$result_value[0] ?? ''
+				] = trim( $result_value[1] ?? '' );
 			}
 		}
 	}
