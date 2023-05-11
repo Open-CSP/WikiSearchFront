@@ -63,11 +63,11 @@ class WikiSearchFrontHooks {
 			}
 		}
 
-		$parser->getOutput()->addJsConfigVars( "WikiSearchFront",
-											   array(
-												   "config" => $searchConfig
-											   ) );
-		$parser->getOutput()->addModules( 'ext.WikiSearchFront.module' );
+		$parser->getOutput()->addJsConfigVars(
+			"WikiSearchFront",
+			[ "config" => $searchConfig ]
+		);
+		$parser->getOutput()->addModules( [ 'ext.WikiSearchFront.module' ] );
 
 		$result = "<div id='app'></div>";
 
