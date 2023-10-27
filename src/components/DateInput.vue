@@ -3,7 +3,7 @@
     class="wikisearch-date-input"
   >
     <wikisearch-input
-      :value="time.format('dd, D MMM YYYY')"
+      :value="time.format('D MMM YYYY')"
       @focus="focused = true"
       @blur="focused = false"
       @click="focused = true;justSelected = false"

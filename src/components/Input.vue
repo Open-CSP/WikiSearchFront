@@ -22,6 +22,7 @@
       @focus="$emit( 'focus' )"
       @blur="$emit( 'blur' )"
       @click="$emit( 'click' )"
+      :readonly="this.$parent.$options.name === 'WikisearchDateInput'"
     >
     <wikisearch-icon
       v-if="startIcon"
