@@ -305,7 +305,9 @@ class WikiSearchParams {
 					$result_option
 				);
 
-				if( !is_array( $result_value ) ) return;
+				if ( !is_array( $result_value ) ) return;
+				if ( !isset($result_value[1]) ) return;
+				
 				$searchConfig["hitSettings"]->$property_name[$result_value[0]] = trim( $result_value[1] );
 			}
 		}
