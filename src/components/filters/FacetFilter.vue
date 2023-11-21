@@ -38,18 +38,22 @@
           :index="999"
           :name="name"
         />
-        <wikisearch-date-input
-          disabled-direction="before"
-          :disabled-date="customDates.to"
-          :value="customDates.from"
-          @change="setCustomDate($event, 'from')"
-        />
-        <wikisearch-date-input
-          disabled-direction="after"
-          :disabled-date="customDates.from"
-          :value="customDates.to"
-          @change="setCustomDate($event, 'to')"
-        />
+        <div
+          class="wikisearch-date-input-container"
+        >
+          <wikisearch-date-input
+            disabled-direction="before"
+            :disabled-date="customDates.to"
+            :value="customDates.from"
+            @change="setCustomDate($event, 'from')"
+          />
+          <wikisearch-date-input
+            disabled-direction="after"
+            :disabled-date="customDates.from"
+            :value="customDates.to"
+            @change="setCustomDate($event, 'to')"
+          />
+        </div>
       </div>
       <wikisearch-button
         v-if="strippedBuckets.length > collapsed"
