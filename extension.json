@@ -1,7 +1,7 @@
 {
   "name": "WikiSearchFront",
   "author": "Robis Koopmans",
-  "version": "2.0.5",
+  "version": "3.0.0",
   "url": "https://www.wikibase-solutions.com",
   "descriptionmsg": "wikisearchfront-desc",
   "license-name": "GPL-2.0-or-later",
@@ -14,7 +14,7 @@
   "requires": {
     "MediaWiki": ">= 1.27.0",
     "extensions": {
-      "WikiSearch": "*"
+      "WikiSearch": ">= 8.0.0"
     }
   },
   "ResourceModules": {
