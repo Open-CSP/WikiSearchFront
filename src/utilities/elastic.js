@@ -1,5 +1,3 @@
-const prepareQuery = (term) => {
-  return term.trim();
-};
+const prepareQuery = (term) => term.trim();
 
 export default prepareQuery;
