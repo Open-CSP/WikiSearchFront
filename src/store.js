@@ -565,7 +565,7 @@ const store = new Vuex.Store({
         if (!actions.component) {
           commit('SET_FROM_API', {
             hits: JSON.parse(data.result.hits),
-            total: data.result.total,
+            total: data.result.total?.value ? data.result.total.value : data.result.total,
             aggs: data.result.aggs,
           });
         } else {
