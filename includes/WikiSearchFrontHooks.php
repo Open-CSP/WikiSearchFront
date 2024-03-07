@@ -67,7 +67,7 @@ class WikiSearchFrontHooks {
 											   array(
 												   "config" => $searchConfig
 											   ) );
-		$parser->getOutput()->addModules( 'ext.WikiSearchFront.module' );
+∂		$parser->getOutput()->addModules( ['ext.WikiSearchFront.module'] );
 
 		$result = "<div id='app'></div>";
 
