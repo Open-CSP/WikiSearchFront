@@ -10518,7 +10518,7 @@ var store_store = new vuex_esm["a" /* default */].Store({
       var actions = _ref12.actions;
       // eslint-disable-next-line no-undef
       var api = new mw.Api(); // handle api call
-
+      mw.hook( 'wikisearchfrontent-pre-api-call' ).fire( actions.params )
       api.post(actions.params).done(function (data) {
         // when call does not come form a component it is the WikiSearch api call
         if (!actions.component) {
