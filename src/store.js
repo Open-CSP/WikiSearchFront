@@ -559,6 +559,9 @@ const store = new Vuex.Store({
       // eslint-disable-next-line no-undef
       const api = new mw.Api();
 
+      // eslint-disable-next-line no-undef
+      mw.hook('wikisearchfrontent-pre-api-call').fire(actions.params);
+
       // handle api call
       api.post(actions.params).done((data) => {
         // when call does not come form a component it is the WikiSearch api call
