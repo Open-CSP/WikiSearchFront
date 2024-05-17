@@ -42,6 +42,7 @@
             :settings="facetSettings[name]"
             :buckets="filterObject.buckets || []"
             :label="facetSettings[name].label"
+            :valueLabels="facetSettings[name].valueLabels"
             :name="name"
           />
         </div>

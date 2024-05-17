@@ -90,6 +90,10 @@ export default {
       type: String,
       default: '',
     },
+    valueLabels: {
+      type: String,
+      default: '',
+    },
     buckets: {
       type: [Array, Object],
       default() {
@@ -318,6 +322,23 @@ export default {
         this.fired = true;
       } else {
         this.fired = true;
+      }
+
+      // If #valueLabels are set, replace the original labels
+      if (this.valueLabels) {
+        const valueLabelsArray = this.valueLabels.split(',');
+        const labelMap = {};
+
+        valueLabelsArray.forEach((label) => {
+          const [key, value] = label.split(':');
+          labelMap[key] = value;
+        });
+
+        organizedBuckets.forEach((element, i) => {
+          if (Object.prototype.hasOwnProperty.call(labelMap, element.key)) {
+            organizedBuckets[i].name = labelMap[element.key];
+          }
+        });
       }
 
       if (this.type === 'date') {
