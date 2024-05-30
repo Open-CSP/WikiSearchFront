@@ -326,11 +326,11 @@ export default {
 
       // If #valueLabels are set, replace the original labels
       if (this.valueLabels) {
-        const valueLabelsArray = this.valueLabels.split(',');
+        const valueLabelsArray = this.valueLabels.split('~~');
         const labelMap = {};
 
         valueLabelsArray.forEach((label) => {
-          const [key, value] = label.split(':');
+          const [key, value] = label.split('^^');
           labelMap[key] = value;
         });
 
