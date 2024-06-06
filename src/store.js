@@ -336,10 +336,24 @@ function setInitialSelection(state) {
 }
 
 /**
- * Splits up the valueLabels string into a map and returns it
- * Based on the delimiters ~~ and ^^
+ * The facetSettings contain categories of filters,
+ * each containing a valueLabels property.
+ * This function splits the valueLabels string which looks like this:
+ *
+ * "originalLabel1^^newLabel1~~originalLabel2^^newLabel2"
+ *
+ * and creates an object with the originalLabel as a key and newLabel as a value.
+ * It only adds it to the object when a valueLabels property is present.
+ *
+ * The return object's structure is as follows:
+ * {
+ *   facetCategory1: {
+ *     originalLabel1 (key): newLabel1 (string value),
+ *   },
+ *  ... etc
+ * }
  * @param {Object} facetSettings
- * @returns {Object} label map
+ * @returns {Object} valueLabelMap
  */
 function getValueLabelMap(facetSettings) {
   const valueLabelMap = {};

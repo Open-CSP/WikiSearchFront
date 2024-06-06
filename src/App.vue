@@ -156,9 +156,7 @@ export default {
     };
   },
   computed: {
-    facetSettings() {
-      return this.config.facetSettings;
-    },
+    facetSettings() { return this.config.facetSettings; },
     hitSettings() { return this.config.hitSettings; },
     settings() { return this.config.settings; },
     state() { return this.$store.state; },
