@@ -324,21 +324,14 @@ export default {
         this.fired = true;
       }
 
-      // If #valueLabels are set, replace the original labels
-      if (this.valueLabels) {
-        const valueLabelsArray = this.valueLabels.split('~~');
-        const labelMap = {};
-
-        valueLabelsArray.forEach((label) => {
-          const [key, value] = label.split('^^');
-          labelMap[key] = value;
-        });
-
-        organizedBuckets.forEach((element, i) => {
-          if (Object.prototype.hasOwnProperty.call(labelMap, element.key)) {
-            organizedBuckets[i].name = labelMap[element.key];
-          }
-        });
+      // If valueLabels are set, replace the original labels
+      if (this.$store.state.valueLabelMap) {
+        const labelMap = this.$store.state.valueLabelMap;
+        if (labelMap[this.name]) {
+          organizedBuckets.forEach((bucket, i) => {
+            organizedBuckets[i].name = labelMap[this.name][bucket.key];
+          });
+        }
       }
 
       if (this.type === 'date') {

@@ -336,6 +336,34 @@ function setInitialSelection(state) {
 }
 
 /**
+ * Splits up the valueLabels string into a map and returns it
+ * Based on the delimiters ~~ and ^^
+ * @param {Object} facetSettings
+ * @returns {Object} label map
+ */
+function getValueLabelMap(facetSettings) {
+  const valueLabelMap = {};
+
+  Object.keys(facetSettings).forEach((key) => {
+    if (facetSettings[key].valueLabels) {
+      const valueLabelsArray = facetSettings[key].valueLabels.split('~~').map((item) => {
+        const [value, label] = item.split('^^');
+        return { value, label };
+      });
+
+      const valueLabelsObject = {};
+      valueLabelsArray.forEach((item) => {
+        valueLabelsObject[item.value] = item.label;
+      });
+
+      valueLabelMap[key] = valueLabelsObject;
+    }
+  });
+
+  return valueLabelMap;
+}
+
+/**
  * vuex plugin that runs on all store mutations
  *
  * @param {Object} store vuex store object
@@ -438,6 +466,7 @@ const store = new Vuex.Store({
     realDates: {},
     apiCalls: [],
     renderedTemplates: {},
+    valueLabelMap: getValueLabelMap(mediaWikiValues.WikiSearchFront.config.facetSettings),
   },
   mutations: {
     SET_TEMPLATES(state, templates) {
