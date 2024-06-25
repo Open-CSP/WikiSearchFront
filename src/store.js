@@ -336,6 +336,48 @@ function setInitialSelection(state) {
 }
 
 /**
+ * The facetSettings contain categories of filters,
+ * each containing a valueLabels property.
+ * This function splits the valueLabels string which looks like this:
+ *
+ * "originalLabel1^^newLabel1~~originalLabel2^^newLabel2"
+ *
+ * and creates an object with the originalLabel as a key and newLabel as a value.
+ * It only adds it to the object when a valueLabels property is present.
+ *
+ * The return object's structure is as follows:
+ * {
+ *   facetCategory1: {
+ *     originalLabel1 (key): newLabel1 (string value),
+ *   },
+ *  ... etc
+ * }
+ * @param {Object} facetSettings
+ * @returns {Object} valueLabelMap
+ */
+function getValueLabelMap(facetSettings) {
+  const valueLabelMap = {};
+
+  Object.keys(facetSettings).forEach((key) => {
+    if (facetSettings[key].valueLabels) {
+      const valueLabelsArray = facetSettings[key].valueLabels.split('~~').map((item) => {
+        const [value, label] = item.split('^^');
+        return { value, label };
+      });
+
+      const valueLabelsObject = {};
+      valueLabelsArray.forEach((item) => {
+        valueLabelsObject[item.value] = item.label;
+      });
+
+      valueLabelMap[key] = valueLabelsObject;
+    }
+  });
+
+  return valueLabelMap;
+}
+
+/**
  * vuex plugin that runs on all store mutations
  *
  * @param {Object} store vuex store object
@@ -438,6 +480,7 @@ const store = new Vuex.Store({
     realDates: {},
     apiCalls: [],
     renderedTemplates: {},
+    valueLabelMap: getValueLabelMap(mediaWikiValues.WikiSearchFront.config.facetSettings),
   },
   mutations: {
     SET_TEMPLATES(state, templates) {

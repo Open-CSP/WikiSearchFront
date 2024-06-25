@@ -90,6 +90,10 @@ export default {
       type: String,
       default: '',
     },
+    valueLabels: {
+      type: String,
+      default: '',
+    },
     buckets: {
       type: [Array, Object],
       default() {
@@ -318,6 +322,16 @@ export default {
         this.fired = true;
       } else {
         this.fired = true;
+      }
+
+      // If valueLabels are set, replace the original labels
+      if (this.$store.state.valueLabelMap) {
+        const labelMap = this.$store.state.valueLabelMap;
+        if (labelMap[this.name]) {
+          organizedBuckets.forEach((bucket, i) => {
+            organizedBuckets[i].name = labelMap[this.name][bucket.key];
+          });
+        }
       }
 
       if (this.type === 'date') {
