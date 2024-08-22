@@ -11,7 +11,9 @@ window.mw = mw;
 const messages = {
   en: {
     'wikisearchfront-clear-all-filters': 'Clear all filters',
-    'wikisearchfront-total': '{{PLURAL:$1|result|results|0=No results}}',
+    'wikisearchfront-total-eq': '{{PLURAL:$1|$1 result|$1 results|0=No results}}',
+    'wikisearchfront-total-gte': 'More than {{PLURAL:$1|$1 result|$1 results}}',
+    'wikisearchfront-total-lte': 'Less than {{PLURAL:$1|$1 result|$1 results}}',
     'wikisearchfront-date-range-from': 'Date from',
     'wikisearchfront-date-range-to': 'Date to',
     'wikisearchfront-more': 'Show more',
