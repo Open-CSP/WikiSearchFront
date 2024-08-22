@@ -208,11 +208,11 @@ export default {
     resultCountText() {
       switch (this.state.total.relation) {
         case "eq":
-          return $i18n("wikisearchfront-total-eq", this.state.total.value);
+          return this.$i18n("wikisearchfront-total-eq", this.state.total.value);
         case "gte":
-          return $i18n("wikisearchfront-total-gte", this.state.total.value);
+          return this.$i18n("wikisearchfront-total-gte", this.state.total.value);
         case "lte":
-          return $i18n("wikisearchfront-total-lte", this.state.total.value);
+          return this.$i18n("wikisearchfront-total-lte", this.state.total.value);
       }
     },
   },
