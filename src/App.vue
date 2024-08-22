@@ -207,12 +207,12 @@ export default {
     },
     resultCountText() {
       switch (this.state.total.relation) {
-        case "eq":
-          return this.$i18n("wikisearchfront-total-eq", this.state.total.value);
-        case "gte":
-          return this.$i18n("wikisearchfront-total-gte", this.state.total.value);
-        case "lte":
-          return this.$i18n("wikisearchfront-total-lte", this.state.total.value);
+        case 'gte':
+          return this.$i18n('wikisearchfront-total-gte', this.state.total.value);
+        case 'lte':
+          return this.$i18n('wikisearchfront-total-lte', this.state.total.value);
+        default:
+          return this.$i18n('wikisearchfront-total-eq', this.state.total.value);
       }
     },
   },
