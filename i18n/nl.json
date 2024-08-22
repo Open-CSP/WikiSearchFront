@@ -1,9 +1,9 @@
 {
     "wikisearchfront-desc": "Frontend for WikiSearch extension",
     "wikisearchfront-clear-all-filters": "Wis alle filters",
-    "wikisearchfront-total-eq": "{{PLURAL:$1|resultaat|resultaten|0=Geen resultaten}}",
-    "wikisearchfront-total-gte": "Meer dan {{PLURAL:$1|resultaat|resultaten}}",
-    "wikisearchfront-total-lte": "Minder dan {{PLURAL:$1|resultaat|resultaten}}",
+    "wikisearchfront-total-eq": "{{PLURAL:$1|$1 resultaat|$1 resultaten|0=Geen resultaten}}",
+    "wikisearchfront-total-gte": "Meer dan $1 {{PLURAL:$1|resultaat|resultaten}}",
+    "wikisearchfront-total-lte": "Minder dan $1 {{PLURAL:$1|resultaat|resultaten}}",
     "wikisearchfront-date-range-from": "Vanaf",
     "wikisearchfront-date-range-to": "Tot",
     "wikisearchfront-more": "Toon meer",
