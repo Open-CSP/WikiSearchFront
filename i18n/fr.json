@@ -1,7 +1,9 @@
 {
     "wikisearchfront-desc": "Interface pour l'extension WikiSearch",
     "wikisearchfront-clear-all-filters": "Effacer tous les filtres",
-    "wikisearchfront-total": "{{PLURAL:$1|résultat|résultats|0=Aucun résultat}}",
+    "wikisearchfront-total-eq": "{{PLURAL:$1|$1 résultat|$1 résultats|0=Aucun résultat}}",
+    "wikisearchfront-total-gte": "Plus de $1 {{PLURAL:$1|résultat|résultats}}",
+    "wikisearchfront-total-lte": "Moins de $1 {{PLURAL:$1|résultat|résultats}}",
     "wikisearchfront-date-range-from": "Date de",
     "wikisearchfront-date-range-to": "Au",
     "wikisearchfront-more": "Afficher plus",

@@ -611,7 +611,10 @@ const store = new Vuex.Store({
         if (!actions.component) {
           commit('SET_FROM_API', {
             hits: JSON.parse(data.result.hits),
-            total: data.result.total?.value ? data.result.total.value : data.result.total,
+            total: {
+              value: data.result.total?.value ? data.result.total.value : data.result.total,
+              relation: data.result.total?.relation ? data.result.total.relation : "eq",
+            },
             aggs: data.result.aggs,
           });
         } else {

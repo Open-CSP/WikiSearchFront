@@ -49,12 +49,10 @@
       </div>
       <div class="wikisearch-total">
         <b
-          v-if="state.total > 0"
           class="wikisearch-total__nr"
         >
-          {{ state.total }}
+          <b>{{ resultCountText }}</b>
         </b>
-        {{ $i18n('wikisearchfront-total', state.total) }}
       </div>
       <div class="wikisearch-action">
         <wikisearch-checkbox
@@ -78,7 +76,7 @@
           v-if="showElement"
           :size="state.size"
           :from="state.from"
-          :total="state.total"
+          :total="state.total.value"
           :settings="settings"
         />
       </div>
@@ -206,6 +204,16 @@ export default {
           },
         ]),
       );
+    },
+    resultCountText() {
+      switch (this.state.total.relation) {
+        case 'gte':
+          return this.$i18n('wikisearchfront-total-gte', this.state.total.value);
+        case 'lte':
+          return this.$i18n('wikisearchfront-total-lte', this.state.total.value);
+        default:
+          return this.$i18n('wikisearchfront-total-eq', this.state.total.value);
+      }
     },
   },
   mounted() {
