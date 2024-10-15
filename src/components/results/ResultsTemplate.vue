@@ -27,6 +27,11 @@ export default {
     },
     parse() {
       let wikitext = '';
+
+      if (this.config.settings.intro) {
+        wikitext += this.config.settings.intro;
+      }
+
       if (Array.isArray(this.$store.state.hits)) {
         this.$store.state.hits.forEach(data => {
           wikitext += `{{${this.config.settings.template}`;
@@ -43,6 +48,11 @@ export default {
           wikitext += '}}';
         });
       }
+
+      if (this.config.settings.outro) {
+        wikitext += this.config.settings.outro;
+      }
+
       return wikitext;
     },
     computedHitSettings() {
