@@ -11287,12 +11287,12 @@ var SearchInput_component = normalizeComponent(
 )
 
 /* harmony default export */ var SearchInput = (SearchInput_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=73b1dac8&
-var PillsSelectedvue_type_template_id_73b1dac8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('wikisearch-pill',{key:index,attrs:{"data":activefilter,"label":activefilter.name},on:{"click":_vm.deselect}})}),(_vm.selected.length)?_c('span',{staticClass:"wikisearch-selected__clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearFilters}},[_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-clear-all-filters"))+" ")]):_vm._e()],2)}
-var PillsSelectedvue_type_template_id_73b1dac8_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=78b6badf&
+var PillsSelectedvue_type_template_id_78b6badf_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('wikisearch-pill',{key:index,attrs:{"data":activefilter,"label":activefilter.name},on:{"click":_vm.deselect}})}),(_vm.selected.length)?_c('span',{staticClass:"wikisearch-selected__clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearFilters}},[_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-clear-all-filters"))+" ")]):_vm._e()],2)}
+var PillsSelectedvue_type_template_id_78b6badf_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=73b1dac8&
+// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=78b6badf&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Pill.vue?vue&type=template&id=e040c6b4&
 var Pillvue_type_template_id_e040c6b4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"wikisearch-pill",class:_vm.classes,attrs:{"for":_vm.forKey,"tabindex":"0"},on:{"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.$emit('click', _vm.data)},"click":function($event){$event.preventDefault();$event.stopPropagation();return _vm.$emit('click', _vm.data)}}},[_c('bdi',[_vm._v(" "+_vm._s(_vm.title)+" ")])])}
@@ -11426,7 +11426,7 @@ var Pill_component = normalizeComponent(
       var _ref = [this.$store.state.selected, this.$store.state.valueLabelMap],
           selected = _ref[0],
           labelMap = _ref[1];
-      console.log(selected);
+      console.log('selected:', selected);
       selected.forEach(function (item, i) {
         if (labelMap[item.key]) {
           selected[i].name = labelMap[item.key][item.value];
@@ -11468,8 +11468,8 @@ var PillsSelectedvue_type_style_index_0_lang_css_ = __webpack_require__("4176");
 
 var PillsSelected_component = normalizeComponent(
   components_PillsSelectedvue_type_script_lang_js_,
-  PillsSelectedvue_type_template_id_73b1dac8_render,
-  PillsSelectedvue_type_template_id_73b1dac8_staticRenderFns,
+  PillsSelectedvue_type_template_id_78b6badf_render,
+  PillsSelectedvue_type_template_id_78b6badf_staticRenderFns,
   false,
   null,
   null,
