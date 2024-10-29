@@ -9731,6 +9731,7 @@ var es_array_from = __webpack_require__("a630");
 
 
 
+
 function _iterableToArray(iter) {
   if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
@@ -9781,6 +9782,7 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
+
 
 
 
@@ -9897,6 +9899,7 @@ var prepareQuery = function prepareQuery(term) {
 
 /* harmony default export */ var elastic = (prepareQuery);
 // CONCATENATED MODULE: ./src/store.js
+
 
 
 
@@ -11135,6 +11138,7 @@ var Tooltip_component = normalizeComponent(
 
 
 
+
 //
 //
 //
@@ -11281,12 +11285,12 @@ var SearchInput_component = normalizeComponent(
 )
 
 /* harmony default export */ var SearchInput = (SearchInput_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=4d525b40&
-var PillsSelectedvue_type_template_id_4d525b40_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('wikisearch-pill',{key:index,attrs:{"data":activefilter,"label":activefilter.name},on:{"click":_vm.deselect}})}),(_vm.selected.length)?_c('span',{staticClass:"wikisearch-selected__clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearFilters}},[_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-clear-all-filters"))+" ")]):_vm._e()],2)}
-var PillsSelectedvue_type_template_id_4d525b40_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=564fcd94&
+var PillsSelectedvue_type_template_id_564fcd94_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('wikisearch-pill',{key:index,attrs:{"data":activefilter,"label":activefilter.name},on:{"click":_vm.deselect}})}),(_vm.selected.length)?_c('span',{staticClass:"wikisearch-selected__clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearFilters}},[_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-clear-all-filters"))+" ")]):_vm._e()],2)}
+var PillsSelectedvue_type_template_id_564fcd94_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=4d525b40&
+// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=564fcd94&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Pill.vue?vue&type=template&id=e040c6b4&
 var Pillvue_type_template_id_e040c6b4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"wikisearch-pill",class:_vm.classes,attrs:{"for":_vm.forKey,"tabindex":"0"},on:{"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.$emit('click', _vm.data)},"click":function($event){$event.preventDefault();$event.stopPropagation();return _vm.$emit('click', _vm.data)}}},[_c('bdi',[_vm._v(" "+_vm._s(_vm.title)+" ")])])}
@@ -11383,6 +11387,7 @@ var Pill_component = normalizeComponent(
 
 
 
+
 //
 //
 //
@@ -11419,6 +11424,7 @@ var Pill_component = normalizeComponent(
       var _ref = [this.$store.state.selected, this.$store.state.valueLabelMap],
           selected = _ref[0],
           labelMap = _ref[1];
+      console.log('LABEL MAP:', this.$store.state.valueLabelMap);
       selected.forEach(function (item, i) {
         if (labelMap[item.key]) {
           selected[i].name = labelMap[item.key][item.value];
@@ -11460,8 +11466,8 @@ var PillsSelectedvue_type_style_index_0_lang_css_ = __webpack_require__("4176");
 
 var PillsSelected_component = normalizeComponent(
   components_PillsSelectedvue_type_script_lang_js_,
-  PillsSelectedvue_type_template_id_4d525b40_render,
-  PillsSelectedvue_type_template_id_4d525b40_staticRenderFns,
+  PillsSelectedvue_type_template_id_564fcd94_render,
+  PillsSelectedvue_type_template_id_564fcd94_staticRenderFns,
   false,
   null,
   null,
@@ -12380,6 +12386,7 @@ var WikiTemplate_component = normalizeComponent(
 
 
 
+
 //
 //
 //
@@ -12713,6 +12720,7 @@ var ResultProperty_component = normalizeComponent(
 
 
 
+
 //
 //
 //
@@ -12852,6 +12860,7 @@ var CalendarDialogvue_type_template_id_b74582c0_staticRenderFns = []
 // CONCATENATED MODULE: ./src/components/CalendarDialog.vue?vue&type=template&id=b74582c0&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CalendarDialog.vue?vue&type=script&lang=js&
+
 
 
 
@@ -13041,6 +13050,7 @@ var CalendarDialog_component = normalizeComponent(
 
 /* harmony default export */ var CalendarDialog = (CalendarDialog_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/results/ResultsCalendar.vue?vue&type=script&lang=js&
+
 
 
 
@@ -13572,6 +13582,7 @@ var ResultsCalendarYearvue_type_template_id_65438da0_staticRenderFns = []
 
 
 
+
 //
 //
 //
@@ -13759,6 +13770,7 @@ var CalendarToolsvue_type_template_id_08ea06a1_staticRenderFns = []
 // CONCATENATED MODULE: ./src/components/CalendarTools.vue?vue&type=template&id=08ea06a1&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CalendarTools.vue?vue&type=script&lang=js&
+
 
 
 
@@ -14735,6 +14747,7 @@ var FacetRangeSlidervue_type_template_id_e6f396c4_staticRenderFns = []
 
 
 
+
 //
 //
 //
@@ -14963,6 +14976,7 @@ var FacetComboboxvue_type_template_id_233824c6_staticRenderFns = []
 var es_string_match = __webpack_require__("466d");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCombobox.vue?vue&type=script&lang=js&
+
 
 
 
@@ -15318,6 +15332,7 @@ var FacetAskComboboxvue_type_template_id_3ebc415c_staticRenderFns = []
 
 
 
+
 //
 //
 //
@@ -15569,6 +15584,7 @@ var FacetElasticComboboxvue_type_template_id_50f7ab21_staticRenderFns = []
 
 
 
+
 //
 //
 //
@@ -15733,6 +15749,7 @@ var FacetFiltervue_type_template_id_29f72584_staticRenderFns = []
 // CONCATENATED MODULE: ./src/components/filters/FacetFilter.vue?vue&type=template&id=29f72584&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetFilter.vue?vue&type=script&lang=js&
+
 
 
 
@@ -16470,6 +16487,7 @@ var FacetSortedvue_type_template_id_9265fa64_staticRenderFns = []
 var es_array_splice = __webpack_require__("a434");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetSorted.vue?vue&type=script&lang=js&
+
 
 
 
