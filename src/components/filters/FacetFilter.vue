@@ -286,6 +286,7 @@ export default {
             && transKey.printouts[this.translation]
             ) {
               if (transKey.printouts[this.translation][0].fulltext) {
+                console.log('translation:', this.translation);
                 organizedBuckets[i].name = transKey.printouts[this.translation][0].fulltext;
               } else {
                 [organizedBuckets[i].name] = transKey.printouts[this.translation];
