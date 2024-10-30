@@ -184,7 +184,8 @@ class WikiSearchParams {
 	public function getParameterOutput( string $input_parameter, array &$searchConfig ) {
 		$parameter_options = explode(
 			'=',
-			$input_parameter
+			$input_parameter,
+			2
 		);
 
 		if( !is_array( $parameter_options ) ) return;
