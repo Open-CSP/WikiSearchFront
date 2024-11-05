@@ -168,11 +168,12 @@ export default {
     if (selected.length > 0 && this.agg.key_as_string) {
       selected.forEach((element, i) => {
         if (element.key === this.name) {
-          console.log('key!!!', this.agg.key_as_string);
           // eslint-disable-next-line no-undef
           selected[i].name = mw
             .message(`wikisearchfront-${this.agg.key_as_string}`)
             .text();
+
+          selected[i].name = `this is a test: ${this.agg.key_as_string}`;
           Vue.set(this.$store.state.selected, i, selected[i]);
         }
       });
