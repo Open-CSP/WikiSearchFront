@@ -39,8 +39,6 @@ export default {
           selected[i].name = labelMap[item.key][item.value];
         }
       });
-      console.log('selected!!!: ', selected);
-      console.log('label map!!!: ', labelMap);
       return this.$store.state.selected;
     },
   },

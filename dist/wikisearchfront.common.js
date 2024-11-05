@@ -11278,12 +11278,12 @@ var SearchInput_component = normalizeComponent(
 )
 
 /* harmony default export */ var SearchInput = (SearchInput_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=7f3b0b2c&
-var PillsSelectedvue_type_template_id_7f3b0b2c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('wikisearch-pill',{key:index,attrs:{"data":activefilter,"label":activefilter.name},on:{"click":_vm.deselect}})}),(_vm.selected.length)?_c('span',{staticClass:"wikisearch-selected__clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearFilters}},[_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-clear-all-filters"))+" ")]):_vm._e()],2)}
-var PillsSelectedvue_type_template_id_7f3b0b2c_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/PillsSelected.vue?vue&type=template&id=5a855c74&
+var PillsSelectedvue_type_template_id_5a855c74_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-selected"},[_vm._l((_vm.selected),function(activefilter,index){return _c('wikisearch-pill',{key:index,attrs:{"data":activefilter,"label":activefilter.name},on:{"click":_vm.deselect}})}),(_vm.selected.length)?_c('span',{staticClass:"wikisearch-selected__clear",attrs:{"tabindex":"-1","aria-label":"Clear","role":"button"},on:{"click":_vm.clearFilters}},[_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-clear-all-filters"))+" ")]):_vm._e()],2)}
+var PillsSelectedvue_type_template_id_5a855c74_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=7f3b0b2c&
+// CONCATENATED MODULE: ./src/components/PillsSelected.vue?vue&type=template&id=5a855c74&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Pill.vue?vue&type=template&id=e040c6b4&
 var Pillvue_type_template_id_e040c6b4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"wikisearch-pill",class:_vm.classes,attrs:{"for":_vm.forKey,"tabindex":"0"},on:{"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.$emit('click', _vm.data)},"click":function($event){$event.preventDefault();$event.stopPropagation();return _vm.$emit('click', _vm.data)}}},[_c('bdi',[_vm._v(" "+_vm._s(_vm.title)+" ")])])}
@@ -11422,8 +11422,6 @@ var Pill_component = normalizeComponent(
           selected[i].name = labelMap[item.key][item.value];
         }
       });
-      console.log('selected!!!: ', selected);
-      console.log('label map!!!: ', labelMap);
       return this.$store.state.selected;
     }
   },
@@ -11460,8 +11458,8 @@ var PillsSelectedvue_type_style_index_0_lang_css_ = __webpack_require__("4176");
 
 var PillsSelected_component = normalizeComponent(
   components_PillsSelectedvue_type_script_lang_js_,
-  PillsSelectedvue_type_template_id_7f3b0b2c_render,
-  PillsSelectedvue_type_template_id_7f3b0b2c_staticRenderFns,
+  PillsSelectedvue_type_template_id_5a855c74_render,
+  PillsSelectedvue_type_template_id_5a855c74_staticRenderFns,
   false,
   null,
   null,
@@ -13964,12 +13962,12 @@ var FacetDateRangevue_type_template_id_3edc6efa_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/filters/FacetDateRange.vue?vue&type=template&id=3edc6efa&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=template&id=5ac8ab0e&
-var FacetCheckboxvue_type_template_id_5ac8ab0e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('wikisearch-checkbox',{attrs:{"id":_vm.createID,"value":_vm.val,"checked":_vm.checked},on:{"change":_vm.updateSelection},scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('span',[_c('span',{staticClass:"wikisearch-checkbox__label"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.agg.doc_count > 0)?_c('span',{staticClass:"wikisearch-checkbox__count",attrs:{"title":"count"}},[_vm._v(" "+_vm._s(_vm.agg.doc_count)+" ")]):_vm._e()])]},proxy:true}])})}
-var FacetCheckboxvue_type_template_id_5ac8ab0e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=template&id=26bfaeba&
+var FacetCheckboxvue_type_template_id_26bfaeba_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('wikisearch-checkbox',{attrs:{"id":_vm.createID,"value":_vm.val,"checked":_vm.checked},on:{"change":_vm.updateSelection},scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('span',[_c('span',{staticClass:"wikisearch-checkbox__label"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.agg.doc_count > 0)?_c('span',{staticClass:"wikisearch-checkbox__count",attrs:{"title":"count"}},[_vm._v(" "+_vm._s(_vm.agg.doc_count)+" ")]):_vm._e()])]},proxy:true}])})}
+var FacetCheckboxvue_type_template_id_26bfaeba_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetCheckbox.vue?vue&type=template&id=5ac8ab0e&
+// CONCATENATED MODULE: ./src/components/filters/FacetCheckbox.vue?vue&type=template&id=26bfaeba&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=script&lang=js&
 
@@ -14169,7 +14167,8 @@ var FacetCheckboxvue_type_template_id_5ac8ab0e_staticRenderFns = []
     if (selected.length > 0 && this.agg.key_as_string) {
       selected.forEach(function (element, i) {
         if (element.key === _this3.name) {
-          // eslint-disable-next-line no-undef
+          console.log('key!!!', _this3.agg.key_as_string); // eslint-disable-next-line no-undef
+
           selected[i].name = mw.message("wikisearchfront-".concat(_this3.agg.key_as_string)).text();
           external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(_this3.$store.state.selected, i, selected[i]);
         }
@@ -14213,8 +14212,8 @@ var FacetCheckboxvue_type_style_index_0_lang_css_ = __webpack_require__("9244");
 
 var FacetCheckbox_component = normalizeComponent(
   filters_FacetCheckboxvue_type_script_lang_js_,
-  FacetCheckboxvue_type_template_id_5ac8ab0e_render,
-  FacetCheckboxvue_type_template_id_5ac8ab0e_staticRenderFns,
+  FacetCheckboxvue_type_template_id_26bfaeba_render,
+  FacetCheckboxvue_type_template_id_26bfaeba_staticRenderFns,
   false,
   null,
   null,
