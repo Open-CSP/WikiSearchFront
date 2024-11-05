@@ -277,72 +277,6 @@ export default {
         ? organizedBuckets.filter((el) => el.doc_count > 0)
         : [];
 
-      // If valueLabels are set, replace the original labels
-      if (this.$store.state.valueLabelMap) {
-        const labelMap = this.$store.state.valueLabelMap;
-        if (labelMap[this.name]) {
-          organizedBuckets.forEach((bucket, i) => {
-            organizedBuckets[i].name = labelMap[this.name][bucket.key];
-          });
-        }
-      }
-
-      if (this.type === 'date') {
-        this.strippedBuckets = organizedBuckets.reverse();
-      } else if (
-        this.config.facetSettings[this.name]
-        && this.config.facetSettings[this.name].sort
-        === 'alphabetically'
-      ) {
-        this.strippedBuckets = organizedBuckets.sort((a, b) => {
-          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
-          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
-          // eslint-disable-next-line no-nested-ternary
-          return textA < textB ? -1 : textA > textB ? 1 : 0;
-        });
-      } else if (
-        this.config.facetSettings[this.name]
-        && this.config.facetSettings[this.name].sort
-        === 'alphanumeric'
-      ) {
-        const reA = /[^a-zA-Z]/g;
-        const reN = /[^0-9]/g;
-        this.strippedBuckets = organizedBuckets.sort((a, b) => {
-          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
-          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
-          const aA = textA.split(' ')[0].replace(reA, '');
-          const bA = textB.split(' ')[0].replace(reA, '');
-          if (aA === bA) {
-            const aN = parseInt(textA.replace(reN, ''), 10);
-            const bN = parseInt(textB.replace(reN, ''), 10);
-            // eslint-disable-next-line no-nested-ternary
-            return aN === bN ? 0 : aN > bN ? 1 : -1;
-          }
-          return aA > bA ? 1 : -1;
-        });
-      } else {
-        this.strippedBuckets = organizedBuckets;
-      }
-
-      if (this.config.facetSettings[this.name].order === 'reverse') {
-        organizedBuckets.reverse();
-        this.strippedBuckets.reverse();
-      }
-
-      const { value } = this.config.facetSettings[this.name];
-      if (value) {
-        const { valueLabel } = this.config.facetSettings[this.name];
-        const bucket = {
-          key: value,
-          doc_count: 0,
-          show: 'yes',
-        };
-        if (valueLabel) {
-          bucket.name = valueLabel;
-        }
-        this.strippedBuckets = [bucket];
-      }
-
       if (selected.length > 0 && !this.fired) {
         if (this.translation) {
           organizedBuckets.forEach((element, i) => {
@@ -389,6 +323,71 @@ export default {
         this.fired = true;
       } else {
         this.fired = true;
+      }
+
+      // If valueLabels are set, replace the original labels
+      if (this.$store.state.valueLabelMap) {
+        const labelMap = this.$store.state.valueLabelMap;
+        if (labelMap[this.name]) {
+          organizedBuckets.forEach((bucket, i) => {
+            organizedBuckets[i].name = labelMap[this.name][bucket.key];
+          });
+        }
+      }
+
+      if (this.type === 'date') {
+        organizedBuckets.reverse();
+      } else if (
+        this.config.facetSettings[this.name]
+        && this.config.facetSettings[this.name].sort
+        === 'alphabetically'
+      ) {
+        organizedBuckets.sort((a, b) => {
+          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
+          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
+          // eslint-disable-next-line no-nested-ternary
+          return textA < textB ? -1 : textA > textB ? 1 : 0;
+        });
+      } else if (
+        this.config.facetSettings[this.name]
+        && this.config.facetSettings[this.name].sort
+        === 'alphanumeric'
+      ) {
+        const reA = /[^a-zA-Z]/g;
+        const reN = /[^0-9]/g;
+        organizedBuckets.sort((a, b) => {
+          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
+          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
+          const aA = textA.split(' ')[0].replace(reA, '');
+          const bA = textB.split(' ')[0].replace(reA, '');
+          if (aA === bA) {
+            const aN = parseInt(textA.replace(reN, ''), 10);
+            const bN = parseInt(textB.replace(reN, ''), 10);
+            // eslint-disable-next-line no-nested-ternary
+            return aN === bN ? 0 : aN > bN ? 1 : -1;
+          }
+          return aA > bA ? 1 : -1;
+        });
+      }
+
+      if (this.config.facetSettings[this.name].order === 'reverse') {
+        organizedBuckets.reverse();
+      }
+
+      this.strippedBuckets = organizedBuckets;
+
+      const { value } = this.config.facetSettings[this.name];
+      if (value) {
+        const {valueLabel} = this.config.facetSettings[this.name];
+        const bucket = {
+          key: value,
+          doc_count: 0,
+          show: 'yes',
+        };
+        if (valueLabel) {
+          bucket.name = valueLabel;
+        }
+        this.strippedBuckets = [bucket];
       }
 
       this.bucketsToShow = this.strippedBuckets;
