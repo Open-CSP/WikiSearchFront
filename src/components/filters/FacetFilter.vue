@@ -277,54 +277,6 @@ export default {
         ? organizedBuckets.filter((el) => el.doc_count > 0)
         : [];
 
-      if (selected.length > 0 && !this.fired) {
-        if (this.translation) {
-          organizedBuckets.forEach((element, i) => {
-            const transKey = this.translations[element.key];
-            if (
-              transKey
-            && transKey.printouts[this.translation]
-            ) {
-              if (transKey.printouts[this.translation][0].fulltext) {
-                console.log('translation:', this.translation);
-                organizedBuckets[i].name = transKey.printouts[this.translation][0].fulltext;
-              } else {
-                [organizedBuckets[i].name] = transKey.printouts[this.translation];
-              }
-            }
-          });
-        }
-
-        selected.forEach((element, i) => {
-          if (this.translation) {
-            const transValue = this.translations[element.value];
-            if (
-              transValue
-              && transValue.printouts[this.translation]
-            ) {
-              if (
-                transValue.printouts[this.translation][0].fulltext
-              ) {
-                selected[i].name = transValue.printouts[this.translation][0].fulltext;
-              } else {
-                [selected[i].name] = transValue.printouts[this.translation];
-              }
-              Vue.set(this.$store.state.selected, i, selected[i]);
-            }
-          }
-          const value = this.config.facetSettings[selected[i].key]
-            ? this.config.facetSettings[selected[i].key] : false;
-          if (value) {
-            const { valueLabel } = this.config.facetSettings[selected[i].key];
-            selected[i].name = valueLabel;
-          }
-          Vue.set(this.$store.state.selected, i, selected[i]);
-        });
-        this.fired = true;
-      } else {
-        this.fired = true;
-      }
-
       // If valueLabels are set, replace the original labels
       if (this.$store.state.valueLabelMap) {
         const labelMap = this.$store.state.valueLabelMap;
@@ -387,7 +339,55 @@ export default {
       }
 
       if (this.config.facetSettings[this.name].order === 'reverse') {
-        // this.strippedBuckets.reverse();
+        this.strippedBuckets.reverse();
+      }
+
+      if (selected.length > 0 && !this.fired) {
+        if (this.translation) {
+          organizedBuckets.forEach((element, i) => {
+            const transKey = this.translations[element.key];
+            if (
+                transKey
+                && transKey.printouts[this.translation]
+            ) {
+              if (transKey.printouts[this.translation][0].fulltext) {
+                console.log('translation:', this.translation);
+                organizedBuckets[i].name = transKey.printouts[this.translation][0].fulltext;
+              } else {
+                [organizedBuckets[i].name] = transKey.printouts[this.translation];
+              }
+            }
+          });
+        }
+
+        selected.forEach((element, i) => {
+          if (this.translation) {
+            const transValue = this.translations[element.value];
+            if (
+                transValue
+                && transValue.printouts[this.translation]
+            ) {
+              if (
+                  transValue.printouts[this.translation][0].fulltext
+              ) {
+                selected[i].name = transValue.printouts[this.translation][0].fulltext;
+              } else {
+                [selected[i].name] = transValue.printouts[this.translation];
+              }
+              Vue.set(this.$store.state.selected, i, selected[i]);
+            }
+          }
+          const value = this.config.facetSettings[selected[i].key]
+              ? this.config.facetSettings[selected[i].key] : false;
+          if (value) {
+            const { valueLabel } = this.config.facetSettings[selected[i].key];
+            selected[i].name = valueLabel;
+          }
+          Vue.set(this.$store.state.selected, i, selected[i]);
+        });
+        this.fired = true;
+      } else {
+        this.fired = true;
       }
 
       this.bucketsToShow = this.strippedBuckets;
