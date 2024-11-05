@@ -387,7 +387,7 @@ export default {
       }
 
       if (this.config.facetSettings[this.name].order === 'reverse') {
-        this.strippedBuckets.reverse();
+        // this.strippedBuckets.reverse();
       }
 
       this.bucketsToShow = this.strippedBuckets;
