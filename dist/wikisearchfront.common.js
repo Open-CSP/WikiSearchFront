@@ -13962,12 +13962,12 @@ var FacetDateRangevue_type_template_id_3edc6efa_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/filters/FacetDateRange.vue?vue&type=template&id=3edc6efa&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=template&id=4cc0ce75&
-var FacetCheckboxvue_type_template_id_4cc0ce75_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('wikisearch-checkbox',{attrs:{"id":_vm.createID,"value":_vm.val,"checked":_vm.checked},on:{"change":_vm.updateSelection},scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('span',[_c('span',{staticClass:"wikisearch-checkbox__label"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.agg.doc_count > 0)?_c('span',{staticClass:"wikisearch-checkbox__count",attrs:{"title":"count"}},[_vm._v(" "+_vm._s(_vm.agg.doc_count)+" ")]):_vm._e()])]},proxy:true}])})}
-var FacetCheckboxvue_type_template_id_4cc0ce75_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=template&id=5181ca52&
+var FacetCheckboxvue_type_template_id_5181ca52_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('wikisearch-checkbox',{attrs:{"id":_vm.createID,"value":_vm.val,"checked":_vm.checked},on:{"change":_vm.updateSelection},scopedSlots:_vm._u([{key:"slot",fn:function(){return [_c('span',[_c('span',{staticClass:"wikisearch-checkbox__label"},[_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.agg.doc_count > 0)?_c('span',{staticClass:"wikisearch-checkbox__count",attrs:{"title":"count"}},[_vm._v(" "+_vm._s(_vm.agg.doc_count)+" ")]):_vm._e()])]},proxy:true}])})}
+var FacetCheckboxvue_type_template_id_5181ca52_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetCheckbox.vue?vue&type=template&id=4cc0ce75&
+// CONCATENATED MODULE: ./src/components/filters/FacetCheckbox.vue?vue&type=template&id=5181ca52&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCheckbox.vue?vue&type=script&lang=js&
 
@@ -14166,10 +14166,9 @@ var FacetCheckboxvue_type_template_id_4cc0ce75_staticRenderFns = []
 
     if (selected.length > 0 && this.agg.key_as_string) {
       selected.forEach(function (element, i) {
-        if (element.key === _this3.name) {
+        if (element.key === _this3.name && !selected[i].name) {
           // eslint-disable-next-line no-undef
           selected[i].name = mw.message("wikisearchfront-".concat(_this3.agg.key_as_string)).text();
-          selected[i].name = "this is a test: ".concat(_this3.agg.key_as_string);
           external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(_this3.$store.state.selected, i, selected[i]);
         }
       });
@@ -14212,8 +14211,8 @@ var FacetCheckboxvue_type_style_index_0_lang_css_ = __webpack_require__("9244");
 
 var FacetCheckbox_component = normalizeComponent(
   filters_FacetCheckboxvue_type_script_lang_js_,
-  FacetCheckboxvue_type_template_id_4cc0ce75_render,
-  FacetCheckboxvue_type_template_id_4cc0ce75_staticRenderFns,
+  FacetCheckboxvue_type_template_id_5181ca52_render,
+  FacetCheckboxvue_type_template_id_5181ca52_staticRenderFns,
   false,
   null,
   null,
