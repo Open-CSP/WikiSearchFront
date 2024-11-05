@@ -34,7 +34,6 @@ export default {
      */
     selected() {
       const [selected, labelMap] = [this.$store.state.selected, this.$store.state.valueLabelMap];
-
       selected.forEach((item, i) => {
         if (labelMap[item.key]) {
           selected[i].name = labelMap[item.key][item.value];

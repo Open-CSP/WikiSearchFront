@@ -374,6 +374,9 @@ function getValueLabelMap(facetSettings) {
     }
   });
 
+  console.log('Facet settings:', facetSettings);
+  console.log('Value label map:', valueLabelMap);
+
   return valueLabelMap;
 }
 
@@ -613,7 +616,7 @@ const store = new Vuex.Store({
             hits: JSON.parse(data.result.hits),
             total: {
               value: data.result.total?.value ? data.result.total.value : data.result.total,
-              relation: data.result.total?.relation ? data.result.total.relation : "eq",
+              relation: data.result.total?.relation ? data.result.total.relation : 'eq',
             },
             aggs: data.result.aggs,
           });

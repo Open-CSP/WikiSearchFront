@@ -167,10 +167,10 @@ export default {
     const { selected } = this.$store.state;
     if (selected.length > 0 && this.agg.key_as_string) {
       selected.forEach((element, i) => {
-        if (element.key === this.name) {
+        if (element.key === this.name && !selected[i].name) {
           // eslint-disable-next-line no-undef
           selected[i].name = mw
-            .message(`wikisearchfront-${this.agg.key_as_string}`)
+            .message(`wikisearchfront-${selected[i].value}`)
             .text();
           Vue.set(this.$store.state.selected, i, selected[i]);
         }
