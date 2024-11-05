@@ -317,7 +317,7 @@ export default {
         organizedBuckets.reverse();
       }
 
-      if (selected.length > 0 && !this.fired) {
+      if (selected.length > 0) {
         if (this.translation) {
           organizedBuckets.forEach((element, i) => {
             const transKey = this.translations[element.key];
@@ -360,9 +360,6 @@ export default {
           }
           Vue.set(this.$store.state.selected, i, selected[i]);
         });
-        this.fired = true;
-      } else {
-        this.fired = true;
       }
 
       // If valueLabels are set, replace the original labels
