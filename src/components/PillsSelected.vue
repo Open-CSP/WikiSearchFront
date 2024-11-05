@@ -40,6 +40,7 @@ export default {
         }
       });
       console.log('selected!!!: ', selected);
+      console.log('label map!!!: ', labelMap);
       return this.$store.state.selected;
     },
   },
