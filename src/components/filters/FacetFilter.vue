@@ -324,6 +324,11 @@ export default {
         this.strippedBuckets = organizedBuckets;
       }
 
+      if (this.config.facetSettings[this.name].order === 'reverse') {
+        organizedBuckets.reverse();
+        this.strippedBuckets.reverse();
+      }
+
       const { value } = this.config.facetSettings[this.name];
       if (value) {
         const { valueLabel } = this.config.facetSettings[this.name];
@@ -336,10 +341,6 @@ export default {
           bucket.name = valueLabel;
         }
         this.strippedBuckets = [bucket];
-      }
-
-      if (this.config.facetSettings[this.name].order === 'reverse') {
-        this.strippedBuckets.reverse();
       }
 
       if (selected.length > 0 && !this.fired) {
