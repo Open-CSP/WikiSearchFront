@@ -166,7 +166,7 @@ export default {
         .join(' ');
     },
     sortClass() {
-      return `wss-order--${this.state.sortOrderType ?? 'score'}--${this.state.sortOrder ?? 'desc'}`;
+      return `wss-order--${this.strip(this.state.sortOrderType ?? 'score')}--${this.strip(this.state.sortOrder ?? 'desc')}`;
     },
     showElement() {
       return this.settings.layout !== 'calendar';
