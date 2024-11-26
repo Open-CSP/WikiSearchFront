@@ -2,7 +2,7 @@
   <div id="app">
     <div
       class="wikisearch"
-      :class="[selectedClass, themeClass]"
+      :class="[selectedClass, themeClass, sortClass]"
     >
       <search-input />
       <pills-selected
@@ -164,6 +164,9 @@ export default {
     selectedClass() {
       return this.state.selected.map(el => `wss-selected--${this.strip(el.key)}--${this.strip(el.value)}`)
         .join(' ');
+    },
+    sortClass() {
+      return `wss-order--${this.state.sortOrderType ?? 'score'}--${this.state.sortOrder ?? 'desc'}`;
     },
     showElement() {
       return this.settings.layout !== 'calendar';
