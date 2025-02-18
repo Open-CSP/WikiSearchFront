@@ -467,7 +467,7 @@ const store = new Vuex.Store({
     selectedResults: [],
     ongoingRequest: undefined,
     selectAllResults: false,
-    sortOrder: 'desc',
+    sortOrder: 'asc',
     sortOrderType: 'score',
     hits: '',
     aggs: '',
