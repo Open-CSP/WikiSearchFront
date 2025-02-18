@@ -16872,7 +16872,7 @@ var FacetSorted_component = normalizeComponent(
     return {
       // eslint-disable-next-line no-undef
       config: mw.config.values.WikiSearchFront.config,
-      openFilters: false
+      openFilters: true
     };
   },
   computed: {
