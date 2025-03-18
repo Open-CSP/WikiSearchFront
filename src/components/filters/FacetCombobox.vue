@@ -229,6 +229,8 @@ export default {
       }
     },
     updateSelected(item) {
+      console.log(item);
+
       if (item.icon) {
         this.search();
         return;
