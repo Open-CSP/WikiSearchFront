@@ -9588,12 +9588,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=5bdb428d&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wikisearch",class:[_vm.selectedClass, _vm.themeClass, _vm.sortClass]},[_c('search-input'),(_vm.showElement)?_c('pills-selected'):_vm._e(),(_vm.settings['sort options'] && _vm.showElement)?_c('sort-order',{attrs:{"settings":_vm.settings}}):_vm._e(),_c('div',{staticClass:"wikisearch-filters",class:{ 'wikisearch-filters__hiden' : _vm.openFilters }},[_c('wikisearch-button',{staticClass:"wssearch-button--hide-filters",attrs:{"icon":'close',"type":'icon'},on:{"click":function($event){_vm.openFilters = !_vm.openFilters}}}),(_vm.settings.layout === 'calendar')?_c('wikisearch-calendar-tools',{attrs:{"outertime":_vm.$store.state.calendarDate}}):_vm._e(),(_vm.state.aggs)?_c('div',{staticClass:"wikisearch-filters__wrapper"},_vm._l((_vm.filters),function(filterObject,name){return _c(filterObject.component,{key:name,tag:"component",attrs:{"translation":_vm.facetSettings[name].translation,"query":_vm.facetSettings[name].query,"query-text":_vm.facetSettings[name].text,"query-data":_vm.facetSettings[name].data,"type":_vm.facetSettings[name].type,"settings":_vm.facetSettings[name],"buckets":filterObject.buckets || [],"label":_vm.facetSettings[name].label,"valueLabels":_vm.facetSettings[name].valueLabels,"name":name}})}),1):_vm._e()],1),_c('div',{staticClass:"wikisearch-total"},[_c('b',{staticClass:"wikisearch-total__nr"},[_c('b',[_vm._v(_vm._s(_vm.resultCountText))])])]),_c('div',{staticClass:"wikisearch-action"},[(_vm.settings.action)?_c('wikisearch-checkbox',{staticClass:"wikisearch-action__checkbox",on:{"change":_vm.selectAll}}):_vm._e(),(_vm.settings.action)?_c('wikisearch-button',{staticClass:"wikisearch-action__button",attrs:{"label":_vm.settings.action.label,"type":_vm.state.selectedResults.length ? 'progressive' : ''},on:{"click":_vm.doAction}}):_vm._e()],1),_c('div',{staticClass:"wikisearch-results"},[_c(_vm.resultDisplay,{tag:"component"}),(_vm.showElement)?_c('wikisearch-pagers',{attrs:{"size":_vm.state.size,"from":_vm.state.from,"total":_vm.state.total.value,"settings":_vm.settings}}):_vm._e()],1),_c('wikisearch-button',{staticClass:"wssearch-button--show-filters",attrs:{"icon":'settings',"label":'Filters',"type":'progressive'},on:{"click":function($event){_vm.openFilters = !_vm.openFilters}}})],1)])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=3b7e95c9&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wikisearch",class:[_vm.selectedClass, _vm.themeClass, _vm.sortClass]},[_c('search-input'),(_vm.showElement)?_c('pills-selected'):_vm._e(),(_vm.settings['sort options'] && _vm.showElement)?_c('sort-order',{attrs:{"settings":_vm.settings}}):_vm._e(),_c('div',{staticClass:"wikisearch-filters",class:{ 'wikisearch-filters__hidden' : _vm.openFilters }},[_c('wikisearch-button',{staticClass:"wssearch-button--hide-filters",attrs:{"icon":'close',"type":'icon'},on:{"click":function($event){_vm.openFilters = true}}}),(_vm.settings.layout === 'calendar')?_c('wikisearch-calendar-tools',{attrs:{"outertime":_vm.$store.state.calendarDate}}):_vm._e(),(_vm.state.aggs)?_c('div',{staticClass:"wikisearch-filters__wrapper"},_vm._l((_vm.filters),function(filterObject,name){return _c(filterObject.component,{key:name,tag:"component",attrs:{"translation":_vm.facetSettings[name].translation,"query":_vm.facetSettings[name].query,"query-text":_vm.facetSettings[name].text,"query-data":_vm.facetSettings[name].data,"type":_vm.facetSettings[name].type,"settings":_vm.facetSettings[name],"buckets":filterObject.buckets || [],"label":_vm.facetSettings[name].label,"valueLabels":_vm.facetSettings[name].valueLabels,"name":name}})}),1):_vm._e()],1),_c('div',{staticClass:"wikisearch-total"},[_c('b',{staticClass:"wikisearch-total__nr"},[_c('b',[_vm._v(_vm._s(_vm.resultCountText))])])]),_c('div',{staticClass:"wikisearch-action"},[(_vm.settings.action)?_c('wikisearch-checkbox',{staticClass:"wikisearch-action__checkbox",on:{"change":_vm.selectAll}}):_vm._e(),(_vm.settings.action)?_c('wikisearch-button',{staticClass:"wikisearch-action__button",attrs:{"label":_vm.settings.action.label,"type":_vm.state.selectedResults.length ? 'progressive' : ''},on:{"click":_vm.doAction}}):_vm._e()],1),_c('div',{staticClass:"wikisearch-results"},[_c(_vm.resultDisplay,{tag:"component"}),(_vm.showElement)?_c('wikisearch-pagers',{attrs:{"size":_vm.state.size,"from":_vm.state.from,"total":_vm.state.total.value,"settings":_vm.settings}}):_vm._e()],1),_c('wikisearch-button',{staticClass:"wssearch-button--show-filters",attrs:{"icon":'settings',"label":'Filters',"type":'progressive'},on:{"click":function($event){_vm.openFilters = false}}})],1)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=5bdb428d&
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=3b7e95c9&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
 var es_object_keys = __webpack_require__("b64b");
@@ -10414,7 +10414,7 @@ var store_store = new vuex_esm["a" /* default */].Store({
     selectedResults: [],
     ongoingRequest: undefined,
     selectAllResults: false,
-    sortOrder: 'desc',
+    sortOrder: 'asc',
     sortOrderType: 'score',
     hits: '',
     aggs: '',
@@ -10978,12 +10978,12 @@ var Input_component = normalizeComponent(
 )
 
 /* harmony default export */ var Input = (Input_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Button.vue?vue&type=template&id=d12eefe2&
-var Buttonvue_type_template_id_d12eefe2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('a',{staticClass:"wikisearch-button",class:_vm.classes,attrs:{"type":"button","tabindex":"0","aria-disabled":"false","rel":"nofollow"},on:{"click":function($event){return _vm.$emit('click')}}},[(_vm.icon)?_c('wikisearch-icon',{staticClass:"wikisearch-button__icon",attrs:{"icon":_vm.icon}}):_vm._e(),(_vm.label)?_c('span',{staticClass:"wikisearch-button__label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e()],1)}
-var Buttonvue_type_template_id_d12eefe2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Button.vue?vue&type=template&id=4aa525f3&
+var Buttonvue_type_template_id_4aa525f3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"wikisearch-button",class:_vm.classes,attrs:{"type":"button","tabindex":"0","aria-disabled":"false","rel":"nofollow"},on:{"click":function($event){return _vm.$emit('click')}}},[(_vm.icon)?_c('wikisearch-icon',{staticClass:"wikisearch-button__icon",attrs:{"icon":_vm.icon}}):_vm._e(),(_vm.label)?_c('span',{staticClass:"wikisearch-button__label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e()],1)}
+var Buttonvue_type_template_id_4aa525f3_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Button.vue?vue&type=template&id=d12eefe2&
+// CONCATENATED MODULE: ./src/components/Button.vue?vue&type=template&id=4aa525f3&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Button.vue?vue&type=script&lang=js&
 //
@@ -11059,8 +11059,8 @@ var Buttonvue_type_style_index_0_lang_css_ = __webpack_require__("8274");
 
 var Button_component = normalizeComponent(
   components_Buttonvue_type_script_lang_js_,
-  Buttonvue_type_template_id_d12eefe2_render,
-  Buttonvue_type_template_id_d12eefe2_staticRenderFns,
+  Buttonvue_type_template_id_4aa525f3_render,
+  Buttonvue_type_template_id_4aa525f3_staticRenderFns,
   false,
   null,
   null,
@@ -11468,14 +11468,14 @@ var PillsSelected_component = normalizeComponent(
 )
 
 /* harmony default export */ var PillsSelected = (PillsSelected_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SortOrder.vue?vue&type=template&id=32b92727&
-var SortOrdervue_type_template_id_32b92727_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-order wikisearch--has-button"},[_c('span',{staticClass:"wikisearch-order__label"},[_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-order"))+" ")]),_c('wikisearch-dropdown',{attrs:{"items":_vm.items,"placeholder":'Select an item',"value":_vm.sortOrderType == 'score'
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SortOrder.vue?vue&type=template&id=3b08bad2&
+var SortOrdervue_type_template_id_3b08bad2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-order wikisearch--has-button"},[_c('span',{staticClass:"wikisearch-order__label"},[_vm._v(" "+_vm._s(_vm.$i18n("wikisearchfront-order"))+" ")]),_c('wikisearch-dropdown',{attrs:{"items":_vm.items,"placeholder":'Select an item',"value":_vm.sortOrderType == 'score'
       ? {label: _vm.$i18n('wikisearchfront-score'), data: 'score' }
-      : {label: _vm.sortOrderType, data: _vm.sortOrderType}},on:{"select":_vm.setSort}}),_c('wikisearch-button',{attrs:{"icon":_vm.sortOrder === 'desc' ? 'down' : 'up'},on:{"click":_vm.setOrder}})],1)}
-var SortOrdervue_type_template_id_32b92727_staticRenderFns = []
+      : {label: _vm.sortOrderType, data: _vm.sortOrderType}},on:{"select":_vm.setSort}}),_c('wikisearch-button',{attrs:{"icon":_vm.sortOrder === 'desc' ? 'down' : 'up',"disabled":_vm.sortOrderType === 'score'},on:{"click":_vm.setOrder}})],1)}
+var SortOrdervue_type_template_id_3b08bad2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/SortOrder.vue?vue&type=template&id=32b92727&
+// CONCATENATED MODULE: ./src/components/SortOrder.vue?vue&type=template&id=3b08bad2&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Dropdown.vue?vue&type=template&id=5982340c&
 var Dropdownvue_type_template_id_5982340c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wikisearch-dropdown",class:_vm.classes},[_c('label',{staticClass:"wikisearch-dropdown__select",attrs:{"tabindex":"0","aria-disabled":"false"},on:{"focus":function($event){_vm.focused = true},"blur":function($event){_vm.focused = false},"click":function($event){_vm.focused = true},"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }$event.preventDefault();$event.stopPropagation();return _vm.$refs.listBox.onDown()}}},[(_vm.selected.length)?_c('span',{staticClass:"wikisearch-dropdown__selected"},[_vm._v(" "+_vm._s(_vm.selected[0].label)+" ")]):_c('span',{staticClass:"wikisearch-dropdown__placeholder"},[_vm._v(" "+_vm._s(_vm.placeholder)+" ")]),_c('svg',{staticClass:"wikisearch-dropdown__arrow",attrs:{"fill":"none","viewBox":"0 0 12 12","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"fill":"currentColor","d":"M6 10L12 3.94231L11 3L6 7.98077L1 3L5.2958e-07 3.94231L6 10Z"}})])]),(_vm.focused)?_c('wikisearch-list-box',{ref:"listBox",attrs:{"items":_vm.items,"selected":_vm.selected},on:{"select":_vm.setSelected}}):_vm._e()],1)}
@@ -11756,6 +11756,7 @@ var Dropdown_component = normalizeComponent(
 //
 //
 //
+//
 
 
 /* harmony default export */ var SortOrdervue_type_script_lang_js_ = ({
@@ -11842,8 +11843,8 @@ var SortOrdervue_type_style_index_0_lang_css_ = __webpack_require__("4d05");
 
 var SortOrder_component = normalizeComponent(
   components_SortOrdervue_type_script_lang_js_,
-  SortOrdervue_type_template_id_32b92727_render,
-  SortOrdervue_type_template_id_32b92727_staticRenderFns,
+  SortOrdervue_type_template_id_3b08bad2_render,
+  SortOrdervue_type_template_id_3b08bad2_staticRenderFns,
   false,
   null,
   null,
@@ -14948,8 +14949,8 @@ var FacetRangeSlider_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetRangeSlider = (FacetRangeSlider_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCombobox.vue?vue&type=template&id=233824c6&
-var FacetComboboxvue_type_template_id_233824c6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.buckets.length)?_c('div',{class:("wikisearch-filter\n     wikisearch-combobox\n     wikisearch-filter--" + (_vm.strip(_vm.name)))},[_c('span',{staticClass:"wikisearch-filter__label"},[_c('label',[_vm._v(" "+_vm._s(_vm.filterName)+" ")])]),_c('div',{staticClass:"wikisearch-combobox__selected"},_vm._l((_vm.pils),function(activefilter,index){return _c('wikisearch-pill',{key:index,attrs:{"data":activefilter,"label":activefilter.name},on:{"click":_vm.deselect}})}),1),_c('div',{staticClass:"wikisearch-combobox__wrapper"},[_c('wikisearch-input',{attrs:{"pending":_vm.pending,"value":_vm.term,"clearable":true,"placeholder":_vm.filterName,"role":"combobox","aria-autocomplete":"list","aria-owns":_vm.strip(_vm.name) + '-list-box',"aria-haspopup":"listbox","aria-expanded":_vm.focused ? 'true' : 'false'},on:{"down":function($event){_vm.focused = true;_vm.$refs.listBox.onDown()},"up":function($event){return _vm.$refs.listBox.onUp()},"enter":_vm.onEnter,"input":_vm.searchAggs,"focus":function($event){_vm.focused = true},"blur":function($event){_vm.focused = false},"click":function($event){_vm.focused = true}}}),_c('wikisearch-list-box',{directives:[{name:"show",rawName:"v-show",value:(_vm.focused),expression:"focused"}],ref:"listBox",attrs:{"id":_vm.strip(_vm.name) + '-list-box',"items":_vm.sortedBuckets.map(function (e, i) {return {
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetCombobox.vue?vue&type=template&id=43d58326&
+var FacetComboboxvue_type_template_id_43d58326_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.buckets.length)?_c('div',{class:("wikisearch-filter\n     wikisearch-combobox\n     wikisearch-filter--" + (_vm.strip(_vm.name)))},[_c('span',{staticClass:"wikisearch-filter__label"},[_c('label',[_vm._v(" "+_vm._s(_vm.filterName)+" ")])]),_c('div',{staticClass:"wikisearch-combobox__selected"},_vm._l((_vm.pils),function(activefilter,index){return _c('wikisearch-pill',{key:index,attrs:{"data":activefilter,"label":activefilter.name},on:{"click":_vm.deselect}})}),1),_c('div',{staticClass:"wikisearch-combobox__wrapper"},[_c('wikisearch-input',{attrs:{"pending":_vm.pending,"value":_vm.term,"clearable":true,"placeholder":_vm.filterName,"role":"combobox","aria-autocomplete":"list","aria-owns":_vm.strip(_vm.name) + '-list-box',"aria-haspopup":"listbox","aria-expanded":_vm.focused ? 'true' : 'false'},on:{"down":function($event){_vm.focused = true;_vm.$refs.listBox.onDown()},"up":function($event){return _vm.$refs.listBox.onUp()},"enter":_vm.onEnter,"input":_vm.searchAggs,"focus":function($event){_vm.focused = true},"blur":function($event){_vm.focused = false},"click":function($event){_vm.focused = true}}}),_c('wikisearch-list-box',{directives:[{name:"show",rawName:"v-show",value:(_vm.focused),expression:"focused"}],ref:"listBox",attrs:{"id":_vm.strip(_vm.name) + '-list-box',"items":_vm.sortedBuckets.map(function (e, i) {return {
         id: i,
         label: e.name || e.key,
         doc_count: e.doc_count,
@@ -14959,10 +14960,10 @@ var FacetComboboxvue_type_template_id_233824c6_render = function () {var _vm=thi
       }}),"selected":_vm.selection},on:{"select":_vm.updateSelected},scopedSlots:_vm._u([{key:"menuItem",fn:function(ref){
       var item = ref.item;
 return [(item.icon)?_c('wikisearch-icon',{staticClass:"wikisearch-combobox__option-icon",attrs:{"icon":item.icon}}):_vm._e(),(item.icon)?_c('span',[_vm._v(" "+_vm._s(_vm.$i18n('search'))+" "),_c('b',[_vm._v(_vm._s(item.label))])]):_c('span',[_vm._v(" "+_vm._s(item.label)+" ")]),(!_vm.noCount && !item.icon)?_c('span',{staticClass:"wikisearch-combobox__doc-count"},[_vm._v(" "+_vm._s(item.doc_count)+" ")]):_vm._e()]}}],null,false,1145308393)})],1)]):_vm._e()}
-var FacetComboboxvue_type_template_id_233824c6_staticRenderFns = []
+var FacetComboboxvue_type_template_id_43d58326_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetCombobox.vue?vue&type=template&id=233824c6&
+// CONCATENATED MODULE: ./src/components/filters/FacetCombobox.vue?vue&type=template&id=43d58326&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
 var es_string_match = __webpack_require__("466d");
@@ -15228,6 +15229,8 @@ var es_string_match = __webpack_require__("466d");
     updateSelected: function updateSelected(item) {
       var _this3 = this;
 
+      console.log(item);
+
       if (item.icon) {
         this.search();
         return;
@@ -15294,8 +15297,8 @@ var FacetComboboxvue_type_style_index_0_lang_css_ = __webpack_require__("15a3");
 
 var FacetCombobox_component = normalizeComponent(
   filters_FacetComboboxvue_type_script_lang_js_,
-  FacetComboboxvue_type_template_id_233824c6_render,
-  FacetComboboxvue_type_template_id_233824c6_staticRenderFns,
+  FacetComboboxvue_type_template_id_43d58326_render,
+  FacetComboboxvue_type_template_id_43d58326_staticRenderFns,
   false,
   null,
   null,
@@ -15304,12 +15307,12 @@ var FacetCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetCombobox = (FacetCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetAskCombobox.vue?vue&type=template&id=3ebc415c&
-var FacetAskComboboxvue_type_template_id_3ebc415c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"no-count":"","buckets":_vm.buckets,"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
-var FacetAskComboboxvue_type_template_id_3ebc415c_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetAskCombobox.vue?vue&type=template&id=537d69a6&
+var FacetAskComboboxvue_type_template_id_537d69a6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('facet-combobox',{attrs:{"pending":_vm.pending,"no-count":"","buckets":_vm.buckets,"name":_vm.name,"label":_vm.label},on:{"input":_vm.ask,"search":_vm.search}})}
+var FacetAskComboboxvue_type_template_id_537d69a6_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetAskCombobox.vue?vue&type=template&id=3ebc415c&
+// CONCATENATED MODULE: ./src/components/filters/FacetAskCombobox.vue?vue&type=template&id=537d69a6&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetAskCombobox.vue?vue&type=script&lang=js&
 
@@ -15384,7 +15387,7 @@ var FacetAskComboboxvue_type_template_id_3ebc415c_staticRenderFns = []
     var selected = this.$store.state.selected;
     selected.forEach(function (el) {
       if (el.key && el.key === _this.name && el.type !== 'query') {
-        _this.ask(el.value, 'inital');
+        _this.ask(el.value, 'initial');
       }
     });
   },
@@ -15431,10 +15434,13 @@ var FacetAskComboboxvue_type_template_id_3ebc415c_staticRenderFns = []
             key = _ref2[0],
             value = _ref2[1];
 
-        var outkey = value.printouts[_this2.queryData];
+        var outkey = _this2.queryData ? value.printouts[_this2.queryData] : value.fulltext;
 
         if (outkey) {
-          outkey = outkey[0].fulltext || outkey[0];
+          if (Array.isArray(outkey)) {
+            outkey = outkey[0].fulltext || outkey[0];
+          }
+
           var buck = {
             doc_count: 1,
             key: outkey,
@@ -15513,14 +15519,14 @@ var FacetAskComboboxvue_type_template_id_3ebc415c_staticRenderFns = []
     /**
      * @event emited from facet-combobox
      * @param {String} term user typed search term
-     * @param {Boolan} initial initiated on load or on user input
+     * @param {Boolean} initial initiated on load or on user input
      */
-    ask: function ask(term, inital) {
+    ask: function ask(term, initial) {
       this.pending = true;
       var outputData = this.queryData;
       var outputLabel = this.queryText;
-      var output = outputLabel || inital ? "|?".concat(outputData, "|?").concat(outputLabel) : "|?".concat(outputData);
-      var input = outputLabel && !inital ? outputLabel : outputData;
+      var output = outputLabel || initial ? "|?".concat(outputData, "|?").concat(outputLabel) : "|?".concat(outputData);
+      var input = outputLabel && !initial ? outputLabel : outputData;
       var askQuery = "".concat(this.query, "[[").concat(input, "::in:").concat(term, "]]").concat(output);
       console.log(askQuery);
       var params = {
@@ -15550,8 +15556,8 @@ var FacetAskComboboxvue_type_template_id_3ebc415c_staticRenderFns = []
 
 var FacetAskCombobox_component = normalizeComponent(
   filters_FacetAskComboboxvue_type_script_lang_js_,
-  FacetAskComboboxvue_type_template_id_3ebc415c_render,
-  FacetAskComboboxvue_type_template_id_3ebc415c_staticRenderFns,
+  FacetAskComboboxvue_type_template_id_537d69a6_render,
+  FacetAskComboboxvue_type_template_id_537d69a6_staticRenderFns,
   false,
   null,
   null,
@@ -15727,18 +15733,18 @@ var FacetElasticCombobox_component = normalizeComponent(
 )
 
 /* harmony default export */ var FacetElasticCombobox = (FacetElasticCombobox_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetFilter.vue?vue&type=template&id=5226ed1b&
-var FacetFiltervue_type_template_id_5226ed1b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:("wikisearch-filter wikisearch-filter--" + (_vm.strip(_vm.name))),attrs:{"role":"group","aria-labelledby":("filter__label--" + (_vm.strip(_vm.name)))}},[(_vm.strippedBuckets.length || _vm.type === 'date')?_c('span',{staticClass:"wikisearch-filter__label"},[_c('label',{attrs:{"id":("filter__label--" + (_vm.strip(_vm.name)))}},[_vm._v(" "+_vm._s(_vm.cleanName)+" ")])]):_vm._e(),_c('div',{staticClass:"wikisearch-filter__options"},[_vm._l((_vm.bucketsToShow),function(agg,i){return _c('facet-checkbox',{directives:[{name:"show",rawName:"v-show",value:(i < _vm.collapsed || _vm.open),expression:"i < collapsed || open"}],key:i + agg.key + _vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),(_vm.type === 'date')?_c('div',{staticClass:"wikisearch-filter__custom-date"},[_c('facet-checkbox',{attrs:{"agg":{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetFilter.vue?vue&type=template&id=3609d37b&
+var FacetFiltervue_type_template_id_3609d37b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:("wikisearch-filter wikisearch-filter--" + (_vm.strip(_vm.name))),attrs:{"role":"group","aria-labelledby":("filter__label--" + (_vm.strip(_vm.name)))}},[(_vm.strippedBuckets.length || _vm.type === 'date')?_c('span',{staticClass:"wikisearch-filter__label"},[_c('label',{attrs:{"id":("filter__label--" + (_vm.strip(_vm.name)))}},[_vm._v(" "+_vm._s(_vm.cleanName)+" ")])]):_vm._e(),_c('div',{staticClass:"wikisearch-filter__options"},[_vm._l((_vm.bucketsToShow),function(agg,i){return _c('facet-checkbox',{directives:[{name:"show",rawName:"v-show",value:(i < _vm.collapsed || _vm.open),expression:"i < collapsed || open"}],key:i + agg.key + _vm.name,attrs:{"agg":agg,"index":i,"name":_vm.name}})}),(_vm.type === 'date')?_c('div',{staticClass:"wikisearch-filter__custom-date"},[_c('facet-checkbox',{attrs:{"agg":{
           'from': _vm.createDate(_vm.customDates.from),
           'to': _vm.createDate(_vm.customDates.to),
           'doc_count': 4,
           'key': 'customrange',
           'name': _vm.customDateRangeLabel
         },"index":999,"name":_vm.name}}),_c('div',{staticClass:"wikisearch-date-input-container"},[_c('wikisearch-date-input',{attrs:{"disabled-direction":"before","disabled-date":_vm.customDates.to,"value":_vm.customDates.from},on:{"change":function($event){return _vm.setCustomDate($event, 'from')}}}),_c('wikisearch-date-input',{attrs:{"disabled-direction":"after","disabled-date":_vm.customDates.from,"value":_vm.customDates.to},on:{"change":function($event){return _vm.setCustomDate($event, 'to')}}})],1)],1):_vm._e(),(_vm.strippedBuckets.length > _vm.collapsed)?_c('wikisearch-button',{staticClass:"wikisearch-filter__button",attrs:{"icon":_vm.open ? 'up' : 'down',"label":_vm.$i18n(("wikisearchfront-" + _vm.lessOrMore))},on:{"click":function($event){_vm.open = !_vm.open}}}):_vm._e()],2)])}
-var FacetFiltervue_type_template_id_5226ed1b_staticRenderFns = []
+var FacetFiltervue_type_template_id_3609d37b_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/filters/FacetFilter.vue?vue&type=template&id=5226ed1b&
+// CONCATENATED MODULE: ./src/components/filters/FacetFilter.vue?vue&type=template&id=3609d37b&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/filters/FacetFilter.vue?vue&type=script&lang=js&
 
@@ -16077,24 +16083,24 @@ var FacetFiltervue_type_template_id_5226ed1b_staticRenderFns = []
         organizedBuckets.reverse();
       }
 
-      if (selected.length > 0 && !this.fired) {
-        if (this.translation) {
-          organizedBuckets.forEach(function (element, i) {
-            var transKey = _this3.translations[element.key];
+      if (this.translation) {
+        organizedBuckets.forEach(function (element, i) {
+          var transKey = _this3.translations[element.key];
 
-            if (transKey && transKey.printouts[_this3.translation]) {
-              if (transKey.printouts[_this3.translation][0].fulltext) {
-                console.log('translation:', _this3.translation);
-                organizedBuckets[i].name = transKey.printouts[_this3.translation][0].fulltext;
-              } else {
-                var _transKey$printouts$_ = _slicedToArray(transKey.printouts[_this3.translation], 1);
+          if (transKey && transKey.printouts[_this3.translation]) {
+            if (transKey.printouts[_this3.translation][0].fulltext) {
+              console.log('translation:', _this3.translation);
+              organizedBuckets[i].name = transKey.printouts[_this3.translation][0].fulltext;
+            } else {
+              var _transKey$printouts$_ = _slicedToArray(transKey.printouts[_this3.translation], 1);
 
-                organizedBuckets[i].name = _transKey$printouts$_[0];
-              }
+              organizedBuckets[i].name = _transKey$printouts$_[0];
             }
-          });
-        }
+          }
+        });
+      }
 
+      if (selected.length > 0 && !this.fired) {
         selected.forEach(function (element, i) {
           if (_this3.translation) {
             var transValue = _this3.translations[element.value];
@@ -16178,8 +16184,8 @@ var FacetFiltervue_type_style_index_0_lang_css_ = __webpack_require__("9a23");
 
 var FacetFilter_component = normalizeComponent(
   filters_FacetFiltervue_type_script_lang_js_,
-  FacetFiltervue_type_template_id_5226ed1b_render,
-  FacetFiltervue_type_template_id_5226ed1b_staticRenderFns,
+  FacetFiltervue_type_template_id_3609d37b_render,
+  FacetFiltervue_type_template_id_3609d37b_staticRenderFns,
   false,
   null,
   null,

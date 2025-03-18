@@ -317,33 +317,34 @@ export default {
         organizedBuckets.reverse();
       }
 
-      if (selected.length > 0 && !this.fired) {
-        if (this.translation) {
-          organizedBuckets.forEach((element, i) => {
-            const transKey = this.translations[element.key];
-            if (
-                transKey
-                && transKey.printouts[this.translation]
-            ) {
-              if (transKey.printouts[this.translation][0].fulltext) {
-                console.log('translation:', this.translation);
-                organizedBuckets[i].name = transKey.printouts[this.translation][0].fulltext;
-              } else {
-                [organizedBuckets[i].name] = transKey.printouts[this.translation];
-              }
-            }
-          });
-        }
+      if (this.translation) {
+        organizedBuckets.forEach((element, i) => {
+          const transKey = this.translations[element.key];
 
+          if (
+            transKey
+            && transKey.printouts[this.translation]
+          ) {
+            if (transKey.printouts[this.translation][0].fulltext) {
+              console.log('translation:', this.translation);
+              organizedBuckets[i].name = transKey.printouts[this.translation][0].fulltext;
+            } else {
+              [organizedBuckets[i].name] = transKey.printouts[this.translation];
+            }
+          }
+        });
+      }
+
+      if (selected.length > 0 && !this.fired) {
         selected.forEach((element, i) => {
           if (this.translation) {
             const transValue = this.translations[element.value];
             if (
-                transValue
-                && transValue.printouts[this.translation]
+              transValue
+              && transValue.printouts[this.translation]
             ) {
               if (
-                  transValue.printouts[this.translation][0].fulltext
+                transValue.printouts[this.translation][0].fulltext
               ) {
                 selected[i].name = transValue.printouts[this.translation][0].fulltext;
               } else {
@@ -353,7 +354,7 @@ export default {
             }
           }
           const value = this.config.facetSettings[selected[i].key]
-              ? this.config.facetSettings[selected[i].key] : false;
+            ? this.config.facetSettings[selected[i].key] : false;
           if (value) {
             const { valueLabel } = this.config.facetSettings[selected[i].key];
             selected[i].name = valueLabel;
@@ -379,7 +380,7 @@ export default {
 
       const { value } = this.config.facetSettings[this.name];
       if (value) {
-        const {valueLabel} = this.config.facetSettings[this.name];
+        const { valueLabel } = this.config.facetSettings[this.name];
         const bucket = {
           key: value,
           doc_count: 0,
