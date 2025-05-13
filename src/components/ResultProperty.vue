@@ -73,6 +73,8 @@ export default {
       // eslint-disable-next-line no-undef
       articlePath: mw.config.values.wgArticlePath.replace('/$1', '').replace('?title=$1', ''),
       // eslint-disable-next-line no-undef
+      scriptPath: mw.config.get('wgScript'),
+      // eslint-disable-next-line no-undef
       configTitle: mw.config.values.WikiSearchFront.config.settings.title,
     };
   },
@@ -182,7 +184,7 @@ export default {
       if (this.config.display === 'pdf') {
         const source = '_source';
         const subjectTitle = this.data[source].subject.title.replaceAll(/\s/g, '_');
-        return `${this.articlePath}/Special:Redirect/file/${subjectTitle}?width=300`;
+        return `${this.scriptPath}?title=Special:Redirect/file/${subjectTitle}&width=300`;
       }
 
       return this.config.display === 'image'
