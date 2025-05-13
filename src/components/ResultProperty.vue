@@ -182,7 +182,7 @@ export default {
       if (this.config.display === 'pdf') {
         const source = '_source';
         const subjectTitle = this.data[source].subject.title.replaceAll(/\s/g, '_');
-        return `/img_auth.php/thumb/${subjectTitle}/page1-300px-${subjectTitle}.jpg`;
+        return `${this.articlePath}/Special:Redirect/file/${subjectTitle}?width=300`;
       }
 
       return this.config.display === 'image'
