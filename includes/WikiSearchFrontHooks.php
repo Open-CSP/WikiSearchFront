@@ -63,14 +63,11 @@ class WikiSearchFrontHooks {
 			}
 		}
 
-		if ( method_exists( \ParserOutput::class, 'setJsConfigVar' ) ) {
-			// MW 1.38+
-			$parser->getOutput()->setJsConfigVar( "WikiSearchFront", [ "config" => $searchConfig ] );
-		} else {
-			$parser->getOutput()->addJsConfigVars( "WikiSearchFront", [ "config" => $searchConfig ] );
-		}
-
-		$parser->getOutput()->addModules( ['ext.WikiSearchFront.module'] );
+		$parser->getOutput()->addJsConfigVars( "WikiSearchFront",
+											   array(
+												   "config" => $searchConfig
+											   ) );
+		$parser->getOutput()->addModules( 'ext.WikiSearchFront.module' );
 
 		$result = "<div id='app'></div>";
 

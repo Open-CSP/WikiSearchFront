@@ -26,15 +26,6 @@ Vue.directive("i18n-html", function (el, binding) {
   el.innerHTML = message.parse();
 });
 
-function initWikiSearchFront() {
-  new Vue({
-    render: (h) => h(wikisearchfront),
-  }).$mount("#app");
-}
-
-if (document.readyState === "complete" || document.readyState === "interactive") {      
-  initWikiSearchFront();
-} else {
-  document.addEventListener("DOMContentLoaded", initWikiSearchFront);
-}
-
+new Vue({
+  render: (h) => h(wikisearchfront),
+}).$mount("#app");

@@ -13,7 +13,6 @@
     />
     <wikisearch-button
       :icon="sortOrder === 'desc' ? 'down' : 'up'"
-      :disabled="sortOrderType === 'score'"
       @click="setOrder"
     />
   </div>

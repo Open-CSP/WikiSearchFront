@@ -90,10 +90,6 @@ export default {
       type: String,
       default: '',
     },
-    valueLabels: {
-      type: String,
-      default: '',
-    },
     buckets: {
       type: [Array, Object],
       default() {
@@ -277,65 +273,23 @@ export default {
         ? organizedBuckets.filter((el) => el.doc_count > 0)
         : [];
 
-      // sort the buckets
-      if (this.type === 'date') {
-        organizedBuckets.reverse();
-      } else if (
-        this.config.facetSettings[this.name]
-        && this.config.facetSettings[this.name].sort
-        === 'alphabetically'
-      ) {
-        organizedBuckets.sort((a, b) => {
-          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
-          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
-          // eslint-disable-next-line no-nested-ternary
-          return textA < textB ? -1 : textA > textB ? 1 : 0;
-        });
-      } else if (
-        this.config.facetSettings[this.name]
-        && this.config.facetSettings[this.name].sort
-        === 'alphanumeric'
-      ) {
-        const reA = /[^a-zA-Z]/g;
-        const reN = /[^0-9]/g;
-        organizedBuckets.sort((a, b) => {
-          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
-          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
-          const aA = textA.split(' ')[0].replace(reA, '');
-          const bA = textB.split(' ')[0].replace(reA, '');
-          if (aA === bA) {
-            const aN = parseInt(textA.replace(reN, ''), 10);
-            const bN = parseInt(textB.replace(reN, ''), 10);
-            // eslint-disable-next-line no-nested-ternary
-            return aN === bN ? 0 : aN > bN ? 1 : -1;
-          }
-          return aA > bA ? 1 : -1;
-        });
-      }
-
-      if (this.config.facetSettings[this.name].order === 'reverse') {
-        organizedBuckets.reverse();
-      }
-
-      if (this.translation) {
-        organizedBuckets.forEach((element, i) => {
-          const transKey = this.translations[element.key];
-
-          if (
-            transKey
-            && transKey.printouts[this.translation]
-          ) {
-            if (transKey.printouts[this.translation][0].fulltext) {
-              console.log('translation:', this.translation);
-              organizedBuckets[i].name = transKey.printouts[this.translation][0].fulltext;
-            } else {
-              [organizedBuckets[i].name] = transKey.printouts[this.translation];
-            }
-          }
-        });
-      }
-
       if (selected.length > 0 && !this.fired) {
+        if (this.translation) {
+          organizedBuckets.forEach((element, i) => {
+            const transKey = this.translations[element.key];
+            if (
+              transKey
+            && transKey.printouts[this.translation]
+            ) {
+              if (transKey.printouts[this.translation][0].fulltext) {
+                organizedBuckets[i].name = transKey.printouts[this.translation][0].fulltext;
+              } else {
+                [organizedBuckets[i].name] = transKey.printouts[this.translation];
+              }
+            }
+          });
+        }
+
         selected.forEach((element, i) => {
           if (this.translation) {
             const transValue = this.translations[element.value];
@@ -366,17 +320,42 @@ export default {
         this.fired = true;
       }
 
-      // If valueLabels are set, replace the original labels
-      if (this.$store.state.valueLabelMap) {
-        const labelMap = this.$store.state.valueLabelMap;
-        if (labelMap[this.name]) {
-          organizedBuckets.forEach((bucket, i) => {
-            organizedBuckets[i].name = labelMap[this.name][bucket.key];
-          });
-        }
+      if (this.type === 'date') {
+        this.strippedBuckets = organizedBuckets.reverse();
+      } else if (
+        this.config.facetSettings[this.name]
+        && this.config.facetSettings[this.name].sort
+        === 'alphabetically'
+      ) {
+        this.strippedBuckets = organizedBuckets.sort((a, b) => {
+          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
+          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
+          // eslint-disable-next-line no-nested-ternary
+          return textA < textB ? -1 : textA > textB ? 1 : 0;
+        });
+      } else if (
+        this.config.facetSettings[this.name]
+        && this.config.facetSettings[this.name].sort
+        === 'alphanumeric'
+      ) {
+        const reA = /[^a-zA-Z]/g;
+        const reN = /[^0-9]/g;
+        this.strippedBuckets = organizedBuckets.sort((a, b) => {
+          const textA = a.key_as_string ? a.key_as_string.toUpperCase() : a.key.toUpperCase();
+          const textB = b.key_as_string ? b.key_as_string.toUpperCase() : b.key.toUpperCase();
+          const aA = textA.split(' ')[0].replace(reA, '');
+          const bA = textB.split(' ')[0].replace(reA, '');
+          if (aA === bA) {
+            const aN = parseInt(textA.replace(reN, ''), 10);
+            const bN = parseInt(textB.replace(reN, ''), 10);
+            // eslint-disable-next-line no-nested-ternary
+            return aN === bN ? 0 : aN > bN ? 1 : -1;
+          }
+          return aA > bA ? 1 : -1;
+        });
+      } else {
+        this.strippedBuckets = organizedBuckets;
       }
-
-      this.strippedBuckets = organizedBuckets;
 
       const { value } = this.config.facetSettings[this.name];
       if (value) {
@@ -390,6 +369,10 @@ export default {
           bucket.name = valueLabel;
         }
         this.strippedBuckets = [bucket];
+      }
+
+      if (this.config.facetSettings[this.name].order === 'reverse') {
+        this.strippedBuckets.reverse();
       }
 
       this.bucketsToShow = this.strippedBuckets;

@@ -52,8 +52,6 @@ if (process.env.NODE_ENV === 'production') {
                 Title: { label: 'sort title' },
               },
               info: true,
-              intro: '',
-              outro: '',
               title: {
                 name: 'Title',
                 key: 633,

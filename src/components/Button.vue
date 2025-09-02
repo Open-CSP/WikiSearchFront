@@ -1,5 +1,5 @@
 <template>
-  <button
+  <a
     class="wikisearch-button"
     :class="classes"
     type="button"
@@ -19,7 +19,7 @@
     >
       {{ label }}
     </span>
-  </button>
+  </a>
 </template>
 
 <script>

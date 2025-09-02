@@ -1,5 +1,5 @@
 {
-  "name": "wikibase-solutions/wiki-search-front",
+  "name": "wikibase-solutions-gitlab/wiki-search-front",
   "type": "mediawiki-extension",
   "description": "Frontend for WikiSearch extension",
   "keywords": [

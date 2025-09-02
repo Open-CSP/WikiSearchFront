@@ -1,7 +1,7 @@
 {
   "name": "WikiSearchFront",
   "author": "Robis Koopmans",
-  "version": "3.2.2",
+  "version": "2.0.5",
   "url": "https://www.wikibase-solutions.com",
   "descriptionmsg": "wikisearchfront-desc",
   "license-name": "GPL-2.0-or-later",
@@ -14,7 +14,7 @@
   "requires": {
     "MediaWiki": ">= 1.27.0",
     "extensions": {
-      "WikiSearch": ">= 8.0.0"
+      "WikiSearch": "*"
     }
   },
   "ResourceModules": {
@@ -32,9 +32,7 @@
         "wikisearchfront-date-range-from",
         "wikisearchfront-date-range-to",
         "wikisearchfront-clear-all-filters",
-        "wikisearchfront-total-eq",
-        "wikisearchfront-total-gte",
-        "wikisearchfront-total-lte",
+        "wikisearchfront-total",
         "wikisearchfront-less",
         "wikisearchfront-more",
         "wikisearchfront-order",

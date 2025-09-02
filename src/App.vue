@@ -2,7 +2,7 @@
   <div id="app">
     <div
       class="wikisearch"
-      :class="[selectedClass, themeClass, sortClass]"
+      :class="[selectedClass, themeClass]"
     >
       <search-input />
       <pills-selected
@@ -14,13 +14,13 @@
       />
       <div
         class="wikisearch-filters"
-        :class="{ 'wikisearch-filters__hidden' : openFilters }"
+        :class="{ 'wikisearch-filters__hiden' : openFilters }"
       >
         <wikisearch-button
           class="wssearch-button--hide-filters"
           :icon="'close'"
           :type="'icon'"
-          @click="openFilters = true"
+          @click="openFilters = !openFilters"
         />
         <wikisearch-calendar-tools
           v-if="settings.layout === 'calendar'"
@@ -42,17 +42,18 @@
             :settings="facetSettings[name]"
             :buckets="filterObject.buckets || []"
             :label="facetSettings[name].label"
-            :valueLabels="facetSettings[name].valueLabels"
             :name="name"
           />
         </div>
       </div>
       <div class="wikisearch-total">
         <b
+          v-if="state.total > 0"
           class="wikisearch-total__nr"
         >
-          <b>{{ resultCountText }}</b>
+          {{ state.total }}
         </b>
+        {{ $i18n('wikisearchfront-total', state.total) }}
       </div>
       <div class="wikisearch-action">
         <wikisearch-checkbox
@@ -76,7 +77,7 @@
           v-if="showElement"
           :size="state.size"
           :from="state.from"
-          :total="state.total.value"
+          :total="state.total"
           :settings="settings"
         />
       </div>
@@ -85,7 +86,7 @@
         :icon="'settings'"
         :label="'Filters'"
         :type="'progressive'"
-        @click="openFilters = false"
+        @click="openFilters = !openFilters"
       />
     </div>
   </div>
@@ -150,7 +151,7 @@ export default {
     return {
       // eslint-disable-next-line no-undef
       config: mw.config.values.WikiSearchFront.config,
-      openFilters: true,
+      openFilters: false,
     };
   },
   computed: {
@@ -164,9 +165,6 @@ export default {
     selectedClass() {
       return this.state.selected.map(el => `wss-selected--${this.strip(el.key)}--${this.strip(el.value)}`)
         .join(' ');
-    },
-    sortClass() {
-      return `wss-order--${this.strip(this.state.sortOrderType ?? 'score')}--${this.strip(this.state.sortOrder ?? 'desc')}`;
     },
     showElement() {
       return this.settings.layout !== 'calendar';
@@ -207,16 +205,6 @@ export default {
           },
         ]),
       );
-    },
-    resultCountText() {
-      switch (this.state.total.relation) {
-        case 'gte':
-          return this.$i18n('wikisearchfront-total-gte', this.state.total.value);
-        case 'lte':
-          return this.$i18n('wikisearchfront-total-lte', this.state.total.value);
-        default:
-          return this.$i18n('wikisearchfront-total-eq', this.state.total.value);
-      }
     },
   },
   mounted() {
@@ -406,7 +394,7 @@ export default {
       overflow-y: auto;
     }
 
-    .wikisearch-filters.wikisearch-filters__hidden{
+    .wikisearch-filters.wikisearch-filters__hiden{
       display: none;
     }
 

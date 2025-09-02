@@ -57,7 +57,7 @@ export default {
         && el.key === this.name
         && el.type !== 'query'
       ) {
-        this.ask(el.value, 'initial');
+        this.ask(el.value, 'inital');
       }
     });
   },
@@ -92,11 +92,9 @@ export default {
         .filter((x) => x);
 
       Object.entries(data.query.results).forEach(([key, value]) => {
-        let outkey = this.queryData ? value.printouts[this.queryData] : value.fulltext;
+        let outkey = value.printouts[this.queryData];
         if (outkey) {
-          if (Array.isArray(outkey)) {
-            outkey = outkey[0].fulltext || outkey[0];
-          }
+          outkey = outkey[0].fulltext || outkey[0];
           const buck = {
             doc_count: 1,
             key: outkey,
@@ -161,14 +159,14 @@ export default {
     /**
      * @event emited from facet-combobox
      * @param {String} term user typed search term
-     * @param {Boolean} initial initiated on load or on user input
+     * @param {Boolan} initial initiated on load or on user input
      */
-    ask(term, initial) {
+    ask(term, inital) {
       this.pending = true;
       const outputData = this.queryData;
       const outputLabel = this.queryText;
-      const output = outputLabel || initial ? `|?${outputData}|?${outputLabel}` : `|?${outputData}`;
-      const input = outputLabel && !initial ? outputLabel : outputData;
+      const output = outputLabel || inital ? `|?${outputData}|?${outputLabel}` : `|?${outputData}`;
+      const input = outputLabel && !inital ? outputLabel : outputData;
       const askQuery = `${this.query}[[${input}::in:${term}]]${output}`;
       console.log(askQuery);
       const params = {

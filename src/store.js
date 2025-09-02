@@ -336,51 +336,6 @@ function setInitialSelection(state) {
 }
 
 /**
- * The facetSettings contain categories of filters,
- * each containing a valueLabels property.
- * This function splits the valueLabels string which looks like this:
- *
- * "originalLabel1^^newLabel1~~originalLabel2^^newLabel2"
- *
- * and creates an object with the originalLabel as a key and newLabel as a value.
- * It only adds it to the object when a valueLabels property is present.
- *
- * The return object's structure is as follows:
- * {
- *   facetCategory1: {
- *     originalLabel1 (key): newLabel1 (string value),
- *   },
- *  ... etc
- * }
- * @param {Object} facetSettings
- * @returns {Object} valueLabelMap
- */
-function getValueLabelMap(facetSettings) {
-  const valueLabelMap = {};
-
-  Object.keys(facetSettings).forEach((key) => {
-    if (facetSettings[key].valueLabels) {
-      const valueLabelsArray = facetSettings[key].valueLabels.split('~~').map((item) => {
-        const [value, label] = item.split('^^');
-        return { value, label };
-      });
-
-      const valueLabelsObject = {};
-      valueLabelsArray.forEach((item) => {
-        valueLabelsObject[item.value] = item.label;
-      });
-
-      valueLabelMap[key] = valueLabelsObject;
-    }
-  });
-
-  console.log('Facet settings:', facetSettings);
-  console.log('Value label map:', valueLabelMap);
-
-  return valueLabelMap;
-}
-
-/**
  * vuex plugin that runs on all store mutations
  *
  * @param {Object} store vuex store object
@@ -467,7 +422,7 @@ const store = new Vuex.Store({
     selectedResults: [],
     ongoingRequest: undefined,
     selectAllResults: false,
-    sortOrder: 'asc',
+    sortOrder: 'desc',
     sortOrderType: 'score',
     hits: '',
     aggs: '',
@@ -483,7 +438,6 @@ const store = new Vuex.Store({
     realDates: {},
     apiCalls: [],
     renderedTemplates: {},
-    valueLabelMap: getValueLabelMap(mediaWikiValues.WikiSearchFront.config.facetSettings),
   },
   mutations: {
     SET_TEMPLATES(state, templates) {
@@ -605,19 +559,13 @@ const store = new Vuex.Store({
       // eslint-disable-next-line no-undef
       const api = new mw.Api();
 
-      // eslint-disable-next-line no-undef
-      mw.hook('wikisearchfrontent-pre-api-call').fire(actions.params);
-
       // handle api call
       api.post(actions.params).done((data) => {
         // when call does not come form a component it is the WikiSearch api call
         if (!actions.component) {
           commit('SET_FROM_API', {
             hits: JSON.parse(data.result.hits),
-            total: {
-              value: data.result.total?.value ? data.result.total.value : data.result.total,
-              relation: data.result.total?.relation ? data.result.total.relation : 'eq',
-            },
+            total: data.result.total,
             aggs: data.result.aggs,
           });
         } else {
