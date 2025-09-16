@@ -76,7 +76,7 @@
           v-if="showElement"
           :size="state.size"
           :from="state.from"
-          :total="state.total.value"
+          :total="state.total"
           :settings="settings"
         />
       </div>
@@ -211,11 +211,11 @@ export default {
     resultCountText() {
       switch (this.state.total.relation) {
         case 'gte':
-          return this.$i18n('wikisearchfront-total-gte', this.state.total.value);
+          return this.$i18n('wikisearchfront-total-gte', this.state.total);
         case 'lte':
-          return this.$i18n('wikisearchfront-total-lte', this.state.total.value);
+          return this.$i18n('wikisearchfront-total-lte', this.state.total);
         default:
-          return this.$i18n('wikisearchfront-total-eq', this.state.total.value);
+          return this.$i18n('wikisearchfront-total-eq', this.state.total);
       }
     },
   },
