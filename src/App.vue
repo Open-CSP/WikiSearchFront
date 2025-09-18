@@ -209,8 +209,6 @@ export default {
       );
     },
     resultCountText() {
-      console.log('Totals: ', this.state.total);
-
       switch (this.state.total.relation) {
         case 'gte':
           return this.$i18n('wikisearchfront-total-gte', this.state.total.value);
