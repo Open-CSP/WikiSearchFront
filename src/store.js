@@ -615,7 +615,9 @@ const store = new Vuex.Store({
           commit('SET_FROM_API', {
             hits: JSON.parse(data.result.hits),
             total: {
-              value: data.result.total?.value !== null && data.result.total?.value !== undefined ? data.result.total.value : data.result.total,
+              value: data.result.total?.value !== null && data.result.total?.value !== undefined
+                ? data.result.total.value
+                : data.result.total,
               relation: data.result.total?.relation ? data.result.total.relation : 'eq',
             },
             aggs: data.result.aggs,
