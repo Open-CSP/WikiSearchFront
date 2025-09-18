@@ -9597,12 +9597,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=2156d123&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wikisearch",class:[_vm.selectedClass, _vm.themeClass, _vm.sortClass]},[_c('search-input'),(_vm.showElement)?_c('pills-selected'):_vm._e(),(_vm.settings['sort options'] && _vm.showElement)?_c('sort-order',{attrs:{"settings":_vm.settings}}):_vm._e(),_c('div',{staticClass:"wikisearch-filters",class:{ 'wikisearch-filters__hidden' : _vm.openFilters }},[_c('wikisearch-button',{staticClass:"wssearch-button--hide-filters",attrs:{"icon":'close',"type":'icon'},on:{"click":function($event){_vm.openFilters = true}}}),(_vm.settings.layout === 'calendar')?_c('wikisearch-calendar-tools',{attrs:{"outertime":_vm.$store.state.calendarDate}}):_vm._e(),(_vm.state.aggs)?_c('div',{staticClass:"wikisearch-filters__wrapper"},_vm._l((_vm.filters),function(filterObject,name){return _c(filterObject.component,{key:name,tag:"component",attrs:{"translation":_vm.facetSettings[name].translation,"query":_vm.facetSettings[name].query,"query-text":_vm.facetSettings[name].text,"query-data":_vm.facetSettings[name].data,"type":_vm.facetSettings[name].type,"settings":_vm.facetSettings[name],"buckets":filterObject.buckets || [],"label":_vm.facetSettings[name].label,"valueLabels":_vm.facetSettings[name].valueLabels,"name":name}})}),1):_vm._e()],1),_c('div',{staticClass:"wikisearch-total"},[_c('b',{staticClass:"wikisearch-total__nr"},[_c('b',[_vm._v(_vm._s(_vm.resultCountText))])])]),_c('div',{staticClass:"wikisearch-action"},[(_vm.settings.action)?_c('wikisearch-checkbox',{staticClass:"wikisearch-action__checkbox",on:{"change":_vm.selectAll}}):_vm._e(),(_vm.settings.action)?_c('wikisearch-button',{staticClass:"wikisearch-action__button",attrs:{"label":_vm.settings.action.label,"type":_vm.state.selectedResults.length ? 'progressive' : ''},on:{"click":_vm.doAction}}):_vm._e()],1),_c('div',{staticClass:"wikisearch-results"},[_c(_vm.resultDisplay,{tag:"component"}),(_vm.showElement)?_c('wikisearch-pagers',{attrs:{"size":_vm.state.size,"from":_vm.state.from,"total":_vm.state.total,"settings":_vm.settings}}):_vm._e()],1),_c('wikisearch-button',{staticClass:"wssearch-button--show-filters",attrs:{"icon":'settings',"label":'Filters',"type":'progressive'},on:{"click":function($event){_vm.openFilters = false}}})],1)])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9de6a7d2-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=3b7e95c9&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"wikisearch",class:[_vm.selectedClass, _vm.themeClass, _vm.sortClass]},[_c('search-input'),(_vm.showElement)?_c('pills-selected'):_vm._e(),(_vm.settings['sort options'] && _vm.showElement)?_c('sort-order',{attrs:{"settings":_vm.settings}}):_vm._e(),_c('div',{staticClass:"wikisearch-filters",class:{ 'wikisearch-filters__hidden' : _vm.openFilters }},[_c('wikisearch-button',{staticClass:"wssearch-button--hide-filters",attrs:{"icon":'close',"type":'icon'},on:{"click":function($event){_vm.openFilters = true}}}),(_vm.settings.layout === 'calendar')?_c('wikisearch-calendar-tools',{attrs:{"outertime":_vm.$store.state.calendarDate}}):_vm._e(),(_vm.state.aggs)?_c('div',{staticClass:"wikisearch-filters__wrapper"},_vm._l((_vm.filters),function(filterObject,name){return _c(filterObject.component,{key:name,tag:"component",attrs:{"translation":_vm.facetSettings[name].translation,"query":_vm.facetSettings[name].query,"query-text":_vm.facetSettings[name].text,"query-data":_vm.facetSettings[name].data,"type":_vm.facetSettings[name].type,"settings":_vm.facetSettings[name],"buckets":filterObject.buckets || [],"label":_vm.facetSettings[name].label,"valueLabels":_vm.facetSettings[name].valueLabels,"name":name}})}),1):_vm._e()],1),_c('div',{staticClass:"wikisearch-total"},[_c('b',{staticClass:"wikisearch-total__nr"},[_c('b',[_vm._v(_vm._s(_vm.resultCountText))])])]),_c('div',{staticClass:"wikisearch-action"},[(_vm.settings.action)?_c('wikisearch-checkbox',{staticClass:"wikisearch-action__checkbox",on:{"change":_vm.selectAll}}):_vm._e(),(_vm.settings.action)?_c('wikisearch-button',{staticClass:"wikisearch-action__button",attrs:{"label":_vm.settings.action.label,"type":_vm.state.selectedResults.length ? 'progressive' : ''},on:{"click":_vm.doAction}}):_vm._e()],1),_c('div',{staticClass:"wikisearch-results"},[_c(_vm.resultDisplay,{tag:"component"}),(_vm.showElement)?_c('wikisearch-pagers',{attrs:{"size":_vm.state.size,"from":_vm.state.from,"total":_vm.state.total.value,"settings":_vm.settings}}):_vm._e()],1),_c('wikisearch-button',{staticClass:"wssearch-button--show-filters",attrs:{"icon":'settings',"label":'Filters',"type":'progressive'},on:{"click":function($event){_vm.openFilters = false}}})],1)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=2156d123&
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=3b7e95c9&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
 var es_object_keys = __webpack_require__("b64b");
@@ -10573,13 +10573,13 @@ var store_store = new vuex_esm["a" /* default */].Store({
       api.post(actions.params).done(function (data) {
         // when call does not come form a component it is the WikiSearch api call
         if (!actions.component) {
-          var _data$result$total, _data$result$total2;
+          var _data$result$total, _data$result$total2, _data$result$total3;
 
           commit('SET_FROM_API', {
             hits: JSON.parse(data.result.hits),
             total: {
-              value: (_data$result$total = data.result.total) !== null && _data$result$total !== void 0 && _data$result$total.value ? data.result.total.value : data.result.total,
-              relation: (_data$result$total2 = data.result.total) !== null && _data$result$total2 !== void 0 && _data$result$total2.relation ? data.result.total.relation : 'eq'
+              value: ((_data$result$total = data.result.total) === null || _data$result$total === void 0 ? void 0 : _data$result$total.value) !== null && ((_data$result$total2 = data.result.total) === null || _data$result$total2 === void 0 ? void 0 : _data$result$total2.value) !== undefined ? data.result.total.value : data.result.total,
+              relation: (_data$result$total3 = data.result.total) !== null && _data$result$total3 !== void 0 && _data$result$total3.relation ? data.result.total.relation : 'eq'
             },
             aggs: data.result.aggs
           });
@@ -16954,13 +16954,13 @@ var FacetSorted_component = normalizeComponent(
     resultCountText: function resultCountText() {
       switch (this.state.total.relation) {
         case 'gte':
-          return this.$i18n('wikisearchfront-total-gte', this.state.total);
+          return this.$i18n('wikisearchfront-total-gte', this.state.total.value);
 
         case 'lte':
-          return this.$i18n('wikisearchfront-total-lte', this.state.total);
+          return this.$i18n('wikisearchfront-total-lte', this.state.total.value);
 
         default:
-          return this.$i18n('wikisearchfront-total-eq', this.state.total);
+          return this.$i18n('wikisearchfront-total-eq', this.state.total.value);
       }
     }
   },
