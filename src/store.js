@@ -427,6 +427,23 @@ const updateStore = (store) => {
         aggregations: JSON.stringify(state.dates),
       };
 
+      // Add fuzziness
+      // eslint-disable-next-line no-undef
+      if (mediaWikiValues.WikiSearchFront.config.settings['fuzzy search'] === 'true'
+        && params.term.trim().length > 0
+      ) {
+        params.term = params.term.split(' ').join('~ ').trim().concat('~');
+      }
+
+      // // Remove the search term when it is empty in order to avoid getting no results
+      // // eslint-disable-next-line no-undef
+      // if (
+      //   mediaWikiValues.WikiSearchFront.config.settings['search on empty queries'] === 'true'
+      //   && params.term.trim().length === 0
+      // ) {
+      //   delete params.term;
+      // }
+
       // when sort options are configured add them to the parameters
       if (
         mediaWikiValues.WikiSearchFront.config.settings['sort options']
