@@ -1,0 +1,17 @@
+{
+    "wikisearchfront-desc": "Frontend for WikiSearch extension",
+    "wikisearchfront-clear-all-filters": "Clear all filters",
+    "wikisearchfront-total-eq": "{{PLURAL:$1|$1 Ergebnis|$1 Ergebnisse|0=Keine Ergebnisse}}",
+    "wikisearchfront-total-gte": "Mehr als {{PLURAL:$1|$1 Ergebnis|$1 Ergebnisse}}",
+    "wikisearchfront-total-lte": "Weiniger als {{PLURAL:$1|$1 Ergebnis|$1 Ergebnisse}}",
+    "wikisearchfront-date-range-from": "Datei von",
+    "wikisearchfront-date-range-to": "Datei bis",
+    "wikisearchfront-more": "Mehr anzeigen",
+    "wikisearchfront-less": "Weiniger anzeigen",
+    "wikisearchfront-order": "Sortieren nach",
+    "wikisearchfront-score": "Relevanz",
+    "wikisearchfront-false": "Falsch",
+    "wikisearchfront-true": "Wahr",
+    "wikisearchfront-all": "Alle",
+    "wikisearchfront-page": " / Seite"
+}
