@@ -1,6 +1,6 @@
 {
-    "wikisearchfront-desc": "Frontend for WikiSearch extension",
-    "wikisearchfront-clear-all-filters": "Clear all filters",
+    "wikisearchfront-desc": "Frontend für WikiSearch extension",
+    "wikisearchfront-clear-all-filters": "Alle Filter löschen",
     "wikisearchfront-total-eq": "{{PLURAL:$1|$1 Ergebnis|$1 Ergebnisse|0=Keine Ergebnisse}}",
     "wikisearchfront-total-gte": "Mehr als {{PLURAL:$1|$1 Ergebnis|$1 Ergebnisse}}",
     "wikisearchfront-total-lte": "Weiniger als {{PLURAL:$1|$1 Ergebnis|$1 Ergebnisse}}",
