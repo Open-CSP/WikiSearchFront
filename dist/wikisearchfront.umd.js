@@ -9852,6 +9852,9 @@ var es_regexp_to_string = __webpack_require__("25f0");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.json.stringify.js
 var es_json_stringify = __webpack_require__("e9c4");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
+var es_string_trim = __webpack_require__("498a");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.sort.js
 var es_array_sort = __webpack_require__("4e82");
 
@@ -9887,9 +9890,6 @@ function dateUtils_readableDate(date) {
 }
 
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
-var es_string_trim = __webpack_require__("498a");
-
 // CONCATENATED MODULE: ./src/utilities/elastic.js
 
 
@@ -9899,6 +9899,7 @@ var prepareQuery = function prepareQuery(term) {
 
 /* harmony default export */ var elastic = (prepareQuery);
 // CONCATENATED MODULE: ./src/store.js
+
 
 
 
@@ -10389,7 +10390,13 @@ var store_updateStore = function updateStore(store) {
         limit: state.size,
         pageid: mediaWikiValues.wgArticleId,
         aggregations: JSON.stringify(state.dates)
-      }; // when sort options are configured add them to the parameters
+      }; // Add fuzziness
+      // eslint-disable-next-line no-undef
+
+      if (mediaWikiValues.WikiSearchFront.config.settings.fuzzy === 'true' && params.term.trim().length > 0) {
+        params.term = params.term.split(' ').join('~ ').trim().concat('~');
+      } // when sort options are configured add them to the parameters
+
 
       if (mediaWikiValues.WikiSearchFront.config.settings['sort options'] && state.sortOrderType !== 'score') {
         params.sortings = JSON.stringify([{
