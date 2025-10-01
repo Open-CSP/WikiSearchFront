@@ -165,8 +165,8 @@ class WikiSearchParams {
 			2
 		);
 
-		$key = $parameter_options[ 0 ] ?? '';
-		$value = $parameter_options[ 1 ] ?? '';
+		$key = trim($parameter_options[ 0 ] ?? '');
+		$value = trim($parameter_options[ 1 ] ?? '');
 
 		switch ( $key ) {
 			case "size":
