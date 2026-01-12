@@ -252,8 +252,8 @@ export default {
         const dateKey = calendarSettings && calendarSettings.key ? `P:${calendarSettings.key}` : 'P:29';
         if (
           this.data[source][dateKey]
-            || this.data[source][dateKey].dat_raw
-            || this.data[source][dateKey].dat_raw[0]
+            && this.data[source][dateKey].dat_raw
+            && this.data[source][dateKey].dat_raw[0]
         ) {
           const [, year, month, day] = this.data[source][dateKey].dat_raw[0].split('/');
           outData.date = `${year}-${month}-${day}`;
