@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import { strip } from '../../utilities/stringUtils';
 import WikisearchResultProperty from '../ResultProperty.vue';
 
@@ -55,14 +56,15 @@ export default {
       dialog: '',
     };
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   computed: {
     /**
      * @returns {Object} moment date object
      */
     time() {
-      // this console log is a hack, maybe use a watcher instead?
-      console.log(this.$store.state.selected);
-      return this.$store.state.calendarDate || this.date;
+      return this.store.calendarDate || this.date;
     },
     /**
      * @returns {Object} settings for how and what result properties to show
@@ -126,7 +128,7 @@ export default {
      */
     getHit(index) {
       const source = '_source';
-      const input = this.$store.state.hits || [];
+      const input = this.store.hits || [];
       const output = input.filter(hit => {
         if (
           !hit[source][this.computedPropertyKey]

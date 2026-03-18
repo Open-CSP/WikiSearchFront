@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import FacetCheckbox from './FacetCheckbox.vue';
 import { strip } from '../../utilities/stringUtils';
 
@@ -69,6 +70,9 @@ export default {
       facetSettings: mw.config.values.WikiSearchFront.config.facetSettings,
     };
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   computed: {
     /**
      * @returns {String} active class
@@ -80,8 +84,7 @@ export default {
      * @returns {Number} 0 = false
      */
     isSelected() {
-      const { selected } = this.$store.state;
-      return selected.filter((el) => el.value === this.name).length;
+      return this.store.selected.filter((el) => el.value === this.name).length;
     },
     /**
      * @returns {Number} max for input slider
@@ -95,12 +98,11 @@ export default {
     modalVal2: {
       set(val) {
         this.slideVal2 = val;
-        const { selected } = this.$store.state;
-        Object.keys(selected).forEach((_, i) => {
-          if (selected && selected[i] && selected[i].value === this.name) {
-            selected[i].range = { gte: this.slideVal, lte: this.slideVal2 };
-
-            this.$store.commit('SET_SELECTED', selected);
+        const selected = [...this.store.selected];
+        selected.forEach((sel, i) => {
+          if (sel && sel.value === this.name) {
+            selected[i] = { ...sel, range: { gte: this.slideVal, lte: this.slideVal2 } };
+            this.store.setSelected(selected);
           }
         });
       },
@@ -114,12 +116,11 @@ export default {
     modalVal: {
       set(val) {
         this.slideVal = val;
-        const { selected } = this.$store.state;
-        Object.keys(selected).forEach((_, i) => {
-          if (selected && selected[i] && selected[i].value === this.name) {
-            selected[i].range = { gte: this.slideVal, lte: this.slideVal2 };
-
-            this.$store.commit('SET_SELECTED', selected);
+        const selected = [...this.store.selected];
+        selected.forEach((sel, i) => {
+          if (sel && sel.value === this.name) {
+            selected[i] = { ...sel, range: { gte: this.slideVal, lte: this.slideVal2 } };
+            this.store.setSelected(selected);
           }
         });
       },
@@ -242,12 +243,12 @@ export default {
    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
-.slide-enter-to, .slide-leave {
+.slide-enter-to, .slide-leave-from {
    max-height: 100px;
    overflow: hidden;
 }
 
-.slide-enter, .slide-leave-to {
+.slide-enter-from, .slide-leave-to {
    overflow: hidden;
    max-height: 0;
 }

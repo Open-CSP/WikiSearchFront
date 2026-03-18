@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../store/index';
 import WikisearchPill from './Pill.vue';
 
 export default {
@@ -28,31 +29,31 @@ export default {
   components: {
     WikisearchPill,
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   computed: {
-    /**
-     * @returns {Array} selected filters
-     */
     selected() {
-      const [selected, labelMap] = [this.$store.state.selected, this.$store.state.valueLabelMap];
-      selected.forEach((item, i) => {
-        if (labelMap[item.key]) {
-          selected[i].name = labelMap[item.key][item.value];
+      const { selected, valueLabelMap } = this.store;
+      selected.forEach( ( item, i ) => {
+        if ( valueLabelMap[ item.key ] ) {
+          selected[ i ].name = valueLabelMap[ item.key ][ item.value ];
         }
-      });
-      return this.$store.state.selected;
+      } );
+      return this.store.selected;
     },
   },
   methods: {
-    deselect(item) {
-      const updatedSelection = this.selected.filter(ob => ob !== item);
-      this.$store.commit('SET_SELECTED', updatedSelection);
+    deselect( item ) {
+      const updatedSelection = this.selected.filter( ( ob ) => ob !== item );
+      this.store.setSelected( updatedSelection );
     },
     clearFilters() {
       // eslint-disable-next-line no-undef
-      if (mw.config.values.WikiSearchFront.config.settings.clear) {
-        this.$store.commit('CLEAR_ALL');
+      if ( mw.config.values.WikiSearchFront.config.settings.clear ) {
+        this.store.clearAll();
       } else {
-        this.$store.commit('SET_SELECTED', []);
+        this.store.setSelected( [] );
       }
     },
   },

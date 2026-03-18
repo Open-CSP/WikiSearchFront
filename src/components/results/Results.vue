@@ -19,7 +19,7 @@
     </div>
     <component
       :is="config.settings.title.wrap ? 'a': 'div'"
-      v-for="(hit, index) in $store.state.hits"
+      v-for="(hit, index) in store.hits"
       :key="'result-item--' + index"
       class="wikisearch-result__item"
       :href="config.settings.title.wrap ? getHref(hit) : false"
@@ -36,12 +36,16 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import WikisearchResultProperty from '../ResultProperty.vue';
 
 export default {
   name: 'WikisearchResults',
   components: {
     WikisearchResultProperty,
+  },
+  setup() {
+    return { store: useSearchStore() };
   },
   data() {
     return {
@@ -86,8 +90,8 @@ export default {
         this.config.settings.title.display === 'pdflink'
           || (this.config.hitSettings.$title && this.config.hitSettings.$title.display === 'pdflink')
       ) {
-        const snippet = this.$store.state.term
-          ? `&snippet=${encodeURIComponent(this.$store.state.term)}`
+        const snippet = this.store.term
+          ? `&snippet=${encodeURIComponent(this.store.term)}`
           : '';
 
         return `${this.articlePath}/Pdf_viewer?pdf=${encodeURIComponent(hit[source].subject.title.replaceAll(' ', '_'))}${snippet}`;

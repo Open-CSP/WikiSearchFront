@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import { useSearchStore } from '../../store/index';
 import WikisearchCheckbox from '../Checkbox.vue';
 import { strip } from '../../utilities/stringUtils';
 
@@ -48,11 +48,13 @@ export default {
       default: 0,
     },
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   computed: {
     checked() {
       let found = false;
-      const updatedSelection = this.$store.state.selected;
-      updatedSelection.forEach(el => {
+      this.store.selected.forEach(el => {
         if (el.key === this.val.key && el.value === this.val.value) {
           found = true;
         }
@@ -67,10 +69,10 @@ export default {
      */
     modelSelected: {
       set(val) {
-        this.$store.commit('SET_SELECTED', val);
+        this.store.setSelected(val);
       },
       get() {
-        return this.$store.state.selected;
+        return this.store.selected;
       },
     },
     /**
@@ -78,7 +80,7 @@ export default {
      */
     labelClass() {
       let selectedClass = '';
-      const { selected } = this.$store.state;
+      const { selected } = this.store;
       let keyValue = this.agg.key_as_string ? this.agg.key_as_string : this.agg.key;
 
       const matches = selected.filter(el => el.value === this.agg.key
@@ -135,7 +137,6 @@ export default {
       let out = '';
       const keyValue = this.agg.key_as_string ? this.agg.key_as_string : this.agg.key;
       if (this.agg.to) {
-        console.log('hhh', this.agg);
         out = {
           value: this.agg.key,
           key: this.name,
@@ -164,7 +165,7 @@ export default {
     },
   },
   mounted() {
-    const { selected } = this.$store.state;
+    const { selected } = this.store;
     if (selected.length > 0 && this.agg.key_as_string) {
       selected.forEach((element, i) => {
         if (element.key === this.name && !selected[i].name) {
@@ -172,7 +173,7 @@ export default {
           selected[i].name = mw
             .message(`wikisearchfront-${selected[i].value}`)
             .text();
-          Vue.set(this.$store.state.selected, i, selected[i]);
+          this.store.selected[i] = selected[i];
         }
       });
     }
@@ -181,8 +182,7 @@ export default {
     updateSelection(item) {
       const selection = [];
       let found = false;
-      const updatedSelection = this.$store.state.selected;
-      updatedSelection.forEach(el => {
+      this.store.selected.forEach(el => {
         if (el.key === item.key && el.value === item.value) {
           found = true;
         } else {
@@ -192,7 +192,7 @@ export default {
       if (!found) {
         selection.push(item);
       }
-      this.$store.commit('SET_SELECTED', selection);
+      this.store.setSelected(selection);
     },
   },
 };

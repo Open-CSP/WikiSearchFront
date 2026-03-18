@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../store/index';
 import WikisearchInput from './Input.vue';
 import WikisearchButton from './Button.vue';
 
@@ -73,6 +74,9 @@ export default {
       type: String,
       default: 'neutral',
     },
+  },
+  setup() {
+    return { store: useSearchStore() };
   },
   data() {
     return {
@@ -126,7 +130,7 @@ export default {
       api.postWithToken('csrf', params).done(() => {
         that.$emit('close');
         that.pending = false;
-        that.$store.commit('SET_SELECTED', that.$store.state.selected);
+        that.store.setSelected(that.store.selected);
       });
     },
     apiResult(data) {
@@ -141,13 +145,7 @@ export default {
         format: 'json',
         formatversion: 2,
       };
-      this.$store.dispatch('doApiCall', {
-        actions:
-          {
-            params,
-            component: this,
-          },
-      });
+      this.store.doApiCall({ params, component: this });
     },
   },
 };

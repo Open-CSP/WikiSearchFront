@@ -7,10 +7,14 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import prepareQuery from '../../utilities/elastic';
 
 export default {
   name: 'WikisearchResultsTemplate',
+  setup() {
+    return { store: useSearchStore() };
+  },
   data() {
     return {
       // eslint-disable-next-line no-undef
@@ -23,7 +27,7 @@ export default {
   },
   computed: {
     hits() {
-      return this.$store.state.hits;
+      return this.store.hits;
     },
     parse() {
       let wikitext = '';
@@ -32,8 +36,8 @@ export default {
         wikitext += this.config.settings.intro;
       }
 
-      if (Array.isArray(this.$store.state.hits)) {
-        this.$store.state.hits.forEach(data => {
+      if (Array.isArray(this.store.hits)) {
+        this.store.hits.forEach(data => {
           wikitext += `{{${this.config.settings.template}`;
           Object.entries(this.computedHitSettings).forEach(([key, value]) => {
             const text = key.charAt(0) === '$'
@@ -44,7 +48,7 @@ export default {
               ? `|${text}`
               : '';
           });
-          wikitext += `|$term=${prepareQuery(this.$store.state.term)}`;
+          wikitext += `|$term=${prepareQuery(this.store.term)}`;
           wikitext += '}}';
         });
       }
@@ -79,7 +83,6 @@ export default {
   },
   watch: {
     hits() {
-      console.log('hits changed, render template');
       this.parseTemplate();
     },
   },
@@ -186,13 +189,7 @@ export default {
         disablelimitreport: true,
         disabletoc: true,
       };
-      this.$store.dispatch('doApiCall', {
-        actions:
-            {
-              params,
-              component: this,
-            },
-      });
+      this.store.doApiCall({ params, component: this });
     },
   },
 };

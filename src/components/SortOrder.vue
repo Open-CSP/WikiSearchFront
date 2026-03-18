@@ -6,9 +6,9 @@
     <wikisearch-dropdown
       :items="items"
       :placeholder="'Select an item'"
-      :value="sortOrderType == 'score'
-        ? {label: $i18n('wikisearchfront-score'), data: 'score' }
-        : {label: sortOrderType, data: sortOrderType}"
+      :value="sortOrderType === 'score'
+        ? { label: $i18n('wikisearchfront-score'), data: 'score' }
+        : { label: sortOrderType, data: sortOrderType }"
       @select="setSort"
     />
     <wikisearch-button
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../store/index';
 import WikisearchDropdown from './Dropdown.vue';
 import WikisearchButton from './Button.vue';
 
@@ -37,45 +38,38 @@ export default {
       },
     },
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   data() {
     return {
-      options: this.settings['sort options'],
+      options: this.settings[ 'sort options' ],
     };
   },
   computed: {
     items() {
-      const items = Object.entries(this.options)
-        .map(([key, order]) => ({ label: order.label || key, data: key }));
-      items.unshift({ label: this.$i18n('wikisearchfront-score'), data: 'score' });
+      const items = Object.entries( this.options )
+        .map( ( [ key, order ] ) => ( { label: order.label || key, data: key } ) );
+      items.unshift( { label: this.$i18n( 'wikisearchfront-score' ), data: 'score' } );
       return items;
     },
-    /**
-     * @returns {String} sort order type title
-     */
     sortOrderType() {
-      const option = this.$store.state.sortOrderType;
-      const type = this.options[option];
+      const option = this.store.sortOrderType;
+      const type = this.options[ option ];
       return type && type.label ? type.label : option;
     },
-    /**
-     * @returns {String} active order
-     */
     sortOrder() {
-      return this.$store.state.sortOrder;
+      return this.store.sortOrder;
     },
   },
   methods: {
-    setSort(item) {
-      this.$store.commit('SET_ORDERTYPE', item.data);
+    setSort( item ) {
+      this.store.setOrderType( item.data );
     },
-    /**
-     * @event click change order
-     * @returns {String} order
-     */
     setOrder() {
       return this.sortOrder === 'desc'
-        ? this.$store.commit('SET_ORDER', 'asc')
-        : this.$store.commit('SET_ORDER', 'desc');
+        ? this.store.setOrder( 'asc' )
+        : this.store.setOrder( 'desc' );
     },
   },
 };

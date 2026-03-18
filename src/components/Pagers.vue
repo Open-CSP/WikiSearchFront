@@ -4,7 +4,7 @@
       v-if="settings['size options']"
       class="wikisearch-pager__dropdown"
       :items="options"
-      :value="size == 999
+      :value="size === 999
         ? { label: $i18n('wikisearchfront-all'), data: 999 }
         : { label: size + $i18n('wikisearchfront-page'), data: size }"
       @select="changeSize"
@@ -60,7 +60,6 @@
           {{ last }}
         </span>
       </span>
-
       <span
         class="wikisearch-pager__item  wikisearch-pager__item--forward"
         :class="showForward"
@@ -76,6 +75,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../store/index';
 import WikisearchDropdown from './Dropdown.vue';
 import WikisearchIcon from './Icon.vue';
 
@@ -105,65 +105,50 @@ export default {
       },
     },
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   computed: {
-    /**
-     * Options for size dropdown
-     * @returns {Object[]} options
-     * @returns {String} options[].label
-     * @returns {Number} options[].data
-     */
     options() {
-      const options = this.settings['size options']
-        .map((option) => ({ label: option + this.$i18n('wikisearchfront-page'), data: option }));
-      options.push({ label: this.$i18n('wikisearchfront-all'), data: 999 });
+      const options = this.settings[ 'size options' ]
+        .map( ( option ) => ( { label: option + this.$i18n( 'wikisearchfront-page' ), data: option } ) );
+      options.push( { label: this.$i18n( 'wikisearchfront-all' ), data: 999 } );
       return options;
     },
-    /**
-     * @returns {Number} last pager number
-     */
     last() {
-      return Math.ceil(this.total / this.size);
+      return Math.ceil( this.total / this.size );
     },
-    /**
-     * @returns {String} class for hiding back button
-     */
     showBack() {
       return this.from < 1 ? 'wikisearch-pager__item--hide' : '';
     },
-    /**
-     * @returns {String} class for hiding forward button
-     */
     showForward() {
       return this.from + this.size >= this.total ? 'wikisearch-pager__item--hide' : '';
     },
-    /**
-     * @returns {Array|Boolean} pagers or false
-     */
     pagers() {
-      if (this.total >= this.size) {
+      if ( this.total >= this.size ) {
         const pages = [];
         let i;
-        const step = Math.ceil(this.total / this.size);
+        const step = Math.ceil( this.total / this.size );
 
-        if (step > 5) {
-          if (this.from / this.size < 3) {
-            for (i = 1; i < 4; i += 1) {
-              pages.push(i + 1);
+        if ( step > 5 ) {
+          if ( this.from / this.size < 3 ) {
+            for ( i = 1; i < 4; i += 1 ) {
+              pages.push( i + 1 );
             }
-          } else if (this.from / this.size > this.last - 4) {
-            for (i = this.last - 4; i < this.last; i += 1) {
-              pages.push(i);
+          } else if ( this.from / this.size > this.last - 4 ) {
+            for ( i = this.last - 4; i < this.last; i += 1 ) {
+              pages.push( i );
             }
           } else {
-            pages.push(this.from / this.size);
-            pages.push(this.from / this.size + 1);
-            pages.push(this.from / this.size + 2);
+            pages.push( this.from / this.size );
+            pages.push( this.from / this.size + 1 );
+            pages.push( this.from / this.size + 2 );
           }
           return pages;
         }
-        for (i = 0; i < step; i += 1) {
-          if (i + 1 > 1 && i + 1 < this.last) {
-            pages.push(i + 1);
+        for ( i = 0; i < step; i += 1 ) {
+          if ( i + 1 > 1 && i + 1 < this.last ) {
+            pages.push( i + 1 );
           }
         }
         return pages;
@@ -172,46 +157,23 @@ export default {
     },
   },
   methods: {
-    /**
-     * Set pager size
-     * @param {Object} item
-     * @param {String} item.label
-     * @param {Number} item.data
-     */
-    changeSize(item) {
-      this.$store.commit('SET_SIZE', parseInt(item.data, 10));
+    changeSize( item ) {
+      this.store.setSize( parseInt( item.data, 10 ) );
     },
-    /**
-     * @param {Number} pager number
-     * @returns {String|Boolean} active class or false
-     */
-    activePage(pager) {
-      if (pager === this.from / this.size + 1) {
+    activePage( pager ) {
+      if ( pager === this.from / this.size + 1 ) {
         return 'active';
       }
       return false;
     },
-    /**
-     * @event click back button
-     */
     back() {
-      const from = this.from - this.size;
-      this.$store.commit('SET_FROM', from);
+      this.store.setFrom( this.from - this.size );
     },
-    /**
-     * @event click pager
-     * @param {Event} e the click event
-     */
-    move(e) {
-      const from = Math.ceil(this.size * (e.target.innerText - 1));
-      this.$store.commit('SET_FROM', from);
+    move( e ) {
+      this.store.setFrom( Math.ceil( this.size * ( e.target.innerText - 1 ) ) );
     },
-    /**
-     * @event click forward button
-     */
     next() {
-      const from = this.from + this.size;
-      this.$store.commit('SET_FROM', from);
+      this.store.setFrom( this.from + this.size );
     },
   },
 };

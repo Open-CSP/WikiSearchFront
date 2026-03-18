@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import { strip } from '../../utilities/stringUtils';
 import WikisearchInput from '../Input.vue';
 
@@ -39,6 +40,9 @@ export default {
       type: String,
       default: '',
     },
+  },
+  setup() {
+    return { store: useSearchStore() };
   },
   data() {
     return {
@@ -71,7 +75,7 @@ export default {
         if (this.termClear || this.userHasTyped) {
           return this.termClear;
         }
-        const valueFromSelection = this.$store.state.selected.filter(el => el.key === this.name);
+        const valueFromSelection = this.store.selected.filter(el => el.key === this.name);
         return valueFromSelection.length ? valueFromSelection[0].value : '';
       },
     },
@@ -84,8 +88,7 @@ export default {
      * @returns {Array} selections from this filter group
      */
     filterSelected() {
-      const { selected } = this.$store.state;
-      return selected.filter(el => el.key !== this.name);
+      return this.store.selected.filter(el => el.key !== this.name);
     },
     /**
      * @event keyup.enter search for user typed term
@@ -95,7 +98,7 @@ export default {
       if (this.termTyped) {
         newSelected.push({ key: this.name, value: this.termTyped, type: 'query' });
       }
-      this.$store.commit('SET_SELECTED', newSelected);
+      this.store.setSelected(newSelected);
     },
     /**
      * clear user typed serach term
@@ -103,7 +106,7 @@ export default {
     clearTerm() {
       const newSelected = this.filterSelected();
       this.termTyped = '';
-      this.$store.commit('SET_SELECTED', newSelected);
+      this.store.setSelected(newSelected);
     },
   },
 };

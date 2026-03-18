@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import { strip } from '../../utilities/stringUtils';
 import WikisearchResultProperty from '../ResultProperty.vue';
 import WikisearchButton from '../Button.vue';
@@ -84,6 +85,9 @@ export default {
       dialog: '',
     };
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   computed: {
     /**
      * @returns {String} classes for layout and weekend
@@ -101,9 +105,7 @@ export default {
      * @returns {Object} moment date object
      */
     time() {
-      // this console log is a hack, maybe use a watcher instead?
-      console.log(this.$store.state.selected);
-      return this.$store.state.calendarDate || this.date;
+      return this.store.calendarDate || this.date;
     },
     /**
      * @returns {Array} of weeks with days as moment objects
@@ -212,7 +214,7 @@ export default {
      */
     getHit(date) {
       const source = '_source';
-      const input = this.$store.state.hits || [];
+      const input = this.store.hits || [];
       const output = input.filter(hit => {
         if (
           !hit[source][this.computedPropertyKey]

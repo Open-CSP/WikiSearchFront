@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import FacetCheckbox from './FacetCheckbox.vue';
 import WikisearchButton from '../Button.vue';
 
@@ -98,6 +99,9 @@ export default {
       facetSize: mw.config.values.WikiSearchFront.config.settings.facets,
       translations: '',
     };
+  },
+  setup() {
+    return { store: useSearchStore() };
   },
   computed: {
     /**
@@ -142,13 +146,7 @@ export default {
       format: 'json',
       formatversion: 2,
     };
-    this.$store.dispatch('doApiCall', {
-      actions:
-        {
-          params,
-          component: this,
-        },
-    });
+    this.store.doApiCall({ params, component: this });
   },
   methods: {
     /**

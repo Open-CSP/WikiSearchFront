@@ -11,8 +11,7 @@
 </template>
 
 <script>
-// import Vue from 'vue';
-import { getSelection } from '../../store';
+import { useSearchStore, getSelection } from '../../store/index';
 import FacetCombobox from './FacetCombobox.vue';
 import prepareQuery from '../../utilities/elastic';
 
@@ -39,9 +38,11 @@ export default {
       facetSettings: mw.config.values.WikiSearchFront.config.facetSettings,
     };
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   mounted() {
-    const { selected } = this.$store.state;
-    selected.forEach((el) => {
+    this.store.selected.forEach((el) => {
       if (
         el.key
         && el.key === this.name
@@ -73,8 +74,7 @@ export default {
         this.facetSettings[this.name]
         && this.facetSettings[this.name].search
       ) {
-        const selection = this.$store.state.selected;
-        const newSelection = selection.filter(selected => selected.key !== this.name);
+        const newSelection = this.store.selected.filter(selected => selected.key !== this.name);
         if (term) {
           this.buckets.push({
             key: term,
@@ -84,7 +84,7 @@ export default {
           });
           newSelection.push({ key: this.name, value: term, type: 'query' });
         }
-        this.$store.commit('SET_SELECTED', newSelection);
+        this.store.setSelected(newSelection);
       }
     },
     /**
@@ -99,20 +99,14 @@ export default {
         meta: 'WikiSearchCombobox',
         // eslint-disable-next-line no-undef
         pageid: mw.config.values.wgArticleId,
-        filter: JSON.stringify(getSelection(this.$store.state)),
-        search_term: prepareQuery(this.$store.state.term),
+        filter: JSON.stringify(getSelection(this.store)),
+        search_term: prepareQuery(this.store.term),
         property: this.name,
         term: prepareQuery(term),
         format: 'json',
         formatversion: 2,
       };
-      this.$store.dispatch('doApiCall', {
-        actions:
-          {
-            params,
-            component: this,
-          },
-      });
+      this.store.doApiCall({ params, component: this });
     },
   },
 };

@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import { useSearchStore } from '../../store/index';
 import FacetCheckbox from './FacetCheckbox.vue';
 import WikisearchButton from '../Button.vue';
 import WikisearchDateInput from '../DateInput.vue';
@@ -128,6 +128,9 @@ export default {
       },
     };
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   computed: {
     customDateRangeLabel() {
       const format = 'D MMM YYYY';
@@ -169,7 +172,7 @@ export default {
     },
   },
   mounted() {
-    const { selected, realDates } = this.$store.state;
+    const { selected, realDates } = this.store;
 
     const isSelected = selected.filter((item) => (
       item.key === this.name
@@ -199,13 +202,7 @@ export default {
         format: 'json',
         formatversion: 2,
       };
-      this.$store.dispatch('doApiCall', {
-        actions:
-          {
-            params,
-            component: this,
-          },
-      });
+      this.store.doApiCall({ params, component: this });
     } else {
       this.organize();
     }
@@ -218,7 +215,7 @@ export default {
       return createDate(value);
     },
     setCustomDate(value, type) {
-      const { selected, realDates } = this.$store.state;
+      const { selected, realDates } = this.store;
       this.customDates[type] = value.format('YYYY-MM-DD');
 
       const realdatesUpdated = {
@@ -226,7 +223,7 @@ export default {
         customrange: this.customDates,
       };
 
-      this.$store.commit('SET_REAL_DATES', realdatesUpdated);
+      this.store.setRealDates(realdatesUpdated);
 
       const isSelected = selected.filter((item) => item.key === this.name);
 
@@ -244,7 +241,7 @@ export default {
 
             } : item));
 
-        this.$store.commit('SET_SELECTED', selectedUpdated);
+        this.store.setSelected(selectedUpdated);
       }
     },
     /**
@@ -261,7 +258,7 @@ export default {
      */
     organize() {
       let organizedBuckets = [];
-      const { selected } = this.$store.state;
+      const { selected } = this.store;
 
       // check if buckets are an array, if not create array from the object
       organizedBuckets = Array.isArray(this.buckets)
@@ -326,7 +323,6 @@ export default {
             && transKey.printouts[this.translation]
           ) {
             if (transKey.printouts[this.translation][0].fulltext) {
-              console.log('translation:', this.translation);
               organizedBuckets[i].name = transKey.printouts[this.translation][0].fulltext;
             } else {
               [organizedBuckets[i].name] = transKey.printouts[this.translation];
@@ -350,7 +346,7 @@ export default {
               } else {
                 [selected[i].name] = transValue.printouts[this.translation];
               }
-              Vue.set(this.$store.state.selected, i, selected[i]);
+              this.store.selected[i] = selected[i];
             }
           }
           const value = this.config.facetSettings[selected[i].key]
@@ -359,7 +355,7 @@ export default {
             const { valueLabel } = this.config.facetSettings[selected[i].key];
             selected[i].name = valueLabel;
           }
-          Vue.set(this.$store.state.selected, i, selected[i]);
+          this.store.selected[i] = selected[i];
         });
         this.fired = true;
       } else {
@@ -367,8 +363,8 @@ export default {
       }
 
       // If valueLabels are set, replace the original labels
-      if (this.$store.state.valueLabelMap) {
-        const labelMap = this.$store.state.valueLabelMap;
+      if (this.store.valueLabelMap) {
+        const labelMap = this.store.valueLabelMap;
         if (labelMap[this.name]) {
           organizedBuckets.forEach((bucket, i) => {
             organizedBuckets[i].name = labelMap[this.name][bucket.key];

@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../store/index';
 import WikisearchButton from './Button.vue';
 import WikisearchDropdown from './Dropdown.vue';
 
@@ -50,6 +51,9 @@ export default {
         return {};
       },
     },
+  },
+  setup() {
+    return { store: useSearchStore() };
   },
   data() {
     return {
@@ -70,8 +74,10 @@ export default {
         : 'year';
     },
     time() {
-      console.log(this.change);
-      return this.$store.state.calendarDate || this.date;
+      // Accessing this.change forces Vue to track the dependency so date updates propagate
+      // eslint-disable-next-line no-unused-expressions
+      this.change;
+      return this.store.calendarDate || this.date;
     },
     yearValue() {
       const year = parseInt(this.time.format('YYYY'), 10);
@@ -102,25 +108,24 @@ export default {
     },
   },
   mounted() {
-    console.log('mounted', this.date);
     this.commitRange(this.date);
   },
   methods: {
     onMonthSelect(e) {
       this.date = this.time.set('month', e.data);
-      this.$store.commit('SET_CALENDAR_DATE', this.date);
+      this.store.setCalendarDate(this.date);
       this.change += 1;
     },
     onYearSelect(e) {
       this.date = this.time.set('year', e.data);
-      this.$store.commit('SET_CALENDAR_DATE', this.date);
+      this.store.setCalendarDate(this.date);
       this.change += 1;
     },
     changeDate(number) {
       this.date = this.view === 'year'
         ? this.time.add(number, 'years')
         : this.time.add(number, 'months');
-      this.$store.commit('SET_CALENDAR_DATE', this.date);
+      this.store.setCalendarDate(this.date);
       this.change += 1;
     },
 
@@ -139,17 +144,15 @@ export default {
           lte: this.julian(endDay),
         },
       };
-      const { realDates } = this.$store.state;
+      const realDates = { ...this.store.realDates };
       realDates.Calendar = {
         from: startDay.format('YYYY-MM-DD'),
         to: endDay.format('YYYY-MM-DD'),
       };
-      this.$store.commit('SET_REAL_DATES', realDates);
-      console.log(ob);
-      const selected = this.$store.state.selected.filter(e => e.key !== this.computedPropertyKey && e.value !== 'Calendar');
+      this.store.setRealDates(realDates);
+      const selected = this.store.selected.filter(e => e.key !== this.computedPropertyKey && e.value !== 'Calendar');
       selected.push(ob);
-      this.$store.commit('SET_SELECTED', selected);
-      console.log(selected);
+      this.store.setSelected(selected);
     },
     julian(date) {
       return parseInt(date / 86400000 + 2440587.5, 10);

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import { useSearchStore } from '../../store/index';
 import FacetCombobox from './FacetCombobox.vue';
 
 export default {
@@ -49,9 +49,11 @@ export default {
       facetSettings: mw.config.values.WikiSearchFront.config.facetSettings,
     };
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   mounted() {
-    const { selected } = this.$store.state;
-    selected.forEach((el) => {
+    this.store.selected.forEach((el) => {
       if (
         el.key
         && el.key === this.name
@@ -72,7 +74,7 @@ export default {
       this.pending = false;
       const outputLabel = this.queryText;
       const alreadySelected = [];
-      const { selected } = this.$store.state;
+      const { selected } = this.store;
       const outputBuckets = selected
         .map((el) => {
           let outputSelected = false;
@@ -116,7 +118,7 @@ export default {
                 if (el.type === 'query') {
                   selected[i].type = 'query';
                 }
-                Vue.set(this.$store.state.selected, i, selected[i]);
+                this.store.selected[i] = selected[i];
                 if (outputBuckets[i]) {
                   outputBuckets[i].name = buck.name;
                 }
@@ -129,7 +131,6 @@ export default {
         }
       });
       if (outputBuckets.length > 0) {
-        console.log(outputBuckets);
         this.buckets = outputBuckets;
       } else {
         this.buckets = [{ doc_count: 1, key: '', show: 'no' }];
@@ -144,8 +145,7 @@ export default {
         this.facetSettings[this.name]
         && this.facetSettings[this.name].search
       ) {
-        const selection = this.$store.state.selected;
-        const newSelection = selection.filter(selected => selected.key !== this.name);
+        const newSelection = this.store.selected.filter(selected => selected.key !== this.name);
         if (term) {
           this.buckets.push({
             key: term,
@@ -155,7 +155,7 @@ export default {
           });
           newSelection.push({ key: this.name, value: term, type: 'query' });
         }
-        this.$store.commit('SET_SELECTED', newSelection);
+        this.store.setSelected(newSelection);
       }
     },
     /**
@@ -170,20 +170,13 @@ export default {
       const output = outputLabel || initial ? `|?${outputData}|?${outputLabel}` : `|?${outputData}`;
       const input = outputLabel && !initial ? outputLabel : outputData;
       const askQuery = `${this.query}[[${input}::in:${term}]]${output}`;
-      console.log(askQuery);
       const params = {
         action: 'ask',
         query: askQuery,
         format: 'json',
         formatversion: 2,
       };
-      this.$store.dispatch('doApiCall', {
-        actions:
-          {
-            params,
-            component: this,
-          },
-      });
+      this.store.doApiCall({ params, component: this });
     },
   },
 };

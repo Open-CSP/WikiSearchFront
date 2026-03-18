@@ -24,10 +24,10 @@
         />
         <wikisearch-calendar-tools
           v-if="settings.layout === 'calendar'"
-          :outertime="$store.state.calendarDate"
+          :outertime="store.calendarDate"
         />
         <div
-          v-if="state.aggs"
+          v-if="store.aggs"
           class="wikisearch-filters__wrapper"
         >
           <component
@@ -42,15 +42,13 @@
             :settings="facetSettings[name]"
             :buckets="filterObject.buckets || []"
             :label="facetSettings[name].label"
-            :valueLabels="facetSettings[name].valueLabels"
+            :value-labels="facetSettings[name].valueLabels"
             :name="name"
           />
         </div>
       </div>
       <div class="wikisearch-total">
-        <b
-          class="wikisearch-total__nr"
-        >
+        <b class="wikisearch-total__nr">
           <b>{{ resultCountText }}</b>
         </b>
       </div>
@@ -64,19 +62,17 @@
           v-if="settings.action"
           class="wikisearch-action__button"
           :label="settings.action.label"
-          :type="state.selectedResults.length ? 'progressive' : ''"
+          :type="store.selectedResults.length ? 'progressive' : ''"
           @click="doAction"
         />
       </div>
-      <div
-        class="wikisearch-results"
-      >
+      <div class="wikisearch-results">
         <component :is="resultDisplay" />
         <wikisearch-pagers
           v-if="showElement"
-          :size="state.size"
-          :from="state.from"
-          :total="state.total.value"
+          :size="store.size"
+          :from="store.from"
+          :total="store.total.value"
           :settings="settings"
         />
       </div>
@@ -92,7 +88,7 @@
 </template>
 
 <script>
-import { store } from './store';
+import { useSearchStore } from './store/index';
 import { strip } from './utilities/stringUtils';
 
 import SearchInput from './components/SearchInput.vue';
@@ -120,10 +116,8 @@ import FacetSearch from './components/filters/FacetSearch.vue';
 import FacetSorted from './components/filters/FacetSorted.vue';
 
 export default {
-  store,
   name: 'App',
   components: {
-    // ui
     SearchInput,
     PillsSelected,
     SortOrder,
@@ -135,7 +129,6 @@ export default {
     WikisearchResultsCalendar,
     WikisearchResultsCalendarYear,
     WikisearchCalendarTools,
-    // filters
     FacetCombobox,
     FacetFilter,
     FacetSwitch,
@@ -145,6 +138,10 @@ export default {
     FacetSorted,
     FacetDateRange,
     FacetRangeSlider,
+  },
+  setup() {
+    // Provide the Pinia store to the Options API via this.store
+    return { store: useSearchStore() };
   },
   data() {
     return {
@@ -157,16 +154,16 @@ export default {
     facetSettings() { return this.config.facetSettings; },
     hitSettings() { return this.config.hitSettings; },
     settings() { return this.config.settings; },
-    state() { return this.$store.state; },
     themeClass() {
-      return this.settings.theme ? `wikisearch--theme-${this.settings.theme}` : '';
+      return this.settings.theme ? `wikisearch--theme-${ this.settings.theme }` : '';
     },
     selectedClass() {
-      return this.state.selected.map(el => `wss-selected--${this.strip(el.key)}--${this.strip(el.value)}`)
-        .join(' ');
+      return this.store.selected
+        .map( ( el ) => `wss-selected--${ strip( el.key ) }--${ strip( el.value ) }` )
+        .join( ' ' );
     },
     sortClass() {
-      return `wss-order--${this.strip(this.state.sortOrderType ?? 'score')}--${this.strip(this.state.sortOrder ?? 'desc')}`;
+      return `wss-order--${ strip( this.store.sortOrderType ?? 'score' ) }--${ strip( this.store.sortOrder ?? 'desc' ) }`;
     },
     showElement() {
       return this.settings.layout !== 'calendar';
@@ -179,8 +176,7 @@ export default {
         template: WikisearchResultsTemplate,
         default: WikisearchResults,
       };
-
-      return component[this.settings.layout] || component.default;
+      return component[ this.settings.layout ] || component.default;
     },
     filters() {
       const components = {
@@ -196,48 +192,44 @@ export default {
       };
 
       return Object.fromEntries(
-        Object.keys(this.facetSettings).map(key => [
+        Object.keys( this.facetSettings ).map( ( key ) => [
           key,
           {
-            ...this.state.aggs[key] && this.state.aggs[key][key]
-              ? this.state.aggs[key][key]
-              : {},
-            component: components[this.facetSettings[key].display]
-              || components.default,
+            ...( this.store.aggs[ key ] && this.store.aggs[ key ][ key ]
+              ? this.store.aggs[ key ][ key ]
+              : {} ),
+            component: components[ this.facetSettings[ key ].display ] || components.default,
           },
-        ]),
+        ] ),
       );
     },
     resultCountText() {
-      switch (this.state.total.relation) {
+      switch ( this.store.total.relation ) {
         case 'gte':
-          return this.$i18n('wikisearchfront-total-gte', this.state.total.value);
+          return this.$i18n( 'wikisearchfront-total-gte', this.store.total.value );
         case 'lte':
-          return this.$i18n('wikisearchfront-total-lte', this.state.total.value);
+          return this.$i18n( 'wikisearchfront-total-lte', this.store.total.value );
         default:
-          return this.$i18n('wikisearchfront-total-eq', this.state.total.value);
+          return this.$i18n( 'wikisearchfront-total-eq', this.store.total.value );
       }
     },
   },
   mounted() {
-    this.$store.commit('START', true);
+    this.store.start( true );
   },
   methods: {
-    strip(string) {
-      return strip(string);
-    },
     doAction() {
-      if (this.state.selectedResults.length) {
-        if (this.settings.action.type === 'page') {
-          const params = `?props=${this.state.selectedResults.join(',')}`;
-          window.location = `${window.location.origin}/${this.settings.action.name}${params}`;
+      if ( this.store.selectedResults.length ) {
+        if ( this.settings.action.type === 'page' ) {
+          const params = `?props=${ this.store.selectedResults.join( ',' ) }`;
+          window.location = `${ window.location.origin }/${ this.settings.action.name }${ params }`;
         } else {
-          window[this.settings.action.name](this.state.selectedResults);
+          window[ this.settings.action.name ]( this.store.selectedResults );
         }
       }
     },
     selectAll() {
-      this.$store.commit('SET_SELECT_ALL_RESULTS', !this.state.selectAllResults);
+      this.store.setSelectAllResults( !this.store.selectAllResults );
     },
   },
 };

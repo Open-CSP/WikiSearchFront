@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import FacetCheckbox from './FacetCheckbox.vue';
 import WikisearchDateInput from '../DateInput.vue';
 import { createDate } from '../../utilities/dateUtils';
@@ -49,6 +50,9 @@ export default {
       to: 0,
     };
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   computed: {
     /**
      * @returns {String} label for filter header
@@ -60,7 +64,7 @@ export default {
      * @returns {Boolean}
      */
     showCheckbox() {
-      if (this.$store.getters.rangeFrom && this.$store.getters.rangeTo) {
+      if (this.store.rangeFrom && this.store.rangeTo) {
         return true;
       }
       return false;
@@ -71,8 +75,8 @@ export default {
     agg() {
       return {
         key: 'customrange',
-        from: this.$store.getters.rangeFrom,
-        to: this.$store.getters.rangeTo,
+        from: this.store.rangeFrom,
+        to: this.store.rangeTo,
         doc_count: 1,
       };
     },
@@ -88,34 +92,29 @@ export default {
         return;
       }
 
-      this.$store.commit(
-        `SET_RANGE_${element}`,
-        createDate(this[element]) + 1,
-      );
+      const rangeVal = createDate(this[element]) + 1;
+      if (element === 'from') {
+        this.store.setRangeFrom(rangeVal);
+      } else {
+        this.store.setRangeTo(rangeVal);
+      }
 
-      let realdatesUpdated = this.$store.state.realDates;
-      if (this.$store.state.rangeTo > 0) {
-        realdatesUpdated = {
+      if (this.store.rangeTo > 0) {
+        const realdatesUpdated = {
           customrange: {
             from: this.from,
             to: this.to,
           },
         };
 
-        const selectedUpdated = this.$store.state.selected;
+        const selectedUpdated = [...this.store.selected];
 
-        this.$store.commit('SET_REAL_DATES', realdatesUpdated);
-        Object.keys(this.$store.state.selected).forEach((_, i) => {
-          if (this.$store.state.selected && this.$store.state.selected[i] && this.$store.state.selected[i].value === 'customrange') {
-            let te = '';
-            if (element === 'from') {
-              te = 'gte';
-            } else {
-              te = 'lte';
-            }
-
-            selectedUpdated[i].range[te] = Number(`${this.$store.state[`range${element.charAt(0).toUpperCase()}${element.slice(1)}`]}.0000000`);
-            this.$store.commit('SET_SELECTED', selectedUpdated);
+        this.store.setRealDates(realdatesUpdated);
+        selectedUpdated.forEach((sel, i) => {
+          if (sel && sel.value === 'customrange') {
+            const te = element === 'from' ? 'gte' : 'lte';
+            selectedUpdated[i] = { ...sel, range: { ...sel.range, [te]: Number(`${rangeVal}.0000000`) } };
+            this.store.setSelected(selectedUpdated);
           }
         });
       }
@@ -124,7 +123,6 @@ export default {
      * create mw.widgets.DateInputWidgets
      */
     dateInputs() {
-      const { state } = this.$store;
       const that = this;
       const date = {};
       const dateInput = {};
@@ -134,8 +132,8 @@ export default {
         // eslint-disable-next-line no-undef
         dateInput[element] = new mw.widgets.DateInputWidget();
 
-        if (state.realDates.customrange) {
-          dateInput[element].setValue(state.realDates.customrange[element]);
+        if (that.store.realDates.customrange) {
+          dateInput[element].setValue(that.store.realDates.customrange[element]);
         }
 
         dateInput[element].on('change', () => {
@@ -143,34 +141,29 @@ export default {
           dateInput.to.mustBeAfter = date.from;
           dateInput.from.mustBeBefore = date.to;
 
-          that.$store.commit(
-            `SET_RANGE_${element}`,
-            createDate(date[element]) + 1,
-          );
+          const rangeVal = createDate(date[element]) + 1;
+          if (element === 'from') {
+            that.store.setRangeFrom(rangeVal);
+          } else {
+            that.store.setRangeTo(rangeVal);
+          }
 
-          let realdatesUpdated = state.realDates;
-          if (state.rangeTo > 0) {
-            realdatesUpdated = {
+          if (that.store.rangeTo > 0) {
+            const realdatesUpdated = {
               customrange: {
                 from: date.from,
                 to: date.to,
               },
             };
 
-            const selectedUpdated = state.selected;
+            const selectedUpdated = [...that.store.selected];
 
-            that.$store.commit('SET_REAL_DATES', realdatesUpdated);
-            Object.keys(state.selected).forEach((_, i) => {
-              if (state.selected && state.selected[i] && state.selected[i].value === 'customrange') {
-                let te = '';
-                if (element === 'from') {
-                  te = 'gte';
-                } else {
-                  te = 'lte';
-                }
-
-                selectedUpdated[i].range[te] = Number(`${state[`range${element.charAt(0).toUpperCase()}${element.slice(1)}`]}.0000000`);
-                that.$store.commit('SET_SELECTED', selectedUpdated);
+            that.store.setRealDates(realdatesUpdated);
+            selectedUpdated.forEach((sel, i) => {
+              if (sel && sel.value === 'customrange') {
+                const te = element === 'from' ? 'gte' : 'lte';
+                selectedUpdated[i] = { ...sel, range: { ...sel.range, [te]: Number(`${rangeVal}.0000000`) } };
+                that.store.setSelected(selectedUpdated);
               }
             });
           }

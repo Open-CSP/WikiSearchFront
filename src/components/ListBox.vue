@@ -67,7 +67,6 @@ export default {
       this.$emit('select', this.filteredItems[this.active]);
     },
     itemClasses(item, index) {
-      console.log(item.label, item.doc_count);
       return {
         'wikisearch-list-box__item--selected': !!this.selected.filter(e => e.data === item.data).length,
         'wikisearch-list-box__item--active': this.active === index,

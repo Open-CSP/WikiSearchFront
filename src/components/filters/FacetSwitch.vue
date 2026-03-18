@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import { strip } from '../../utilities/stringUtils';
 
 export default {
@@ -49,6 +50,9 @@ export default {
       },
     },
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   computed: {
     /**
      * @returns {String} title for checkbox label
@@ -57,11 +61,11 @@ export default {
       return this.label || this.name.replace(/_/g, ' ');
     },
     isChecked() {
-      if (this.$store.state.switched[this.name] === this.settings.true) {
+      if (this.store.switched[this.name] === this.settings.true) {
         return true;
       }
 
-      if (this.$store.state.switched[this.name] === this.settings.false) {
+      if (this.store.switched[this.name] === this.settings.false) {
         return false;
       }
 
@@ -73,13 +77,13 @@ export default {
       return strip(string);
     },
     updateSwitched() {
-      const { switched } = this.$store.state;
+      const switched = { ...this.store.switched };
 
       switched[this.name] = this.$refs.checkbox.checked
         ? this.settings.true
         : this.settings.false;
 
-      this.$store.commit('SET_SWITCHED', switched);
+      this.store.setSwitched(switched);
     },
   },
 };

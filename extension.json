@@ -1,7 +1,7 @@
 {
   "name": "WikiSearchFront",
   "author": "Robis Koopmans",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "url": "https://www.wikibase-solutions.com",
   "descriptionmsg": "wikisearchfront-desc",
   "license-name": "GPL-2.0-or-later",
@@ -12,20 +12,23 @@
     ]
   },
   "requires": {
-    "MediaWiki": ">= 1.27.0",
+    "MediaWiki": ">= 1.35.0",
     "extensions": {
       "WikiSearch": ">= 8.0.0"
     }
   },
   "ResourceModules": {
     "ext.WikiSearchFront.module": {
-      "dependencies": [
-        "ext.WikiSearchFront.dependecies",
-        "moment"
-      ],
-      "scripts": [
-        "../dist/wikisearchfront.umd.min.js",
+      "packageFiles": [
+        {
+          "name": "wikisearchfront.js",
+          "file": "../dist/wikisearchfront.common.js"
+        },
         "init.js"
+      ],
+      "dependencies": [
+        "vue",
+        "moment"
       ],
       "messages": [
         "search",
@@ -47,12 +50,6 @@
       ],
       "styles": [
         "../dist/wikisearchfront.css"
-      ]
-    },
-    "ext.WikiSearchFront.dependecies": {
-      "scripts": [
-        "vue.min.js",
-        "i18n.js"
       ]
     }
   },

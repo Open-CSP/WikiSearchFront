@@ -4,7 +4,7 @@
     :class="classes"
   >
     <input
-      :ref="'input'"
+      ref="input"
       :value="computedValue"
       type="text"
       :class="{
@@ -14,15 +14,15 @@
       tabindex="0"
       v-bind="$attrs"
       aria-disabled="false"
+      :readonly="readonly"
       @input="onInput"
       @keydown.down.prevent.stop="$emit( 'down' )"
       @keydown.up.prevent.stop="$emit( 'up' )"
       @keyup.enter="$emit( 'enter' )"
-      @scroll="$emit( 'scroll' , $refs.input )"
+      @scroll="$emit( 'scroll', $refs.input )"
       @focus="$emit( 'focus' )"
       @blur="$emit( 'blur' )"
       @click="$emit( 'click' )"
-      :readonly="this.$parent.$options.name === 'WikisearchDateInput'"
     >
     <wikisearch-icon
       v-if="startIcon"
@@ -51,13 +51,25 @@ export default {
   components: {
     WikisearchIcon,
   },
+  // Prevent $attrs from being inherited on the root <div>
+  inheritAttrs: false,
   props: {
     id: {
-      type: [String, Number],
+      type: [ String, Number ],
       default: '',
     },
+    /**
+     * Vue 3 v-model binding (replaces Vue 2 'value' prop for v-model usage).
+     */
+    modelValue: {
+      type: [ String, Number ],
+      default: '',
+    },
+    /**
+     * One-way display value for non-v-model callers (e.g. :value="someExpr").
+     */
     value: {
-      type: [String, Number],
+      type: [ String, Number ],
       default: '',
     },
     startIcon: {
@@ -76,10 +88,19 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * When true the native input is read-only.
+     * Used by DateInput to show a calendar picker instead of free typing.
+     */
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
   },
+  emits: [ 'update:modelValue', 'input', 'enter', 'down', 'up', 'scroll', 'focus', 'blur', 'click', 'clear' ],
   data() {
     return {
-      newValue: this.value,
+      newValue: this.modelValue || this.value,
     };
   },
   computed: {
@@ -97,25 +118,30 @@ export default {
       get() {
         return this.newValue;
       },
-      set(value) {
+      set( value ) {
         this.newValue = value;
-        this.$emit('input', value, this.id);
+        // Emit both events: update:modelValue for v-model, input for legacy @input listeners
+        this.$emit( 'update:modelValue', value, this.id );
+        this.$emit( 'input', value, this.id );
       },
     },
   },
   watch: {
-    value(value) {
+    modelValue( value ) {
+      this.newValue = value;
+    },
+    value( value ) {
       this.newValue = value;
     },
   },
   methods: {
-    onInput(e) {
+    onInput( e ) {
       this.computedValue = e.target.value;
     },
     onEndIconClick() {
-      if (this.clearable) {
+      if ( this.clearable ) {
         this.computedValue = '';
-        this.$emit('clear', '', this.id);
+        this.$emit( 'clear', '', this.id );
       }
     },
   },

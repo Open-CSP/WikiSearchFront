@@ -4,6 +4,7 @@
   >
     <wikisearch-input
       :value="time.format('D MMM YYYY')"
+      :readonly="true"
       @focus="focused = true"
       @blur="focused = false"
       @click="focused = true;justSelected = false"
@@ -160,7 +161,9 @@ export default {
   },
   computed: {
     time() {
-      console.log(this.change);
+      // Accessing this.change forces Vue to track the dependency so date updates propagate
+      // eslint-disable-next-line no-unused-expressions
+      this.change;
       return this.date;
     },
     display() {

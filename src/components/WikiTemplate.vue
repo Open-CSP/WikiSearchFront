@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../store/index';
 
 export default {
   name: 'WikisearchWikiTemplate',
@@ -24,6 +25,9 @@ export default {
       default: '',
     },
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   data() {
     return {
       value: this.data.value,
@@ -31,7 +35,7 @@ export default {
   },
   computed: {
     renderedTemplate() {
-      return this.$store.state.renderedTemplates[this.index] || '';
+      return this.store.renderedTemplates[this.index] || '';
     },
   },
   watch: {
@@ -44,16 +48,13 @@ export default {
   },
   methods: {
     parseTemplate() {
-      this.$store.dispatch('bundleApiCalls', {
-        actions:
-            {
-              index: this.index,
-              text: `{{${this.data.template}
+      this.store.bundleApiCalls({
+        index: this.index,
+        text: `{{${this.data.template}
                  |Page=${this.data.page}
                  ${this.data.date ? `|$date=${this.data.date}` : ''}
                  |Value=${this.data.value}
                  }}`,
-            },
       });
     },
   },

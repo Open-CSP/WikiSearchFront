@@ -6,13 +6,13 @@
   >
     <div class="wikisearch-search__wrapper">
       <div
-        :ref="'syntax'"
+        ref="syntax"
         class="wikisearch-syntax"
         v-html="highlightedTerm"
       />
       <wikisearch-input
         v-model="term"
-        :pending="$store.state.loading"
+        :pending="store.loading"
         :clearable="true"
         :start-icon="'search'"
         :placeholder="$i18n('search')"
@@ -28,15 +28,15 @@
       @click="search"
     />
     <wikisearch-tooltip v-if="hasInfo">
-      <template #slot>
-        <div
-          v-html="highlightedInfo"
-        />
-      </template>
       <template #button>
         <wikisearch-button
           :icon="'info'"
           :type="'icon'"
+        />
+      </template>
+      <template #slot>
+        <div
+          v-html="highlightedInfo"
         />
       </template>
     </wikisearch-tooltip>
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../store/index';
 import WikisearchInput from './Input.vue';
 import WikisearchButton from './Button.vue';
 import WikisearchTooltip from './Tooltip.vue';
@@ -56,11 +57,13 @@ export default {
     WikisearchButton,
     WikisearchTooltip,
   },
+  setup() {
+    return { store: useSearchStore() };
+  },
   data() {
     return {
       typedTerm: '',
       userHasTyped: false,
-      infoIsActive: false,
     };
   },
   computed: {
@@ -70,60 +73,50 @@ export default {
     },
     highlightedInfo() {
       // eslint-disable-next-line no-undef
-      return this.highlight(mw.message('wikisearchfront-info').text());
+      return this.highlight( mw.message( 'wikisearchfront-info' ).text() );
     },
     highlightedTerm() {
-      return this.highlight(sanitize(this.term));
+      return this.highlight( sanitize( this.term ) );
     },
-    /**
-     * v-model user typed term
-     */
     term: {
-      set(value) {
-        this.typedTerm = value.replace(/[“”„]/gim, '"');
+      set( value ) {
+        this.typedTerm = value.replace( /[""„]/gim, '"' );
         this.userHasTyped = true;
       },
       get() {
         return this.typedTerm || this.userHasTyped
           ? this.typedTerm
-          : this.$store.state.term;
+          : this.store.term;
       },
     },
   },
   methods: {
-    syncScroll(el) {
+    syncScroll( el ) {
       this.$refs.syntax.scrollLeft = el.scrollLeft;
     },
-    highlight(term) {
+    highlight( term ) {
       const baseClass = 'wikisearch-syntax__item';
       return term
-        .replace(/(["'])(?:(?=(\\?))\2.)*?\1|~\d/g,
-          `<span class="${baseClass} ${baseClass}--qoute">$&</span>`)
-        .replace(/\s(-\w+)/g,
-          ` <span class="${baseClass} ${baseClass}--minus">$1</span>`)
-        .replace(/\*/gm, `<span class="${baseClass} ${baseClass}--star">*</span>`)
-        .replace(/\sOR\s/gm, ` <span class="${baseClass} ${baseClass}--or">OR</span> `)
-        .replace(/\sAND\s/gm, ` <span class="${baseClass} ${baseClass}--and">AND</span> `);
+        .replace( /(["'])(?:(?=(\\?))\2.)*?\1|~\d/g,
+          `<span class="${ baseClass } ${ baseClass }--qoute">$&</span>` )
+        .replace( /\s(-\w+)/g,
+          ` <span class="${ baseClass } ${ baseClass }--minus">$1</span>` )
+        .replace( /\*/gm, `<span class="${ baseClass } ${ baseClass }--star">*</span>` )
+        .replace( /\sOR\s/gm, ` <span class="${ baseClass } ${ baseClass }--or">OR</span> ` )
+        .replace( /\sAND\s/gm, ` <span class="${ baseClass } ${ baseClass }--and">AND</span> ` );
     },
     onInput() {
-      if ( // eslint-disable-next-line no-undef
-        mw.config.values.WikiSearchFront.config.settings.searchOnInput
-      ) {
-        this.$store.commit('SET_TERM', this.typedTerm);
+      // eslint-disable-next-line no-undef
+      if ( mw.config.values.WikiSearchFront.config.settings.searchOnInput ) {
+        this.store.setTerm( this.typedTerm );
       }
     },
-    /**
-     * @event click|key.enter search for user input
-     */
     search() {
-      this.$store.commit('SET_TERM', this.typedTerm || this.term);
+      this.store.setTerm( this.typedTerm || this.term );
     },
-    /**
-     * @event click clear user typed input
-     */
     clearTerm() {
       this.typedTerm = '';
-      this.$store.commit('SET_TERM', '');
+      this.store.setTerm( '' );
     },
   },
 };

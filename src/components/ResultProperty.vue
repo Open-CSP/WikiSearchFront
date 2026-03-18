@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../store/index';
 import { sanitize } from '../utilities/stringUtils';
 import WikisearchPill from './Pill.vue';
 import WikisearchCheckbox from './Checkbox.vue';
@@ -77,6 +78,9 @@ export default {
       // eslint-disable-next-line no-undef
       configTitle: mw.config.values.WikiSearchFront.config.settings.title,
     };
+  },
+  setup() {
+    return { store: useSearchStore() };
   },
   computed: {
     computedLabel() {
@@ -160,18 +164,18 @@ export default {
         : [];
     },
     isChecked() {
-      return this.$store.state.selectAllResults;
+      return this.store.selectAllResults;
     },
     getUrlString() {
-      return this.$store.state.term
-        ? `?${this.configTitle.urlstring}=${this.$store.state.term}`
+      return this.store.term
+        ? `?${this.configTitle.urlstring}=${this.store.term}`
         : '';
     },
   },
   watch: {
     isChecked(value) {
       if (!value) {
-        this.$store.commit('SET_SELECTED_RESULTS', []);
+        this.store.setSelectedResults([]);
       } else if (this.properties.length) {
         this.properties.forEach(prop => {
           this.onChange(prop);
@@ -208,8 +212,8 @@ export default {
       }
 
       if (this.config.display === 'pdflink') {
-        const snippet = this.$store.state.term
-          ? `&snippet=${encodeURIComponent(this.$store.state.term)}`
+        const snippet = this.store.term
+          ? `&snippet=${encodeURIComponent(this.store.term)}`
           : '';
         return `${this.articlePath}/Pdf_viewer?pdf=${encodeURIComponent(title.replaceAll(' ', '_'))}${snippet}`;
       }
@@ -266,7 +270,7 @@ export default {
         : false;
     },
     highlightProperty(prop) {
-      const { term } = this.$store.state;
+      const { term } = this.store;
       const regex = new RegExp(term, 'gmi');
       if (!term || this.label === '$snippet') {
         return prop;
@@ -289,8 +293,7 @@ export default {
       if (this.config.display === 'pill') {
         const selection = [];
         let found = false;
-        const updatedSelection = this.$store.state.selected;
-        updatedSelection.forEach(el => {
+        this.store.selected.forEach(el => {
           if (el.key === e.key && el.value === e.value) {
             found = true;
           } else {
@@ -300,18 +303,18 @@ export default {
         if (!found) {
           selection.push(e);
         }
-        this.$store.commit('SET_SELECTED', selection);
+        this.store.setSelected(selection);
       }
     },
     onChange(e) {
       if (this.config.display === 'checkbox') {
-        let { selectedResults } = this.$store.state;
+        let selectedResults = [...this.store.selectedResults];
         if (selectedResults.includes(e)) {
           selectedResults = selectedResults.filter(x => x !== e);
         } else {
           selectedResults.push(e);
         }
-        this.$store.commit('SET_SELECTED_RESULTS', selectedResults);
+        this.store.setSelectedResults(selectedResults);
       }
     },
   },

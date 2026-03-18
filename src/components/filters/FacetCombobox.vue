@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import { useSearchStore } from '../../store/index';
 import WikisearchPill from '../Pill.vue';
 import WikisearchInput from '../Input.vue';
 import WikisearchListBox from '../ListBox.vue';
@@ -133,6 +134,9 @@ export default {
       // eslint-disable-next-line no-undef
       facetSettings: mw.config.values.WikiSearchFront.config.facetSettings,
     };
+  },
+  setup() {
+    return { store: useSearchStore() };
   },
   computed: {
     /**
@@ -190,8 +194,7 @@ export default {
      * @returns {Array} slection for this filter group
      */
     pils() {
-      const { selected } = this.$store.state;
-      return selected.filter((el) => el.key === this.name);
+      return this.store.selected.filter((el) => el.key === this.name);
     },
     selection() {
       return this.pils.map(e => ({ data: e.value }));
@@ -220,17 +223,14 @@ export default {
         this.facetSettings[this.name]
         && this.facetSettings[this.name].search
       ) {
-        const selection = this.$store.state.selected;
-        const newSelection = selection.filter(selected => selected.key !== this.name);
+        const newSelection = this.store.selected.filter(selected => selected.key !== this.name);
         if (this.term) {
           newSelection.push({ key: this.name, value: this.term, type: 'query' });
         }
-        this.$store.commit('SET_SELECTED', newSelection);
+        this.store.setSelected(newSelection);
       }
     },
     updateSelected(item) {
-      console.log(item);
-
       if (item.icon) {
         this.search();
         return;
@@ -240,8 +240,7 @@ export default {
       this.term = '';
       const selection = [];
       let found = false;
-      const updatedSelection = this.$store.state.selected;
-      updatedSelection.forEach(el => {
+      this.store.selected.forEach(el => {
         if (el.key === this.name && el.value === item.data) {
           found = true;
         } else {
@@ -249,14 +248,13 @@ export default {
         }
       });
       if (!found) {
-        // this.term = item.label;
         selection.push({ key: this.name, value: item.data, name: item.label });
       }
-      this.$store.commit('SET_SELECTED', selection);
+      this.store.setSelected(selection);
     },
     deselect(item) {
-      const updatedSelection = this.$store.state.selected.filter(ob => ob !== item);
-      this.$store.commit('SET_SELECTED', updatedSelection);
+      const updatedSelection = this.store.selected.filter(ob => ob !== item);
+      this.store.setSelected(updatedSelection);
     },
     /**
      * @emits input to parent
