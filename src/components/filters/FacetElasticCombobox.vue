@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import { useSearchStore, getSelection } from '../../store/index';
-import FacetCombobox from './FacetCombobox.vue';
-import prepareQuery from '../../utilities/elastic';
+const { useSearchStore, getSelection } = require('../../store/index.js');
+const FacetCombobox = require('./FacetCombobox.vue');
+const prepareQuery = require('../../utilities/elastic.js');
 
 export default {
   name: 'FacetElasticCombobox',

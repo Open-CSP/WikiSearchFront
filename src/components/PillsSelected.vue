@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import { useSearchStore } from '../store/index';
-import WikisearchPill from './Pill.vue';
+const { useSearchStore } = require('../store/index.js');
+const WikisearchPill = require('./Pill.vue');
 
 export default {
   name: 'PillsSelected',

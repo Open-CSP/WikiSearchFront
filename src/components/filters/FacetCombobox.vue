@@ -87,12 +87,12 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import WikisearchPill from '../Pill.vue';
-import WikisearchInput from '../Input.vue';
-import WikisearchListBox from '../ListBox.vue';
-import WikisearchIcon from '../Icon.vue';
-import { strip } from '../../utilities/stringUtils';
+const { useSearchStore } = require('../../store/index.js');
+const WikisearchPill = require('../Pill.vue');
+const WikisearchInput = require('../Input.vue');
+const WikisearchListBox = require('../ListBox.vue');
+const WikisearchIcon = require('../Icon.vue');
+const { strip } = require('../../utilities/stringUtils.js');
 
 export default {
   name: 'FacetComboBox',

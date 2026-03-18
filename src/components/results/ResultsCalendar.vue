@@ -62,11 +62,11 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import { strip } from '../../utilities/stringUtils';
-import WikisearchResultProperty from '../ResultProperty.vue';
-import WikisearchButton from '../Button.vue';
-import WikisearchCalendarDialog from '../CalendarDialog.vue';
+const { useSearchStore } = require('../../store/index.js');
+const { strip } = require('../../utilities/stringUtils.js');
+const WikisearchResultProperty = require('../ResultProperty.vue');
+const WikisearchButton = require('../Button.vue');
+const WikisearchCalendarDialog = require('../CalendarDialog.vue');
 
 export default {
   name: 'WikisearchResultsCalendar',

@@ -58,9 +58,9 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import FacetCheckbox from './FacetCheckbox.vue';
-import WikisearchButton from '../Button.vue';
+const { useSearchStore } = require('../../store/index.js');
+const FacetCheckbox = require('./FacetCheckbox.vue');
+const WikisearchButton = require('../Button.vue');
 
 export default {
   name: 'FacetSorted',

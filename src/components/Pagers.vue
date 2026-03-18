@@ -75,9 +75,9 @@
 </template>
 
 <script>
-import { useSearchStore } from '../store/index';
-import WikisearchDropdown from './Dropdown.vue';
-import WikisearchIcon from './Icon.vue';
+const { useSearchStore } = require('../store/index.js');
+const WikisearchDropdown = require('./Dropdown.vue');
+const WikisearchIcon = require('./Icon.vue');
 
 export default {
   name: 'WikisearchPagers',

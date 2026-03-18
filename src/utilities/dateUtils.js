@@ -18,4 +18,4 @@ function readableDate(date) {
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 }
 
-export { createDate, readableDate };
+module.exports = { createDate, readableDate };

@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import FacetCheckbox from './FacetCheckbox.vue';
-import WikisearchDateInput from '../DateInput.vue';
-import { createDate } from '../../utilities/dateUtils';
+const { useSearchStore } = require('../../store/index.js');
+const FacetCheckbox = require('./FacetCheckbox.vue');
+const WikisearchDateInput = require('../DateInput.vue');
+const { createDate } = require('../../utilities/dateUtils.js');
 
 export default {
   name: 'FacetDateRange',

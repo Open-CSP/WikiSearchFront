@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { useSearchStore } from '../store/index';
+const { useSearchStore } = require('../store/index.js');
 
 export default {
   name: 'WikisearchWikiTemplate',

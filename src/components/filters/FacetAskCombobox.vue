@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import FacetCombobox from './FacetCombobox.vue';
+const { useSearchStore } = require('../../store/index.js');
+const FacetCombobox = require('./FacetCombobox.vue');
 
 export default {
   name: 'FacetAskCombobox',

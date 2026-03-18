@@ -25,4 +25,4 @@ function sanitize(string) {
     .replace(postTag, '</b>');
 }
 
-export { strip, sanitize };
+module.exports = { strip, sanitize };

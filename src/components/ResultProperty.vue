@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import { useSearchStore } from '../store/index';
-import { sanitize } from '../utilities/stringUtils';
-import WikisearchPill from './Pill.vue';
-import WikisearchCheckbox from './Checkbox.vue';
-import WikisearchWikiTemplate from './WikiTemplate.vue';
+const { useSearchStore } = require('../store/index.js');
+const { sanitize } = require('../utilities/stringUtils.js');
+const WikisearchPill = require('./Pill.vue');
+const WikisearchCheckbox = require('./Checkbox.vue');
+const WikisearchWikiTemplate = require('./WikiTemplate.vue');
 
 export default {
   name: 'WikisearchResultProperties',

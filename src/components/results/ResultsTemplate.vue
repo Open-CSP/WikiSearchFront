@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import prepareQuery from '../../utilities/elastic';
+const { useSearchStore } = require('../../store/index.js');
+const prepareQuery = require('../../utilities/elastic.js');
 
 export default {
   name: 'WikisearchResultsTemplate',

@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import { useSearchStore } from '../store/index';
-import WikisearchDropdown from './Dropdown.vue';
-import WikisearchButton from './Button.vue';
+const { useSearchStore } = require('../store/index.js');
+const WikisearchDropdown = require('./Dropdown.vue');
+const WikisearchButton = require('./Button.vue');
 
 export default {
   name: 'SortOrder',

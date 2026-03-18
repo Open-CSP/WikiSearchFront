@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia';
-import { createDate } from '../utilities/dateUtils';
-import prepareQuery from '../utilities/elastic';
+const { reactive } = require( 'vue' );
+const { createDate } = require( '../utilities/dateUtils.js' );
+const prepareQuery = require( '../utilities/elastic.js' );
 
 /* eslint-disable no-undef */
 const mediaWikiValues = mw.config.values;
@@ -236,10 +236,10 @@ function createMoreRanges( facetSettings, ranges, today ) {
  * Build the active filters array to send to the WikiSearch API.
  * Exported so FacetElasticCombobox can compute its own query.
  *
- * @param {Object} state - Store state (or Pinia store proxy)
+ * @param {Object} state - Store state (or reactive store proxy)
  * @returns {Array}
  */
-export function getSelection( state ) {
+function getSelection( state ) {
 	const grouped = {};
 	const selected = [];
 
@@ -247,11 +247,11 @@ export function getSelection( state ) {
 		const settings = mediaWikiValues.WikiSearchFront.config.facetSettings[ element.key ];
 		const out = { ...element };
 
-		if ( settings?.not ) {
+		if ( settings && settings.not ) {
 			out.negate = true;
 		}
 
-		const value = element?.type === 'query'
+		const value = element && element.type === 'query'
 			? prepareQuery( out.value )
 			: out.value;
 
@@ -311,7 +311,7 @@ function getValueLabelMap( facetSettings ) {
 /**
  * Apply pre-configured initial selections from the wikitext parameter.
  *
- * @param {Object} state - Pinia store state
+ * @param {Object} state - Store state
  */
 function setInitialSelection( state ) {
 	if ( mediaWikiValues.WikiSearchFront.config.settings.selected ) {
@@ -325,281 +325,247 @@ function setInitialSelection( state ) {
 }
 
 // ---------------------------------------------------------------------------
-// Pinia store (replaces Vuex store)
+// Reactive store (replaces Pinia/Vuex store)
 // ---------------------------------------------------------------------------
 
-export const useSearchStore = defineStore( 'wikisearchfront', {
-	state: () => ( {
-		loading: false,
-		selected: [],
-		switched: {},
-		selectedResults: [],
-		ongoingRequest: undefined,
-		selectAllResults: false,
-		sortOrder: 'asc',
-		sortOrderType: 'score',
-		hits: '',
-		aggs: '',
-		size: parseInt( mediaWikiValues.WikiSearchFront.config.settings.size, 10 ) || 10,
-		total: { value: 0, relation: 'eq' },
-		from: 0,
-		calendarDate: moment(),
-		rangeFrom: 0,
-		rangeTo: 0,
-		term: '',
-		loaded: false,
-		dates: [],
-		realDates: {},
-		apiCalls: [],
-		renderedTemplates: {},
-		valueLabelMap: getValueLabelMap( mediaWikiValues.WikiSearchFront.config.facetSettings ),
-	} ),
+const store = reactive( {
+	// State
+	loading: false,
+	selected: [],
+	switched: {},
+	selectedResults: [],
+	ongoingRequest: undefined,
+	selectAllResults: false,
+	sortOrder: 'asc',
+	sortOrderType: 'score',
+	hits: '',
+	aggs: '',
+	size: parseInt( mediaWikiValues.WikiSearchFront.config.settings.size, 10 ) || 10,
+	total: { value: 0, relation: 'eq' },
+	from: 0,
+	calendarDate: moment(),
+	rangeFrom: 0,
+	rangeTo: 0,
+	term: '',
+	loaded: false,
+	dates: [],
+	realDates: {},
+	apiCalls: [],
+	renderedTemplates: {},
+	valueLabelMap: getValueLabelMap( mediaWikiValues.WikiSearchFront.config.facetSettings ),
 
-	// ---------------------------------------------------------------------------
-	// Actions  (combine Vuex mutations + actions; _private ones start with _)
-	// Search-triggering actions call _triggerSearch() after updating state.
-	// ---------------------------------------------------------------------------
-	actions: {
+	// -- State setters that do NOT trigger a new search --
 
-		// -- State setters that do NOT trigger a new search --
+	setCalendarDate( date ) {
+		this.calendarDate = date;
+	},
+	setRangeFrom( range ) {
+		this.rangeFrom = range;
+	},
+	setRangeTo( range ) {
+		this.rangeTo = range;
+	},
+	setRealDates( date ) {
+		this.realDates = date;
+	},
+	setSelectedResults( selected ) {
+		this.selectedResults = selected;
+	},
+	setSelectAllResults( selected ) {
+		this.selectAllResults = selected;
+	},
+	setLoading() {
+		this.loading = true;
+	},
+	setTemplates( templates ) {
+		this.apiCalls = [];
+		this.renderedTemplates = templates;
+	},
+	addApiCall( call ) {
+		this.apiCalls.push( call );
+	},
+	setFromApi( data ) {
+		this.hits = data.hits;
+		this.total = data.total;
+		this.aggs = data.aggs;
+		this.loading = false;
+	},
 
-		setCalendarDate( date ) {
-			this.calendarDate = date;
-		},
-		setRangeFrom( range ) {
-			this.rangeFrom = range;
-		},
-		setRangeTo( range ) {
-			this.rangeTo = range;
-		},
-		setRealDates( date ) {
-			this.realDates = date;
-		},
-		setSelectedResults( selected ) {
-			this.selectedResults = selected;
-		},
-		setSelectAllResults( selected ) {
-			this.selectAllResults = selected;
-		},
-		setLoading() {
-			this.loading = true;
-		},
-		setTemplates( templates ) {
-			this.apiCalls = [];
-			this.renderedTemplates = templates;
-		},
-		addApiCall( call ) {
-			this.apiCalls.push( call );
-		},
-		/** Called by doApiCall once results arrive. */
-		setFromApi( data ) {
-			this.hits = data.hits;
-			this.total = data.total;
-			this.aggs = data.aggs;
-			this.loading = false;
-		},
+	// -- State setters that trigger a new search --
 
-		// -- State setters that trigger a new search --
+	setTerm( term ) {
+		this.term = term;
+		this._resetFrom();
+		this._triggerSearch();
+	},
+	setSelected( selected ) {
+		this.selected = selected;
+		this._resetFrom();
+		this._triggerSearch();
+	},
+	setSwitched( switched ) {
+		this.switched = switched;
+		this._resetFrom();
+		this._triggerSearch();
+	},
+	clearAll() {
+		this.selected = [];
+		this.term = '';
+		this._resetFrom();
+		this._triggerSearch();
+	},
+	setOrder( order ) {
+		this.sortOrder = order;
+		this._resetFrom();
+		this._triggerSearch();
+	},
+	setOrderType( type ) {
+		this.sortOrderType = type;
+		this._resetFrom();
+		this._triggerSearch();
+	},
+	setSize( size ) {
+		this.size = size;
+		this._resetFrom();
+		this._triggerSearch();
+	},
+	setFrom( from ) {
+		this.from = from;
+		this._triggerSearch();
+	},
+	start( start ) {
+		const { facetSettings } = mediaWikiValues.WikiSearchFront.config;
+		this.loaded = start;
 
-		setTerm( term ) {
-			this.term = term;
-			this._resetFrom();
-			this._triggerSearch();
-		},
-		setSelected( selected ) {
-			this.selected = selected;
-			this._resetFrom();
-			this._triggerSearch();
-		},
-		setSwitched( switched ) {
-			this.switched = switched;
-			this._resetFrom();
-			this._triggerSearch();
-		},
-		clearAll() {
-			this.selected = [];
-			this.term = '';
-			this._resetFrom();
-			this._triggerSearch();
-		},
-		setOrder( order ) {
-			this.sortOrder = order;
-			this._resetFrom();
-			this._triggerSearch();
-		},
-		setOrderType( type ) {
-			this.sortOrderType = type;
-			this._resetFrom();
-			this._triggerSearch();
-		},
-		setSize( size ) {
-			this.size = size;
-			this._resetFrom();
-			this._triggerSearch();
-		},
-		/** Page navigation — resets offset but keeps the same filters. */
-		setFrom( from ) {
-			this.from = from;
-			this._triggerSearch();
-		},
-		/**
-		 * Initialise the store on first mount: set up date ranges, restore URL
-		 * state, apply pre-configured selections, then run the first search.
-		 *
-		 * @param {boolean} start
-		 */
-		start( start ) {
-			const { facetSettings } = mediaWikiValues.WikiSearchFront.config;
-			this.loaded = start;
+		const today = new Date();
+		const ranges = createDateRanges( today, facetSettings );
+		const [ facetRanges, realRanges ] = createMoreRanges( facetSettings, ranges, today );
+		this.realDates = realRanges;
+		this.dates = facetRanges;
 
-			const today = new Date();
-			const ranges = createDateRanges( today, facetSettings );
-			const [ facetRanges, realRanges ] = createMoreRanges( facetSettings, ranges, today );
-			this.realDates = realRanges;
-			this.dates = facetRanges;
+		const fromUrl = getStateFromUrl( this, facetSettings );
+		Object.entries( fromUrl ).forEach( ( [ key, value ] ) => {
+			this[ key ] = value;
+		} );
 
-			// Restore state from URL query params
-			const fromUrl = getStateFromUrl( this, facetSettings );
-			Object.entries( fromUrl ).forEach( ( [ key, value ] ) => {
-				this[ key ] = value;
-			} );
+		setInitialSelection( this );
 
-			// Apply wikitext-configured default selections
-			setInitialSelection( this );
+		this._triggerSearch();
+	},
 
-			this._triggerSearch();
-		},
+	// -- Internal helpers --
 
-		// -- Internal helpers --
+	_resetFrom() {
+		this.from = 0;
+	},
 
-		_resetFrom() {
-			this.from = 0;
-		},
+	_triggerSearch() {
+		this.loading = true;
+		window.history.replaceState( '', '', createUrlString( this ) );
 
-		/**
-		 * Build the search request and fire the WikiSearch API call.
-		 * This is the central search trigger, analogous to the old Vuex plugin.
-		 */
-		_triggerSearch() {
-			this.loading = true;
-			window.history.replaceState( '', '', createUrlString( this ) );
+		const selected = getSelection( this );
+		const params = {
+			action: 'query',
+			meta: 'WikiSearch',
+			format: 'json',
+			filter: JSON.stringify( selected ),
+			term: prepareQuery( this.term ),
+			from: this.from,
+			limit: this.size,
+			pageid: mediaWikiValues.wgArticleId,
+			aggregations: JSON.stringify( this.dates ),
+		};
 
-			const selected = getSelection( this );
-			const params = {
-				action: 'query',
-				meta: 'WikiSearch',
-				format: 'json',
-				filter: JSON.stringify( selected ),
-				term: prepareQuery( this.term ),
-				from: this.from,
-				limit: this.size,
-				pageid: mediaWikiValues.wgArticleId,
-				aggregations: JSON.stringify( this.dates ),
-			};
+		if (
+			mediaWikiValues.WikiSearchFront.config.settings.fuzzy === 'true' &&
+			params.term.trim().length > 0
+		) {
+			params.term = params.term.split( ' ' ).join( '~ ' ).trim().concat( '~' );
+		}
 
-			// Fuzziness: append ~ to each word when enabled
-			if (
-				mediaWikiValues.WikiSearchFront.config.settings.fuzzy === 'true' &&
-				params.term.trim().length > 0
-			) {
-				params.term = params.term.split( ' ' ).join( '~ ' ).trim().concat( '~' );
+		if (
+			mediaWikiValues.WikiSearchFront.config.settings[ 'sort options' ] &&
+			this.sortOrderType !== 'score'
+		) {
+			params.sortings = JSON.stringify( [ {
+				type: 'property',
+				property: this.sortOrderType,
+				order: this.sortOrder,
+			} ] );
+		} else if ( mediaWikiValues.WikiSearchFront.config.settings.sort ) {
+			params.sortings = JSON.stringify( [ {
+				type: 'property',
+				property: mediaWikiValues.WikiSearchFront.config.settings.sort,
+				order: mediaWikiValues.WikiSearchFront.config.settings.order || 'asc',
+			} ] );
+		}
+
+		this.doApiCall( { params } );
+	},
+
+	// -- API actions --
+
+	doApiCall( { params, component } ) {
+		/* eslint-disable no-undef */
+		const api = new mw.Api();
+		mw.hook( 'wikisearchfrontent-pre-api-call' ).fire( params );
+		/* eslint-enable no-undef */
+
+		api.post( params ).done( ( data ) => {
+			if ( !component ) {
+				this.setFromApi( {
+					hits: JSON.parse( data.result.hits ),
+					total: {
+						value: data.result.total && data.result.total.value !== null && data.result.total.value !== undefined
+							? data.result.total.value
+							: data.result.total,
+						relation: data.result.total && data.result.total.relation
+							? data.result.total.relation
+							: 'eq',
+					},
+					aggs: data.result.aggs,
+				} );
+			} else {
+				component.apiResult( data );
 			}
+		} );
+	},
 
-			// Sorting
-			if (
-				mediaWikiValues.WikiSearchFront.config.settings[ 'sort options' ] &&
-				this.sortOrderType !== 'score'
-			) {
-				params.sortings = JSON.stringify( [ {
-					type: 'property',
-					property: this.sortOrderType,
-					order: this.sortOrder,
-				} ] );
-			} else if ( mediaWikiValues.WikiSearchFront.config.settings.sort ) {
-				params.sortings = JSON.stringify( [ {
-					type: 'property',
-					property: mediaWikiValues.WikiSearchFront.config.settings.sort,
-					order: mediaWikiValues.WikiSearchFront.config.settings.order || 'asc',
-				} ] );
-			}
-
-			this.doApiCall( { params } );
-		},
-
-		// -- API actions --
-
-		/**
-		 * Execute a MediaWiki API call.
-		 * When no component is given the response populates the search results.
-		 * When a component is given its apiResult() method is called instead
-		 * (used by filter components that need custom data, e.g. ask queries).
-		 *
-		 * @param {Object} params    - MediaWiki API parameters
-		 * @param {Object} [component] - Vue component instance with apiResult()
-		 */
-		doApiCall( { params, component } ) {
+	bundleApiCalls( { text, index } ) {
+		this.addApiCall( { text, index } );
+		clearTimeout( this.ongoingRequest );
+		this.ongoingRequest = setTimeout( () => {
 			/* eslint-disable no-undef */
 			const api = new mw.Api();
-			mw.hook( 'wikisearchfrontent-pre-api-call' ).fire( params );
 			/* eslint-enable no-undef */
-
-			api.post( params ).done( ( data ) => {
-				if ( !component ) {
-					this.setFromApi( {
-						hits: JSON.parse( data.result.hits ),
-						total: {
-							value: data.result.total?.value !== null && data.result.total?.value !== undefined
-								? data.result.total.value
-								: data.result.total,
-							relation: data.result.total?.relation
-								? data.result.total.relation
-								: 'eq',
-						},
-						aggs: data.result.aggs,
-					} );
-				} else {
-					component.apiResult( data );
+			const batchText = this.apiCalls
+				.map( ( call ) => `${ call.index }^^%%%^^${ call.text }` )
+				.join( '%%^^^%%' );
+			const batchParams = {
+				action: 'parse',
+				text: `<div>${ batchText }</div>`,
+				format: 'json',
+				wrapoutputclass: '',
+				disablelimitreport: true,
+			};
+			api.post( batchParams ).done( ( data ) => {
+				if ( !data.parse ) {
+					return;
 				}
+				const result = data.parse.text[ '*' ];
+				const templates = Object.fromEntries(
+					result.substring( 5, result.length - 6 )
+						.split( '%%^^^%%' )
+						.map( ( e ) => e.split( '^^%%%^^' ) )
+				);
+				this.setTemplates( { ...this.renderedTemplates, ...templates } );
 			} );
-		},
-
-		/**
-		 * Batch MediaWiki parse API calls into a single request (debounced).
-		 * Used by WikiTemplate components to avoid per-item parse requests.
-		 *
-		 * @param {string} text  - Wikitext to parse
-		 * @param {string} index - Identifier for this template item
-		 */
-		bundleApiCalls( { text, index } ) {
-			this.addApiCall( { text, index } );
-			clearTimeout( this.ongoingRequest );
-			this.ongoingRequest = setTimeout( () => {
-				/* eslint-disable no-undef */
-				const api = new mw.Api();
-				/* eslint-enable no-undef */
-				const batchText = this.apiCalls
-					.map( ( call ) => `${ call.index }^^%%%^^${ call.text }` )
-					.join( '%%^^^%%' );
-				const params = {
-					action: 'parse',
-					text: `<div>${ batchText }</div>`,
-					format: 'json',
-					wrapoutputclass: '',
-					disablelimitreport: true,
-				};
-				api.post( params ).done( ( data ) => {
-					if ( !data.parse ) {
-						return;
-					}
-					const result = data.parse.text[ '*' ];
-					const templates = Object.fromEntries(
-						result.substring( 5, result.length - 6 )
-							.split( '%%^^^%%' )
-							.map( ( e ) => e.split( '^^%%%^^' ) )
-					);
-					this.setTemplates( { ...this.renderedTemplates, ...templates } );
-				} );
-			}, 100 );
-		},
+		}, 100 );
 	},
 } );
+
+function useSearchStore() {
+	return store;
+}
+
+module.exports = { useSearchStore, getSelection };

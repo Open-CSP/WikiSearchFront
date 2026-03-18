@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import WikisearchIcon from './Icon.vue';
+const WikisearchIcon = require('./Icon.vue');
 
 export default {
   name: 'WikisearchInput',

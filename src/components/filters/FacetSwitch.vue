@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import { strip } from '../../utilities/stringUtils';
+const { useSearchStore } = require('../../store/index.js');
+const { strip } = require('../../utilities/stringUtils.js');
 
 export default {
   name: 'FacetSwitch',

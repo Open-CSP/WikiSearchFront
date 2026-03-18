@@ -44,11 +44,11 @@
 </template>
 
 <script>
-import { useSearchStore } from '../store/index';
-import WikisearchInput from './Input.vue';
-import WikisearchButton from './Button.vue';
-import WikisearchTooltip from './Tooltip.vue';
-import { sanitize } from '../utilities/stringUtils';
+const { useSearchStore } = require('../store/index.js');
+const WikisearchInput = require('./Input.vue');
+const WikisearchButton = require('./Button.vue');
+const WikisearchTooltip = require('./Tooltip.vue');
+const { sanitize } = require('../utilities/stringUtils.js');
 
 export default {
   name: 'SearchInput',

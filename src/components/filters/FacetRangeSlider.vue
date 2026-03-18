@@ -47,9 +47,9 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import FacetCheckbox from './FacetCheckbox.vue';
-import { strip } from '../../utilities/stringUtils';
+const { useSearchStore } = require('../../store/index.js');
+const FacetCheckbox = require('./FacetCheckbox.vue');
+const { strip } = require('../../utilities/stringUtils.js');
 
 export default {
   name: 'FacetRangeSlider',

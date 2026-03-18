@@ -20,11 +20,43 @@
   "ResourceModules": {
     "ext.WikiSearchFront.module": {
       "packageFiles": [
-        {
-          "name": "wikisearchfront.js",
-          "file": "../dist/wikisearchfront.common.js"
-        },
-        "init.js"
+        "module/init.js",
+        "src/App.vue",
+        "src/store/index.js",
+        "src/utilities/stringUtils.js",
+        "src/utilities/dateUtils.js",
+        "src/utilities/elastic.js",
+        "src/components/Icon.vue",
+        "src/components/Button.vue",
+        "src/components/Checkbox.vue",
+        "src/components/Tooltip.vue",
+        "src/components/Input.vue",
+        "src/components/ListBox.vue",
+        "src/components/Dropdown.vue",
+        "src/components/Pill.vue",
+        "src/components/DateInput.vue",
+        "src/components/SearchInput.vue",
+        "src/components/PillsSelected.vue",
+        "src/components/SortOrder.vue",
+        "src/components/Pagers.vue",
+        "src/components/CalendarTools.vue",
+        "src/components/CalendarDialog.vue",
+        "src/components/ResultProperty.vue",
+        "src/components/WikiTemplate.vue",
+        "src/components/filters/FacetCheckbox.vue",
+        "src/components/filters/FacetCombobox.vue",
+        "src/components/filters/FacetSearch.vue",
+        "src/components/filters/FacetSwitch.vue",
+        "src/components/filters/FacetDateRange.vue",
+        "src/components/filters/FacetRangeSlider.vue",
+        "src/components/filters/FacetAskCombobox.vue",
+        "src/components/filters/FacetElasticCombobox.vue",
+        "src/components/filters/FacetSorted.vue",
+        "src/components/filters/FacetFilter.vue",
+        "src/components/results/Results.vue",
+        "src/components/results/ResultsCalendar.vue",
+        "src/components/results/ResultsCalendarYear.vue",
+        "src/components/results/ResultsTemplate.vue"
       ],
       "dependencies": [
         "vue",
@@ -47,9 +79,6 @@
         "wikisearchfront-all",
         "wikisearchfront-page",
         "wikisearchfront-info"
-      ],
-      "styles": [
-        "../dist/wikisearchfront.css"
       ]
     }
   },
@@ -57,8 +86,8 @@
     "WikiSearchFront\\": "includes/"
   },
   "ResourceFileModulePaths": {
-    "localBasePath": "module",
-    "remoteExtPath": "WikiSearchFront/module"
+    "localBasePath": "",
+    "remoteExtPath": "WikiSearchFront"
   },
   "AutoloadClasses": {
     "WikiSearchFrontHooks": "includes/WikiSearchFrontHooks.php"

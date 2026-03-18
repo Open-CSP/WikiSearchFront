@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import { strip } from '../../utilities/stringUtils';
-import WikisearchInput from '../Input.vue';
+const { useSearchStore } = require('../../store/index.js');
+const { strip } = require('../../utilities/stringUtils.js');
+const WikisearchInput = require('../Input.vue');
 
 export default {
   name: 'FacetSearch',

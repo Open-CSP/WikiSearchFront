@@ -23,9 +23,9 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import WikisearchCheckbox from '../Checkbox.vue';
-import { strip } from '../../utilities/stringUtils';
+const { useSearchStore } = require('../../store/index.js');
+const WikisearchCheckbox = require('../Checkbox.vue');
+const { strip } = require('../../utilities/stringUtils.js');
 
 export default {
   name: 'FacetCheckbox',

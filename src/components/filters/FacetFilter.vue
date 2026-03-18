@@ -67,12 +67,12 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import FacetCheckbox from './FacetCheckbox.vue';
-import WikisearchButton from '../Button.vue';
-import WikisearchDateInput from '../DateInput.vue';
-import { createDate, readableDate } from '../../utilities/dateUtils';
-import { strip } from '../../utilities/stringUtils';
+const { useSearchStore } = require('../../store/index.js');
+const FacetCheckbox = require('./FacetCheckbox.vue');
+const WikisearchButton = require('../Button.vue');
+const WikisearchDateInput = require('../DateInput.vue');
+const { createDate, readableDate } = require('../../utilities/dateUtils.js');
+const { strip } = require('../../utilities/stringUtils.js');
 
 export default {
   name: 'FacetFilter',

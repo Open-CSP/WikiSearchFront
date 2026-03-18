@@ -88,32 +88,32 @@
 </template>
 
 <script>
-import { useSearchStore } from './store/index';
-import { strip } from './utilities/stringUtils';
+const { useSearchStore } = require('./store/index.js');
+const { strip } = require('./utilities/stringUtils.js');
 
-import SearchInput from './components/SearchInput.vue';
-import PillsSelected from './components/PillsSelected.vue';
-import SortOrder from './components/SortOrder.vue';
-import WikisearchButton from './components/Button.vue';
-import WikisearchCheckbox from './components/Checkbox.vue';
-import WikisearchPagers from './components/Pagers.vue';
+const SearchInput = require('./components/SearchInput.vue');
+const PillsSelected = require('./components/PillsSelected.vue');
+const SortOrder = require('./components/SortOrder.vue');
+const WikisearchButton = require('./components/Button.vue');
+const WikisearchCheckbox = require('./components/Checkbox.vue');
+const WikisearchPagers = require('./components/Pagers.vue');
 
-import WikisearchResults from './components/results/Results.vue';
-import WikisearchResultsCalendar from './components/results/ResultsCalendar.vue';
-import WikisearchResultsTemplate from './components/results/ResultsTemplate.vue';
-import WikisearchResultsCalendarYear from './components/results/ResultsCalendarYear.vue';
+const WikisearchResults = require('./components/results/Results.vue');
+const WikisearchResultsCalendar = require('./components/results/ResultsCalendar.vue');
+const WikisearchResultsTemplate = require('./components/results/ResultsTemplate.vue');
+const WikisearchResultsCalendarYear = require('./components/results/ResultsCalendarYear.vue');
 
-import WikisearchCalendarTools from './components/CalendarTools.vue';
+const WikisearchCalendarTools = require('./components/CalendarTools.vue');
 
-import FacetDateRange from './components/filters/FacetDateRange.vue';
-import FacetRangeSlider from './components/filters/FacetRangeSlider.vue';
-import FacetCombobox from './components/filters/FacetCombobox.vue';
-import FacetAskCombobox from './components/filters/FacetAskCombobox.vue';
-import FacetElasticCombobox from './components/filters/FacetElasticCombobox.vue';
-import FacetFilter from './components/filters/FacetFilter.vue';
-import FacetSwitch from './components/filters/FacetSwitch.vue';
-import FacetSearch from './components/filters/FacetSearch.vue';
-import FacetSorted from './components/filters/FacetSorted.vue';
+const FacetDateRange = require('./components/filters/FacetDateRange.vue');
+const FacetRangeSlider = require('./components/filters/FacetRangeSlider.vue');
+const FacetCombobox = require('./components/filters/FacetCombobox.vue');
+const FacetAskCombobox = require('./components/filters/FacetAskCombobox.vue');
+const FacetElasticCombobox = require('./components/filters/FacetElasticCombobox.vue');
+const FacetFilter = require('./components/filters/FacetFilter.vue');
+const FacetSwitch = require('./components/filters/FacetSwitch.vue');
+const FacetSearch = require('./components/filters/FacetSearch.vue');
+const FacetSorted = require('./components/filters/FacetSorted.vue');
 
 export default {
   name: 'App',

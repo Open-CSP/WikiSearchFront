@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import WikisearchListBox from './ListBox.vue';
+const WikisearchListBox = require('./ListBox.vue');
 
 export default {
   name: 'WikisearchDropdown',

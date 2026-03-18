@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import { useSearchStore } from '../../store/index';
-import WikisearchResultProperty from '../ResultProperty.vue';
+const { useSearchStore } = require('../../store/index.js');
+const WikisearchResultProperty = require('../ResultProperty.vue');
 
 export default {
   name: 'WikisearchResults',

@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import { useSearchStore } from '../store/index';
-import WikisearchButton from './Button.vue';
-import WikisearchDropdown from './Dropdown.vue';
+const { useSearchStore } = require('../store/index.js');
+const WikisearchButton = require('./Button.vue');
+const WikisearchDropdown = require('./Dropdown.vue');
 
 export default {
   name: 'WikisearchCalendarTools',

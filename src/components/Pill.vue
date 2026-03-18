@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { strip } from '../utilities/stringUtils';
+const { strip } = require('../utilities/stringUtils.js');
 
 export default {
   name: 'WikisearchPill',

@@ -49,9 +49,9 @@
 </template>
 
 <script>
-import { useSearchStore } from '../store/index';
-import WikisearchInput from './Input.vue';
-import WikisearchButton from './Button.vue';
+const { useSearchStore } = require('../store/index.js');
+const WikisearchInput = require('./Input.vue');
+const WikisearchButton = require('./Button.vue');
 
 export default {
   name: 'WikisearchCalendarDialog',

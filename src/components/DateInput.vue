@@ -103,8 +103,8 @@
 </template>
 
 <script>
-import WikisearchButton from './Button.vue';
-import WikisearchInput from './Input.vue';
+const WikisearchButton = require('./Button.vue');
+const WikisearchInput = require('./Input.vue');
 
 export default {
   name: 'WikisearchDateInput',

@@ -3,8 +3,7 @@
 
 // vue is provided by MediaWiki's ResourceLoader 'vue' module (Vue 3)
 const { createApp } = require( 'vue' );
-// App component and createPinia are bundled in the compiled dist
-const { App, createPinia } = require( './wikisearchfront.js' );
+const App = require( '../src/App.vue' );
 
 /**
  * Initialize the WikiSearchFront Vue 3 application.
@@ -12,10 +11,6 @@ const { App, createPinia } = require( './wikisearchfront.js' );
  */
 function initWikiSearchFront() {
 	const app = createApp( App );
-
-	// Install Pinia for state management (replaces Vuex)
-	const pinia = createPinia();
-	app.use( pinia );
 
 	// Expose MediaWiki i18n as a global instance property.
 	// Options API components can call this.$i18n('message-key').
