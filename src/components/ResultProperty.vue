@@ -44,7 +44,7 @@ const WikisearchPill = require('./Pill.vue');
 const WikisearchCheckbox = require('./Checkbox.vue');
 const WikisearchWikiTemplate = require('./WikiTemplate.vue');
 
-export default {
+module.exports = {
   name: 'WikisearchResultProperties',
   components: {
     WikisearchPill,

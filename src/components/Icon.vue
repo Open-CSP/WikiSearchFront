@@ -18,7 +18,7 @@
 </template>
 
 <script>
-export default {
+module.exports = {
   name: 'WikisearchIcon',
   props: {
     icon: {

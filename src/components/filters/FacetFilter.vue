@@ -74,7 +74,7 @@ const WikisearchDateInput = require('../DateInput.vue');
 const { createDate, readableDate } = require('../../utilities/dateUtils.js');
 const { strip } = require('../../utilities/stringUtils.js');
 
-export default {
+module.exports = {
   name: 'FacetFilter',
   components: {
     FacetCheckbox,

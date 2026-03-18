@@ -15,7 +15,7 @@ const { useSearchStore, getSelection } = require('../../store/index.js');
 const FacetCombobox = require('./FacetCombobox.vue');
 const prepareQuery = require('../../utilities/elastic.js');
 
-export default {
+module.exports = {
   name: 'FacetElasticCombobox',
   components: {
     'facet-combobox': FacetCombobox,

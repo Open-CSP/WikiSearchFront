@@ -62,7 +62,7 @@ const { useSearchStore } = require('../../store/index.js');
 const FacetCheckbox = require('./FacetCheckbox.vue');
 const WikisearchButton = require('../Button.vue');
 
-export default {
+module.exports = {
   name: 'FacetSorted',
   components: {
     FacetCheckbox,

@@ -16,7 +16,7 @@
 <script>
 const { strip } = require('../utilities/stringUtils.js');
 
-export default {
+module.exports = {
   name: 'WikisearchPill',
   props: {
     data: {

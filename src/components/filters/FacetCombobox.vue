@@ -94,7 +94,7 @@ const WikisearchListBox = require('../ListBox.vue');
 const WikisearchIcon = require('../Icon.vue');
 const { strip } = require('../../utilities/stringUtils.js');
 
-export default {
+module.exports = {
   name: 'FacetComboBox',
   components: {
     WikisearchPill,

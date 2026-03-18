@@ -49,7 +49,7 @@
 <script>
 const WikisearchListBox = require('./ListBox.vue');
 
-export default {
+module.exports = {
   name: 'WikisearchDropdown',
   components: {
     WikisearchListBox,

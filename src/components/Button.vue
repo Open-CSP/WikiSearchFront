@@ -25,7 +25,7 @@
 <script>
 const WikisearchIcon = require('./Icon.vue');
 
-export default {
+module.exports = {
   name: 'WikisearchButton',
   components: {
     WikisearchIcon,

@@ -39,7 +39,7 @@ const { useSearchStore } = require('../../store/index.js');
 const { strip } = require('../../utilities/stringUtils.js');
 const WikisearchResultProperty = require('../ResultProperty.vue');
 
-export default {
+module.exports = {
   name: 'WikisearchResultsCalendarYear',
   components: {
     WikisearchResultProperty,

@@ -50,7 +50,7 @@ const WikisearchButton = require('./Button.vue');
 const WikisearchTooltip = require('./Tooltip.vue');
 const { sanitize } = require('../utilities/stringUtils.js');
 
-export default {
+module.exports = {
   name: 'SearchInput',
   components: {
     WikisearchInput,

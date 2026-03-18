@@ -106,7 +106,7 @@
 const WikisearchButton = require('./Button.vue');
 const WikisearchInput = require('./Input.vue');
 
-export default {
+module.exports = {
   name: 'WikisearchDateInput',
   components: {
     WikisearchButton,

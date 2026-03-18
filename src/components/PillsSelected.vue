@@ -24,7 +24,7 @@
 const { useSearchStore } = require('../store/index.js');
 const WikisearchPill = require('./Pill.vue');
 
-export default {
+module.exports = {
   name: 'PillsSelected',
   components: {
     WikisearchPill,

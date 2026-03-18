@@ -10,7 +10,7 @@
 const { useSearchStore } = require('../../store/index.js');
 const prepareQuery = require('../../utilities/elastic.js');
 
-export default {
+module.exports = {
   name: 'WikisearchResultsTemplate',
   setup() {
     return { store: useSearchStore() };

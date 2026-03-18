@@ -26,7 +26,7 @@ const { useSearchStore } = require('../../store/index.js');
 const { strip } = require('../../utilities/stringUtils.js');
 const WikisearchInput = require('../Input.vue');
 
-export default {
+module.exports = {
   name: 'FacetSearch',
   components: {
     WikisearchInput,

@@ -115,7 +115,7 @@ const FacetSwitch = require('./components/filters/FacetSwitch.vue');
 const FacetSearch = require('./components/filters/FacetSearch.vue');
 const FacetSorted = require('./components/filters/FacetSorted.vue');
 
-export default {
+module.exports = {
   name: 'App',
   components: {
     SearchInput,

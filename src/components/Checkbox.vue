@@ -34,7 +34,7 @@
 </template>
 
 <script>
-export default {
+module.exports = {
   name: 'WikisearchCheckbox',
   props: {
     id: {

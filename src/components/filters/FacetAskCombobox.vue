@@ -14,7 +14,7 @@
 const { useSearchStore } = require('../../store/index.js');
 const FacetCombobox = require('./FacetCombobox.vue');
 
-export default {
+module.exports = {
   name: 'FacetAskCombobox',
   components: {
     'facet-combobox': FacetCombobox,

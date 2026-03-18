@@ -38,7 +38,7 @@ const { useSearchStore } = require('../store/index.js');
 const WikisearchButton = require('./Button.vue');
 const WikisearchDropdown = require('./Dropdown.vue');
 
-export default {
+module.exports = {
   name: 'WikisearchCalendarTools',
   components: {
     WikisearchButton,

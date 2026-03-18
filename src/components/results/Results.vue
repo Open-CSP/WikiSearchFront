@@ -39,7 +39,7 @@
 const { useSearchStore } = require('../../store/index.js');
 const WikisearchResultProperty = require('../ResultProperty.vue');
 
-export default {
+module.exports = {
   name: 'WikisearchResults',
   components: {
     WikisearchResultProperty,

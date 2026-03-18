@@ -11,7 +11,7 @@
 <script>
 const { useSearchStore } = require('../store/index.js');
 
-export default {
+module.exports = {
   name: 'WikisearchWikiTemplate',
   props: {
     data: {

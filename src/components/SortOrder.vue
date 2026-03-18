@@ -24,7 +24,7 @@ const { useSearchStore } = require('../store/index.js');
 const WikisearchDropdown = require('./Dropdown.vue');
 const WikisearchButton = require('./Button.vue');
 
-export default {
+module.exports = {
   name: 'SortOrder',
   components: {
     WikisearchDropdown,

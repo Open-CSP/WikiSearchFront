@@ -51,7 +51,7 @@ const { useSearchStore } = require('../../store/index.js');
 const FacetCheckbox = require('./FacetCheckbox.vue');
 const { strip } = require('../../utilities/stringUtils.js');
 
-export default {
+module.exports = {
   name: 'FacetRangeSlider',
   components: {
     'facet-checbox': FacetCheckbox,

@@ -68,7 +68,7 @@ const WikisearchResultProperty = require('../ResultProperty.vue');
 const WikisearchButton = require('../Button.vue');
 const WikisearchCalendarDialog = require('../CalendarDialog.vue');
 
-export default {
+module.exports = {
   name: 'WikisearchResultsCalendar',
   components: {
     WikisearchResultProperty,

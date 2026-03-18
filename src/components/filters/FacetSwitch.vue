@@ -32,7 +32,7 @@
 const { useSearchStore } = require('../../store/index.js');
 const { strip } = require('../../utilities/stringUtils.js');
 
-export default {
+module.exports = {
   name: 'FacetSwitch',
   props: {
     name: {

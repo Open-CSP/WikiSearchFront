@@ -27,7 +27,7 @@ const { useSearchStore } = require('../../store/index.js');
 const WikisearchCheckbox = require('../Checkbox.vue');
 const { strip } = require('../../utilities/stringUtils.js');
 
-export default {
+module.exports = {
   name: 'FacetCheckbox',
   components: {
     WikisearchCheckbox,

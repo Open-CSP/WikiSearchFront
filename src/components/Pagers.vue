@@ -79,7 +79,7 @@ const { useSearchStore } = require('../store/index.js');
 const WikisearchDropdown = require('./Dropdown.vue');
 const WikisearchIcon = require('./Icon.vue');
 
-export default {
+module.exports = {
   name: 'WikisearchPagers',
   components: {
     WikisearchDropdown,

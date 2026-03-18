@@ -28,7 +28,7 @@ const FacetCheckbox = require('./FacetCheckbox.vue');
 const WikisearchDateInput = require('../DateInput.vue');
 const { createDate } = require('../../utilities/dateUtils.js');
 
-export default {
+module.exports = {
   name: 'FacetDateRange',
   components: {
     'facet-checbox': FacetCheckbox,
