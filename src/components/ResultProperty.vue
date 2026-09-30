@@ -250,12 +250,9 @@ export default {
         // eslint-disable-next-line no-undef
         const calendarSettings = mw.config.values.WikiSearchFront.config.settings.calendar;
         const dateKey = calendarSettings && calendarSettings.key ? `P:${calendarSettings.key}` : 'P:29';
-        if (
-          this.data[source][dateKey]
-            && this.data[source][dateKey].dat_raw
-            && this.data[source][dateKey].dat_raw[0]
-        ) {
-          const [, year, month, day] = this.data[source][dateKey].dat_raw[0].split('/');
+        const dateProperty = this.data[source][dateKey];
+        if (dateProperty && dateProperty.dat_raw && dateProperty.dat_raw[0]) {
+          const [, year, month, day] = dateProperty.dat_raw[0].split('/');
           outData.date = `${year}-${month}-${day}`;
         }
         return outData;

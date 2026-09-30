@@ -583,31 +583,40 @@ const store = new Vuex.Store({
       commit('SET_API_CALLS', {
         text: actions.text,
         index: actions.index,
+        fallback: actions.fallback || '',
       });
       // eslint-disable-next-line prefer-arrow-callback
       clearTimeout(this.ongoingRequest);
       this.ongoingRequest = setTimeout(() => {
         // eslint-disable-next-line no-undef
         const api = new mw.Api();
-        const params = {
-          action: 'parse',
-          text: `<div>${store.state.apiCalls.map((call) => `${call.index}^^%%%^^${call.text}`).join('%%^^^%%')}</div>`,
-          format: 'json',
-          wrapoutputclass: '',
-          disablelimitreport: true,
-        };
-        api.post(params).done((data) => {
-          if (!data.parse) {
-            return;
-          }
-          const result = data.parse.text['*'];
-          const templates = Object.fromEntries(
-            result.substring(5, result.length - 6)
-              .split('%%^^^%%')
-              .map(e => e.split('^^%%%^^')),
+        const calls = [...store.state.apiCalls];
+        const batchSize = 50;
+
+        for (let i = 0; i < calls.length; i += batchSize) {
+          const batch = calls.slice(i, i + batchSize);
+          const fallbackTemplates = Object.fromEntries(
+            batch.map(call => [call.index, call.fallback]),
           );
-          commit('SET_TEMPLATES', { ...store.state.renderedTemplates, ...templates });
-        });
+          const params = {
+            action: 'parse',
+            text: `<div>${batch.map((call) => `${call.index}^^%%%^^${call.text}`).join('%%^^^%%')}</div>`,
+            format: 'json',
+            wrapoutputclass: '',
+            disablelimitreport: true,
+          };
+
+          api.post(params).done((data) => {
+            const result = data.parse && data.parse.text && data.parse.text['*'];
+            if (!result) {
+              return;
+            }
+            const parsedTemplates = result.substring(5, result.length - 6)
+              .split('%%^^^%%')
+              .map(e => e.split('^^%%%^^'));
+            commit('SET_TEMPLATES', { ...fallbackTemplates, ...store.state.renderedTemplates, ...Object.fromEntries(parsedTemplates) });
+          });
+        }
       }, 100);
     },
     doApiCall({ commit }, { actions }) {

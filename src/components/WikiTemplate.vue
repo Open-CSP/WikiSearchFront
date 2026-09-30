@@ -1,7 +1,7 @@
 <template>
   <span
     class="wikisearch-wiki-template"
-    :class="!renderedTemplate
+    :class="!renderedTemplate && data.value
       ? 'wikisearch-wiki-template--loading wikisearch-element--pending'
       : ''"
     v-html="renderedTemplate"
@@ -53,6 +53,7 @@ export default {
                  ${this.data.date ? `|$date=${this.data.date}` : ''}
                  |Value=${this.data.value}
                  }}`,
+              fallback: this.data.value,
             },
       });
     },
